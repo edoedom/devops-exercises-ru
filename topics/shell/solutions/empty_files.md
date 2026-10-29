@@ -1,10 +1,15 @@
-## Empty Files
+<a id="empty-files"></a>
+## Пустые файлы
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Write a script to remove all the empty files in a given directory (including nested directories)
+1. Напишите скрипт, который удаляет все пустые файлы в указанном каталоге, включая вложенные каталоги.
 
-### Solution
+<a id="solution"></a>
+### Решение
+
+> Примечание к переводу: Исходное решение ниже не соответствует заданию: оно не обходит вложенные каталоги, пропускает скрытые элементы и использует `rm -rf` без кавычек. Не запускайте его на рабочих данных. Для удаления именно пустых обычных файлов можно сначала проверить список командой `find /path/to/directory -type f -empty -print`, а после проверки использовать `find /path/to/directory -type f -empty -delete`. Ниже сохранён код оригинала для сравнения.
 
 ```
 #! /bin/bash

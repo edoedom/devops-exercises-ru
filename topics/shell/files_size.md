@@ -1,7 +1,9 @@
-## Files Size
+<a id="files-size"></a>
+## Размеры файлов
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Print the name and size of every file and directory in current path
+1. Выведите имя и размер каждого файла и каталога в текущем каталоге.
 
-Note: use at least one for loop!
+Примечание: используйте хотя бы один цикл `for`.

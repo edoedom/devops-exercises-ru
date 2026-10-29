@@ -1,7 +1,9 @@
-## Number of Arguments
+<a id="number-of-arguments"></a>
+## Количество аргументов
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-* Write a script that will print "Got it: <argument value>" in case of one argument
-* In case no arguments were provided, it will print "Usage: ./<program name> <argument>"
-* In case of more than one argument, print "hey hey...too many!"
+* Если передан один аргумент, скрипт должен вывести `Got it: <argument value>`, подставив значение аргумента.
+* Если аргументов нет, выведите `Usage: ./<program name> <argument>`.
+* Если передано больше одного аргумента, выведите `hey hey...too many!`.

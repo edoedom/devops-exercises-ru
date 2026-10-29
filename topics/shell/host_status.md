@@ -1,5 +1,7 @@
-## It's Alive!
+<a id="its-alive"></a>
+## Проверка доступности узла
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Write a script to determine whether a given host is down or up
+1. Напишите скрипт, который определяет, доступен ли указанный узел.

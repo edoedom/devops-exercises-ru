@@ -1,5 +1,7 @@
-## Basic Date
+<a id="basic-date"></a>
+## Текущая дата
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Write a script that will put the current date in a file called "the_date.txt"
+1. Напишите скрипт, который записывает текущую дату в файл `the_date.txt`.

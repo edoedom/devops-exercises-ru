@@ -1,12 +1,15 @@
-## Great Day
+<a id="great-day"></a>
+## Отличный день
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Write a script that will print "Today is a great day!" unless it's given a day name and then it should print "Today is <given day>"
+1. Напишите скрипт, который выводит `Today is a great day!`, если ему не передано название дня. Если название передано, скрипт должен вывести `Today is <given day>`, подставив переданное значение вместо `<given day>`.
 
-Note: no need to check whether the given argument is actually a valid day
+Примечание: проверять, является ли аргумент допустимым названием дня, не требуется.
 
-### Solution
+<a id="solution"></a>
+### Решение
 
 ```
 #!/usr/bin/env bash

@@ -1,14 +1,17 @@
-## Argument Check
+<a id="argument-check"></a>
+## Проверка аргумента
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-Note: assume the script is executed with an argument
+Примечание: считайте, что скрипт запускается с аргументом.
 
-1. Write a script that will check if a given argument is the string "pizza"
-2. If it's the string "pizza" print "with pineapple?"
-3. If it's not the string "pizza" print "I want pizza!"
+1. Напишите скрипт, который проверяет, равен ли переданный аргумент строке `pizza`.
+2. Если равен, выведите `with pineapple?`.
+3. Если не равен, выведите `I want pizza!`.
 
-### Solution
+<a id="solution"></a>
+### Решение
 
 ```
 #!/usr/bin/env bash

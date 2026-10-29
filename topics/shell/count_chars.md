@@ -1,11 +1,14 @@
-## Count Chars
+<a id="count-chars"></a>
+## Подсчёт символов
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Read input from the user until you get empty string
-2. For each of the lines you read, count the number of characters and print it
+1. Считывайте ввод пользователя до получения пустой строки.
+2. Для каждой введённой строки подсчитайте количество символов и выведите результат.
 
-### Constraints
+<a id="constraints"></a>
+### Ограничения
 
-1. You must use a while loop
-2. Assume at least three lines of input
+1. Используйте цикл `while`.
+2. Предполагается, что пользователь введёт не менее трёх строк.

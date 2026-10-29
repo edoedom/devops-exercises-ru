@@ -1,6 +1,8 @@
-## Shell Scripting - Hello World
+<a id="shell-scripting---hello-world"></a>
+## Сценарии shell: Hello World
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Define a variable with the string 'Hello World'
-2. Print the value of the variable you've defined and redirect the output to the file "amazing_output.txt"
+1. Создайте переменную со строкой `Hello World`.
+2. Выведите значение этой переменной и перенаправьте вывод в файл `amazing_output.txt`.

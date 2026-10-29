@@ -1,5 +1,7 @@
-## Empty Files
+<a id="empty-files"></a>
+## Пустые файлы
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Write a script to remove all the empty files in a given directory (including nested directories)
+1. Напишите скрипт, который удаляет все пустые файлы в указанном каталоге, включая вложенные каталоги.

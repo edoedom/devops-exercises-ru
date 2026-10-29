@@ -1,16 +1,22 @@
-## Sum
+<a id="sum"></a>
+## Сумма
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Write a script that gets two numbers and prints their sum
-3. Make sure the input is valid (= you got two numbers from the user)
-2. Test the script by running and passing it two numbers as arguments 
+1. Напишите скрипт, который принимает два числа и выводит их сумму.
+2. Проверьте корректность ввода: пользователь должен передать два числа.
+3. Проверьте работу скрипта, запустив его с двумя числами в качестве аргументов.
 
-### Constraints
+<a id="constraints"></a>
+### Ограничения
 
-1. Use functions
+1. Используйте функции.
 
-### Solution
+<a id="solution"></a>
+### Решение
+
+> Примечание к переводу: Регулярное выражение в исходном решении допускает только неотрицательные целые числа. Количество аргументов отдельно не проверяется. Арифметика Bash также требует учитывать интерпретацию чисел с ведущим нулём. Код оригинала сохранён.
 
 ```
 #!/usr/bin/env bash
