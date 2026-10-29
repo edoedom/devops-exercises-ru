@@ -1,4 +1,5 @@
-## Comparisons vs. Functions - Solution
+<a id="comparisons-vs-functions---solution"></a>
+## Сравнения и функции: решение
 
 ```
 SELECT count(*)

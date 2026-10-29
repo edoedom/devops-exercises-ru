@@ -1,15 +1,16 @@
-## Deploy to Kubernetes
+<a id="deploy-to-kubernetes"></a>
+## Развёртывание в Kubernetes
 
-Note: this exercise can be solved in various ways. The solution described here is just one possible way.
+Примечание: задание допускает разные способы решения. Здесь приведён один из вариантов.
 
-1. Install Jenkins on one system (follow up the standard Jenkins installation procedure)
-2. Deploy Kubernetes on a remote host (minikube can be an easy way to achieve it)
-3. Create a simple web app or [page](html)
+1. Установите Jenkins на одной системе по стандартной инструкции.
+2. Разверните Kubernetes на удалённом узле. Для этого можно использовать minikube.
+3. Создайте простое веб-приложение или [страницу](html).
+4. Создайте [ресурсы Kubernetes](helloworld.yml): Deployment, Service и Ingress для доступа по HTTPS.
+5. Создайте [файл инвентаризации Ansible](inventory) и укажите адрес кластера Kubernetes.
+6. Напишите [плейбук Ansible](deploy.yml) для развёртывания ресурсов Kubernetes.
+7. Создайте [конвейер](Jenkinsfile).
+8. Запустите его.
+9. Попробуйте обратиться к веб-приложению удалённо.
 
-4. Create Kubernetes [resources](helloworld.yml) - Deployment, Service and Ingress (for HTTPS access)
-5. Create an [Ansible inventory](inventory) and insert the address of the Kubernetes cluster
-6. Write [Ansible playbook](deploy.yml) to deploy the Kubernetes resources and also generate 
-7. Create a [pipeline](Jenkinsfile)
-
-8. Run the pipeline :)
-9. Try to access the web app remotely
+> Примечание к переводу: пункт 6 в оригинале обрывается после слов «а также сгенерировать»; недостающая часть не восстановлена.

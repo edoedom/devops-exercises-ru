@@ -1,21 +1,28 @@
-## AWS Auto Scaling Groups - Basics
+<a id="aws-auto-scaling-groups---basics"></a>
+## AWS Auto Scaling Groups: основы
 
-### Requirements
+<a id="requirements"></a>
+### Требования
 
-Zero EC2 instances running
+Нет работающих экземпляров EC2.
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-A. Create a scaling group for web servers with the following properties:
-  * Amazon Linux 2 AMI
-  * t2.micro as the instance type
-  * user data:
+A. Создайте группу масштабирования веб-серверов:
+
+* Образ Amazon Linux 2 AMI.
+* Тип экземпляра: t2.micro.
+* Данные инициализации (user data):
+
 ```
 yum install -y httpd
 systemctl start httpd
 systemctl enable httpd
 ```
 
-B. Were new instances created since you created the auto scaling group? How many? Why?
-C. Change desired capacity to 2. Did it launch more instances?
-D. Change back the desired capacity to 1. What is the result of this action?
+B. Появились ли новые экземпляры после создания группы? Сколько и почему?
+
+C. Установите желаемое количество экземпляров равным 2. Запустились ли дополнительные экземпляры?
+
+D. Верните желаемое количество к 1. Что произошло?

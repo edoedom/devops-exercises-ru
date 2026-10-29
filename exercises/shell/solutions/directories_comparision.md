@@ -1,13 +1,17 @@
-## How to compare two directories in Linux?
+<a id="how-to-compare-two-directories-in-linux"></a>
+## Как сравнить два каталога в Linux?
 
-You can use the 'diff' command with the '-r' flag to compare two direcotries recursively.
+Для рекурсивного сравнения двух каталогов можно использовать команду `diff` с флагом `-r`.
 
+<a id="example"></a>
+### Пример
 
-
-### Example:
-'''bash
+```bash
 diff -r folder1/ folder2/
+```
 
-This command compares all the files and subdirectories inside 'folder1' and 'folder2'.
-If both directories have identical contents, it retuns nothing.
-If there are differences,it showss which files differ or are missing.
+Команда сравнивает файлы и подкаталоги внутри folder1 и folder2.
+Если содержимое каталогов одинаковое, вывода не будет.
+Если различия есть, команда покажет отличающиеся или отсутствующие файлы.
+
+> Примечание к переводу: исправлено оформление блока команды в исходнике.

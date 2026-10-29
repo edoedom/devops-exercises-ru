@@ -1,15 +1,18 @@
-# Create & Destroy
+<a id="create--destroy"></a>
+# Создание и удаление
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Create a file called `x`
-2. Create a directory called `content`
-3. Move `x` file to the `content` directory
-4. Create a file inside the `content` directory called `y`
-5. Create the following directory structure in `content` directory: `dir1/dir2/dir3`
-6. Remove the content directory
+1. Создайте файл `x`.
+2. Создайте каталог `content`.
+3. Переместите файл `x` в каталог `content`.
+4. Создайте в каталоге `content` файл `y`.
+5. Создайте внутри `content` структуру каталогов `dir1/dir2/dir3`.
+6. Удалите каталог content.
 
-## Solution
+<a id="solution"></a>
+## Решение
 
 ```
 touch x

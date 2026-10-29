@@ -1,21 +1,21 @@
-## No Application :'(
+<a id="no-application-"></a>
+## Приложение недоступно :'(
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-Explain what might be possible reasons for the following issues:
+Объясните возможные причины следующих проблем:
 
-1. Getting "time out" when trying to reach an application running on EC2 instance
-2. Getting "connection refused" error
+1. Ошибка `time out` при попытке обратиться к приложению на экземпляре EC2.
+2. Ошибка `connection refused`.
 
-### Solution
+<a id="solution"></a>
+### Решение
 
-1. 'Time out' Can be due to one of the following:
-
-  * Security group doesn't allow access
-  * No host (yes, I know. Not the first thing to check and yet...)
-  * Operating system firewall blocking traffic
-
-2. 'Connection refused' can happen due to one of the following:
-
-  * Application didn't launch properly or has some issue (doesn't listens on the designated port)
-  * Firewall replied with a reject instead of dropping the packets
+1. Ошибка time out возможна по следующим причинам:
+   * Группа безопасности не разрешает доступ.
+   * Узел отсутствует или недоступен — хотя обычно это не первая проверяемая причина.
+   * Межсетевой экран операционной системы блокирует трафик.
+2. Ошибка connection refused возможна, если:
+   * Приложение не запустилось или не слушает нужный порт.
+   * Межсетевой экран явно отклоняет соединение, а не молча отбрасывает пакеты.

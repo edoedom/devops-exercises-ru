@@ -1,19 +1,23 @@
-# Sharing Images
+<a id="sharing-images"></a>
+# Передача образов
 
-## Requirements
+<a id="requirements"></a>
+## Требования
 
-Have at least one image locally (run `podman image ls` to confirm).<br>
-If you don't have images locally, run simply `podman pull httpd`.
+Нужен хотя бы один локальный образ. Проверьте это командой `podman image ls`.<br>
+Если образов нет, выполните `podman pull httpd`.
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Choose an image and create an archive out of it
-2. Check the archive size. Is it different than the image size? If yes, what's the difference? If not, why?
-3. Copy the generated archive to a remote host
-4. Load the image
-5. Verify it was loaded and exists on the remote host
+1. Выберите образ и сохраните его в архив.
+2. Проверьте размер архива. Отличается ли он от размера образа? Если да, в чём разница? Если нет, почему?
+3. Скопируйте архив на удалённый узел.
+4. Загрузите образ из архива.
+5. Убедитесь, что образ загружен и присутствует на удалённом узле.
 
-## Solution
+<a id="solution"></a>
+## Решение
 
 ```
 # Save image as an archive

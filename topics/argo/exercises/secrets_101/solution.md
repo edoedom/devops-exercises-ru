@@ -1,31 +1,33 @@
-# ArgoCD Secrets 101
+<a id="argocd-secrets-101"></a>
+# Argo CD: основы работы с секретами
 
-## Requirements
+<a id="requirements"></a>
+## Требования
 
-1. Running Kubernetes cluster
-2. Application k8s manifests with secrets
-3. Kubeseal binary installed
+1. Работающий кластер Kubernetes.
+2. Манифесты Kubernetes приложения, содержащие секреты.
+3. Установленная утилита kubeseal.
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Install bitnami sealed controller as ArgoCD app
-2. Encrypt secrets and commit them to the repo with the k8s manifests
-3. Create an app using the secrets you encrypted
+1. Установите контроллер Bitnami Sealed Secrets как приложение Argo CD.
+2. Зашифруйте секреты и добавьте их в репозиторий с манифестами Kubernetes.
+3. Создайте приложение, использующее зашифрованные секреты.
 
-## Solution
+<a id="solution"></a>
+## Решение
 
-1. Click on "New App"
-   1. app name: controller
-   2. project: default
-   3. sync policy: automatic
-   4. repository URL: a URL to bitnami sealed controller manifests
-   5. namespace: kube-system
-
-2. Run the following for every secret: `kubeseal < some/secret.yml > sealed_secrets/some/encrypted_secret.yaml -o yaml`
-
-3. Click on "New App"
-   1. app name: some-app
-   2. project: default
-   3. sync policy: automatic
-   4. repository URL: a URL to k8s manifests (including encrypted secrets)
-   5. namespace: default
+1. Нажмите **New App** и задайте параметры:
+   1. Имя: controller.
+   2. Проект: default.
+   3. Политика синхронизации: automatic.
+   4. URL репозитория: адрес манифестов контроллера Bitnami Sealed Secrets.
+   5. Пространство имён: kube-system.
+2. Для каждого секрета выполните: `kubeseal < some/secret.yml > sealed_secrets/some/encrypted_secret.yaml -o yaml`.
+3. Нажмите **New App** и задайте параметры приложения:
+   1. Имя: some-app.
+   2. Проект: default.
+   3. Политика синхронизации: automatic.
+   4. URL репозитория: адрес манифестов Kubernetes, включая зашифрованные секреты.
+   5. Пространство имён: default.

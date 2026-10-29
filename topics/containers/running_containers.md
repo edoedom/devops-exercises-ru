@@ -1,18 +1,22 @@
-## Running Containers
+<a id="running-containers"></a>
+## Запуск контейнеров
 
-### Objective
+<a id="objective"></a>
+### Цель
 
-Learn how to run, stop and remove containers
+Научиться запускать, останавливать и удалять контейнеры.
 
-### Requirements
+<a id="requirements"></a>
+### Требования
 
-Make sure Podman or Docker (or any other containers engine) is installed on your system
+Убедитесь, что установлен Podman, Docker или другой движок контейнеров.
 
-### Instructions
+<a id="instructions"></a>
+### Инструкции
 
-1. Run a container using the latest nginx image
-2. List the containers to make sure the container is running
-3. Run another container but this time use ubuntu latest and attach to the terminal of the container
-4. List again the containers. How many containers are running?
-5. Stop the containers
-6. Remove the containers
+1. Запустите контейнер из образа nginx с тегом latest.
+2. Выведите список контейнеров и убедитесь, что контейнер работает.
+3. Запустите второй контейнер из ubuntu:latest, подключившись к его терминалу.
+4. Снова выведите список контейнеров. Сколько из них работает?
+5. Остановите контейнеры.
+6. Удалите контейнеры.

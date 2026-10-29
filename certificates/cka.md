@@ -1,15 +1,17 @@
-## Certified Kubernetes Administrator (CKA)
+<a id="certified-kubernetes-administrator-cka"></a>
+## Сертифицированный администратор Kubernetes (CKA)
 
-### Pods
+<a id="pods"></a>
+### Поды
 
 <details>
-<summary>Deploy a pod called web-1985 using the nginx:alpine image</code></summary><br><b>
+<summary>Разверните под web-1985 из образа nginx:alpine.</summary><br><b>
 
 `kubectl run web-1985 --image=nginx:alpine --restart=Never`
 </b></details>
 
 <details>
-<summary>How to find out on which node a certain pod is running?</summary><br><b>
+<summary>Как узнать, на каком узле работает под?</summary><br><b>
 
 `kubectl get po -o wide`
 </b></details>

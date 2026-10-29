@@ -1,17 +1,21 @@
-## Working with Images
+<a id="working-with-images"></a>
+## Работа с образами
 
-### Objective
+<a id="objective"></a>
+### Цель
 
-Learn how to work with containers images
+Научиться работать с образами контейнеров.
 
-### Requirements
+<a id="requirements"></a>
+### Требования
 
-Make sure Podman or Docker (or any other containers engine) is installed on your system
+Убедитесь, что установлен Podman, Docker или другой движок контейнеров.
 
-### Instructions
+<a id="instructions"></a>
+### Инструкции
 
-1. List the containers images in your environment
-2. Pull the latest ubuntu image
-3. Run a container with the image you just pulled 
-4. Remove the image. Did it work?
-5. Do whatever is needed in order to remove the image
+1. Выведите список образов в своей среде.
+2. Загрузите образ ubuntu с тегом latest.
+3. Запустите контейнер из загруженного образа.
+4. Попробуйте удалить образ. Получилось ли это?
+5. Выполните необходимые действия для удаления образа.

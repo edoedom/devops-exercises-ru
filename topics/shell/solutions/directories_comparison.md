@@ -1,12 +1,15 @@
-## Directories Comparison
+<a id="directories-comparison"></a>
+## Сравнение каталогов
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. You are given two directories as arguments and the output should be any difference between the two directories
+1. Скрипт получает два каталога в качестве аргументов и должен вывести различия между ними.
 
-### Solution 1
+<a id="solution-1"></a>
+### Решение 1
 
-Suppose the name of the bash script is ```dirdiff.sh```
+Предположим, скрипт Bash называется ```dirdiff.sh```.
 
 ```
 #!/bin/bash
@@ -28,9 +31,10 @@ fi
 diff -q $1 $2
 ```
 
-### Solution 2
+<a id="solution-2"></a>
+### Решение 2
 
-With gnu find, you can use diff to compare directories recursively.
+С помощью GNU find и diff можно рекурсивно сравнить каталоги.
 
 ```shell
 diff --recursive directory1 directory2

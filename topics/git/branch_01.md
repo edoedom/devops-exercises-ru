@@ -1,19 +1,23 @@
-## Git Commit 01
+<a id="git-commit-01"></a>
+## Git: ветки 01
 
-### Objective
+<a id="objective"></a>
+### Цель
 
-Learn how to work with Git Branches
+Научиться работать с ветками Git.
 
-### Instructions
+<a id="instructions"></a>
+### Инструкции
 
-1. Pick up a Git repository (or create a new one) with at least one commit
-2. Create a new branch called "dev"
-3. Modify one of the files in the repository
-4. Create a new commit
-5. Verify the commit you created is only in "dev" branch
+1. Выберите или создайте репозиторий Git хотя бы с одним коммитом.
+2. Создайте ветку dev.
+3. Измените один из файлов репозитория.
+4. Создайте коммит.
+5. Убедитесь, что новый коммит находится только в ветке dev.
 
-### After you complete the exercise
+<a id="after-you-complete-the-exercise"></a>
+### После выполнения задания
 
-Answer the following:
+Ответьте на вопрос:
 
-1. Why branches are useful? Give an example of one real-world scenario for using branches
+1. Чем полезны ветки? Приведите пример их применения в рабочей ситуации.

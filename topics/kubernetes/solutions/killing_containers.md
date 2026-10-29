@@ -1,13 +1,16 @@
-## "Killing" Containers - Solution
+<a id="killing-containers---solution"></a>
+## Принудительное завершение контейнеров: решение
 
-1. Run Pod with a web service (e.g. httpd) - `kubectl run web --image registry.redhat.io/rhscl/httpd-24-rhel7`
-2. Verify the web service is running with the `ps` command - `kubectl exec web -- ps`
-3. Check how many restarts the pod has performed - `kubectl get po web`
-4. Kill the web service process -`kubectl exec web -- kill 1`
-5. Check how many restarts the pod has performed - `kubectl get po web`
-6. Verify again the web service is running - `kubectl exec web -- ps`
+1. Запустите под с веб-сервисом, например httpd: `kubectl run web --image registry.redhat.io/rhscl/httpd-24-rhel7`.
+2. Проверьте процесс веб-сервиса: `kubectl exec web -- ps`.
+3. Посмотрите счётчик перезапусков: `kubectl get po web`.
+4. Завершите процесс веб-сервиса: `kubectl exec web -- kill 1`.
+5. Снова посмотрите счётчик перезапусков: `kubectl get po web`.
+6. Убедитесь, что процесс снова работает: `kubectl exec web -- ps`.
 
-## After you complete the exercise
+<a id="after-you-complete-the-exercise"></a>
+## После выполнения задания
 
+* Почему увеличилось значение RESTARTS? Kubernetes перезапустил контейнер, поскольку его процесс был завершён.
 
-* Why did the "RESTARTS" count raised? - `Kubernetes restarted the Pod because we killed the process and the container was not running properly.`
+> Примечание к переводу: в оригинальном объяснении перезапуск контейнера ошибочно назван перезапуском пода.

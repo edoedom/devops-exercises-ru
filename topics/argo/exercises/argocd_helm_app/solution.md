@@ -1,16 +1,20 @@
-# ArgoCD Helm App
+<a id="argocd-helm-app"></a>
+# Приложение Argo CD на основе Helm
 
-## Requirements
+<a id="requirements"></a>
+## Требования
 
-1. Running Kubernetes cluster
-2. ArgoCD installed on the k8s cluster
-3. Repository of an Helm chart
+1. Работающий кластер Kubernetes.
+2. Argo CD, установленный в этом кластере.
+3. Репозиторий с Helm-чартом.
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Create a new app in ArgoCD that points to the repo of your Helm chart
+1. Создайте приложение в Argo CD, указав репозиторий своего Helm-чарта.
 
-## Solution
+<a id="solution"></a>
+## Решение
 
 ```
 argocd app create some-app \

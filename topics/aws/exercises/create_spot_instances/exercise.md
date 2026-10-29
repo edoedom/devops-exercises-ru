@@ -1,9 +1,12 @@
-## AWS EC2 - Spot Instances                                                                                                                                                  
-### Objectives             
+<a id="aws-ec2---spot-instances"></a>
+## AWS EC2: спотовые экземпляры
 
-A. Create two Spot instances using a Spot Request with the following properties:
+<a id="objectives"></a>
+### Задание
 
-* Amazon Linux 2 AMI
-* 2 instances as target capacity (at any given point of time) while each one has 2 vCPUs and 3 GiB RAM
+A. Создайте запрос Spot Request для двух спотовых экземпляров:
 
-B. Create a single Spot instance using Amazon Linux 2 and t2.micro
+* Образ Amazon Linux 2 AMI.
+* Целевое количество: два экземпляра в каждый момент времени; у каждого — 2 vCPU и 3 ГиБ RAM.
+
+B. Создайте один спотовый экземпляр с Amazon Linux 2 и типом t2.micro.

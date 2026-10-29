@@ -1,8 +1,9 @@
-## Compress String Solution
+<a id="compress-string-solution"></a>
+## Сжатие строки: решение
 
-1. Write a function that gets a string and compresses it
-  - 'aaaabbccc' -> 'a4b2c3'
-  - 'abbbc' -> 'a1b3c1'
+1. Напишите функцию, которая получает строку и сжимает её:
+   - 'aaaabbccc' -> 'a4b2c3'
+   - 'abbbc' -> 'a1b3c1'
 
 ```
 def compress_str(mystr: str) -> str:
@@ -27,10 +28,9 @@ def compress_str(mystr: str) -> str:
 	return result
 ```
 
-
-2. Write a function that decompresses a given string
-  - 'a4b2c3' -> 'aaaabbccc'
-  - 'a1b3c1' -> 'abbbc'
+2. Напишите функцию восстановления исходной строки:
+   - 'a4b2c3' -> 'aaaabbccc'
+   - 'a1b3c1' -> 'abbbc'
 
 ```
 def decompress_str(mystr: str) -> str:

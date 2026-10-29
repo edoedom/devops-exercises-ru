@@ -1,17 +1,21 @@
-# ArgoCD Secrets 101
+<a id="argocd-secrets-101"></a>
+# Argo CD: основы работы с секретами
 
-## Requirements
+<a id="requirements"></a>
+## Требования
 
-1. Running Kubernetes cluster
-2. Application k8s manifests with secrets
-3. Kubeseal binary installed
+1. Работающий кластер Kubernetes.
+2. Манифесты Kubernetes приложения, содержащие секреты.
+3. Установленная утилита kubeseal.
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Install bitnami sealed controller as ArgoCD app
-2. Encrypt secrets and commit them to the repo with the k8s manifests
-3. Create an app using the secrets you encrypted
+1. Установите контроллер Bitnami Sealed Secrets как приложение Argo CD.
+2. Зашифруйте секреты и добавьте их в репозиторий с манифестами Kubernetes.
+3. Создайте приложение, использующее зашифрованные секреты.
 
-## Solution
+<a id="solution"></a>
+## Решение
 
-Click [here](solution.md) to view the solution
+[Посмотреть решение](solution.md).

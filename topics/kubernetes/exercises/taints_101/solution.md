@@ -1,19 +1,22 @@
-# Taints 101
+<a id="taints-101"></a>
+# Ограничения планирования taint: основы
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Check if one of the nodes in the cluster has taints (doesn't matter which node)
-2. Create a taint on one of the nodes in your cluster with key of "app" and value of "web" and effect of "NoSchedule"
-   1. Explain what it does exactly
-   2. Verify it was applied
+1. Проверьте наличие taint у любого узла кластера.
+2. Добавьте одному из узлов taint с ключом app, значением web и эффектом NoSchedule.
+   1. Объясните его действие.
+   2. Убедитесь, что taint добавлен.
 
-## Solution
+<a id="solution"></a>
+## Решение
 
 1. `kubectl describe no minikube | grep -i taints`
 2. `kubectl taint node minikube app=web:NoSchedule`
-   1. Any resource with "app=web" key value will not be scheduled on node `minikube`
-   2. `kubectl describe no minikube | grep -i taints`
-3. 
+   1. Новые поды без подходящего toleration не будут планироваться на узел `minikube`.
+   2. Проверка: `kubectl describe no minikube | grep -i taints`.
+3. Создайте под по следующему примеру:
 
 ```
 kubectl run some-pod --image=redis
@@ -27,4 +30,6 @@ kubectl edit po some-pod
     value: web
 ```
 
-Save and exit. The Pod should be running.
+Сохраните изменения и выйдите из редактора. Под должен запуститься.
+
+> Примечание к переводу: в оригинале действие taint ошибочно связывалось с меткой app=web у ресурса. Ограничение зависит от наличия подходящего toleration у пода.

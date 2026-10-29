@@ -1,10 +1,13 @@
-## Directories Comparison
+<a id="directories-comparison"></a>
+## Сравнение каталогов
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. You are given two directories as arguments and the output should be any difference between the two directories
+1. Скрипт получает два каталога в качестве аргументов и должен вывести различия между ними.
 
-### Solution
+<a id="solution"></a>
+### Решение
 
 ```
 #!/usr/bin/env bash

@@ -1,9 +1,10 @@
-## Containerized DB
+<a id="containerized-db"></a>
+## База данных в контейнере
 
-1. Run a container with a database of any type of you prefer (MySql, PostgreSQL, Mongo, etc.)
-2. Verify the container is running
-3. Access the container and create a new table (or collection, depends on which DB type you chose) for students
-4. Insert a row (or document) of a student
-5. Verify the row/document was added
+1. Запустите контейнер с любой базой данных, например MySQL, PostgreSQL или MongoDB.
+2. Убедитесь, что контейнер работает.
+3. Подключитесь к контейнеру и создайте таблицу для студентов или коллекцию, если это соответствует выбранной СУБД.
+4. Добавьте строку или документ с данными студента.
+5. Проверьте, что данные добавлены.
 
-Click [here for the solution](solutions/containerized_db.md)
+[Посмотреть решение](solutions/containerized_db.md).

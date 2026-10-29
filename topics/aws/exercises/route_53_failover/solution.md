@@ -1,29 +1,36 @@
-## AWS Route 53 - Failover
+<a id="aws-route-53---failover"></a>
+## AWS Route 53: переключение при отказе
 
-### Requirements
+<a id="requirements"></a>
+### Требования
 
-A running EC2 web instance with an health check defined for it in Route 53
+Работающий экземпляр EC2 с веб-приложением и настроенной для него проверкой работоспособности в Route 53.
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Create a failover record that will failover to another record if an health check isn't passing
-  1. Make sure TTL is 30
-  2. Associate the failover record with the health check you have
+1. Создайте запись с переключением при отказе: если проверка работоспособности не проходит, должна использоваться другая запись.
+   1. Установите TTL равным 30 секундам.
+   2. Свяжите запись с существующей проверкой работоспособности.
 
-### Solution
+<a id="solution"></a>
+### Решение
 
-#### Console
+<a id="console"></a>
+#### Консоль
 
-1. Go to Route 53 service
-2. Click on "Hosted Zones" in the left-side menu
-3. Click on your hosted zone
-4. Click on "Created record"
-5. Insert "failover" in record name and set record type to A
-6. Insert the IP of your instance
-7. Set the routing policy to failover
-8. Set TTL to 30
-9. Associate with an health check
-10. Add another record with the same properties as the previous one
-11. Click on "Create records"
-12. Go to your EC2 instance and edit its security group to remove the HTTP rules
-13. Use your web app and if you print the hotsname of your instance then you will notice, a failover was performed and a different EC2 instance is used
+1. Откройте Route 53.
+2. В левом меню выберите **Hosted Zones**.
+3. Откройте свою зону.
+4. Нажмите **Create record**.
+5. Укажите имя failover и тип A.
+6. Введите IP-адрес экземпляра.
+7. Выберите политику маршрутизации failover.
+8. Установите TTL равным 30.
+9. Свяжите запись с проверкой работоспособности.
+10. Добавьте вторую запись с аналогичными параметрами.
+11. Нажмите **Create records**.
+12. В группе безопасности экземпляра EC2 удалите правила HTTP.
+13. Обратитесь к веб-приложению. Если оно выводит имя хоста, по изменению имени можно заметить переключение на другой экземпляр EC2.
+
+> Примечание к переводу: в исходном решении не указано, что для переключения записи должны иметь соответствующие роли основной и резервной; копирования всех параметров первой записи недостаточно.

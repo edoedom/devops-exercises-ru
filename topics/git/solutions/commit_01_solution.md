@@ -1,4 +1,5 @@
-## Git Commit 01 - Solution
+<a id="git-commit-01---solution"></a>
+## Git: решение задания «Коммит 01»
 
 ```
 mkdir my_repo && cd my_repo

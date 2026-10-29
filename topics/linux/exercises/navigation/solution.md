@@ -1,20 +1,24 @@
-# Navigation
+<a id="navigation"></a>
+# Перемещение по каталогам
 
-## Requirements
+<a id="requirements"></a>
+## Требования
 
 1. Linux :)
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Change directory to `/tmp`
-2. Move to parent directory
-3. Change directory to home directory
-4. Move to parent directory
-5. Move again to parent directory
-   1. Where are you at? Verify with a command
-6. Change to last visited directory
+1. Перейдите в `/tmp`.
+2. Перейдите в родительский каталог.
+3. Перейдите в домашний каталог.
+4. Перейдите в родительский каталог.
+5. Ещё раз перейдите в родительский каталог.
+   1. Где вы оказались? Проверьте это командой.
+6. Вернитесь в последний посещённый каталог.
 
-## Solution
+<a id="solution"></a>
+## Решение
 
 ```
 cd /tmp

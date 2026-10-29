@@ -1,4 +1,5 @@
-## Services 01 - Solution
+<a id="services-01---solution"></a>
+## Сервисы: решение задания 01
 
 ```
 kubectl run nginx --image=nginx --restart=Never --port=80 --labels="app=dev-nginx"

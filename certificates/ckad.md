@@ -1,37 +1,41 @@
-## Certified Kubernetes Application Developer (CKAD)
+<a id="certified-kubernetes-application-developer-ckad"></a>
+## Сертифицированный разработчик приложений Kubernetes (CKAD)
 
-### Core Concepts
+<a id="core-concepts"></a>
+### Основные понятия
 
-### Pods
+<a id="pods"></a>
+### Поды
 
 <details>
-<summary>Deploy a pod called web-1985 using the nginx:alpine image</code></summary><br><b>
+<summary>Разверните под web-1985 из образа nginx:alpine.</summary><br><b>
 
 `kubectl run web-1985 --image=nginx:alpine --restart=Never`
 </b></details>
 
 <details>
-<summary>How to find out on which node a certain pod is running?</summary><br><b>
+<summary>Как узнать, на каком узле работает под?</summary><br><b>
 
 `kubectl get po -o wide`
 </b></details>
 
-### Namespaces
+<a id="namespaces"></a>
+### Пространства имён
 
 <details>
-<summary>List all namespaces</code></summary><br><b>
+<summary>Выведите список всех пространств имён.</summary><br><b>
 
 kubectl get ns
 </b></details>
 
 <details>
-<summary>List all the pods in the namespace 'neverland'</code></summary><br><b>
+<summary>Выведите все поды пространства имён neverland.</summary><br><b>
 
 kubectl get po -n neverland
 </b></details>
 
 <details>
-<summary>List all the pods in all the namespaces</code></summary><br><b>
+<summary>Выведите поды во всех пространствах имён.</summary><br><b>
 
 kubectl get po --all-namespaces
 </b></details>

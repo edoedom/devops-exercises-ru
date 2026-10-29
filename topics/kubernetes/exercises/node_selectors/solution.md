@@ -1,18 +1,20 @@
-# Node Selectors
+<a id="node-selectors"></a>
+# Селекторы узлов
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Apply the label "hw=max" on one of the nodes in your cluster
-2. Create and run a Pod called `some-pod` with the image `redis` and configure it to use the selector `hw=max`
-3. Explain why node selectors might be limited
+1. Добавьте метку `hw=max` одному из узлов кластера.
+2. Создайте и запустите под `some-pod` из образа `redis`, настроив селектор узлов `hw=max`.
+3. Объясните ограничения селекторов узлов.
 
+<a id="solution"></a>
+## Решение
 
-## Solution
-
-Click [here](solution.md) to view the solution
+[Посмотреть решение](solution.md).
 
 1. `kubectl label nodes some-node hw=max`
-2. 
+2. Создайте под:
 
 ```
 kubectl run some-pod --image=redis --dry-run=client -o yaml > pod.yaml
@@ -26,4 +28,4 @@ spec:
 kubectl apply -f pod.yaml
 ```
 
-3. Assume you would like to run your Pod on all the nodes with with either `hw` set to max or to min, instead of just max. This is not possible with nodeSelectors which are quite simplified and this is where you might want to consider `node affinity`.
+3. Предположим, что под нужно размещать на узлах, у которых hw равно max или min, а не только max. Простой механизм nodeSelector не позволяет выразить такое условие. Для этого стоит рассмотреть `node affinity`.

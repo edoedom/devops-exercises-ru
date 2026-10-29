@@ -1,14 +1,16 @@
-## AWS Route 53 - Health Checks
+<a id="aws-route-53---health-checks"></a>
+## AWS Route 53: проверки работоспособности
 
-## Requirements
+<a id="requirements"></a>
+## Требования
 
-3 web instances in different AZs.
+Три экземпляра с веб-приложением в разных зонах доступности.
 
-## Objectives 
+<a id="objectives"></a>
+## Задание
 
-1. For each instance create a health checks with the following properties:
-  1. Name it after the AZ where the instance resides
-  2. Failure threshold should be 5
-
-2. Edit the security group of one of your instances and remove HTTP rules.
-  1. Did it change the status of the health check?
+1. Для каждого экземпляра создайте проверку работоспособности:
+   1. Назовите её по имени зоны доступности экземпляра.
+   2. Установите порог неуспешных проверок равным 5.
+2. В группе безопасности одного из экземпляров удалите правила HTTP.
+   1. Изменилось ли состояние проверки работоспособности?

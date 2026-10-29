@@ -1,25 +1,25 @@
-## AWS EC2 - Hibernate an Instance
+<a id="aws-ec2---hibernate-an-instance"></a>
+## AWS EC2: гибернация экземпляра
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Create an instance that supports hibernation
-2. Hibernate the instance
-3. Start the instance
-4. What way is there to prove that instance was hibernated from OS perspective?
+1. Создайте экземпляр с поддержкой гибернации.
+2. Переведите его в гибернацию.
+3. Запустите экземпляр.
+4. Как на уровне операционной системы подтвердить, что экземпляр был в состоянии гибернации?
 
-### Solution
+<a id="solution"></a>
+### Решение
 
-1. Create an instance that supports hibernation
-  1. Go to EC2 service
-  2. Go to instances and create an instance
-  3. In "Configure instance" make sure to check "Enable hibernation as an additional stop behavior"
-  4. In "Add storage", make sure to encrypt EBS and make sure the size > instance RAM size (because hibernation saves the RAM state)
-  5. Review and Launch
-
-2. Hibernate the instance
-  1. Go to the instance page
-  2. Click on "Instance state" -> "Hibernate instance" -> Hibernate
-
-3. Instance state -> Start
-
-4. Run the "uptime" command, which will display the amount of time the system was up
+1. Создайте экземпляр с поддержкой гибернации:
+   1. Откройте EC2.
+   2. Перейдите к экземплярам и начните создание экземпляра.
+   3. На этапе **Configure instance** включите **Enable hibernation as an additional stop behavior**.
+   4. На этапе **Add storage** включите шифрование EBS. Размер тома должен превышать объём RAM экземпляра, поскольку при гибернации сохраняется содержимое памяти.
+   5. Проверьте настройки и запустите экземпляр.
+2. Переведите экземпляр в гибернацию:
+   1. Откройте его страницу.
+   2. Нажмите **Instance state → Hibernate instance → Hibernate**.
+3. Запустите его через **Instance state → Start**.
+4. Выполните uptime: команда покажет время работы системы.

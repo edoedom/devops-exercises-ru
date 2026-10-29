@@ -1,27 +1,31 @@
-## AWS Route 53 - Register Domain
+<a id="aws-route-53---register-domain"></a>
+## AWS Route 53: регистрация домена
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-Note: registering domain costs money. Don't do this exercise, unless you understand that you are going to register a domain and it's going to cost you money.
+Примечание: регистрация домена платная. Выполняйте задание, только если понимаете, что будете регистрировать домен и оплачивать его регистрацию.
 
-1. Register your own custom domain using AWS Route 53
-2. What is the type of your domain?
-3. How many records your domain has?
+1. Зарегистрируйте собственный домен через AWS Route 53.
+2. Каков тип вашего домена?
+3. Сколько записей у вашего домена?
 
-### Solution
+<a id="solution"></a>
+### Решение
 
-1. Go to Route 53 service page
-2. Click in the menu on "Registered Domains" under "Domains"
-3. Click on "Register Domain"
-4. Insert your domain
-5. Check if it's available. If it is, add it to the cart 
+1. Откройте сервис Route 53.
+2. В разделе **Domains** выберите **Registered Domains**.
+3. Нажмите **Register Domain**.
+4. Введите доменное имя.
+5. Проверьте доступность домена. Если он свободен, добавьте его в корзину.
 
-Note: registering domain costs money. Don't click on "continue", unless you understand that you are going to register a domain and it's going to cost you money.
+Примечание: регистрация домена платная. Не нажимайте **Continue**, если не готовы зарегистрировать и оплатить домен.
 
-6. Click on "Continue" and fill in your contact information
-7. Choose if you want to renew it in the future automatically. Accept the terms and click on "Complete Order"
-8. Go to hosted zones and you should see there your newly registered domain
+6. Нажмите **Continue** и заполните контактные данные.
+7. Выберите, нужно ли автоматически продлевать регистрацию. Примите условия и нажмите **Complete Order**.
+8. Откройте список размещённых зон: там должен появиться зарегистрированный домен.
 
-1. The domain type is "Public"
+Ответы на вопросы:
 
-1. The domain has 2 DNS records: NS and SOA
+1. Тип домена в данном примере — публичный (Public).
+2. После создания зоны в ней есть две записи DNS: NS и SOA.

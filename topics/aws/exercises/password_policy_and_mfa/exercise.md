@@ -1,12 +1,13 @@
-## AWS IAM - Password Policy & MFA
+<a id="aws-iam---password-policy--mfa"></a>
+## AWS IAM: парольная политика и MFA
 
-Note: DON'T perform this exercise unless you understand what you are doing and what is the outcome of applying these changes to your account
+Примечание: выполняйте задание только в том случае, если понимаете назначение изменений и их последствия для своей учётной записи.
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Create password policy with the following settings:
-  1. At least minimum 8 characters
-  2. At least one number
-  3. Prevent password reuse
-
-2. Then enable MFA for the account.
+1. Создайте парольную политику со следующими требованиями:
+   1. Минимальная длина: 8 символов.
+   2. Хотя бы одна цифра.
+   3. Запрет повторного использования паролей.
+2. Включите MFA для учётной записи.

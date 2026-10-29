@@ -1,12 +1,14 @@
-## "Killing" Containers
+<a id="killing-containers"></a>
+## Принудительное завершение контейнеров
 
-1. Run Pod with a web service (e.g. httpd)
-2. Verify the web service is running with the `ps` command
-3. Check how many restarts the pod has performed
-4. Kill the web service process
-5. Check how many restarts the pod has performed
-6. Verify again the web service is running
+1. Запустите под с веб-сервисом, например httpd.
+2. Командой `ps` убедитесь, что процесс веб-сервиса работает.
+3. Проверьте счётчик перезапусков в информации о поде.
+4. Завершите процесс веб-сервиса.
+5. Снова проверьте счётчик перезапусков.
+6. Убедитесь, что веб-сервис снова работает.
 
-## After you complete the exercise
+<a id="after-you-complete-the-exercise"></a>
+## После выполнения задания
 
-* Why did the "RESTARTS" count raised?
+* Почему увеличилось значение RESTARTS?

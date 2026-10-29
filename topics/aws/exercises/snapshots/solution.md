@@ -1,33 +1,41 @@
-## AWS EC2 - EBS Snapshots
+<a id="aws-ec2---ebs-snapshots"></a>
+## AWS EC2: снимки EBS
 
-### Requirements
+<a id="requirements"></a>
+### Требования
 
-EBS Volume
+Том EBS.
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-A. Create a snapshot of an EBS volume
-B. Verify the snapshot was created
-C. Move the data to another region
-D. Create a volume out of it in a different AZ
+1. Создайте снимок тома EBS.
+2. Убедитесь, что снимок создан.
+3. Перенесите данные в другой регион.
+4. Создайте из снимка том в другой зоне доступности (AZ).
 
-### Solution
+<a id="solution"></a>
+### Решение
 
-A.
-1. Go to EC2 service
-2. Click on "Volumes" under "Elastic Block Store"
-3. Right click on the chosen volume -> Create snapshot
-4. Insert a description and click on "Create Snapshot"
+A. Создание снимка:
 
-B.
-1. Click on "Snapshots" under "Elastic Block Store"
-2. You should see the snapshot you've created
+1. Откройте EC2.
+2. В разделе **Elastic Block Store** выберите **Volumes**.
+3. В контекстном меню нужного тома выберите **Create snapshot**.
+4. Укажите описание и нажмите **Create Snapshot**.
 
-C.
-1. Select the snapshot and click on Actions -> Copy
-2. Select a region to where the snapshot will be copied
+B. Проверка:
 
-D.
-1. Select the snapshot and click on Actions -> Create volume
-2. Choose a different AZ
-3. Click on "Create Volume"
+1. В разделе **Elastic Block Store** выберите **Snapshots**.
+2. Найдите созданный снимок.
+
+C. Копирование в другой регион:
+
+1. Выберите снимок и нажмите **Actions → Copy**.
+2. Укажите регион назначения.
+
+D. Создание тома:
+
+1. Выберите снимок и нажмите **Actions → Create volume**.
+2. Укажите другую зону доступности.
+3. Нажмите **Create Volume**.
