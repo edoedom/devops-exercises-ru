@@ -1,18 +1,21 @@
-# Create Images on The Fly
+<a id="create-images-on-the-fly"></a>
+# Создание образа из работающего контейнера
 
-## Requirements
+<a id="requirements"></a>
+## Требования
 
-Have at least one image locally (run `podman image ls` to confirm).<br>
-If you don't have images locally, run simply `podman pull nginx:alpine`.
+Нужен хотя бы один локальный образ. Проверьте это командой `podman image ls`.<br>
+Если образов нет, выполните `podman pull nginx:alpine`.
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Run a container using a web server image (e.g. httpd, nginx, ...)
-  - Bind container's port 80 to local port 80
-  - Run it in detached mode
-  - Name should nginx_container
-2. Verify the web server runs and accessible
-3. Create an HTML file with the following content and copy it to the container to the container to path where it will be accessed as an index file
+1. Запустите контейнер из образа веб-сервера, например httpd или nginx:
+   * Сопоставьте порт контейнера 80 с портом хоста 80.
+   * Используйте фоновый режим.
+   * Имя контейнера: nginx_container.
+2. Убедитесь, что веб-сервер работает и доступен.
+3. Создайте HTML-файл со следующим содержимым и скопируйте его в контейнер по пути, где он будет использоваться как индексная страница:
 
 ```
 <html>
@@ -24,13 +27,16 @@ If you don't have images locally, run simply `podman pull nginx:alpine`.
 </body>
 ```
 
-4. Create an image out of the running container and call it "nginx_mario"
-5. Tag the container with "mario" tag
-6. Remove the original container (container_nginx) and verify it was removed
-7. Create a new container out of the image you've created (the same way as the original container)
-8. Run `curl 127.0.0.1:80`. What do you see?
-9. Run `podman diff` on the new image. Explain the output
+4. Создайте образ из работающего контейнера с именем nginx_mario.
+5. Назначьте образу тег mario.
+6. Удалите исходный контейнер и убедитесь, что он удалён.
+7. Запустите новый контейнер из созданного образа с теми же параметрами, что и исходный.
+8. Выполните `curl 127.0.0.1:80`. Что вы видите?
+9. Выполните `podman diff` для нового образа и объясните вывод.
 
-## Solution
+> Примечание к переводу: в пункте 5 исходника ошибочно говорится о теге контейнера вместо образа, а в пункте 6 имя контейнера меняется с nginx_container на container_nginx. В переводе эти несоответствия устранены.
 
-Click [here to view the solution](solutions/commit_image.md)
+<a id="solution"></a>
+## Решение
+
+[Посмотреть решение](solutions/commit_image.md).

@@ -1,43 +1,51 @@
-# Create buckets
+<a id="create-buckets"></a>
+# Создание бакетов
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Create the following buckets:
-   1. Private bucket
-      1. eu-west-2 region
-      2. Upload a single file to the bucket. Any file.
-   2. Public bucket
-      1. eu-west-1 region
-      2. Versioning should be enabled
+1. Создайте следующие бакеты:
+   1. Закрытый бакет:
+      1. Регион: eu-west-2.
+      2. Загрузите в него один любой файл.
+   2. Публичный бакет:
+      1. Регион: eu-west-1.
+      2. Включите версионирование.
 
-## Solution
+<a id="solution"></a>
+## Решение
 
-### Console
+<a id="console"></a>
+### Консоль
 
-For the first bucket:
+Для первого бакета:
 
-1. Go to S3 service in the AWS console. If not in buckets page, click on "buckets" in the left side menu
-2. Click on "Create bucket" 
-3. Give a globally unique name for your bucket
-4. Choose the region "eu-west-2"
-5. Click on "Create bucket"
-6. Click on the bucket name
-7. Under "objects" click on "Upload" -> "Add files" -> Choose file to upload -> Click on "Upload"
+1. Откройте S3 в консоли AWS. Если список бакетов не открыт, выберите **Buckets** в левом меню.
+2. Нажмите **Create bucket**.
+3. Укажите глобально уникальное имя.
+4. Выберите регион eu-west-2.
+5. Нажмите **Create bucket**.
+6. Откройте бакет по его имени.
+7. На вкладке **Objects** выберите **Upload → Add files**, укажите файл и нажмите **Upload**.
 
-For the second bucket:
+Для второго бакета:
 
-1. Go to S3 service in the AWS console. If not in buckets page, click on "buckets" in the left side menu
-2. Click on "Create bucket" 
-3. Give a globally unique name for your bucket
-4. Choose the region "eu-west-1"
-5. Make sure to uncheck the box for "Private bucket" to make it public
-6. Make sure to check the enable box for "Bucket Versioning"
-7. Click on "Create bucket"
+1. Откройте список бакетов S3.
+2. Нажмите **Create bucket**.
+3. Укажите глобально уникальное имя.
+4. Выберите регион eu-west-1.
+5. В оригинале предлагается снять флажок **Private bucket**, чтобы сделать бакет публичным.
+6. Включите **Bucket Versioning**.
+7. Нажмите **Create bucket**.
 
+> Примечание к переводу: описание публичного доступа в оригинале упрощено и зависит от версии интерфейса. Само отключение блокировки публичного доступа ещё не предоставляет права чтения объектов; необходимо проверить итоговые разрешения.
+
+<a id="terraform"></a>
 ### Terraform
 
-Click [here](terraform/main.tf) to view the solution
+[Посмотреть решение](terraform/main.tf).
 
-### Pulumi - Python
+<a id="pulumi---python"></a>
+### Pulumi: Python
 
-Click [here](pulumi/__main__.py) to view the solution
+[Посмотреть решение](pulumi/__main__.py).

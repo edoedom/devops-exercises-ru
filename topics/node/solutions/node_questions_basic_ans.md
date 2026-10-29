@@ -1,16 +1,18 @@
-# ANSWERS 
+<a id="answers"></a>
+# Ответы
 
-1. Node.js is an open-source, cross-platform JavaScript runtime environment that allows developers to build server-side and networking applications.
-2. Nodejs is a single threaded langauage . It handles one operation at a time.
-3. Node.js works by executing JavaScript code in a runtime environment outside of a web browser. 
-4. Node.js works by executing JavaScript code in a runtime environment outside of a web browser. mainly used for performance and scalabilty od the project
-5. Parent process manages the child process but not depend on the clid process to run parralel
-6. Three Modules mainly 
-    1. Core Module - fs , require
-    2. Local modules - like function created by us and exported or imported from one file to another
-    3. Third Party module - like npm pacakages whcih we install to do a specific kind of work
-7. NPM (Node Pacakage Manager) used for installing, managing, and sharing JavaScript packages and dependencies.
-8. Difference between pacakage.json and pacakage-lock.json
-   1.pacakage.json - contains the metadata and the dependendies of a project
-   2.pacakage-lock.json - lock the version of the installed dependencies   
+1. Node.js — открытая кроссплатформенная среда выполнения JavaScript для серверных и сетевых приложений.
+2. В оригинале Node.js назван однопоточным языком, обрабатывающим одну операцию за раз. Уточнение: Node.js — среда выполнения; основной поток JavaScript не означает, что вся среда работает только в одном потоке.
+3. Node.js выполняет JavaScript вне веб-браузера.
+4. В оригинале повторяется описание выполнения JavaScript вне браузера и отмечается применение Node.js для производительности и масштабируемости проекта.
+5. Родительский процесс управляет дочерним, но параллельное выполнение не требует, чтобы родительский процесс ожидал завершения дочернего.
+6. Основные категории модулей:
+   1. Встроенные, например fs. В исходном списке также указан require, однако это функция загрузки модулей, а не модуль.
+   2. Локальные: код проекта, экспортируемый и импортируемый между файлами.
+   3. Сторонние: пакеты, устанавливаемые для определённых задач.
+7. npm используется для установки, управления и распространения пакетов JavaScript и зависимостей.
+8. Различие между package.json и package-lock.json:
+   1. package.json содержит метаданные проекта и описания зависимостей.
+   2. package-lock.json фиксирует конкретные версии и структуру установленных зависимостей.
 
+> Примечание к переводу: исходный файл содержит восемь ответов, нумерация которых не соответствует всем вопросам файла с заданиями. Пропущенные ответы здесь не добавлены; явные неточности отмечены в тексте.

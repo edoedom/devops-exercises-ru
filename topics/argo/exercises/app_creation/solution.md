@@ -1,39 +1,42 @@
-# App Creation
+<a id="app-creation"></a>
+# Создание приложения
 
-## Requirements
+<a id="requirements"></a>
+## Требования
 
-1. Make sure you have repository with some Kubernetes manifests
-2. Make sure you have a Kubernetes cluster running with ArgoCD installed
+1. Репозиторий с манифестами Kubernetes.
+2. Работающий кластер Kubernetes с установленным Argo CD.
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Using the CLI or the UI, create a new application with the following properties:
-   1. app name: app-demo
-   2. project: app-project
-   3. repository URL: your repo with some k8s manifests
-   4. namespace: default
-2. Verify the app was created
-3. Sync the app
-4. Verify Kubernetes resources were created
-5. Delete the app
+1. Через CLI или веб-интерфейс создайте приложение:
+   1. Имя: app-demo.
+   2. Проект: app-project.
+   3. URL репозитория: адрес вашего репозитория с манифестами Kubernetes.
+   4. Пространство имён: default.
+2. Проверьте, что приложение создано.
+3. Синхронизируйте приложение.
+4. Убедитесь, что ресурсы Kubernetes созданы.
+5. Удалите приложение.
 
-## Solution
+<a id="solution"></a>
+## Решение
 
-### UI
+<a id="ui"></a>
+### Веб-интерфейс
 
-1. Click on "New App"
-   1. Insert application name: `app-demo`
-   2. Insert project: `app-project`
-   3. Under source put the repository URL to your GitHub repo with Kubernetes manifests
-      1. Set the path for your application
-   4. Under destination put the address of your Kubernetes cluster and set namespace to `default`
-   5. Click on "Create"
-2. Click on "Sync" button on the "app-demo" form
-   1. Click on "Synchronize"
-3. Verify the Kubernetes resources were created
-   1. `kubectl get deployments`
-4. Delete the app
+1. Нажмите **New App**:
+   1. Имя приложения: `app-demo`.
+   2. Проект: `app-project`.
+   3. В разделе источника укажите URL репозитория GitHub с манифестами Kubernetes и путь к приложению.
+   4. В разделе назначения укажите адрес кластера Kubernetes и пространство имён `default`.
+   5. Нажмите **Create**.
+2. В карточке app-demo нажмите **Sync**, затем **Synchronize**.
+3. Убедитесь, что ресурсы созданы: `kubectl get deployments`.
+4. Удалите приложение.
 
+<a id="cli"></a>
 ### CLI
 
 ```

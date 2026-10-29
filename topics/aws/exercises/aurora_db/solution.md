@@ -1,37 +1,40 @@
-## AWS Databases - Aurora DB
+<a id="aws-databases---aurora-db"></a>
+## Базы данных AWS: Aurora DB
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Create an Aurora database with the following properties
-  * Edition: MySQL
-  * Instance type: db.t3.small
-  * A reader node in a different AZ
-  * Public access should be enabled
-  * Port should be set to 3306
-  * DB name: 'db'
-  * Backup retention: 10 days
+1. Создайте базу данных Aurora со следующими параметрами:
+   * Совместимость: MySQL.
+   * Тип экземпляра: db.t3.small.
+   * Узел для чтения в другой зоне доступности.
+   * Публичный доступ включён.
+   * Порт: 3306.
+   * Имя базы: `db`.
+   * Срок хранения резервных копий: 10 дней.
+2. Сколько экземпляров входит в ваш кластер базы данных?
 
-2. How many instances does your DB cluster has?
+<a id="solution"></a>
+### Решение
 
-### Solution
+<a id="console"></a>
+#### Консоль
 
-#### Console
+1. Откройте RDS.
+2. В левом меню выберите **Databases**, затем **Create database**.
+3. Выберите **Standard create**.
+4. Выберите **Aurora DB**.
+5. Укажите совместимость с MySQL и тип выделения ресурсов **Provisioned**.
+6. Выберите **Single-master**.
+7. Задайте имя основного пользователя и пароль.
+8. Выберите класс **Burstable classes** и тип db.t3.small.
+9. Выберите **Create an Aurora Replica or Reader node in a different AZ**.
+10. Выберите VPC и подсеть по умолчанию.
+11. Включите публичный доступ, выбрав **Yes**.
+12. Порт базы данных: 3306.
+13. Выберите **Password and IAM database authentication**.
+14. Начальное имя базы: db.
+15. Срок хранения резервных копий: 10 дней.
+16. Нажмите **Create database**.
 
-1. Go to RDS service
-2. Click on "Databases" in the left side menu and click on the "Create database" button
-3. Choose "standard create"
-4. Choose "Aurora DB"
-5. Choose "MySQL" edition and "Provisioned" as capacity type
-6. Choose "single-master"
-7. Specify Credentials (master username and password)
-8. Choose DB instance type: Burstable classes, db.t3.small
-9. Choose "Create an Aurora Replica or Reader node in a different AZ"
-10. Choose a default VPC and subnet
-11. Check "Yes" for public access
-12. Database port should be 3306
-13. For authentication, choose "Password and IAM database authentication"
-14. Set initial database name as "db"
-15. Increase backup retention period to 10 days
-16. Click on "Create database" button
-
-1. Two instances - one reader and one writer
+Ответ: в кластере два экземпляра — один для чтения и один для записи.

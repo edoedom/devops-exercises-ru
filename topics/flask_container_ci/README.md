@@ -1,20 +1,21 @@
-Your mission, should you choose to accept it, involves fixing the app in this directory, containerize it and set up a CI for it.
-Please read carefully all the instructions.
+Ваша задача — исправить приложение из этого каталога, упаковать его в контейнер и настроить CI. Внимательно прочитайте инструкции.
 
-If any of the following steps is not working, it is expected from you to fix them
+Если какой-либо из следующих шагов не работает, от вас ожидается устранение проблемы.
 
-## Installation
+<a id="installation"></a>
+## Установка
 
-1. Create a virtual environment with `python3 -m venv challenge_venv`
-2. Activate it with `source challenge_venv/bin/activate`
-3. Install the requirements in this directory `pip install -r requirements.txt`
+1. Создайте виртуальное окружение: `python3 -m venv challenge_venv`.
+2. Активируйте его: `source challenge_venv/bin/activate`.
+3. Установите зависимости из текущего каталога: `pip install -r requirements.txt`.
 
-## Run the app
+<a id="run-the-app"></a>
+## Запуск приложения
 
-1. Move to `challenges/flask_container_ci` directory, if you are not already there
-1. Run `export FLASK_APP=app/main.py`
-1. To run the app execute `flask run`. If it doesn't work, fix it
-3. Access `http://127.0.0.1:5000`. You should see the following:
+1. Перейдите в `challenges/flask_container_ci`, если вы ещё не там.
+2. Выполните `export FLASK_APP=app/main.py`.
+3. Запустите приложение командой `flask run`. Если оно не запускается, исправьте причину.
+4. Откройте `http://127.0.0.1:5000`. Должен появиться следующий результат:
 
 ```
 {
@@ -26,35 +27,37 @@ If any of the following steps is not working, it is expected from you to fix the
 }
 ```
 
-4. You should be able to access any of the resources and get the following data:
+5. Проверьте ресурсы:
+   * /users — данные всех пользователей.
+   * /users/<username> — данные выбранного пользователя.
+6. Ответ /users должен содержать только имя и описание пользователя, без идентификатора. Данные должны быть упорядочены по именам пользователей.
 
-* /users - all users data 
-* /users/<username> - data on the specific chosen user
+<a id="containers"></a>
+## Контейнеры
 
-5. When accessing /users, the data returned should not include the id of the user, only its name and description. Also, the data should be ordered by usernames.
-
-## Containers
-
-Using Docker or Podman, containerize the flask app so users can run the following two commands:
+С помощью Docker или Podman упакуйте Flask-приложение так, чтобы пользователь мог выполнить две команды:
 
 ```
 docker build -t app:latest /path/to/Dockerfile
 docker run -d -p 5000:5000 app
 ```
 
-1. You can use any image base you would like
-2. Containerize only what you need for running the application, nothing else.
+1. Базовый образ можно выбрать любой.
+2. Включайте в контейнер только необходимое для запуска приложения.
 
+<a id="ci"></a>
 ## CI
 
-Great, now that we have a working app and also can run it in a container, let's set up a CI for it so it won't break again in the future
-In current directory you have a file called tests.py which includes the tests for the app. What is required from you, is:
+После исправления приложения и его упаковки настройте CI для защиты от повторных ошибок. В текущем каталоге находится tests.py с тестами приложения.
 
-1. The CI should run the app tests. You are free to choose whatever CI system or service you prefer. Use `python tests.py` for running the tests.
-2. There should be some kind of test for the Dockerfile you wrote
-3. Add additional unit test (or another level of tests) for testing the app
+1. Настройте запуск тестов в любой системе CI. Команда: `python tests.py`.
+2. Добавьте проверку написанного Dockerfile.
+3. Добавьте ещё один модульный тест или тест другого уровня.
 
-### Guidelines 
+<a id="guidelines"></a>
+### Рекомендации
 
-* Except the app functionality, you can change whatever you want - structure, tooling, libraries, ... If possible add `notes.md` file which explains reasons, logic, thoughts and anything else you would like to share
-* The CI part should include the source code for the pipeline definition
+* Сохраняйте требуемое поведение приложения. Структуру, инструменты и библиотеки можно менять. По возможности добавьте `notes.md` с объяснением решений, логики и других замечаний.
+* Предоставьте исходный код определения конвейера CI.
+
+> Примечание к переводу: путь challenges/flask_container_ci сохранён из исходной инструкции; в этом репозитории упражнение находится в topics/flask_container_ci.

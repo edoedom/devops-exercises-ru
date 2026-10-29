@@ -1,28 +1,30 @@
-## AWS EC2 - Elastic IP
+<a id="aws-ec2---elastic-ip"></a>
+## AWS EC2: Elastic IP
 
-### Requirements
+<a id="requirements"></a>
+### Требования
 
-* An EC2 instance with public IP (not elastic IP)
+* Экземпляр EC2 с публичным IP-адресом, который не является Elastic IP.
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Write down the public IP of your EC2 instance somewhere and stop & start the instance. Does the public IP address is the same? why?
-2. Handle this situation so you have the same public IP even after stopping and starting the instance
+1. Запишите публичный IP-адрес экземпляра. Остановите и снова запустите экземпляр. Сохранился ли адрес? Почему?
+2. Настройте экземпляр так, чтобы публичный IP-адрес сохранялся после остановки и запуска.
 
-### Solution
+<a id="solution"></a>
+### Решение
 
-1. Go to EC2 service -> Instances
-  1. Write down current public IP address
-  2. Click on "Instance state" -> Stop instance -> Stop
-  3. Click on "Instance state" -> Start Instance
-  4. Yes, the public IP address has changed
-2. Let's use an Elastic IP address
-  1. In EC2 service, under "Network & Security" click on "Elastic IP"
-  2. Click on the "Allocate elastic IP address" button
-  3. Make sure you select "Amazon's pool of IPv4 addresses" and click on "Allocate"
-  4. Click on "Actions" and then "Associate Elastic IP address"
-    1. Select "instance", choose your instance and provide its private IP address
-    2. Click on "Associate"
-  5. Now, if we go back to the instance page, we can see it is using the Elastic IP address as its public IP
+1. Откройте **EC2 → Instances**:
+   1. Запишите текущий публичный IP-адрес.
+   2. Нажмите **Instance state → Stop instance → Stop**.
+   3. Затем нажмите **Instance state → Start Instance**.
+   4. В описанном примере публичный IP-адрес изменился.
+2. Назначьте Elastic IP:
+   1. В EC2 откройте **Network & Security → Elastic IP**.
+   2. Нажмите **Allocate elastic IP address**.
+   3. Выберите **Amazon's pool of IPv4 addresses** и нажмите **Allocate**.
+   4. Нажмите **Actions → Associate Elastic IP address**, выберите **Instance**, укажите экземпляр и его частный IP-адрес, затем нажмите **Associate**.
+   5. Вернувшись на страницу экземпляра, убедитесь, что его публичный адрес теперь соответствует Elastic IP.
 
-Note: to remove it, use "disassociate" option and don't forget to also release it so you won't be billed.
+Примечание: после упражнения отвяжите адрес через **Disassociate** и освободите его через **Release**, чтобы он больше не оставался выделенным вашей учётной записи.

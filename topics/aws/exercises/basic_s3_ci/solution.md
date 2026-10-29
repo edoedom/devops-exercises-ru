@@ -1,54 +1,64 @@
-# Basic CI with S3
+<a id="basic-ci-with-s3"></a>
+# Простой конвейер CI с S3
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Create a new S3 bucket
-2. Add to the bucket index.html file and make it a static website
-3. Create a GitHub repo and put the index.html there
-4. Make sure to connect your AWS account to GitHub
-5. Create a CI pipeline in AWS to publish the updated index.html from GitHub every time someone makes a change to the repo, to a specific branch
+1. Создайте бакет S3.
+2. Загрузите в него index.html и настройте статический веб-сайт.
+3. Создайте репозиторий GitHub и поместите туда index.html.
+4. Настройте подключение AWS к GitHub.
+5. Создайте в AWS конвейер CI, который публикует обновлённый index.html из GitHub при каждом изменении заданной ветки репозитория.
 
-## Solution
+<a id="solution"></a>
+## Решение
 
-### Manual
+<a id="manual"></a>
+### Ручная настройка
 
-#### Create S3 bucket
+<a id="create-s3-bucket"></a>
+#### Создание бакета S3
 
-1. Go to S3 service in AWS console
-2. Insert bucket name and choose region
-3. Uncheck "block public access" to make it public
-4. Click on "Create bucket"
+1. Откройте S3 в консоли AWS.
+2. Укажите имя бакета и регион.
+3. Отключите **Block public access**, чтобы разрешить последующую настройку публичного доступа.
+4. Нажмите **Create bucket**.
 
-#### Static website hosting
+<a id="static-website-hosting"></a>
+#### Размещение статического сайта
 
-1. Navigate to the newly created bucket and click on "properties" tab
-2. Click on "Edit" in "Static Website Hosting" section
-3. Check "Enable" for "Static web hosting"
-4. Set "index.html" as index document and "error.html" as error document.
+1. Откройте бакет и вкладку **Properties**.
+2. В разделе **Static Website Hosting** нажмите **Edit**.
+3. Включите статический веб-хостинг через **Enable**.
+4. Укажите index.html как индексный документ, error.html — как документ ошибки.
 
-#### S3 bucket permissions
+<a id="s3-bucket-permissions"></a>
+#### Разрешения бакета S3
 
-1. Click on "Permissions" tab in the newly created S3 bucket
-2. Click on Bucket Policy -> Edit -> Policy Generator. Click on "Generate Policy" for "GetObject"
-3. Copy the generated policy and go to Permissions tab and replace it with the current policy 
+1. Откройте вкладку **Permissions**.
+2. Перейдите в **Bucket Policy → Edit → Policy Generator** и сформируйте политику для GetObject.
+3. Скопируйте полученную политику и замените ею текущую политику бакета на вкладке **Permissions**.
 
-#### GitHub Source
+<a id="github-source"></a>
+#### Источник GitHub
 
-1. Go to Developers Tools Console and create a new connection (GitHub)
+1. В консоли инструментов разработчика создайте подключение к GitHub.
 
-#### Create a CI pipeline
+<a id="create-a-ci-pipeline"></a>
+#### Создание конвейера CI
 
-1. Go to CodePipeline in AWS console
-2. Click on "Create Pipeline" -> Insert a pipeline name -> Click on Next
-3. Choose the newly created source (GitHub) under sources
-4. Select repository name and branch name
-5. Select "AWS CodeBuild" as build provider
-6. Select "Managed Image", "standard" runtime and "new service role"
-7. In deploy stage choose the newly created S3 bucket and for deploy provider choose "Amazon S3"
-8. Review the pipeline and click on "Create pipeline"
+1. Откройте CodePipeline.
+2. Нажмите **Create Pipeline**, задайте имя и нажмите **Next**.
+3. В качестве источника выберите созданное подключение GitHub.
+4. Укажите репозиторий и ветку.
+5. В качестве сервиса сборки выберите **AWS CodeBuild**.
+6. Выберите **Managed Image**, среду standard и новую сервисную роль.
+7. На этапе развёртывания выберите созданный бакет и провайдер **Amazon S3**.
+8. Проверьте настройки и нажмите **Create pipeline**.
 
-#### Test the pipeline
+<a id="test-the-pipeline"></a>
+#### Проверка конвейера
 
-1. Clone the project from GitHub
-2. Make changes to index.html and commit them (git commit -a)
-3. Push the new change, verify that the newly created AWS pipeline was triggered and check the content of the site
+1. Клонируйте проект из GitHub.
+2. Измените index.html и создайте коммит командой git commit -a.
+3. Отправьте изменения, убедитесь, что конвейер запустился, и проверьте содержимое сайта.

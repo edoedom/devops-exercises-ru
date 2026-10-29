@@ -1,31 +1,33 @@
-## IAM AWS - Create a User
+<a id="iam-aws---create-a-user"></a>
+## AWS IAM: создание пользователя
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-As you probably know at this point, it's not recommended to work with the root account in AWS. For this reason you are going to create a new account which you'll use regularly as the admin account.
+Для повседневной работы в AWS не рекомендуется использовать корневую учётную запись. В этом упражнении создайте отдельного пользователя с правами администратора.
 
-1. Create a user with password credentials
-2. Add the newly created user to a group called "admin" and attach to it the policy called "Administrator Access"
-3. Make sure the user has a tag called with the key `Role` and the value `DevOps`
+1. Создайте пользователя с возможностью входа по паролю.
+2. Добавьте его в группу admin и прикрепите к группе политику Administrator Access.
+3. Назначьте пользователю тег с ключом `Role` и значением `DevOps`.
 
+<a id="solution"></a>
+### Решение
 
-### Solution
+1. Откройте AWS IAM.
+2. В разделе **Access Management** выберите **Users**.
+3. Нажмите **Add users**.
+4. Введите имя пользователя, например mario.
+5. Выберите тип учётных данных **Password**.
+6. Задайте собственный пароль для консоли и нажмите **Next**.
+7. Нажмите **Add user to group**.
+8. Укажите имя группы admin.
+9. Выберите политику AdministratorAccess и нажмите **Create group**.
+10. Нажмите **Next: Tags**.
+11. Добавьте тег с ключом `Role` и значением `DevOps`.
+12. Нажмите **Review**, затем **Create user**.
 
-1. Go to the AWS IAM service
-2. Click on "Users" in the right side menu (right under "Access Management")
-3. Click on the button "Add users"
-4. Insert the user name (e.g. mario)
-5. Select the credential type: "Password"
-6. Set console password to custom and click on "Next"
-7. Click on "Add user to group"
-8. Insert "admin" as group name
-9. Check the "AdministratorAccess" policy and click on "Create group"
-10. Click on "Next: Tags"
-11. Add a tag with the key `Role` and the value `DevOps`
-12. Click on "Review" and then create on "Create user"
+**Решение с Terraform:**
 
-13. ### Solution using Terraform
-    
 ```
  
 resource "aws_iam_group_membership" "team" {
@@ -56,4 +58,3 @@ resource "aws_iam_user" "newuser" {
   }
 }
 ```
-

@@ -1,24 +1,27 @@
-## CI for Open Source Project
+<a id="ci-for-open-source-project"></a>
+## CI для проекта с открытым исходным кодом
 
-1. Choose an open source project from Github and fork it
-2. Create a CI pipeline/workflow for the project you forked
-3. The CI pipeline/workflow will include anything that is relevant to the project you forked. For example:
-  * If it's a Python project, you will run PEP8
-  * If the project has unit tests directory, you will run these unit tests as part of the CI
-4. In a separate file, describe what is running as part of the CI and why you chose to include it. You can also describe any thoughts, dilemmas, challenge you had
+1. Выберите проект на GitHub и создайте его форк.
+2. Создайте для форка конвейер CI.
+3. Добавьте проверки, подходящие проекту. Например:
+   * Для Python-проекта — проверку соответствия PEP 8.
+   * Если есть модульные тесты — их запуск в составе CI.
+4. В отдельном файле опишите проверки и объясните, почему выбрали их. Можно также описать возникшие вопросы, трудности и принятые решения.
 
-### Bonus
+<a id="bonus"></a>
+### Дополнительное задание
 
-Containerize the app of the project you forked using any container engine you would like (e.g. Docker, Podman).<br>
-Once you successfully ran the application in a container, submit the Dockerfile to the original project (but be prepared that the maintainer might not need/want that).
+Упакуйте приложение в контейнер с помощью любого движка, например Docker или Podman.<br>
+После успешного запуска предложите Dockerfile исходному проекту. Учитывайте, что сопровождающему проекта такое изменение может быть не нужно.
 
-### Suggestions for Projects
+<a id="suggestions-for-projects"></a>
+### Примеры проектов
 
-The following is a list of projects without CI (at least at the moment):
+В оригинале следующие проекты перечислены как проекты без CI на момент составления списка.
 
-Note: I wrote a script to find these (except the first project on the list, of course) based on some parameters in case you wonder why these projects specifically are listed.
+Примечание автора: все проекты, кроме первого, найдены скриптом по определённым параметрам.
 
-* [This one](https://github.com/bregman-arie/devops-exercises) - We don't have CI! help! :)
+* [Этот репозиторий](https://github.com/bregman-arie/devops-exercises) — автор предлагает помочь с настройкой CI.
 * [image retrieval platform](https://github.com/skx6/image_retrieval_platform)
 * [FollowSpot](https://github.com/jenbrissman/FollowSpot)
 * [Pyrin](https://github.com/mononobi/pyrin)

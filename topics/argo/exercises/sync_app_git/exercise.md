@@ -1,48 +1,51 @@
-# Sync App - Git
+<a id="sync-app---git"></a>
+# Синхронизация приложения с Git
 
-## Requirements
+<a id="requirements"></a>
+## Требования
 
-1. Make sure you have repository with some Kubernetes manifests
-2. Make sure you have a Kubernetes cluster running with ArgoCD installed
+1. Репозиторий с манифестами Kubernetes.
+2. Работающий кластер Kubernetes с установленным Argo CD.
 
+<a id="objectives"></a>
+## Задание
 
-## Objectives
+1. Через CLI или веб-интерфейс создайте приложение:
+   1. Имя: app-demo.
+   2. Проект: project-demo.
+   3. Пространство имён Kubernetes: default.
+2. Синхронизируйте приложение.
+3. Проверьте его развёртывание командой `kubectl get deploy` в пространстве имён `default`.
+4. Измените один из манифестов в репозитории, например тег образа в Deployment.
+5. Вернитесь в Argo CD и проверьте состояние приложения.
+6. Синхронизируйте состояние приложения.
 
-1. Create a new application using the UI or CLI
-   1. App Name: app-demo
-   2. Project: project-demo
-   3. Kubernetes namespace: default
-2. Sync the application
-3. Verify the application is running by executing `kubectl get deploy` in the `default` namespace
-4. Now make a change in your repository to one of the Kubernetes manifests (e.g. update deployment tag)
-5. Go back to ArgoCD and check the state of the app
-6. Sync the state of the application
+<a id="solution"></a>
+## Решение
 
-## Solution
+[Посмотреть решение](solution.md).
 
-Click [here](solution.md) to view the solution
+<a id="ui"></a>
+### Веб-интерфейс
 
-### UI
+1. Нажмите **New App**:
+   1. Имя: `app-demo`.
+   2. Проект: `project-demo`.
+   3. В источнике укажите URL репозитория GitHub с манифестами и путь к приложению.
+   4. В назначении укажите адрес кластера и пространство имён `default`.
+   5. Нажмите **Create**.
+2. Откройте приложение, нажмите **Sync**, затем **Synchronize**.
+3. Измените манифесты в Git и выполните:
+   1. `git add .`
+   2. `git commit -a`
+   3. `git push origin <BRANCH_NAME>`
+4. Вернитесь в интерфейс Argo CD:
+   1. Состояние должно стать out-of-sync. При необходимости нажмите **Refresh**.
+   2. Через **App diff** можно посмотреть изменения, вызвавшие рассинхронизацию.
+5. Нажмите **Sync → Synchronize**.
 
-1. Click on "New App"
-   1. Insert application name: `app-demo`
-   2. Insert project: `project-demo`
-   3. Under source put the repository URL to your GitHub repo with Kubernetes manifests
-      1. Set path of your application
-   4. Under destination put the address of your Kubernetes cluster and set namespace to `default`
-   5. Click on "Create"
-2. Click on the newly created application
-   1. Click on the "sync button" and click on "Synchronize"
-3. Make a change in your Git repo where the Kubernetes manifests are
-   1.  `git add .`
-   2.  `git commit -a`
-   3.  `git push origin <BRANCH_NAME>`
-4.  Go back to ArgoCD UI and check the status of the app
-    1.  You should see it's "out-of-sync". If you don't, you may want to click on "Refresh"
-    2.  You can also click on "App diff" to see the difference that led to "out-of-sync"
-5.  Click on "Sync" and "Synchronize" to sync the application
-
-### CLI 
+<a id="cli"></a>
+### CLI
 
 ```
 argocd app create app-demo \

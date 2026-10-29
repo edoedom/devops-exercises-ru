@@ -1,66 +1,64 @@
+<a id="apache-kafka"></a>
 # Apache Kafka
 
-## Kafka Exercises
+<a id="kafka-exercises"></a>
+## Упражнения по Kafka
 
-|Name|Topic|Objective & Instructions|Solution|Comments|
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
 
-## Kafka Self Assessment
+<a id="kafka-self-assessment"></a>
+## Самопроверка по Kafka
 
-* [Kafka 101](#questions-kafka-101)
+* [Основы Kafka](#questions-kafka-101)
 
 <a name="questions-kafka-101"></a>
-### Kafka 101
+<a id="kafka-101"></a>
+### Основы Kafka
 
 <details>
-<summary>What is Kafka?</summary><br><b>
+<summary>Что такое Kafka?</summary><br><b>
 
-[kafka.apache.org](https://kafka.apache.org): "Apache Kafka is an open-source distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications."
+[kafka.apache.org](https://kafka.apache.org): Apache Kafka — открытая распределённая платформа потоковой обработки событий. Она применяется для высокопроизводительных конвейеров данных, потоковой аналитики, интеграции данных и критически важных приложений.
 
-In other words, Kafka is a sort of distributed log where you can store events, read them and distribute them to different services and do it in high-scale and real-time.
+Kafka можно представить как распределённый журнал: события записываются, читаются и передаются различным сервисам в большом масштабе и в реальном времени.
 </b></details>
 
 <details>
-<summary>What Kafka is used for?</summary><br><b>
+<summary>Для чего используется Kafka?</summary><br><b>
 
-- Real-time e-commerce
-- Banking
-- Health Care
-- Automotive (traffic alerts, hazard alerts, ...)
-- Real-time Fraud Detection
+* Электронная коммерция в реальном времени.
+* Банковские системы.
+* Здравоохранение.
+* Автомобильные системы: предупреждения о пробках, опасностях и других событиях.
+* Обнаружение мошенничества в реальном времени.
 </b></details>
 
 <details>
-<summary>What is a "Producer" in regards to Kafka?</summary><br><b>
+<summary>Что такое Producer в Kafka?</summary><br><b>
 
-An application that publishes data to the Kafka cluster.
+Приложение-производитель, которое публикует данные в кластере Kafka.
 </b></details>
 
 <a name="questions-kafka-architecture"></a>
-### Kafka Architecture
+<a id="kafka-architecture"></a>
+### Архитектура Kafka
 
 <details>
-<summary>What's in a Kafka cluster?</summary><br><b>
+<summary>Что входит в кластер Kafka?</summary><br><b>
 
-- Broker: a server with kafka process running on it. Such server has local storage. In a single Kafka clusters there are usually multiple brokers.
+* Брокер: сервер с процессом Kafka и локальным хранилищем. Обычно кластер содержит несколько брокеров.
 </b></details>
 
 <details>
-  <summary>What is the role of ZooKeeper is Kafka?</summary><br/><b>
-In Kafka, Zookeeper is a centralized controller that manages metadata for producers, brokers, and consumers.
-Zookeeper also:
-    <ul>
-      <li>Tracks which brokers are part of the Kafka cluster</li>
-      <li>
-Determines which broker is the leader of a given partition and topic
-      </li>
-      <li>
-Performs leader elections
-      </li>
-      <li>
-Manages cluster membership of brokers
-      </li>
-    </ul>
+<summary>Какова роль ZooKeeper в Kafka?</summary><br><b>
 
-  </b>
-</details>
+В описанной исходником архитектуре ZooKeeper участвует в координации кластера и хранении метаданных. В оригинале ему приписаны следующие задачи:
+
+* Отслеживание брокеров, входящих в кластер.
+* Определение лидера раздела топика.
+* Участие в выборе лидеров.
+* Управление сведениями о составе брокеров кластера.
+
+> Примечание к переводу: это описание архитектуры с ZooKeeper, а не универсальное описание всех версий Kafka. Не следует отождествлять ZooKeeper с контроллером Kafka; механизм координации зависит от режима работы кластера.
+</b></details>

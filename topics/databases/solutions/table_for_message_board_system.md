@@ -1,24 +1,28 @@
-## Database Table for Message Board System
+<a id="database-table-for-message-board-system"></a>
+## Таблица базы данных для системы обмена сообщениями
 
-### Instructions
+<a id="instructions"></a>
+### Инструкции
 
-Design a database table for a message board system. It should include the following information:
+Спроектируйте таблицу базы данных для системы обмена сообщениями. Она должна учитывать:
 
-  * Personal details
-  * Who saw the message and when
-  * Replies
-  * Tagged people in the message
-  * Message categories
+* Персональные данные.
+* Кто и когда просмотрел сообщение.
+* Ответы.
+* Людей, отмеченных в сообщении.
+* Категории сообщений.
 
-Notes:
+Примечания:
 
-  * No SQL is needed
-  * You should include: table names, field names, data types and mention the foreign keys used.
+* Писать SQL не требуется.
+* Укажите названия таблиц и полей, типы данных и используемые внешние ключи.
 
-### Solution
+<a id="solution"></a>
+### Решение
 
-Note: This is just one possible design
-2nd Note: PK = primary key, FK = Foreign key
+Примечание: это один из возможных вариантов структуры.
+
+PK — первичный ключ; FK — внешний ключ. Названия таблиц, полей и типы данных сохранены из исходной схемы.
 
                                 ----- People -----
                                 ID int PK
@@ -43,4 +47,3 @@ Board text                      Message text                  PeopleID int Fk
                                        ^      |
                                        |      |
                                        |______|
-

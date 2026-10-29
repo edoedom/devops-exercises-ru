@@ -1,6 +1,7 @@
-## ReplicaSet 02 - Solution
+<a id="replicaset-02---solution"></a>
+## ReplicaSet 02: решение
 
-1. Create a ReplicaSet with 2 replicas. The app can be anything.
+1. Создайте ReplicaSet с двумя репликами любого приложения.
 
 ```
 cat >> rs.yaml <<EOL
@@ -29,33 +30,33 @@ EOL
 kubectl apply -f rs.yaml
 ```
 
-2. Verify a ReplicaSet was created and there are 2 replicas
+2. Проверьте, что ReplicaSet создан и работают две реплики.
 
 ```
 kubectl get rs
 # OR a more specific way: kubectl get -f rs.yaml
 ```
 
-3. Remove the ReplicaSet but NOT the pods it created
+3. Удалите ReplicaSet, сохранив созданные им поды.
 
 ```
 kubectl delete -f rs.yaml --cascade=orphan
 ```
 
-4. Verify you've deleted the ReplicaSet but the Pods are still running
+4. Убедитесь, что ReplicaSet удалён, а поды продолжают работать.
 
 ```
 kubectl get rs # no replicas
 kubectl get po # Pods still running
 ```
 
-5. Create again the same ReplicaSet, without changing anything
+5. Снова создайте тот же ReplicaSet без изменения конфигурации.
 
 ```
 kubectl apply -f rs.yaml
 ```
 
-6. Verify that the ReplicaSet used the existing Pods and didn't create new Pods
+6. Убедитесь, что ReplicaSet использовал существующие поды, а не создал новые.
 
 ```
 kubectl describe rs web  # You should see there are no new events and if you list the pods with 'kubectl get po -f rs.yaml` you'll see they have the same names

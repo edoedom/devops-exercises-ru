@@ -1,34 +1,37 @@
-# Create an Instance
+<a id="create-an-instance"></a>
+# Создание экземпляра
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Create a VM instance with the following properties
-   1. name: instance-1
-   2. type: e2-micro
-   3. labels:
-      1. app: web
-      2. env: dev
-2. Using the CLI (gcloud) perform the following operations:
-   1. Update "app" label to "db"
-   2. Remove "env" label
+1. Создайте виртуальную машину со следующими параметрами:
+   1. Имя: instance-1.
+   2. Тип: e2-micro.
+   3. Метки:
+      1. app: web.
+      2. env: dev.
+2. С помощью CLI gcloud:
+   1. Измените значение метки app на db.
+   2. Удалите метку env.
 
-## Solution
+<a id="solution"></a>
+## Решение
 
-### Console
+<a id="console"></a>
+### Консоль
 
-1. Go to Compute Engine -> VM instances
-2. Click on "Create Instance"
-   1. Insert the name "instance-1"
-   2. Click on "Add label" and add the following labels:
-      1. app: web
-      2. env: dev
-   3. Choose machine type: e2-micro
-3. Click on "Create"
-4. Selected the created instance and click on "show info panel"
-   1. Click on "labels" tab and change the value of "app" label to "db"
-   2. Remove the "env" label
+1. Откройте **Compute Engine → VM instances**.
+2. Нажмите **Create Instance**:
+   1. Укажите имя instance-1.
+   2. Через **Add label** добавьте метки app: web и env: dev.
+   3. Выберите тип машины e2-micro.
+3. Нажмите **Create**.
+4. Выберите экземпляр и нажмите **Show info panel**:
+   1. На вкладке **Labels** измените значение app на db.
+   2. Удалите метку env.
 
-### Shell
+<a id="shell"></a>
+### Командная оболочка
 
 ```
 gcloud config set project <PROJECT_ID>
@@ -40,6 +43,7 @@ gcloud compute instances update instance-1 --update-labels app=db
 gcloud compute instances update instance-1 --remove-labels env
 ```
 
+<a id="terraform"></a>
 ### Terraform
 
-Click [here](main.tf) to view the main.tf file
+[Посмотреть main.tf](main.tf).

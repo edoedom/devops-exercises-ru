@@ -1,33 +1,41 @@
-## AWS Route 53 - Health Checks
+<a id="aws-route-53---health-checks"></a>
+## AWS Route 53: проверки работоспособности
 
-## Requirements
+<a id="requirements"></a>
+## Требования
 
-3 web instances in different AZs.
+Три экземпляра с веб-приложением в разных зонах доступности.
 
-## Objectives 
+<a id="objectives"></a>
+## Задание
 
-1. For each instance create a health checks with the following properties:
-  1. Name it after the AZ where the instance resides
-  2. Failure threshold should be 5
+1. Для каждого экземпляра создайте проверку работоспособности:
+   1. Назовите её по имени зоны доступности экземпляра.
+   2. Установите порог неуспешных проверок равным 5.
+2. В группе безопасности одного из экземпляров удалите правила HTTP.
+   1. Изменилось ли состояние проверки работоспособности?
 
-2. Edit the security group of one of your instances and remove HTTP rules.
-  1. Did it change the status of the health check?
+<a id="solution"></a>
+### Решение
 
-### Solution
+<a id="console"></a>
+#### Консоль
 
-#### Console
+1. Откройте Route 53.
+2. В левом меню выберите **Health Checks**.
+3. Нажмите **Create health check**.
+4. Введите имя; в исходном примере — us-east-2.
+5. В поле **What to monitor** выберите **Endpoint**.
+6. Укажите IP-адрес экземпляра.
+7. Укажите путь /health, если приложение его поддерживает.
+8. В дополнительных настройках задайте **Failure threshold** равным 5.
+9. Нажмите **Next**, затем **Create health check**.
+10. Повторите шаги для двух остальных экземпляров.
 
-1. Go to Route 53
-2. Click on "Health Checks" in the left-side menu
-3. Click on "Create health check"
-4. Insert the name: us-east-2
-5. What to monitor: endpoint
-6. Insert the IP address of the instance
-7. Insert the endpoint /health if your web instance supports that endpoint
-8. In advanced configuration, set Failure threshold to 5
-9. Click on "next" and then on "Create health check"
-10. Repeat steps 1-9 for the other two instances you have
+Проверка реакции на отказ:
 
-1. Go to security group of one of your instances
-2. Click on "Actions" -> Edit inbound rules -> Delete HTTP based rules
-3. Go back to health checks page and after a couple of seconds you should see that the status becomes "unhealthy"
+1. Откройте группу безопасности одного из экземпляров.
+2. Через **Actions → Edit inbound rules** удалите правила HTTP.
+3. Вернитесь к проверкам работоспособности. После необходимого числа неудачных проверок состояние должно измениться на unhealthy.
+
+> Примечание к переводу: us-east-2 в исходном примере — имя региона, хотя задание требует имя зоны доступности. Для выполнения задания используйте имя фактической зоны экземпляра.

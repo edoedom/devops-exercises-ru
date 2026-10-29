@@ -1,23 +1,28 @@
-## AWS EC2 - Placement Groups          
+<a id="aws-ec2---placement-groups"></a>
+## AWS EC2: группы размещения
 
-### Objectives                      
+<a id="objectives"></a>
+### Задание
 
-A. Create a placement group. It should be one with a low latency network. Make sure to launch an instance as part of this placement group.
-B. Create another placement group. This time high availability is a priority
+1. Создайте группу размещения для работы с низкими сетевыми задержками. Запустите экземпляр в этой группе.
+2. Создайте другую группу размещения, в которой приоритетом будет высокая доступность.
 
-### Solution                        
+<a id="solution"></a>
+### Решение
 
-A.
-1. Go to EC2 service
-2. Click on "Placement Groups" under "Network & Security"
-3. Click on "Create placement group"
-4. Give it a name and choose the "Cluster" placement strategy because the requirement is low latency network
-5. Click on "Create group"
-6. Go to "Instances" and click on "Launch an instance". Choose any properties you would like, just make sure to check "Add instance to placement group" and choose the placement group you've created
+A. Группа для низких задержек:
 
-B.
-1. Go to EC2 service
-2. Click on "Placement Groups" under "Network & Security"
-3. Click on "Create placement group"
-4. Give it a name and choose the "Spread" placement strategy because the requirement is high availability as top priority
-5. Click on "Create group"
+1. Откройте EC2.
+2. В разделе **Network & Security** выберите **Placement Groups**.
+3. Нажмите **Create placement group**.
+4. Укажите имя и стратегию **Cluster**, поскольку требуется низкая сетевая задержка.
+5. Нажмите **Create group**.
+6. Откройте **Instances → Launch an instance**. Остальные параметры выберите по своему усмотрению, но включите **Add instance to placement group** и укажите созданную группу.
+
+B. Группа с приоритетом высокой доступности:
+
+1. Откройте EC2.
+2. В разделе **Network & Security** выберите **Placement Groups**.
+3. Нажмите **Create placement group**.
+4. Укажите имя и стратегию **Spread**, поскольку приоритет — высокая доступность.
+5. Нажмите **Create group**.

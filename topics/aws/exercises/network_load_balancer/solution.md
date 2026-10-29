@@ -1,35 +1,40 @@
-## AWS ELB - Network Load Balancer
+<a id="aws-elb---network-load-balancer"></a>
+## AWS ELB: сетевой балансировщик нагрузки
 
-### Requirements                   
+<a id="requirements"></a>
+### Требования
 
-Two running EC2 instances
+Два работающих экземпляра EC2.
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Create a network load balancer 
-  1. healthy threshold: 3
-  2. unhealthy threshold: 3
-  3. interval: 10 seconds
-  4. Listener should be using TCP protocol on port 80
+1. Создайте сетевой балансировщик нагрузки со следующими параметрами:
+   1. Порог успешных проверок (healthy threshold): 3.
+   2. Порог неуспешных проверок (unhealthy threshold): 3.
+   3. Интервал: 10 секунд.
+   4. Обработчик подключений (listener): TCP, порт 80.
 
-### Solution
+<a id="solution"></a>
+### Решение
 
-#### Console
+<a id="console"></a>
+#### Консоль
 
-1. Go to EC2 service
-2. Click in the left side menu on "Load balancers" under "Load balancing"
-3. Click on "Create load balancer"
-4. Choose "Network Load Balancer"
-5. Insert a name for the LB
-6. Choose AZs where you want the LB to operate
-7. Choose a security group
-8. Under "Listeners and routing" click on "Create target group" and choose "Instances"
-  1. Provide a name for the target group
-  2. Set healthy threshold to 3
-  3. Set unhealthy threshold to 3
-  4. Set interval to 10 seconds
-  5. Set protocol to TCP and port to 80
-  6. Click on "Next" and choose two instances you have
-  7. Click on "Create target group"
-9. Refresh target groups and choose the one you've just created
-10. Click on "Create load balancer" and wait for it to be provisioned
+1. Откройте EC2.
+2. В левом меню выберите **Load balancing → Load balancers**.
+3. Нажмите **Create load balancer**.
+4. Выберите **Network Load Balancer**.
+5. Введите имя балансировщика.
+6. Выберите зоны доступности, в которых он будет работать.
+7. Выберите группу безопасности.
+8. В разделе **Listeners and routing** нажмите **Create target group** и выберите **Instances**:
+   1. Укажите имя целевой группы.
+   2. Порог успешных проверок: 3.
+   3. Порог неуспешных проверок: 3.
+   4. Интервал: 10 секунд.
+   5. Протокол: TCP, порт: 80.
+   6. Нажмите **Next** и выберите два экземпляра.
+   7. Нажмите **Create target group**.
+9. Обновите список целевых групп и выберите созданную.
+10. Нажмите **Create load balancer** и дождитесь завершения создания.

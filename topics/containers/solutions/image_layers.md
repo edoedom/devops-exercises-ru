@@ -1,12 +1,15 @@
-## Layer by Layer
+<a id="layer-by-layer"></a>
+## Слой за слоем
 
-### Objective
+<a id="objective"></a>
+### Цель
 
-Learn about image layers
+Разобраться в слоях образа.
 
-### Requirements
+<a id="requirements"></a>
+### Требования
 
-Make sure Docker is installed on your system and the service is started
+Убедитесь, что Docker установлен и служба запущена.
 
 ```
 # Fedora/RHEL/CentOS
@@ -14,9 +17,10 @@ rpm -qa | grep docker
 systemctl status docker
 ```
 
-### Instructions
+<a id="instructions"></a>
+### Инструкции
 
-1. Write a Dockefile. Any Dockefile! :) (just make sure it's a valid one)
+1. Напишите любой корректный Dockerfile:
 
 ```
 FROM ubuntu
@@ -28,27 +32,29 @@ RUN dd if=/dev/zero of=some_file bs=1024 count=0 seek=1024
 RUN dd if=/dev/zero of=some_file bs=1024 count=0 seek=1024
 ```
 
-2. Build an image using the Dockerfile you've wrote
+2. Соберите образ:
 
 `docker image build -t super_cool_app:latest .`
 
-3. Which of the instructions you've used, created new layers and which added image metadata?
+3. Какие инструкции создают слои, а какие добавляют метаданные?
 
 ```
 FROM, RUN -> new layer
 EXPOSE, ENV, WORKDIR -> metadata
 ```
 
-4. What ways are there to confirm your answer to the last question?
+4. Как проверить ответ?
 
-You can run `docker image history super_cool_app`. It will show you each instruction and its size. Usually instructions that create new layers has non-zero size, but this is not something you can rely on by itself since, some run commands can have size of zero in `docker image history` output (e.g. `ls -l`).
+Выполните `docker image history super_cool_app`: команда показывает инструкции и связанный с ними размер. Ненулевой размер часто указывает на изменение файловой системы, но полагаться только на него нельзя: например, RUN с `ls -l` может показывать нулевой размер.
 
-You can also use `docker image inspect super_cool_appl` and see if in the output, under "RootFS", there are the number of layers that matches the instructions that should create new layers.
+Также в оригинале предлагается `docker image inspect super_cool_appl`: в разделе RootFS можно посмотреть количество слоёв и сопоставить их с инструкциями.
 
-5. Can you reduce the size of the image you've created?
+> Примечание к переводу: в имени образа последней команды исходника лишняя буква l. Используйте имя реально созданного образа — super_cool_app.
 
-yes, for example, use all the RUN instructions as a single RUN instruction this way:
+5. Можно ли уменьшить размер образа?
+
+Да. Например, объедините инструкции RUN:
 
 `RUN dd if=/dev/zero of=some_file bs=1024 count=0 seek=1024 && dd if=/dev/zero of=some_file bs=1024 count=0 seek=1024 && dd if=/dev/zero of=some_file bs=1024 count=0 seek=1024`
 
-The change in size might not be dramatic in this case, but in some cases it will make a big impact on the image size.
+В данном примере выигрыш может быть небольшим, но в других случаях объединение связанных операций заметно уменьшает образ.

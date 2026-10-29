@@ -1,20 +1,21 @@
-Your mission, should you choose to accept it, involves developing an app, containerize it and set up a CI for it.
-Please read carefully all the instructions.
+Ваша задача — разработать приложение, упаковать его в контейнер и настроить CI. Внимательно прочитайте инструкции.
 
-If any of the following steps is not working, it is expected from you to fix them
+Если какой-либо шаг не работает, от вас ожидается устранение проблемы.
 
-## Installation
+<a id="installation"></a>
+## Установка
 
-1. Create a virtual environment with `python3 -m venv challenge_venv`
-2. Activate it with `source challenge_venv/bin/activate`
-3. Install the requirements in this directory `pip install -r requirements.txt`
+1. Создайте виртуальное окружение: `python3 -m venv challenge_venv`.
+2. Активируйте его: `source challenge_venv/bin/activate`.
+3. Установите зависимости: `pip install -r requirements.txt`.
 
-## Run the app
+<a id="run-the-app"></a>
+## Запуск приложения
 
-1. Move to `challenges/flask_container_ci` directory, if you are not already there
-1. Run `export FLASK_APP=app/main.py`
-1. To run the app execute `flask run`. If it doesn't works, fix it
-3. Access `http://127.0.0.1:5000`. You should see the following
+1. Перейдите в `challenges/flask_container_ci`, как указано в исходной инструкции.
+2. Выполните `export FLASK_APP=app/main.py`.
+3. Запустите `flask run`. Если запуск не удался, устраните причину.
+4. Откройте `http://127.0.0.1:5000`. Ожидаемый результат:
 
 ```
 {
@@ -28,52 +29,50 @@ If any of the following steps is not working, it is expected from you to fix the
 }
 ```
 
-4. You should be able to access any of the resources and get the following data:
+5. Реализуйте ресурсы:
 
-* /matrix/\<matrix\>
-
-    for example, for /matrix/123n456n789 the user will get:
+* /matrix/\<matrix\>: например, /matrix/123n456n789 возвращает:
 
     1 2 3
     4 5 6
     7 8 9
 
-* /matrix/\<matrix\>/\<column_number\> 
-
-    for example, for /matrix/123n456n789/2 the user will get:
+* /matrix/\<matrix\>/\<column_number\>: например, /matrix/123n456n789/2 возвращает:
 
     2
     5
     8
 
-* /matrix/\<matrix\>/\<row_number\> 
+* /matrix/\<matrix\>/\<row_number\>: например, /matrix/123n456n789/1 возвращает:
 
-    for example, for /matrix/123n456n789/1 the user will get:
+    1 2 3
 
-    1 2 3 
+> Примечание к переводу: в исходнике маршруты выбора строки и столбца имеют одинаковую форму и неоднозначны. Также указан путь первого упражнения; фактически этот материал находится в topics/flask_container_ci2. Эти несоответствия нужно учесть при реализации.
 
-## Containers
+<a id="containers"></a>
+## Контейнеры
 
-Using Docker or Podman, containerize the flask app so users can run the following two commands:
+Упакуйте Flask-приложение с помощью Docker или Podman, чтобы пользователь мог выполнить две команды:
 
 ```
 docker build -t app:latest /path/to/Dockerfile
 docker run -d -p 5000:5000 app
 ```
 
-1. You can use any image base you would like
-2. Containerize only what you need for running the application, nothing else.
+1. Выберите любой базовый образ.
+2. Включайте только необходимое для работы приложения.
 
+<a id="ci"></a>
 ## CI
 
-Great, now that we have a working app and also can run it in a container, let's set up a CI for it so it won't break again in the future
-In current directory you have a file called tests.py which includes the tests for the app. What is required from you, is:
+После запуска приложения и контейнера настройте CI, чтобы обнаруживать регрессии. В текущем каталоге есть tests.py с тестами приложения.
 
-1. Write a CI pipeline that will run the app tests. You are free to choose whatever CI system or service you prefer. Use `python tests.py` for running the tests.
-2. There should be some kind of test for the Dockerfile you wrote
-3. Add additional unit test (or any other level of tests) for testing the app
+1. Создайте конвейер в любой системе CI, выполняющий `python tests.py`.
+2. Добавьте проверку Dockerfile.
+3. Добавьте модульный тест или тест другого уровня.
 
-### Guidelines 
+<a id="guidelines"></a>
+### Рекомендации
 
-* Except the app functionality, you can change whatever you want - structure, tooling, libraries, ... If possible, add `notes.md` file which explains reasons, logic, thoughts and anything else you would like to share
-* The CI part should include the source code for the pipeline definition
+* Сохраняйте требуемое поведение приложения. Структуру, инструменты и библиотеки можно менять. По возможности добавьте `notes.md` с объяснением решений и замечаниями.
+* Предоставьте исходный код определения конвейера CI.

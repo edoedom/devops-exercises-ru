@@ -1,73 +1,77 @@
-# Site Reliability Engineering
+<a id="site-reliability-engineering"></a>
+# Инженерия надёжности сервисов
 
-## SRE Questions
-
-<details>
-<summary>What is an SLI (Service-Level Indicator)?</summary>
-<b>
-An SLI is a measurement used to assess the actual performance or reliability of a service. It serves as the basis for defining SLOs.
-
-Examples:
-- Request latency
-- Processing throughput
-- Request failures per unit of time
-
-Read more: [Google SRE Handbook](https://sre.google/sre-book/table-of-contents/)
-</b>
-</details></br>
+<a id="sre-questions"></a>
+## Вопросы по SRE
 
 <details>
-<summary>What is an SLO (Service-Level Objective)?</summary>
+<summary>Что такое SLI — показатель уровня обслуживания?</summary>
 <b>
 
-An SLO is a target value or range of values for a service level that is measured by an SLI
+SLI — измеряемый показатель фактической производительности или надёжности сервиса. Он служит основой для определения SLO.
 
-Example: 99% across 30 days for a specific collection of SLIs.
+Примеры:
 
-It's also worthy to note that the SLO also serves as a lower bound, indicating that there is no requirement to be more reliable than necessary because doing so can delay the rollout of new features.
+* Задержка запросов.
+* Пропускная способность обработки.
+* Количество неуспешных запросов за единицу времени.
 
-Read more: [Google SRE Handbook](https://sre.google/sre-book/table-of-contents/)
+Подробнее: [книга Google SRE](https://sre.google/sre-book/table-of-contents/).
 </b>
 </details><br>
 
 <details>
-<summary>What is an SLA (Service-Level Agreement)?</summary>
+<summary>Что такое SLO — целевой уровень обслуживания?</summary>
 <b>
 
-AN SLA is a formal agreement between a service provider and customers, specifying the expected service quality and consequences for not meeting it.
+SLO — целевое значение или диапазон значений уровня обслуживания, измеряемого с помощью SLI.
 
-SRE doesn't typically get involved in constructing SLAs, because SLAs are closely tied to business and product decisions
+Пример: 99% за 30 дней для выбранных показателей.
 
-Read more: [Google SRE Handbook](https://sre.google/sre-book/table-of-contents/)
+SLO также задаёт ориентир достаточной надёжности: стремление сделать сервис надёжнее, чем требуется, может задерживать выпуск новых возможностей.
+
+Подробнее: [книга Google SRE](https://sre.google/sre-book/table-of-contents/).
 </b>
 </details><br>
 
 <details>
-<summary>What is an Error Budget?</summary>
+<summary>Что такое SLA — соглашение об уровне обслуживания?</summary>
 <b>
 
-An Error Budget represents the acceptable amount of downtime or errors a service can experience while still meeting its SLO.
+SLA — формальное соглашение поставщика сервиса с клиентами об ожидаемом качестве обслуживания и последствиях невыполнения обязательств.
 
-An error budget is 1 minus the SLO of the service. A 99.9% SLO service has a 0.1% error budget.
+SRE обычно не определяет условия SLA самостоятельно: они тесно связаны с решениями бизнеса и продукта.
 
-If our service receives 1,000,000 requests in four weeks, a 99.9% availability SLO gives us a budget of 1,000 errors over that period.
-
-The error budget is a mechanism for balancing innovation and stability. If the SRE cannot enforce the error budget, the whole system breaks down.
-
-Read more: [Google SRE Handbook](https://sre.google/sre-book/table-of-contents/)
+Подробнее: [книга Google SRE](https://sre.google/sre-book/table-of-contents/).
 </b>
-</details></br>
+</details><br>
 
 <details>
-<summary>What is Toil?</summary>
+<summary>Что такое бюджет ошибок?</summary>
 <b>
 
-Toil is the kind of work that tends to be manual, repetitive, automatable, tactical, devoid of enduring value, and that scales linearly as a service grows.
+Бюджет ошибок — допустимое количество отказов или ошибок, при котором сервис всё ещё выполняет SLO.
 
-If you can be automate a task, you should probably automate the task.
+Для SLO, выраженного долей успешных событий, бюджет ошибок равен 1 минус SLO. При SLO 99,9% он составляет 0,1%.
 
-Automation significantly reduces Toil. Investing in automation results in valuable work with lasting impact, offering scalability potential with minimal adjustments as your system expands.
+Если за четыре недели сервис получает 1 000 000 запросов, SLO успешности 99,9% допускает 1 000 ошибок за этот период.
 
-Read more: [Google SRE Handbook](https://sre.google/sre-book/table-of-contents/)
+Бюджет ошибок помогает находить баланс между выпуском новых возможностей и стабильностью. Этот механизм не работает, если команда не может обеспечить соблюдение связанных с бюджетом правил.
+
+Подробнее: [книга Google SRE](https://sre.google/sre-book/table-of-contents/).
+</b>
+</details><br>
+
+<details>
+<summary>Что такое toil — рутинная эксплуатационная работа?</summary>
+<b>
+
+Это работа, которая обычно выполняется вручную, повторяется, поддаётся автоматизации, решает текущие задачи, не создаёт долгосрочной ценности и растёт линейно вместе с сервисом.
+
+Если задачу можно автоматизировать, обычно стоит рассмотреть такую возможность.
+
+Автоматизация сокращает рутину. Вложенные усилия дают долгосрочный результат и позволяют масштабировать систему без соразмерного увеличения ручной работы.
+
+Подробнее: [книга Google SRE](https://sre.google/sre-book/table-of-contents/).
 </b>
 </details>
