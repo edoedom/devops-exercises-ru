@@ -1,9 +1,11 @@
-## Shell Scripting - Factors
+<a id="shell-scripting---factors"></a>
+## Сценарии shell: делители
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-Write a script that when given a number, will:
+Напишите скрипт, который получает число и выполняет следующие действия:
 
-* Check if the number has 2 as factor, if yes it will print "one factor"
-* Check if the number has 3 as factor, if yes it will print "one factor...actually two!"
-* If none of them (2 and 3) is a factor, print the number itself
+* Если число делится на 2, выводит `one factor`.
+* Если число делится на 3, выводит `one factor...actually two!`.
+* Если число не делится ни на 2, ни на 3, выводит само число.

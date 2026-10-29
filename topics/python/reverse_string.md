@@ -1,3 +1,4 @@
-## Reverse a String
+<a id="reverse-a-string"></a>
+## Разворот строки
 
-Write a code that reverses a string
+Напишите код, который разворачивает строку в обратном порядке.

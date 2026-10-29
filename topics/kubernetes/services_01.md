@@ -1,11 +1,14 @@
-## Services 01
+<a id="services-01"></a>
+## Сервисы: задание 01
 
-#### Objective
+<a id="objective"></a>
+#### Цель
 
-Learn how to create services
+Научиться создавать сервисы.
 
-#### Instructions
+<a id="instructions"></a>
+#### Инструкции
 
-1. Create a pod running ngnix
-2. Create a service for the pod you've just created
-3. Verify the app is reachable
+1. Создайте под с nginx.
+2. Создайте сервис для этого пода.
+3. Проверьте доступность приложения.

@@ -1,7 +1,9 @@
-## URL Function
+<a id="url-function"></a>
+## Вызов функции по URL
 
-Create a basic AWS Lambda function that will be triggered when you enter a URL in the browser
+Создайте простую функцию AWS Lambda, которая вызывается при открытии URL в браузере.
 
-## Solution
+<a id="solution"></a>
+## Решение
 
-Click [here to view to solution](solution.md)
+[Посмотреть решение](solution.md).

@@ -1,11 +1,14 @@
-## Pods 01
+<a id="pods-01"></a>
+## Поды: задание 01
 
-#### Objective
+<a id="objective"></a>
+#### Цель
 
-Learn how to create pods
+Научиться создавать поды.
 
-#### Instructions
+<a id="instructions"></a>
+#### Инструкции
 
-1. Choose a container image (e.g. redis, nginx, mongo, etc.)
-2. Create a pod (in the default namespace) using the image you chose
-3. Verify the pod is running
+1. Выберите образ контейнера, например redis, nginx или mongo.
+2. Создайте под из выбранного образа в пространстве имён default.
+3. Проверьте, что под работает.

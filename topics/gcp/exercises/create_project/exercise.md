@@ -1,9 +1,12 @@
-# Create a Project
+<a id="create-a-project"></a>
+# Создание проекта
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Create a project with a unique name
+1. Создайте проект с уникальным именем.
 
-## Solution
+<a id="solution"></a>
+## Решение
 
-Click [here](solution.md) to view the solution
+[Посмотреть решение](solution.md).

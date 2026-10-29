@@ -1,6 +1,7 @@
-## Ansible - My First Playbook
+<a id="ansible---my-first-playbook"></a>
+## Ansible: первый плейбук
 
-1. Write a playbook that will:
-  a. Install the package zlib
-  b. Create the file `/tmp/some_file`
-2. Run the playbook on a remote host
+1. Напишите плейбук, который:
+   1. Устанавливает пакет zlib.
+   2. Создаёт файл `/tmp/some_file`.
+2. Запустите плейбук на удалённом узле.

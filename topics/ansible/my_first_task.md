@@ -1,3 +1,4 @@
-## Ansible - My First Task
+<a id="ansible---my-first-task"></a>
+## Ansible: первая задача
 
-1. Write a task to create the directory ‘/tmp/new_directory’
+1. Напишите задачу, которая создаёт каталог `/tmp/new_directory`.

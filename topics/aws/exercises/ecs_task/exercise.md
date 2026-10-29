@@ -1,9 +1,11 @@
-## AWS Containers - Run Tasks
+<a id="aws-containers---run-tasks"></a>
+## Контейнеры AWS: запуск задач
 
-Note: this costs money
+Примечание: выполнение задания связано с расходами.
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-Create a task in ECS to launch in Fargate.
+Создайте задачу в ECS для запуска в Fargate.
 
-The task itself can be a sample app.
+В качестве задачи можно использовать демонстрационное приложение.

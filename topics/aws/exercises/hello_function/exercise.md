@@ -1,7 +1,9 @@
-# Hello Function
+<a id="hello-function"></a>
+# Функция приветствия
 
-Create a basic AWS Lambda function that when given a name, will return "Hello <NAME>"
+Создайте простую функцию AWS Lambda, которая получает имя и возвращает `Hello <NAME>`, подставляя полученное имя.
 
-## Solution
+<a id="solution"></a>
+## Решение
 
-Click [here](solution.md) to view the solution.
+[Посмотреть решение](solution.md).

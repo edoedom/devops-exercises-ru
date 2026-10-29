@@ -1,8 +1,9 @@
-## ELK + Filebeat
+<a id="elk--filebeat"></a>
+## ELK и Filebeat
 
-Set up the following using any log you would like:
+Настройте следующую схему обработки любого выбранного журнала:
 
-* Run the following: elasticsearch, logstash, kibana and filebeat (each running in its own container)
-* Make filebeat transfer a log to logstash for process
-* Once logstash is done, index with elasticsearch
-* Finally, make sure data is available in Kibana
+* Запустите Elasticsearch, Logstash, Kibana и Filebeat — каждый в отдельном контейнере.
+* Настройте передачу журнала из Filebeat в Logstash для обработки.
+* После обработки в Logstash проиндексируйте данные в Elasticsearch.
+* Убедитесь, что данные доступны в Kibana.

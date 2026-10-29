@@ -1,11 +1,13 @@
-## Jenkins Scripts
+<a id="jenkins-scripts"></a>
+## Скрипты Jenkins
 
-Write the following scripts:
+Напишите следующие скрипты:
 
-* Remove all the jobs which include the string "REMOVE_ME" in their name
-* Remove builds older than 14 days
+* Удаление всех заданий, содержащих `REMOVE_ME` в имени.
+* Удаление сборок старше 14 дней.
 
-### Answer
+<a id="answer"></a>
+### Ответ
 
-* [Remove jobs which include specific string](jenkins/scripts/jobs_with_string.groovy)
-* [Remove builds older than 14 days](jenkins/scripts/old_builds.groovy)
+* [Удаление заданий с заданной строкой в имени](jenkins/scripts/jobs_with_string.groovy).
+* [Удаление сборок старше 14 дней](jenkins/scripts/old_builds.groovy).

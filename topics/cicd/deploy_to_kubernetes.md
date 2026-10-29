@@ -1,5 +1,6 @@
-## Deploy to Kubernetes
+<a id="deploy-to-kubernetes"></a>
+## Развёртывание в Kubernetes
 
-* Write a pipeline that will deploy an "hello world" web app to Kubernetes 
-* The CI/CD system (where the pipeline resides) and the Kubernetes cluster should be on separate systems
-* The web app should be accessible remotely and only with HTTPS
+* Напишите конвейер, который развёртывает веб-приложение «Hello World» в Kubernetes.
+* Система CI/CD, в которой выполняется конвейер, и кластер Kubernetes должны находиться на разных системах.
+* Веб-приложение должно быть доступно удалённо и только по HTTPS.

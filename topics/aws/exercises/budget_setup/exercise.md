@@ -1,5 +1,7 @@
-## AWS - Budget Setup
+<a id="aws---budget-setup"></a>
+## AWS: настройка бюджета
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-Setup a cost budget in your AWS account based on your needs.
+Настройте бюджет расходов в своей учётной записи AWS в соответствии со своими потребностями.

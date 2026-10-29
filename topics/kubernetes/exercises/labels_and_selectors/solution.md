@@ -1,13 +1,18 @@
-# Labels and Selectors 101
+<a id="labels-and-selectors-101"></a>
+# Метки и селекторы: основы
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. How to list all the Pods with the label "app=web"?
-2. How to list all objects labeled as "env=staging"?
-3. How to list all deployments from "env=prod" and "type=web"?
+1. Как вывести все поды с меткой `app=web`?
+2. Как вывести все объекты с меткой `env=staging`?
+3. Как вывести все Deployment с метками `env=prod` и `type=web`?
 
-## Solution
+<a id="solution"></a>
+## Решение
 
 `k get po -l app=web`
 `k get all -l env=staging`
 `k get deploy -l env=prod,type=web`
+
+> Примечание к переводу: в исходнике используется сокращение `k`; предполагается, что оно настроено как псевдоним `kubectl`. Команда `get all` охватывает не все существующие типы ресурсов Kubernetes.

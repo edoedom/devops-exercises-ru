@@ -1,8 +1,9 @@
-# Containerized Web Server
+<a id="containerized-web-server"></a>
+# Веб-сервер в контейнере
 
-1. Run a containerized web server in the background and bind its port (8080) to a local port
-2. Verify the port (8080) is bound
-3. Reach the webserver from your local host
-4. Now run the same web application but bound it to the local port 8080
+1. Запустите веб-сервер в контейнере в фоновом режиме и сопоставьте его порт 8080 с портом на хосте.
+2. Проверьте, что порт контейнера 8080 опубликован.
+3. Обратитесь к веб-серверу с хоста.
+4. Теперь запустите то же приложение, сопоставив его порт с портом 8080 на хосте.
 
-Click [here for the solution](solutions/containerized_web_server.md)
+[Посмотреть решение](solutions/containerized_web_server.md).

@@ -1,3 +1,4 @@
-## Build & Publish Docker Images to Kubernetes Cluster
+<a id="build--publish-docker-images-to-kubernetes-cluster"></a>
+## Сборка образов Docker и развёртывание в Kubernetes
 
-Write a pipeline, on any CI/CD system you prefer, that will build am image out of a given Dockerfile and will publish that image to running Kubernetes cluster.
+Напишите конвейер в любой удобной системе CI/CD. Он должен собирать образ по заданному Dockerfile и развёртывать приложение из этого образа в работающем кластере Kubernetes.

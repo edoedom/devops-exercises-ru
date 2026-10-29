@@ -1,10 +1,13 @@
-## AWS EC2 - Elastic IP
+<a id="aws-ec2---elastic-ip"></a>
+## AWS EC2: Elastic IP
 
-### Requirements
+<a id="requirements"></a>
+### Требования
 
-* An EC2 instance with public IP (not elastic IP)
+* Экземпляр EC2 с публичным IP-адресом, который не является Elastic IP.
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Write down the public IP of your EC2 instance somewhere and stop & start the instance. Does the public IP address is the same? why?
-2. Handle this situation so you have the same public IP even after stopping and starting the instance
+1. Запишите публичный IP-адрес экземпляра. Остановите и снова запустите экземпляр. Сохранился ли адрес? Почему?
+2. Настройте экземпляр так, чтобы публичный IP-адрес сохранялся после остановки и запуска.

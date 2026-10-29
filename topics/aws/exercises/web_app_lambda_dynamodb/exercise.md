@@ -1,11 +1,16 @@
-# Web App with DB
+<a id="web-app-with-db"></a>
+# Веб-приложение с базой данных
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-Implement the following architecture:
+Реализуйте следующую архитектуру:
 
 <TODO>
 
-## Solution
+> Примечание к переводу: архитектура в оригинале не описана; оставлена заглушка TODO.
 
-Click [here](solution.md) to view the solution
+<a id="solution"></a>
+## Решение
+
+[Посмотреть решение](solution.md).

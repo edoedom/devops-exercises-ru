@@ -1,11 +1,14 @@
-## EC2 - Create an AMI
+<a id="ec2---create-an-ami"></a>
+## EC2: создание AMI
 
-### Requirements
+<a id="requirements"></a>
+### Требования
 
-One running EC2 instance
+Один работающий экземпляр EC2.
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Make some changes in the operating system of your instance (create files, modify files, ...)
-2. Create an AMI image from running EC2 instance
-3. Launch a new instance using the custom AMI you've created
+1. Внесите изменения в операционную систему экземпляра: создайте или измените файлы и т. п.
+2. Создайте образ AMI на основе работающего экземпляра EC2.
+3. Запустите новый экземпляр из созданного вами AMI.

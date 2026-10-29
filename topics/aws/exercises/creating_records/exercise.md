@@ -1,14 +1,16 @@
-## AWS Route 53 - Creating Records
+<a id="aws-route-53---creating-records"></a>
+## AWS Route 53: создание записей
 
-### Requirements
+<a id="requirements"></a>
+### Требования
 
-At least one registered domain
+Хотя бы один зарегистрированный домен.
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Create the following record for your domain:
-  1. Record name: foo
-  2. Record type: A
-  3. Set some IP in the value field
-
-2. Verify from the shell that you are able to use the record you've created to lookup for the IP address by using the domain name
+1. Создайте запись для своего домена:
+   1. Имя записи: foo.
+   2. Тип: A.
+   3. В поле значения укажите IP-адрес.
+2. Из командной оболочки проверьте, что созданная запись позволяет получить IP-адрес по доменному имени.

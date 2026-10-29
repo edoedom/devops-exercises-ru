@@ -1,9 +1,13 @@
-## AWS - Credential Report
+<a id="aws---credential-report"></a>
+## AWS: отчёт об учётных данных
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Create/Download a credential report
-2. Answer the following questions based on the report:
-  1. Are there users with MFA not activated?
-  2. Are there users with password enabled that didn't 
-3. Explain the use case for using the credential report
+1. Создайте или скачайте отчёт об учётных данных (credential report).
+2. По отчёту ответьте на вопросы:
+   1. Есть ли пользователи без включённой MFA?
+   2. Есть ли пользователи с разрешённым входом по паролю, которые не…
+3. Объясните, в каких случаях полезен этот отчёт.
+
+> Примечание к переводу: второй вопрос в исходнике обрывается; недостающая часть не восстановлена предположениями.

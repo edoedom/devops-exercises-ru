@@ -1,9 +1,12 @@
-## Shell Scripting - Print Arguments
+<a id="shell-scripting---print-arguments"></a>
+## Сценарии shell: вывод аргументов
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-You should include everything mentioned here in one shell script
+Реализуйте все перечисленные действия в одном скрипте shell:
 
-1. Print the first argument passed to the script
-2. Print the number of arguments passed to the script
-3. 
+1. Выведите первый аргумент, переданный скрипту.
+2. Выведите количество переданных аргументов.
+
+> Примечание к переводу: третий пункт в оригинале оставлен пустым.

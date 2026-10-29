@@ -1,6 +1,7 @@
-## Comparisons vs. Functions
+<a id="comparisons-vs-functions"></a>
+## Сравнения и функции
 
-1. Improve the following query
+1. Улучшите следующий запрос:
 
 ```
 SELECT COUNT(purchased_at)

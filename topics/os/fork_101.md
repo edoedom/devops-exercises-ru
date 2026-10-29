@@ -1,6 +1,7 @@
-## Fork 101
+<a id="fork-101"></a>
+## Fork: задание 101
 
-Answer the questions given the following program (without running it):
+Ответьте на вопросы о следующей программе, не запуская её:
 
 ```
 #include<stdio.h>
@@ -13,5 +14,5 @@ int main()
 }
 ```
 
-1. How many times the word "yay" will be printed?
-2. How many processes will be created?
+1. Сколько раз будет выведено слово `yay`?
+2. Сколько процессов будет создано?

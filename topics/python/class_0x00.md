@@ -1,3 +1,4 @@
-## Class
+<a id="class"></a>
+## Класс
 
-write a simple class that has two attributes of which one has a default value and has two methods
+Напишите простой класс с двумя атрибутами и двумя методами. Один из атрибутов должен иметь значение по умолчанию.

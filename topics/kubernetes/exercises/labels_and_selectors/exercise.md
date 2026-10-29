@@ -1,11 +1,14 @@
-# Labels and Selectors 101
+<a id="labels-and-selectors-101"></a>
+# Метки и селекторы: основы
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. How to list all the Pods with the label "app=web"?
-2. How to list all objects labeled as "env=staging"?
-3. How to list all deployments from "env=prod" and "type=web"?
+1. Как вывести все поды с меткой `app=web`?
+2. Как вывести все объекты с меткой `env=staging`?
+3. Как вывести все Deployment с метками `env=prod` и `type=web`?
 
-## Solution
+<a id="solution"></a>
+## Решение
 
-Click [here](solution.md) to view the solution.
+[Посмотреть решение](solution.md).

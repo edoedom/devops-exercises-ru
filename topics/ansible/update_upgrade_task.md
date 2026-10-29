@@ -1,3 +1,4 @@
-## Ansible - Update and upgrade APT packages task
+<a id="ansible---update-and-upgrade-apt-packages-task"></a>
+## Ansible: обновление списка пакетов APT и установленных пакетов
 
-1. Write a task to update and upgrade apt packages
+1. Напишите задачу, которая обновляет кеш APT и установленные пакеты.

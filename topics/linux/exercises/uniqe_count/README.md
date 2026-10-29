@@ -1,9 +1,12 @@
-# Unique Count
+<a id="unique-count"></a>
+# Подсчёт повторений
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-In this directory you have a file with list of IP addresses called `ip_list`. Using the file, determine which IP address is the most recurring (listed the most times).
+В этом каталоге находится файл `ip_list` со списком IP-адресов. Определите, какой адрес встречается в нём чаще всего.
 
-# Solution
+<a id="solution"></a>
+# Решение
 
-Click [here](solution.md) to view the solution
+[Посмотреть решение](solution.md).

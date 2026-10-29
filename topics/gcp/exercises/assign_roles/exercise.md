@@ -1,13 +1,16 @@
-# Assign Roles
+<a id="assign-roles"></a>
+# Назначение ролей
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Assign the following roles to a member in your organization
-   1. Compute Storage Admin
-   2. Compute Network Admin
-   3. Compute Security Admin
-2. Verify roles were assigned
+1. Назначьте участнику своей организации следующие роли:
+   1. Compute Storage Admin.
+   2. Compute Network Admin.
+   3. Compute Security Admin.
+2. Проверьте, что роли назначены.
 
-## Solution
+<a id="solution"></a>
+## Решение
 
-Click [here](solution.md) to view the solution
+[Посмотреть решение](solution.md).

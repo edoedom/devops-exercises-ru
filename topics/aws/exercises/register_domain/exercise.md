@@ -1,9 +1,11 @@
-## AWS Route 53 - Register Domain
+<a id="aws-route-53---register-domain"></a>
+## AWS Route 53: регистрация домена
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-Note: registering domain costs money. Don't do this exercise, unless you understand that you are going to register a domain and it's going to cost you money.
+Примечание: регистрация домена платная. Выполняйте задание, только если понимаете, что будете регистрировать домен и оплачивать его регистрацию.
 
-1. Register your own custom domain using AWS Route 53
-2. What is the type of your domain?
-3. How many records your domain has?
+1. Зарегистрируйте собственный домен через AWS Route 53.
+2. Каков тип вашего домена?
+3. Сколько записей у вашего домена?

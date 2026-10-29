@@ -1,10 +1,13 @@
-## AWS EC2 - Elastic Network Interfaces
+<a id="aws-ec2---elastic-network-interfaces"></a>
+## AWS EC2: сетевые интерфейсы Elastic Network Interface
 
-### Requirements
+<a id="requirements"></a>
+### Требования
 
-* An EC2 instance with network interface
+* Экземпляр EC2 с сетевым интерфейсом.
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-A. Create a network interface and attach it to the EC2 instance that already has one network interface
-B. Explain why would anyone use two network interfaces
+1. Создайте сетевой интерфейс и подключите его к экземпляру EC2, у которого уже есть один интерфейс.
+2. Объясните, для чего могут понадобиться два сетевых интерфейса.

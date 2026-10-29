@@ -1,10 +1,10 @@
-## Jenkins Pipelines
+<a id="jenkins-pipelines"></a>
+## Конвейеры Jenkins
 
-Write/Create the following Jenkins pipelines:
+Создайте следующие конвейеры Jenkins:
 
-* A pipeline which will run unit tests upon git push to a certain repository
-* A pipeline which will do to the following:
-
-  * Provision an instance (can also be a container)
-  * Configure the instance as Apache web server
-  * Deploy a web application on the provisioned instance
+* Конвейер, запускающий модульные тесты после `git push` в заданный репозиторий.
+* Конвейер, выполняющий следующие действия:
+  * Создание экземпляра, в том числе допускается контейнер.
+  * Настройка Apache в качестве веб-сервера на этом экземпляре.
+  * Развёртывание веб-приложения на подготовленном экземпляре.

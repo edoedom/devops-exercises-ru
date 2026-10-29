@@ -1,10 +1,13 @@
-### Jenkins - Remove Jobs
+<a id="jenkins---remove-jobs"></a>
+### Jenkins: удаление заданий
 
-#### Objective 
+<a id="objective"></a>
+#### Цель
 
-Learn how to write a Jenkins script to remove Jenkins jobs
+Научиться писать скрипт для удаления заданий Jenkins.
 
-#### Instructions
+<a id="instructions"></a>
+#### Инструкции
 
-1. Create three jobs called: test-job, test2-job and prod-job
-2. Write a script to remove all the jobs that include the string "test"
+1. Создайте три задания: test-job, test2-job и prod-job.
+2. Напишите скрипт, который удаляет все задания, содержащие строку `test` в имени.

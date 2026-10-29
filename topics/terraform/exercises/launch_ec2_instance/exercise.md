@@ -1,12 +1,15 @@
-# Launch EC2 instance
+<a id="launch-ec2-instance"></a>
+# Запуск экземпляра EC2
 
-## Requirements
+<a id="requirements"></a>
+## Требования
 
-* AWS account
+* Учётная запись AWS.
 
-## Objectives
+<a id="objectives"></a>
+## Задание
 
-1. Write Terraform configuration for launching an EC2 instance
-2. Run the commands to apply the configuration and create the EC2 instance
-3. What happens if you run again `terraform apply`?
-4. Destroy the instance you've created with Terraform
+1. Напишите конфигурацию Terraform для запуска экземпляра EC2.
+2. Выполните команды, применяющие конфигурацию и создающие экземпляр.
+3. Что произойдёт, если снова выполнить `terraform apply`?
+4. Удалите созданный экземпляр с помощью Terraform.

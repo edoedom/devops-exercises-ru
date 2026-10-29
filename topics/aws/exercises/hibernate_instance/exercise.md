@@ -1,8 +1,10 @@
-## AWS EC2 - Hibernate an Instance
+<a id="aws-ec2---hibernate-an-instance"></a>
+## AWS EC2: гибернация экземпляра
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Create an instance that supports hibernation
-2. Hibernate the instance
-3. Start the instance
-4. What way is there to prove that instance was hibernated from OS perspective?
+1. Создайте экземпляр с поддержкой гибернации.
+2. Переведите его в гибернацию.
+3. Запустите экземпляр.
+4. Как на уровне операционной системы подтвердить, что экземпляр был в состоянии гибернации?

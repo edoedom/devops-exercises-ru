@@ -1,12 +1,17 @@
-## OpenShift - My First Application
+<a id="openshift---my-first-application"></a>
+## OpenShift: первое приложение
 
-### Objectives
+<a id="objectives"></a>
+### Задание
 
-1. Create a MySQL application
-2. Describe which OpenShift objects were created
+1. Создайте приложение MySQL.
+2. Опишите объекты OpenShift, созданные при этом.
 
-### Solution
+<a id="solution"></a>
+### Решение
 
 1. `oc new-app mysql`
-2. The following objects were created:
-  * ImageStream: 
+2. Созданы следующие объекты:
+   * ImageStream.
+
+> Примечание к переводу: перечень объектов в исходном решении не завершён.
