@@ -1,306 +1,299 @@
-## Software Development
+<a id="software-development"></a>
+## Разработка программного обеспечения
 
-### Agile Software Development
+<a id="agile-software-development"></a>
+### Гибкая разработка ПО
 
 <details>
-<summary>What is Agile in regards to software development?</summary><br><b>
+<summary>Что такое Agile в разработке ПО?</summary><br><b>
 
-[Atlassian](https://www.atlassian.com/agile/kanban/kanban-vs-scrum): "is a structured and iterative approach to project management and product development. It recognizes the volatility of product development, and provides a methodology for self-organizing teams to respond to change without going off the rails."
+[Atlassian](https://www.atlassian.com/agile/kanban/kanban-vs-scrum): структурированный итеративный подход к управлению проектами и разработке продуктов. Он учитывает изменчивость разработки и помогает самоорганизующимся командам реагировать на изменения, сохраняя управляемость процесса.
 </b></details>
 
 <details>
-<summary>What is Kanban in regards to software development?</summary><br><b>
+<summary>Что такое Kanban в разработке ПО?</summary><br><b>
 
-* Kanban is an agile software development framework
-
-* It focuses on having flexible and fluid process - no deadlines, fewer meetings, less formal roles
-* While arguable, Kanban seems to fit better small teams rather than big teams who might benefit more from structurized process
+* Kanban — подход, применяемый в гибкой разработке ПО.
+* Он ориентирован на гибкий непрерывный процесс. В исходнике подчёркиваются меньшее количество встреч и формальных ролей и отсутствие обязательных сроков итераций.
+* По мнению автора, Kanban может лучше подходить небольшим командам, а крупным — более структурированный процесс. Это дискуссионное утверждение.
 </b></details>
 
 <details>
-<summary>What is Scrum in regards to software development?</summary><br><b>
+<summary>Что такое Scrum в разработке ПО?</summary><br><b>
 
-* Scrum is an agile software development framework
-
-* Fixed length iterations
-* Requires the team to have roles like scrum master and product owner
+* Scrum — фреймворк гибкой разработки.
+* Использует итерации фиксированной продолжительности.
+* Предусматривает такие зоны ответственности, как Scrum Master и Product Owner.
 </b></details>
 
 <details>
-<summary>Can you compare between Kanban and Scrum?</summary><br><b>
+<summary>Сравните Kanban и Scrum.</summary><br><b>
 
-* Kanban is continuous, fluid and visualized process whereas Scrum is short and structured, where work is shipped during fixed intervals known as sprints
-
-
-* Kanban is less structured compared to other frameworks like scrum
-* Kanban is more visualized way of managing the development process
-* Kanban has fewer meetings and formal roles compared to other frameworks like scrum
+* Kanban организует непрерывный, гибкий и наглядный поток работы. Scrum использует короткие структурированные циклы фиксированной длительности — спринты.
+* Kanban менее жёстко задаёт структуру процесса.
+* Он делает особый акцент на визуализации работы.
+* В отличие от Scrum, Kanban сам по себе не предписывает тот же набор встреч и ролей.
 </b></details>
 
-### Programming
+<a id="programming"></a>
+### Программирование
 
 <details>
-<summary>What programming language do you prefer to use for DevOps related tasks? Why specifically this one?</summary><br><b>
+<summary>Какой язык программирования вы предпочитаете для задач DevOps и почему?</summary><br><b>
 
-For example, Python. It's multipurpose, easy-to-learn, continuously-evolving, and open-source. And it's very popular today
-</b></details>
-
-<details>
-<summary>What are static typed (or simply typed) languages?</summary><br><b>
-
-In static typed languages the variable type is known at compile-time instead of at run-time.
-Such languages are: C, C++ and Java
+Например, Python: универсальный, простой в освоении, развивающийся язык с открытым исходным кодом и большой популярностью.
 </b></details>
 
 <details>
-<summary>Explain expressions and statements</summary><br><b>
+<summary>Что такое языки со статической типизацией?</summary><br><b>
 
-An expression is anything that results in a value (even if the value is None). Basically, any sequence of literals so, you can say that a string, integer, list, ... are all expressions.
-
-Statements are instructions executed by the interpreter like variable assignments, for loops and conditionals (if-else).
+В них типы определяются и проверяются до выполнения программы, на этапе компиляции. Примеры: C, C++ и Java.
 </b></details>
 
 <details>
-<summary>What is Object Oriented Programming? Why is it important?</summary><br><b>
+<summary>Объясните разницу между выражениями и инструкциями.</summary><br><b>
 
-[educative.io](https://www.educative.io/blog/object-oriented-programming) "Object-Oriented Programming (OOP) is a programming paradigm in computer science that relies on the concept of classes and objects. It is used to structure a software program into simple, reusable pieces of code blueprints (usually called classes), which are used to create individual instances of objects."
+Выражение вычисляется и даёт значение, в том числе None. Например, литералы строк и чисел, выражения создания списков.
 
-OOP is the mainstream paradigm today. Most of the big services are wrote with OOP
+Инструкции задают действия программы: присваивания, циклы for, условные конструкции if-else. Конкретная классификация зависит от языка.
 </b></details>
 
 <details>
-<summary>Explain Composition</summary><br><b>
+<summary>Что такое объектно-ориентированное программирование и почему оно важно?</summary><br><b>
 
-Composition - ability to build a complex object from other objects
+[educative.io](https://www.educative.io/blog/object-oriented-programming): ООП — парадигма программирования на основе классов и объектов. Она позволяет организовать программу в виде простых повторно используемых шаблонов — классов, по которым создаются экземпляры объектов.
+
+ООП широко применяется, в том числе при разработке крупных сервисов.
 </b></details>
 
 <details>
-<summary>What is a compiler and interpreter?</summary><br><b>
+<summary>Объясните композицию.</summary><br><b>
 
-[bzfar.org](https://www.bzfar.org/publ/algorithms_programming/programming_languages/translators_compiler_vs_interpetator/42-1-0-50)
-
-Compiler:
-
-"A compiler is a translator used to convert high-level programming language to low-level programming language.  It converts the whole program in one session and reports errors detected after the conversion. Compiler takes time to do its work as it translates high-level code to lower-level code all at once and then saves it to memory."
-
-Interpreter:
-
-"Just like a compiler, is a translator used to convert high-level programming language to low-level programming language. It converts the program line by line and reports errors detected at once, while doing the conversion. With this, it is easier to detect errors than in a compiler."
+Композиция — построение сложного объекта из других объектов.
 </b></details>
 
 <details>
-<summary>Are you familiar with SOLID design principles?</summary><br><b>
+<summary>Что такое компилятор и интерпретатор?</summary><br><b>
 
-SOLID design principles are about:
+Источник: [bzfar.org](https://www.bzfar.org/publ/algorithms_programming/programming_languages/translators_compiler_vs_interpetator/42-1-0-50).
 
-* Make it easier to extend the functionality of the system
-* Make the code more readable and easier to maintain
+Компилятор переводит программу с языка высокого уровня в другое представление, часто более низкоуровневое. В приведённой упрощённой модели он обрабатывает программу целиком, сообщает о найденных ошибках и сохраняет результат для последующего выполнения.
 
-SOLID is:
-
-* Single Responsibility - A class* should have one ~responsibility~ reason to change. It was edited by Robert Martin due to wrong understanding of principle
-* Open-Closed - A class should be open for extension, but closed for modification. What this practically means is that you should extend functionality by adding a new code and not by modifying it. Your system should be separated into components so it can be easily extended without breaking everything
-* Liskov Substitution - Any derived class should be able to substitute the its parent without altering its corrections. Practically, every part of the code will get the expected result no matter which part is using it
-* Interface Segregation - A client should never depend on anything it doesn't uses. Big interfaces must be split to smaller interfaces if needed
-* Dependency Inversion - High level modules should depend on abstractions, not low level modules
-
-*there also can be module, component, entity, etc. Depends on project structure and programming language
+Интерпретатор выполняет программу непосредственно, обрабатывая её инструкции во время работы. В исходнике это описано как построчный перевод с немедленным сообщением об ошибках. На практике реализации могут сочетать интерпретацию, промежуточный код и компиляцию.
 </b></details>
 
 <details>
-<summary>What is YAGNI? What is your opinion on it?</summary><br><b>
+<summary>Знакомы ли вы с принципами проектирования SOLID?</summary><br><b>
 
-YAGNI - You aren't gonna need it. You must add functionality that will be used. No need to add functionality that is not directly needed
+Они помогают расширять функциональность системы и делают код понятнее и удобнее в сопровождении.
+
+* **Single Responsibility — единственная ответственность.** У класса должна быть одна причина для изменения. Роберт Мартин уточнил формулировку, поскольку её часто понимали неверно.
+* **Open-Closed — открытость/закрытость.** Класс открыт для расширения, но закрыт для изменения. Новое поведение добавляется так, чтобы не переписывать существующие компоненты и не нарушать их работу.
+* **Liskov Substitution — подстановка Лисков.** Объект производного класса должен заменять объект базового класса без нарушения корректности и ожидаемого поведения программы.
+* **Interface Segregation — разделение интерфейсов.** Клиент не должен зависеть от возможностей, которыми не пользуется. При необходимости большой интерфейс делят на небольшие.
+* **Dependency Inversion — инверсия зависимостей.** Модули высокого уровня должны зависеть от абстракций, а не от конкретных модулей низкого уровня.
+
+В зависимости от структуры проекта и языка вместо класса речь может идти о модуле, компоненте или другой сущности.
 </b></details>
 
 <details>
-<summary>What is DRY? What is your opinion on it?</summary><br><b>
+<summary>Что такое YAGNI? Как вы к нему относитесь?</summary><br><b>
 
-DRY - Don't repeat yourself. Actually it means that you shouldn't duplicate logic and use functions/classes instead. But this must be done smartly and pay attention to the domain logic. Same code lines don't always mean duplication
+YAGNI — You Aren't Gonna Need It, «вам это не понадобится». Следует добавлять нужную функциональность, а не реализовывать заранее то, в чём пока нет потребности.
 </b></details>
 
 <details>
-<summary>What are the four pillars of object oriented programming?</summary><br><b>
+<summary>Что такое DRY? Как вы к нему относитесь?</summary><br><b>
 
-* Abstraction - you don't need to know how this class implemented. You need to know what functionality does it provide (interface) and how to use it
-* Encapsulation - keep fields for class purposes private (or protected) and provide public methods if needed. We must keep the data and code safe within the class itself
-* Inheritance - gives ability to create class that shares some of attributes of existing classes
-* Polymorphism - same methods in different contexts can do different things. Method overloading and overriding are some forms of polymorphism
+DRY — Don't Repeat Yourself, «не повторяйтесь». Не дублируйте одну и ту же логику: выделяйте функции и классы. Но учитывайте предметную область: одинаковые строки кода не всегда означают дублирование одного знания или правила.
 </b></details>
 
 <details>
-<summary>Explain recursion</summary><br><b>
+<summary>Назовите четыре основных принципа ООП.</summary><br><b>
 
-Recursion - process (or strategy), when function calls itself. It has recursive case and exit case. In recursive case we call function again, in exit case we finish function without calling it again. If we don't have exit case - function will work infinite, until memory overload or call stack limit
+* Абстракция: пользователю класса достаточно знать его интерфейс и способ использования, а не внутреннюю реализацию.
+* Инкапсуляция: внутренние данные и детали реализации скрываются, а доступ предоставляется через необходимые публичные методы.
+* Наследование: позволяет создавать классы на основе существующих с общими свойствами и поведением.
+* Полиморфизм: одинаковый интерфейс может вызывать разное поведение в зависимости от объекта или контекста. Переопределение и перегрузка методов — некоторые его формы.
 </b></details>
 
 <details>
-<summary>Explain Inversion of Control (IoC)</summary><br><b>
+<summary>Объясните рекурсию.</summary><br><b>
 
-Inversion of Control - design principle, used to achieve loose coupling. You must use some abstraction layer to access some functionality (similar to SOLID Dependency Inversion)
+Рекурсия — ситуация, когда функция вызывает саму себя. Нужны рекурсивный случай с новым вызовом и базовый случай, в котором функция завершается. Без достижимого базового случая вызовы могут продолжаться до исчерпания памяти или достижения ограничения стека.
 </b></details>
 
 <details>
-<summary>Explain Dependency Injection (DI)</summary><br><b>
+<summary>Объясните инверсию управления (IoC).</summary><br><b>
 
-Dependency Injection - design pattern, used with IoC. Our object fields (dependencies) must be configurated by external objects
+Это принцип проектирования для уменьшения связанности: управление созданием объектов, их взаимодействием или вызовами передаётся внешнему механизму, например фреймворку. В исходнике акцент сделан на доступе к функциональности через абстракции и связи с инверсией зависимостей SOLID.
 </b></details>
 
 <details>
-<summary>True or False? In Dynamically typed languages the variable type is known at run-time instead of at compile-time</summary><br><b>
+<summary>Объясните внедрение зависимостей (DI).</summary><br><b>
 
-True
+Это шаблон, применяемый для реализации IoC: необходимые объекту зависимости передаются и настраиваются извне.
 </b></details>
 
 <details>
-<summary>Explain what are design patterns</summary><br><b>
+<summary>Верно ли, что при динамической типизации типы проверяются во время выполнения, а не компиляции?</summary><br><b>
 
-[refactoring.guru](https://refactoring.guru/): "Design patterns are typical solutions to commonly occurring problems in software design. They are like pre-made blueprints that you can customize to solve a recurring design problem in your code."
+Да.
 </b></details>
 
 <details>
-<summary>Explain big O notation</summary><br><b>
+<summary>Что такое шаблоны проектирования?</summary><br><b>
 
-[habr.com](https://habr.com/ru/post/559518/) "We can use Big O notation to compare and search different solutions to find which solution is best. The best solution is one that consumes less amount of time and space. Generally, time and space are two parameters that determine the efficiency of the algorithm.
-
- Big O Notation tells accurately how long an algorithm takes to run. It is a basic analysis of algorithm efficiency. It describes the execution time required. It depends on the size of input data that essentially passes in. Big O notation gives us algorithm complexity in terms of input size. For the large size of input data, the execution time will be slow as compared to the small size of input data. Big O notation is used to analyze space and time."
+[refactoring.guru](https://refactoring.guru/): типовые решения часто встречающихся задач проектирования. Это своего рода заготовки, которые можно адаптировать к повторяющимся задачам в коде.
 </b></details>
 
 <details>
-<summary>What is "Duck Typing"?</summary><br><b>
+<summary>Объясните обозначение «O большое».</summary><br><b>
 
-"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck."
+Источник: [habr.com](https://habr.com/ru/post/559518/).
 
-This is direction in programming, where we are checking properties of object, but not it's type
+Обозначение O позволяет сравнивать рост затрат времени и памяти у алгоритмов в зависимости от размера входных данных. Эти два ресурса часто используются для оценки эффективности решений.
+
+Оно описывает асимптотическую верхнюю границу роста затрат, а не точное время выполнения в секундах. При увеличении входа обычно увеличивается и объём работы. Оценки времени и памяти позволяют понять, насколько хорошо алгоритм будет работать на больших входных данных.
+
+Примечание: утверждение исходника о «точном времени» исправлено.
 </b></details>
 
 <details>
-<summary>Explain string interpolation</summary><br><b>
+<summary>Что такое утиная типизация?</summary><br><b>
 
-String interpolation - process of evaluating of string literal. For example (JS):</b>
+«Если птица ходит как утка, плавает как утка и крякает как утка, я называю её уткой».
+
+При таком подходе важно наличие нужных свойств и методов объекта, а не его принадлежность определённому классу.
+</b></details>
+
+<details>
+<summary>Объясните интерполяцию строк.</summary><br><b>
+
+Это подстановка вычисленных значений в строковый шаблон. Пример на JavaScript:</b>
+
 ```js
 const messages = 5;
 console.log(`You have ${messages} new messages`); // You have 5 new messages 
 ```
 </details>
 
-##### Common algorithms
+<a id="common-algorithms"></a>
+##### Распространённые алгоритмы
 
 <details>
-<summary>Binary search:
+<summary>Двоичный поиск:
 
-  * How does it works?
-  * Can you implement it? (in any language you prefer)
-  * What is the average performance of the algorithm you wrote?</summary><br><b>
+* Как он работает?
+* Реализуйте его на любом языке.
+* Какова средняя сложность вашей реализации?</summary><br><b>
 
-It's a search algorithm used with sorted arrays/lists to find a target value by dividing the array each iteration and comparing the middle value to the target value. If the middle value is smaller than target value, then the target value is searched in the right part of the divided array, else in the left side. This continues until the value is found (or the array divided max times)
+Алгоритм ищет значение в отсортированном массиве или списке. На каждом шаге рассматривает середину диапазона. Если искомое значение больше среднего элемента, поиск продолжается в правой половине, если меньше — в левой. Это повторяется до нахождения значения или опустошения диапазона поиска.
 
-[python implementation](coding/python/binary_search.py)
+[Реализация на Python](coding/python/binary_search.py)
 
-The average performance of the above algorithm is O(log n). Best performance can be O(1) and worst O(log n).
+Средняя сложность — O(log n), лучшая — O(1), худшая — O(log n).
 </b></details>
 
-##### Code Review
+<a id="code-review"></a>
+##### Ревью кода
 
 <details>
-<summary>What are your code-review best practices?</summary><br><b>
-</b></details>
-
-<details>
-<summary>Do you agree/disagree with each of the following statements and why?:
-
-  * The commit message is not important. When reviewing a change/patch one should focus on the actual change
-  * You shouldn't test your code before submitting it. This is what CI/CD exists for.</summary><br><b>
-</b></details>
-
-#### Strings
-
-<details>
-<summary>In any language you want, write a function to determine if a given string is a palindrome</summary><br><b>
+<summary>Каких хороших практик ревью кода вы придерживаетесь?</summary><br><b>
 </b></details>
 
 <details>
-<summary>In any language you want, write a function to determine if two strings are Anagrams </summary><br><b>
+<summary>Согласны ли вы со следующими утверждениями и почему?
+
+* Сообщение коммита неважно: при ревью нужно смотреть только на само изменение.
+* Не нужно тестировать код перед отправкой: для этого существует CI/CD.
+</summary><br><b>
 </b></details>
 
-#### Integers
+<a id="strings"></a>
+#### Строки
 
 <details>
-<summary>In any language you would like, print the numbers from 1 to a given integer. For example for input: 5, the output is: 12345</summary><br><b>
-</b></details>
-
-#### Time Complexity
-
-<details>
-<summary>Describe what would be the time complexity of the operations <code>access</code>, <code>search</code> <code>insert</code> and <code>remove</code> for the following data structures:</summary><br><b>
-
-  * Stack
-  * Queue
-  * Linked List
-  * Binary Search Tree
+<summary>Напишите на любом языке функцию, определяющую, является ли строка палиндромом.</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is the complexity for the best, worst and average cases of each of the following algorithms?:
-
-  * Quick sort
-  * Merge sort
-  * Bucket Sort
-  * Radix Sort</summary><br><b>
+<summary>Напишите на любом языке функцию, определяющую, являются ли две строки анаграммами.</summary><br><b>
 </b></details>
 
-#### Data Structures & Types
+<a id="integers"></a>
+#### Целые числа
 
 <details>
-<summary>Implement Stack in any language you would like</summary><br><b>
+<summary>На любом языке выведите числа от 1 до заданного целого числа. Например, для входа 5 результат — 12345.</summary><br><b>
 </b></details>
 
-<details>
-<summary>Tell me everything you know about Linked Lists</summary><br><b>
-
-  * A linked list is a data structure
-  * It consists of a collection of nodes. Together these nodes represent a sequence
-  * Useful for use cases where you need to insert or remove an element from any position of the linked list
-  * Some programming languages don't have linked lists as a built-in data type (like Python for example) but it can be easily implemented
-</b></details>
+<a id="time-complexity"></a>
+#### Временная сложность
 
 <details>
-<summary>Describe (no need to implement) how to detect a loop in a Linked List</summary><br><b>
+<summary>Опишите сложность доступа, поиска, вставки и удаления для следующих структур данных.</summary><br><b>
 
-There are multiple ways to detect a loop in a linked list. I'll mention three here:
-
-Worst solution:<br>
-Two pointers where one points to the head and one points to the last node. Each time you advance the last pointer by one and check whether the distance between head pointer to the moved pointer is bigger than the last time you measured the same distance (if not, you have a loop).<br>
-The reason it's probably the worst solution, is because time complexity here is O(n^2)
-
-Decent solution:<br>
-
-Create an hash table and start traversing the linked list. Every time you move, check whether the node you moved to is in the hash table. If it isn't, insert it to the hash table. If you do find at any point the node in the hash table, it means you have a loop. When you reach None/Null, it's the end and you can return "no loop" value.
-This one is very easy to implement (just create a hash table, update it and check whether the node is in the hash table every time you move to the next node) but since the auxiliary space is O(n) because you create a hash table then, it's not the best solution
-
-Good solution:<br>
-Instead of creating a hash table to document which nodes in the linked list you have visited, as in the previous solution, you can modify the Linked List (or the Node to be precise) to have a "visited" attribute. Every time you visit a node, you set "visited" to True.<br>
-Time compleixty is O(n) and Auxiliary space is O(1), so it's a good solution but the only problem, is that you have to modify the Linked List.
-
-Best solution:<br>
-You set two pointers to traverse the linked list from the beginning. You move one pointer by one each time and the other pointer by two. If at any point they meet, you have a loop. This solution is also called "Floyd's Cycle-Finding"<br>
-Time complexity is O(n) and auxiliary space is O(1). Perfect :)
+* Стек.
+* Очередь.
+* Связный список.
+* Двоичное дерево поиска.
 </b></details>
 
 <details>
-<summary>Implement Hash table in any language you would like</summary><br><b>
+<summary>Какова сложность в лучшем, худшем и среднем случае для следующих алгоритмов?
+
+* Быстрая сортировка.
+* Сортировка слиянием.
+* Блочная сортировка.
+* Поразрядная сортировка.
+</summary><br><b>
+</b></details>
+
+<a id="data-structures--types"></a>
+#### Структуры и типы данных
+
+<details>
+<summary>Реализуйте стек на любом языке.</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is Integer Overflow? How is it handled?</summary><br><b>
+<summary>Расскажите всё, что знаете о связных списках.</summary><br><b>
+
+* Это структура данных.
+* Она состоит из узлов, вместе образующих последовательность.
+* Полезна для вставки и удаления элементов в разных позициях списка; стоимость поиска позиции нужно учитывать отдельно.
+* В некоторых языках, например Python, нет отдельного встроенного типа связного списка, но его можно реализовать.
 </b></details>
 
 <details>
-<summary>Name 3 design patterns. Do you know how to implement (= provide an example) these design pattern in any language you'll choose?</summary><br><b>
+<summary>Опишите способы обнаружения цикла в связном списке. Реализация не требуется.</summary><br><b>
+
+Есть несколько подходов.
+
+**Неэффективный вариант.** Продвигать один указатель и каждый раз повторно проверять пройденную часть списка от головы, выясняя, встречался ли этот узел раньше. Такой подход требует O(n²) времени. В исходнике он описан через сравнение расстояний от головы до текущего узла.
+
+**Хеш-таблица.** При обходе храните посещённые узлы в хеш-таблице. Если очередной узел уже есть в ней, найден цикл. Если достигнут None/Null, цикла нет. Это просто реализовать, но требуется O(n) дополнительной памяти.
+
+**Пометка узлов.** Добавьте узлам признак visited и устанавливайте его при посещении. Повторно встреченная пометка означает цикл. Обход требует O(n) времени и не нуждается во внешней таблице, однако изменяет структуру списка. В исходнике дополнительная память названа O(1), но если поля visited добавляются специально для этой проверки, суммарно они занимают O(n).
+
+**Алгоритм Флойда.** Два указателя начинают обход с головы: один движется на один узел за шаг, другой — на два. Если они встретятся, есть цикл. Время — O(n), дополнительная память — O(1). Изменять список не требуется.
 </b></details>
 
 <details>
-<summary>Given an array/list of integers, find 3 integers which are adding up to 0 (in any language you would like)</summary><br><b>
+<summary>Реализуйте хеш-таблицу на любом языке.</summary><br><b>
+</b></details>
+
+<details>
+<summary>Что такое переполнение целого числа и как его обрабатывают?</summary><br><b>
+</b></details>
+
+<details>
+<summary>Назовите три шаблона проектирования и приведите примеры их реализации на любом языке.</summary><br><b>
+</b></details>
+
+<details>
+<summary>В массиве целых чисел найдите три числа, сумма которых равна нулю. Используйте любой язык.</summary><br><b>
 
 ```
 def find_triplets_sum_to_zero(li):
@@ -319,4 +312,3 @@ def find_triplets_sum_to_zero(li):
                 up -= 1
 ```
 </b></details>
-

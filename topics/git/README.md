@@ -1,144 +1,144 @@
+<a id="git"></a>
 # Git
 
-## Exercises
+<a id="exercises"></a>
+## Упражнения
 
-| Name              | Topic  | Objective & Instructions         | Solution                                    | Comments |
+| Название | Тема | Цель и инструкции | Решение | Комментарии |
 | ----------------- | ------ | -------------------------------- | ------------------------------------------- | -------- |
-| My first Commit   | Commit | [Exercise](commit_01.md)         | [Solution](solutions/commit_01_solution.md) |          |
-| Time to Branch    | Branch | [Exercise](branch_01.md)         | [Solution](solutions/branch_01_solution.md) |          |
-| Squashing Commits | Commit | [Exercise](squashing_commits.md) | [Solution](solutions/squashing_commits.md)  |          |
+| Мой первый коммит | Коммиты | [Задание](commit_01.md) | [Решение](solutions/commit_01_solution.md) | |
+| Пора создать ветку | Ветки | [Задание](branch_01.md) | [Решение](solutions/branch_01_solution.md) | |
+| Объединение коммитов | Коммиты | [Задание](squashing_commits.md) | [Решение](solutions/squashing_commits.md) | |
 
-## Questions
+<a id="questions"></a>
+## Вопросы
 
-### Git Basics
-
-<details>
-<summary>How do you know if a certain directory is a git repository?</summary><br><b>
-You can check if there is a ".git" directory.
-</b>
-</details>
+<a id="git-basics"></a>
+### Основы Git
 
 <details>
-<summary>Explain the following: <code>git directory</code>, <code>working directory</code> and <code>staging area</code></summary><br>
-<b>
+<summary>Как определить, является ли каталог репозиторием Git?</summary><br><b>
 
-This answer taken from [git-scm.com](https://git-scm.com/book/en/v1/Getting-Started-Git-Basics#_the_three_states)
-
-"The Git directory is where Git stores the meta-data and object database for your project. This is the most important
-part of Git, and it is what is copied when you clone a repository from another computer.
-
-The working directory is a single checkout of one version of the project. These files are pulled out of the compressed
-database in the Git directory and placed on disk for you to use or modify.
-
-The staging area is a simple file, generally contained in your Git directory, that stores information about what will go
-into your next commit. It’s sometimes referred to as the index, but it’s becoming standard to refer to it as the staging
-area."
-</b>
-</details>
-
-<details>
-<summary>What is the difference between <code>git pull</code> and <code>git fetch</code>?</summary><br><b>
-
-Shortly, git pull = git fetch + git merge
-
-When you run git pull, it gets all the changes from the remote or central
-repository and attaches it to your corresponding branch in your local repository.
-
-git fetch gets all the changes from the remote repository, stores the changes in
-a separate branch in your local repository
+Можно проверить наличие каталога `.git`. В некоторых случаях, например в связанной рабочей копии, `.git` — файл со ссылкой на служебный каталог.
 </b></details>
 
 <details>
-<summary>How to check if a file is tracked and if not, then track it?</summary><br><b>
+<summary>Объясните понятия «каталог Git», «рабочий каталог» и «область подготовки».</summary><br><b>
 
-There are different ways to check whether a file is tracked or not:
-  - `git ls-files <file>` -> exit code of 0 means it's tracked
-  - `git blame <file>`
-  ...
-</b>
-</details>
+Ответ основан на [git-scm.com](https://git-scm.com/book/en/v1/Getting-Started-Git-Basics#_the_three_states).
 
-<details>
-<summary>Explain what the file <code>gitignore</code> is used for</summary><br><b>
-The purpose of <code>gitignore</code> files is to ensure that certain files not tracked by Git remain untracked. To stop tracking a file that is currently tracked, use git rm --cached.
-</b>
-</details>
+Каталог Git хранит метаданные и базу объектов проекта. Это важнейшая часть Git; её содержимое переносится при клонировании репозитория с другого компьютера.
 
-<details>
-<summary>How can you see which changes have done before committing them?</summary><br><b>
-`git diff`
+Рабочий каталог представляет одну извлечённую версию проекта. Файлы берутся из сжатой базы объектов и размещаются на диске, чтобы с ними можно было работать.
 
+Область подготовки — обычно файл в каталоге Git, содержащий сведения о том, что войдёт в следующий коммит. Её также называют индексом.
 </b></details>
 
 <details>
-<summary>What <code>git status</code> does?</summary><br><b>
+<summary>Чем отличаются <code>git pull</code> и <code>git fetch</code>?</summary><br><b>
 
-`git status` helps you to understand the tracking status of files in your repository. Focusing on working directory and staging area - you can learn which changes were made in the working directory, which changes are in the staging area and in general, whether files are being tracked or not.
+В обычном режиме `git pull` выполняет `git fetch`, а затем `git merge`; при соответствующих настройках вместо слияния применяется rebase.
+
+`git pull` получает изменения из удалённого репозитория и интегрирует их в текущую локальную ветку.
+
+`git fetch` получает объекты и обновляет ссылки на удалённые ветки, но сам по себе не интегрирует изменения в текущую ветку.
 </b></details>
 
 <details>
-<summary>You've created new files in your repository. How to make sure Git tracks them?</summary><br><b>
+<summary>Как проверить, отслеживается ли файл, и начать отслеживание, если нет?</summary><br><b>
+
+Есть несколько способов проверки:
+
+* `git ls-files <file>` — проверьте, появилось ли имя файла в выводе. Для проверки кодом завершения используйте `git ls-files --error-unmatch <file>`.
+* `git blame <file>` — позволяет посмотреть историю строк уже известного Git файла.
+
+Чтобы начать отслеживание, выполните `git add <file>`.
+
+Примечание: исходник ошибочно предлагает считать нулевой код завершения обычного `git ls-files` достаточной проверкой.
+</b></details>
+
+<details>
+<summary>Для чего нужен файл <code>.gitignore</code>?</summary><br><b>
+
+Он задаёт правила игнорирования неотслеживаемых файлов. Чтобы прекратить отслеживание уже добавленного файла, используйте `git rm --cached`.
+</b></details>
+
+<details>
+<summary>Как посмотреть изменения перед созданием коммита?</summary><br><b>
+
+`git diff` показывает изменения вне индекса; для подготовленных изменений используйте `git diff --cached`.
+</b></details>
+
+<details>
+<summary>Что делает <code>git status</code>?</summary><br><b>
+
+Показывает состояние файлов: изменения в рабочем каталоге, изменения в области подготовки и неотслеживаемые файлы.
+</b></details>
+
+<details>
+<summary>Вы создали новые файлы в репозитории. Как добавить их под контроль Git?</summary><br><b>
 
 `git add FILES`
-</b>
-</details>
+</b></details>
 
-### Scenarios
+<a id="scenarios"></a>
+### Сценарии
 
 <details>
-<summary>You have files in your repository you don't want Git to ever track them. What should you be doing to avoid ever tracking them?</summary><br><b>
+<summary>В репозитории есть файлы, которые не нужно отслеживать. Как исключить их из добавления?</summary><br><b>
 
-Add them to the file `.gitignore`. This will make sure these files are never added to staging area.
+Добавьте правила в `.gitignore`. Обычный `git add` будет пропускать подходящие неотслеживаемые файлы. Это не запрещает принудительное добавление и не удаляет уже отслеживаемые файлы из индекса.
 </b></details>
 
 <details>
-<summary>A development team in your organization is using a monorepo and it's became quite big, including hundred thousands of files. They say running many git operations is taking a lot of time to run (like git status for example). Why does that happen and what can you do in order to help them?</summary><br><b>
+<summary>Команда работает с большим монорепозиторием, содержащим сотни тысяч файлов. Многие операции, например git status, выполняются долго. Почему и как помочь?</summary><br><b>
 
-Many Git operations are related to filesystem state. `git status` for example will run diffs to compare HEAD commit to index and another diff to compare index to working directory. As part of these diffs, it would need to run quite a lot of `lstat()` system calls. When running on hundred thousands of files, it can take seconds if not minutes.
+Многие операции Git обращаются к файловой системе. Например, `git status` сравнивает HEAD с индексом, а индекс — с рабочим каталогом. Для этого может потребоваться много системных вызовов `lstat()`. На сотнях тысяч файлов это занимает секунды и даже минуты.
 
-One thing to do about it, would be to use the built-in `fsmonitor` (filesystem monitor) of Git. With fsmonitor (which integrated with Watchman), Git spawn a daemon that will watch for any changes continuously in the working directory of your repository and will cache them . This way, when you run `git status` instead of scanning the working directory, you are using a cached state of your index.
+Один из вариантов — монитор файловой системы fsmonitor. В зависимости от реализации это встроенный демон или интеграция с внешним монитором, например Watchman. Монитор отслеживает изменения в рабочем каталоге и позволяет Git использовать сведения о них вместо полного повторного сканирования.
 
 <p align="center">
 <img src="images/design/development/git_fsmonitor.png"/>
 </p>
 
-Next, you can try to enable `feature.manyFile` with `git config feature.manyFiles true`. This does two things:
+Также можно включить `feature.manyFiles`: `git config feature.manyFiles true`. В описанной конфигурации это:
 
-1. Sets `index.version = 4` which enables path-prefix compression in the index
-2. Sets `core.untrackedCache=true` which by default is set to `keep`. The untracked cache is quite important concept. What it does is to record the mtime of all the files and directories in the working directory. This way, when time comes to iterate over all the files and directories, it can skip those whom mtime wasn't updated.
+1. Устанавливает `index.version = 4`, включая сжатие общих префиксов путей в индексе.
+2. Включает `core.untrackedCache=true`. Кеш неотслеживаемых файлов использует сведения о времени изменения каталогов, чтобы не сканировать повторно те из них, которые не менялись.
 
-Before enabling it, you might want to run `git update-index --test-untracked-cache` to test it out and make sure mtime operational on your system.
+Перед включением выполните `git update-index --test-untracked-cache`, чтобы проверить пригодность файловой системы для такого кеширования.
 
-Git also has the built-in `git-maintainence` command which optimizes Git repository so it's faster to run commands like `git add` or `git fatch` and also, the git repository takes less disk space. It's recommended to run this command periodically (e.g. each day).
+Команда `git maintenance` обслуживает и оптимизирует репозиторий: это помогает ускорить операции и сократить занимаемое место. В исходнике рекомендуется периодическое обслуживание, например ежедневное.
 
-In addition, track only what is used/modified by developers - some repositories may include generated files that are required for the project to run properly (or support certain accessibility options), but not actually being modified by any way by the developers. In that case, tracking them is futile.
-In order to avoid populating those file in the working directory, one can use the `sparse checkout` feature of Git.
+Также стоит пересмотреть состав отслеживаемых файлов. Некоторые проекты включают генерируемые файлы, необходимые для работы или специальных возможностей, хотя разработчики их не редактируют. Решение об исключении таких файлов зависит от процесса сборки и распространения проекта.
 
-Finally, with certain build systems, you can know which files are being used/relevant exactly based on the component of the project that the developer is focusing on. This, together with the `sparse checkout` can lead to a situation where only a small subset of the files are being populated in the working directory. Making commands like `git add`, `git status`, etc. really quick
+Чтобы не извлекать все файлы в рабочий каталог, можно использовать sparse checkout.
+
+Некоторые системы сборки позволяют определить точный набор файлов, относящийся к компоненту, над которым работает разработчик. Совместно со sparse checkout это сокращает рабочую копию и ускоряет `git add`, `git status` и другие операции.
 </b></details>
 
-### Branches
+<a id="branches"></a>
+### Ветки
 
 <details>
-<summary>What's is the branch strategy (flow) you know?</summary><br><b>
+<summary>Какие стратегии работы с ветками вы знаете?</summary><br><b>
 
-- Git flow
-- GitHub flow
-- Trunk based development
-- GitLab flow
+* Git flow.
+* GitHub flow.
+* Разработка в основной ветке — trunk-based development.
+* GitLab flow.
 
-[Explanation](https://www.bmc.com/blogs/devops-branching-strategies/#:~:text=What%20is%20a%20branching%20strategy,used%20in%20the%20development%20process).
-
-</b></details>
-
-<details>
-<summary>True or False? A branch is basically a simple pointer or reference to the head of certain line of work</summary><br><b>
-
-True
+[Объяснение](https://www.bmc.com/blogs/devops-branching-strategies/#:~:text=What%20is%20a%20branching%20strategy,used%20in%20the%20development%20process).
 </b></details>
 
 <details>
-<summary>You have two branches - main and devel. How do you make sure devel is in sync with main?</summary><br><b>
+<summary>Верно ли, что ветка — это ссылка на последний коммит определённой линии разработки?</summary><br><b>
+
+Да.
+</b></details>
+
+<details>
+<summary>Есть ветки main и devel. Как синхронизировать devel с main?</summary><br><b>
 
 ```
 git checkout main
@@ -146,223 +146,215 @@ git pull
 git checkout devel
 git merge main
 ```
-
 </b></details>
 
 <details>
-<summary>Describe shortly what happens behind the scenes when you run <code>git branch <BRANCH></code></summary><br><b>
+<summary>Что происходит при выполнении <code>git branch &lt;BRANCH&gt;</code>?</summary><br><b>
 
-Git runs update-ref to add the SHA-1 of the last commit of the branch you're on into the new branch you would like to create
+Git создаёт новую ссылку на коммит, на который указывает текущая ветка, используя механизм обновления ссылок. В исходнике описывается сохранение SHA-1 этого коммита через update-ref.
 </b></details>
 
 <details>
-<summary>When you run <code>git branch <BRANCH></code> how does Git know the SHA-1 of the last commit?</summary><br><b>
+<summary>Откуда Git знает идентификатор последнего коммита при выполнении <code>git branch &lt;BRANCH&gt;</code>?</summary><br><b>
 
-Using the HEAD file: `.git/HEAD`
+Из HEAD: `.git/HEAD` обычно указывает на текущую ветку, ссылка которой содержит идентификатор коммита.
 </b></details>
 
 <details>
-<summary>What <code>unstaged</code> means in regards to Git?</summary><br><b>
+<summary>Что означает unstaged в Git?</summary><br><b>
 
-A file that is in the working directory but is not in the HEAD nor in the staging area is referred to as "unstaged".
+Изменения рабочего каталога, ещё не добавленные в область подготовки. Это не обязательно новый файл: изменённый отслеживаемый файл тоже может содержать неподготовленные изменения.
 </b></details>
 
 <details>
-<summary>True or False? when you <code>git checkout some_branch</code>, Git updates .git/HEAD to <code>/refs/heads/some_branch</code></summary><br><b>
+<summary>Верно ли, что после <code>git checkout some_branch</code> HEAD ссылается на <code>refs/heads/some_branch</code>?</summary><br><b>
 
-True
+Да, при обычном переключении на локальную ветку.
 </b></details>
 
-### Merge
+<a id="merge"></a>
+### Слияние
 
 <details>
-<summary>You have two branches - main and devel. How do you merge devel into main?</summary><br><b>
+<summary>Есть ветки main и devel. Как влить devel в main?</summary><br><b>
 
 ```
 git checkout main
 git merge devel
 git push origin main
 ```
-
 </b></details>
 
 <details>
-<summary>How to resolve git merge conflicts?</summary><br><b>
+<summary>Как разрешать конфликты слияния Git?</summary><br><b>
 
-<p>
-First, you open the files which are in conflict and identify what are the conflicts.
-Next, based on what is accepted in your company or team, you either discuss with your
-colleagues on the conflicts or resolve them by yourself
-After resolving the conflicts, you add the files with `git add <file_name>`
-Finally, you run `git rebase --continue`
-</p>
+Откройте конфликтующие файлы и разберитесь в различиях. В зависимости от правил команды обсудите решение с коллегами либо разрешите конфликт самостоятельно. Добавьте исправленные файлы командой `git add <file_name>` и завершите слияние командой `git merge --continue` или коммитом.
+
+Примечание: в исходнике указан `git rebase --continue`. Эта команда подходит для продолжения rebase, а не обычного merge.
 </b></details>
 
 <details>
-<summary>What merge strategies are you familiar with?</summary><br><b>
+<summary>Какие стратегии слияния вы знаете?</summary><br><b>
 
-Mentioning two or three should be enough and it's probably good to mention that 'recursive' is the default one.
+Обычно достаточно назвать две-три. В исходнике перечислены recursive, resolve, ours и theirs, а recursive названа стратегией по умолчанию.
 
-recursive
-resolve
-ours
-theirs
+Уточнение: `theirs` — не самостоятельная стратегия слияния, а параметр разрешения конфликтов для поддерживающих его стратегий. Стратегия по умолчанию зависит от версии Git.
 
-This page explains it the best: https://git-scm.com/docs/merge-strategies
+Описание стратегий: https://git-scm.com/docs/merge-strategies
 </b></details>
 
 <details>
-<summary>Explain Git octopus merge</summary><br><b>
+<summary>Объясните octopus merge в Git.</summary><br><b>
 
-Probably good to mention that it's:
+* Подходит для одновременного слияния нескольких веток и используется по умолчанию для такого случая.
+* В первую очередь предназначен для объединения тематических веток.
 
-- It's good for cases of merging more than one branch (and also the default of such use cases)
-- It's primarily meant for bundling topic branches together
-
-This is a great article about Octopus merge: http://www.freblogg.com/2016/12/git-octopus-merge.html
+Статья об octopus merge: http://www.freblogg.com/2016/12/git-octopus-merge.html
 </b></details>
 
 <details>
-<summary>What is the difference between <code>git reset</code> and <code>git revert</code>?</summary><br><b>
+<summary>Чем отличаются <code>git reset</code> и <code>git revert</code>?</summary><br><b>
 
-<p>
+`git revert` создаёт новый коммит, отменяющий изменения указанного коммита.
 
-`git revert` creates a new commit which undoes the changes from last commit.
-
-`git reset` depends on the usage, can modify the index or change the commit which the branch head
-is currently pointing at.
-
-</p>
+`git reset` в зависимости от формы вызова изменяет индекс и/или переносит текущую ветку на другой коммит; некоторые режимы также изменяют рабочий каталог.
 </b></details>
 
-### Rebase
+<a id="rebase"></a>
+### Перебазирование
 
 <details>
-<summary>You would like to move forth commit to the top. How would you achieve that?</summary><br><b>
+<summary>Как переместить четвёртый коммит на вершину истории?</summary><br><b>
 
-Using the `git rebase` command
+С помощью `git rebase`, используя интерактивный режим для изменения порядка коммитов.
 </b></details>
 
 <details>
-<summary>In what situations are you using <code>git rebase</code>?</summary><br><b>
-Suppose a team is working on a `feature` branch that is coming from the `main` branch of the repo. At a point, where the feature development is done, and finally we wish to merge the feature branch into the main branch without keeping the history of the commits made in the feature branch, a `git rebase` will be helpful. 
+<summary>Когда вы используете <code>git rebase</code>?</summary><br><b>
 
+Например, команда работает над веткой `feature`, созданной от `main`. Перед интеграцией изменений rebase позволяет перенести коммиты feature на новую основу и получить линейную историю.
+
+Примечание: исходник описывает rebase как удаление истории коммитов feature. Само перебазирование переносит коммиты с изменением их идентификаторов; для объединения их в один коммит требуется squash.
 </b></details>
 
 <details>
-<summary>How do you revert a specific file to previous commit?</summary><br><b>
+<summary>Как восстановить конкретный файл из предыдущего коммита?</summary><br><b>
 
 ```
 git checkout HEAD~1 -- /path/of/the/file
 ```
-
 </b></details>
 
 <details>
-<summary>How to squash last two commits?</summary><br><b>
+<summary>Как объединить два последних коммита?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is the <code>.git</code> directory? What can you find there?</summary><br><b>
-	The <code>.git</code> folder contains all the information that is necessary for your project in version control and all the information about commits, remote repository address, etc. All of them are present in this folder. It also contains a log that stores your commit history so that you can roll back to history.
+<summary>Что такое каталог <code>.git</code> и что в нём находится?</summary><br><b>
 
-This info copied from [https://stackoverflow.com/questions/29217859/what-is-the-git-folder](https://stackoverflow.com/questions/29217859/what-is-the-git-folder)
+Он содержит служебные данные контроля версий: объекты коммитов, ссылки, настройки удалённых репозиториев и другие сведения, необходимые для работы с историей проекта и восстановления предыдущих состояний.
+
+Источник: [https://stackoverflow.com/questions/29217859/what-is-the-git-folder](https://stackoverflow.com/questions/29217859/what-is-the-git-folder).
 </b></details>
 
 <details>
-<summary>What are some Git anti-patterns? Things that you shouldn't do</summary><br><b>
+<summary>Каких антипаттернов Git следует избегать?</summary><br><b>
 
-- Not waiting too long between commits
-- Not removing the .git directory :)
-  </b></details>
-
-<details>
-<summary>How do you remove a remote branch?</summary><br><b>
-
-You delete a remote branch with this syntax:
-
-git push origin :[branch_name]
+* Не делайте слишком большие перерывы между коммитами.
+* Не удаляйте каталог .git :)
 </b></details>
 
 <details>
-<summary>Are you familiar with gitattributes? When would you use it?</summary><br><b>
+<summary>Как удалить удалённую ветку?</summary><br><b>
 
-gitattributes allow you to define attributes per pathname or path pattern.<br>
+Используйте следующий синтаксис:
 
-You can use it for example to control endlines in files. In Windows and Unix based systems, you have different characters for new lines (\r\n and \n accordingly). So using gitattributes we can align it for both Windows and Unix with `* text=auto` in .gitattributes for anyone working with git. This is way, if you use the Git project in Windows you'll get \r\n and if you are using Unix or Linux, you'll get \n.
+`git push origin :[branch_name]`
 </b></details>
 
 <details>
-<summary>How do you discard local file changes? (before commit)</summary><br><b>
+<summary>Что такое gitattributes и когда вы его используете?</summary><br><b>
+
+Файл `.gitattributes` позволяет задавать атрибуты для путей или шаблонов путей.<br>
+
+Например, с его помощью управляют окончаниями строк. В Windows обычно используются `\r\n`, а в Unix — `\n`. Правило `* text=auto` включает автоматическое определение текстовых файлов и нормализацию окончаний строк в репозитории. Окончания строк в рабочей копии дополнительно зависят от настроек Git и атрибутов `eol`.
+</b></details>
+
+<details>
+<summary>Как отменить локальные изменения файла до коммита?</summary><br><b>
 
 `git checkout -- <file_name>`
 </b></details>
 
 <details>
-<summary>How do you discard local commits?</summary><br><b>
+<summary>Как удалить локальные коммиты?</summary><br><b>
 
-`git reset HEAD~1` for removing last commit
-If you would like to also discard the changes you `git reset --hard``
+`git reset HEAD~1` переносит ветку на коммит назад, сохраняя изменения в рабочем каталоге.
+Чтобы также отбросить соответствующие изменения, используется `git reset --hard HEAD~1`.
 </b></details>
 
 <details>
-<summary>True or False? To remove a file from git but not from the filesystem, one should use <code>git rm </code></summary><br><b>
+<summary>Верно ли, что для удаления файла из Git с сохранением на диске нужно использовать <code>git rm</code>?</summary><br><b>
 
-False. If you would like to keep a file on your filesystem, use `git reset <file_name>`
+Нет. Для прекращения отслеживания с сохранением файла на диске используйте `git rm --cached <file_name>`.
+
+Примечание: предложенный в исходнике `git reset <file_name>` отменяет подготовку изменений и не заменяет удаление уже отслеживаемого файла из индекса.
 </b></details>
 
-## References
+<a id="references"></a>
+## Ссылки Git
 
 <details>
-<summary>How to list the current git references in a given repository? </summary><br><b>
+<summary>Как вывести текущие ссылки репозитория?</summary><br><b>
 
-`find .git/refs/`
+`find .git/refs/` показывает файлы отдельных ссылок. Для списка ссылок, включая упакованные, используйте `git show-ref`.
 </b></details>
 
+<a id="git-diff"></a>
 ## Git Diff
 
 <details>
-<summary>What git diff does?</summary><br><b>
+<summary>Что делает git diff?</summary><br><b>
 
-git diff can compare between two commits, two files, a tree and the staging area, etc.
+Сравнивает коммиты, файлы, дерево и индекс, рабочий каталог и индекс и другие пары состояний.
 </b></details>
 
 <details>
-<summary>Which one is faster? <code>git diff-index HEAD</code> or <code>git diff HEAD</code> </summary><br><b>
+<summary>Что быстрее: <code>git diff-index HEAD</code> или <code>git diff HEAD</code>?</summary><br><b>
 
-`git diff-index` is faster but to be fair, it's because it does less. `git diff index` won't look at the content,
-only metadata like timestamps.
+В исходнике `git diff-index` назван более быстрым, поскольку выполняет меньше работы и может опираться на метаданные, например время изменения. Однако нельзя считать, что он всегда проверяет только метаданные: поведение зависит от параметров, состояния индекса и файлов.
 </b></details>
 
 <details>
-<summary>By which other Git commands does git diff used?</summary><br><b>
+<summary>Какие другие команды Git используют механизм diff?</summary><br><b>
 
-The diff mechanism used by `git status` to perform a comparison and let the user know which files are being tracked
+`git status` использует сравнение состояний, чтобы показать изменения файлов.
 </b></details>
 
-## Git Internal
+<a id="git-internal"></a>
+## Внутреннее устройство Git
 
 <details>
-<summary>Describe how `git status` works</summary><br><b>
+<summary>Как работает git status?</summary><br><b>
 
-Shortly, it runs `git diff` twice:
+Упрощённо он выполняет два сравнения:
 
-1. Compare between HEAD to staging area
-2. Compare staging area to working directory
-   </b></details>
+1. HEAD с областью подготовки.
+2. Области подготовки с рабочим каталогом.
+</b></details>
 
 <details>
-<summary>If <code>git status</code> has to run diff on all the files in the HEAD commit to those in staging area/index and another one on staging area/index and working directory, how is it fairly fast? </summary><br><b>
+<summary>Почему git status работает достаточно быстро, если сравнивает HEAD с индексом, а затем индекс с рабочим каталогом?</summary><br><b>
 
-One reason is about the structure of the index, commits, etc.
+Одна из причин — устройство индекса и объектов Git:
 
-- Every file in a commit is stored in tree object
-- The index is then a flattened structure of tree objects
-- All files in the index have pre-computed hashes
-- The diff operation then, is comparing the hashes
+* Дерево коммита содержит сведения о файлах и ссылки на объекты с их содержимым.
+* Индекс представляет плоский список отслеживаемых путей.
+* Для файлов в индексе уже известны хеши объектов.
+* При подходящем сравнении достаточно сопоставить эти хеши.
 
-Another reason is caching
+Другая причина — кеширование:
 
-- Index caches information on working directory
-- When Git has the information for certain file cached, there is no need to look at the working directory file
-  </b></details>
+* Индекс хранит сведения о файлах рабочего каталога.
+* Если кешированные метаданные показывают, что файл не менялся, Git может избежать повторного чтения его содержимого.
+</b></details>

@@ -1,321 +1,340 @@
+<a id="openshift"></a>
 ## OpenShift
 
-### OpenShift Exercises
+<a id="openshift-exercises"></a>
+### Упражнения по OpenShift
 
-|Name|Topic|Objective & Instructions|Solution|Comments|
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
-| Projects 101 | Projects | [Exercise](projects_101.md) | [Solution](solutions/projects_101.md)
-| My First Application | Applications | [Exercise](my_first_app.md) | [Solution](solutions/my_first_app.md)
+| Основы проектов | Проекты | [Задание](projects_101.md) | [Решение](solutions/projects_101.md)
+| Моё первое приложение | Приложения | [Задание](my_first_app.md) | [Решение](solutions/my_first_app.md)
 
-### OpenShift Self Assessment
+<a id="openshift-self-assessment"></a>
+### Самопроверка по OpenShift
 
-* [OpenShift 101](#Openshift-101)
-* [OpenShift Architecture](#Openshift-architecture)
-* [OpenShift Hands-On Basics](#Openshift-hands-on-basics)
-* [OpenShift Projects](#Openshift-projects)
+* [Основы OpenShift](#Openshift-101)
+* [Архитектура OpenShift](#Openshift-architecture)
+* [Практические основы OpenShift](#Openshift-hands-on-basics)
+* [Проекты OpenShift](#Openshift-projects)
 
 <a name="openshift-101"></a>
-### OpenShift 101
+<a id="openshift-101"></a>
+### Основы OpenShift
 
 <details>
-<summary>What is OpenShift?</summary><br><b>
+<summary>Что такое OpenShift?</summary><br><b>
 
-OpenShift is a container orchestration platform based on Kubernetes.<br>
-It can be used for deploying applications while having minimal management overhead.
+OpenShift — платформа оркестрации контейнеров на основе Kubernetes.<br>
+Она позволяет развёртывать приложения с небольшими затратами на администрирование.
 </b></details>
 
 <details>
-<summary>How OpenShift is related to Kubernetes?</summary><br><b>
+<summary>Как OpenShift связан с Kubernetes?</summary><br><b>
 
-OpenShift is build on top of Kubernetes while defining its own custom resources in addition to the built-in resources.
+OpenShift построен на Kubernetes и добавляет собственные ресурсы к его встроенным ресурсам.
 </b></details>
 
 <details>
-<summary>True or False? OpenShift is a IaaS (infrastructure as a service) solution</summary><br><b>
+<summary>Верно ли, что OpenShift — решение IaaS, то есть инфраструктура как услуга?</summary><br><b>
 
-False. OpenShift is a PaaS (platform as a service) solution.
+Нет. OpenShift относится к PaaS — платформе как услуге.
 </b></details>
 
 <details>
-<summary>True or False? OpenShift CLI supports everything kubectl supports, along with additional functionality</summary><br><b>
+<summary>Верно ли, что CLI OpenShift поддерживает возможности kubectl и предоставляет дополнительные функции?</summary><br><b>
 
-True
+Да.
 </b></details>
 
 <details>
-<summary>What are some of OpenShift added features on top of Kubernetes?</summary><br><b>
+<summary>Какие возможности OpenShift добавляет к Kubernetes?</summary><br><b>
 
-- UI: OpenShift provides unified UI out-of-the-box
-- Routes: Simple procedure for exposing services
-- Developer Workflow Support: built-in CI/CD (openshift pipelines), built-in container registry and tooling for building artifacts from source to container images
+* Интерфейс: единый пользовательский интерфейс из коробки.
+* Маршруты: простой способ открыть доступ к сервисам.
+* Поддержка разработки: CI/CD через OpenShift Pipelines, встроенный реестр контейнеров и средства сборки образов из исходного кода.
 </b></details>
 
 <details>
-<summary>True or False? To run containers on OpenShift, you have to own root privileges</summary><br><b>
+<summary>Верно ли, что для запуска контейнеров в OpenShift нужны права root?</summary><br><b>
 
-False. OpenShift supports rootless containers by default.
+Нет. OpenShift по умолчанию поддерживает запуск контейнеров без прав root.
 </b></details>
 
 <a name="openshift-architecture"></a>
-## OpenShift - Architecture
+<a id="openshift---architecture"></a>
+## OpenShift — архитектура
 
 <details>
-<summary>What types of nodes OpenShift has?</summary><br><b>
+<summary>Какие типы узлов есть в OpenShift?</summary><br><b>
 
-- Workers: Where the end-user applications are running
-- Masters: Responsible for managing the cluster
+* Рабочие узлы (workers): на них выполняются пользовательские приложения.
+* Управляющие узлы (masters): отвечают за управление кластером.
 </b></details>
 
 <details>
-<summary>Which component responsible for determining pod placement?</summary><br><b>
+<summary>Какой компонент определяет размещение подов?</summary><br><b>
 
-The Scheduler.
+Планировщик (scheduler).
 </b></details>
 
 <details>
-<summary>What else the scheduler responsible for except pod placement?</summary><br><b>
+<summary>За что ещё отвечает планировщик, кроме размещения подов?</summary><br><b>
 
-Application high availability by spreading pod replicas between worker nodes
+Он способствует высокой доступности приложений, распределяя реплики подов между рабочими узлами.
 </b></details>
 
 <a name="openshift-hands-on-basics"></a>
-## OpenShift - Hands-On Basics
+<a id="openshift---hands-on-basics"></a>
+## OpenShift — практические основы
 
 <details>
-<summary>OpenShift supports many resources. How to get a list of all these resources?</summary><br><b>
+<summary>OpenShift поддерживает много ресурсов. Как получить их список?</summary><br><b>
 
 `oc api-resources`
 </b></details>
 
 <details>
-<summary>Explain OpenShift CLIs like <code>oc</code> and <code>odo</code></summary><br><b>
+<summary>Объясните назначение CLI OpenShift: <code>oc</code> и <code>odo</code>.</summary><br><b>
 
-oc is used for creating applications, but also for administrating OpenShift cluster<br>
-odo is used solely for managing applications on OpenShift (mainly from developers' perspective) and has nothing to do with administrating the cluster
+oc используется как для создания приложений, так и для администрирования кластера OpenShift.<br>
+odo предназначен для управления приложениями с точки зрения разработчика и не предназначен для администрирования кластера.
 </b></details>
 
 <a name="openshift-projects"></a>
-## OpenShift - Projects
+<a id="openshift---projects"></a>
+## OpenShift — проекты
 
 <details>
-<summary>What is a project in OpenShift?</summary><br><b>
+<summary>Что такое проект OpenShift?</summary><br><b>
 
-A project in OpenShift is a Kubernetes namespace with annotations.<br>
-In simpler words, think about it as an isolated environment for users to manage and organize their resources (like Pods, Deployments, Service, etc.).
+Проект OpenShift — пространство имён Kubernetes с аннотациями.<br>
+Проще говоря, это изолированная среда, в которой пользователи организуют свои ресурсы: Pod, Deployment, Service и другие.
 </b></details>
 
 <details>
-<summary>How to list all projects? What the "STATUS" column means in projects list output?</summary><br><b>
+<summary>Как вывести все проекты? Что означает столбец STATUS в списке?</summary><br><b>
 
-`oc get projects` will list all projects. The "STATUS" column can be used to see which projects are currently active.
+`oc get projects` выводит список проектов. Столбец STATUS позволяет увидеть, какие из них сейчас активны.
 </b></details>
 
 <details>
-<summary>You have a new team member and you would like to assign to him the "admin" role on your project in OpenShift. How to achieve that?</summary><br><b>
+<summary>Как назначить новому участнику команды роль admin в вашем проекте OpenShift?</summary><br><b>
 
 `oc adm policy add-role-to-user <role> <user> -n <project>`
 </b></details>
 
-#### OpenShift - Applications
+<a id="openshift---applications"></a>
+#### OpenShift — приложения
 
 <details>
-<summary>How to create a MySQL application using an image from Docker Hub?</summary><br><b>
+<summary>Как создать приложение MySQL из образа Docker Hub?</summary><br><b>
 
 `oc new-app mysql`
 </b></details>
 
-#### OpenShift - Images
+<a id="openshift---images"></a>
+#### OpenShift — образы
 
 <details>
-<summary>What is an image stream?</summary><br><b>
+<summary>Что такое поток образов (image stream)?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What would be the best way to run and manage multiple OpenShift environments?</summary><br><b>
+<summary>Как лучше запускать несколько сред OpenShift и управлять ими?</summary><br><b>
 
-Federation
+В исходнике предлагается федерация.
 </b></details>
 
-#### OpenShift - Federation
+<a id="openshift---federation"></a>
+#### OpenShift — федерация
 
 <details>
-<summary>What is OpenShift Federation?</summary><br><b>
+<summary>Что такое федерация OpenShift?</summary><br><b>
 
-Management and deployment of services and workloads across multiple independent clusters from a single API
+Управление сервисами и рабочими нагрузками нескольких независимых кластеров и их развёртывание через единый API.
 </b></details>
 
 <details>
-<summary>Explain the following in regards to Federation:
+<summary>Объясните термины в контексте федерации:
 
-  * Multi Cluster
-  * Federated Cluster
-  * Host Cluster
-  * Member Cluster
+* Multi Cluster.
+* Federated Cluster.
+* Host Cluster.
+* Member Cluster.
 </summary><br><b>
 
-  * Multi Cluster - Multiple clusters deployed independently, not being aware of each other
-  * Federated Cluster - Multiple clusters managed by the OpenShift Federation Control Plane
-  * Host Cluster - The cluster that runs the Federation Control Plane
-  * Member Cluster - Cluster that is part of the Federated Cluster and connected to Federation Control Plane
+* Multi Cluster — несколько независимо развёрнутых кластеров, не знающих друг о друге.
+* Federated Cluster — несколько кластеров под управлением плоскости управления федерации OpenShift.
+* Host Cluster — кластер, в котором работает плоскость управления федерации.
+* Member Cluster — кластер, входящий в федерацию и подключённый к её плоскости управления.
 </b></details>
 
-## OpenShift - Storage
+<a id="openshift---storage"></a>
+## OpenShift — хранение данных
 
 <details>
-<summary>What is a storage device? What storage devices are there?</summary><br><b>
+<summary>Что такое устройство хранения данных? Какие устройства бывают?</summary><br><b>
 
-* Hard Disks
-* SSD
-* USB
-* Magnetic Tape
-</b></details>
-
-<details>
-<summary>What is Random Seek Time?</summary><br><b>
-
-The time it takes for a disk to reach the place where the data is located and read a single block/sector.
-
-Bones question: What is the random seek time in SSD and Magnetic Disk?
-Answer: Magnetic is about 10ms and SSD is somewhere between 0.08 and 0.16ms
-</b></details>
-
-#### OpenShift - Pods
-
-<details>
-<summary>What happens when a pod fails or exit due to container crash</summary><br><b>
-
-Master node automatically restarts the pod unless it fails too often.
+* Жёсткие диски.
+* SSD.
+* USB-накопители.
+* Магнитные ленты.
 </b></details>
 
 <details>
-<summary>What happens when a pod fails too often?</summary><br><b>
+<summary>Что такое время произвольного доступа?</summary><br><b>
 
-It's marked as bad by the master node and temporary not restarted anymore.
+Время, необходимое накопителю для доступа к месту хранения данных и чтения одного блока или сектора.
+
+Дополнительный вопрос: каково это время у SSD и магнитного диска?
+В исходнике приведены ориентиры: около 10 мс для магнитного диска и 0,08–0,16 мс для SSD. Конкретные значения зависят от устройства и нагрузки.
+</b></details>
+
+<a id="openshift---pods"></a>
+#### OpenShift — поды
+
+<details>
+<summary>Что происходит, если под перестаёт работать из-за аварийного завершения контейнера?</summary><br><b>
+
+В исходнике перезапуск приписан управляющему узлу. Точнее: kubelet на рабочем узле перезапускает контейнер согласно restartPolicy. Если нужен новый под взамен удалённого или утраченного, его создаёт соответствующий контроллер.
 </b></details>
 
 <details>
-<summary>How to find out on which node a certain pod is running?</summary><br><b>
+<summary>Что происходит, если контейнер пода слишком часто завершается с ошибкой?</summary><br><b>
+
+Между повторными запусками применяется увеличивающаяся задержка — backoff; это может отображаться как CrashLoopBackOff. В исходнике это упрощённо описано как временный отказ от перезапуска «плохого» пода управляющим узлом.
+</b></details>
+
+<details>
+<summary>Как узнать, на каком узле работает под?</summary><br><b>
 
 `oc get po -o wide`
 </b></details>
 
-#### OpenShift - Services
+<a id="openshift---services"></a>
+#### OpenShift — сервисы
 
 <details>
-<summary>Explain Services and their benefits</summary><br><b>
+<summary>Объясните назначение и преимущества сервисов.</summary><br><b>
 
-  - Services in OpenShift define access policy to one or more set of pods.<br>
-  - They are connecting applications together by enabling communication between them
-  - They provide permanent internal IP addresses and hostnames for applications
-  - They are able to provide basic internal load balancing
+* Сервисы задают способ доступа к наборам подов.<br>
+* Они обеспечивают связь между приложениями.
+* Предоставляют приложениям стабильные внутренние IP-адреса и имена хостов.
+* Позволяют выполнять базовую внутреннюю балансировку нагрузки.
 </b></details>
 
-#### OpenShift - Labels
+<a id="openshift---labels"></a>
+#### OpenShift — метки
 
 <details>
-<summary>Explain labels. What are they? When do you use them?</summary><br><b>
+<summary>Что такое метки и когда их используют?</summary><br><b>
 
-  - Labels are used to group or select API objects
-  - They are simple key-value pairs and can be included in metadata of some objects
-  - A common use case: group pods, services, deployments, ... all related to a certain application
+* Метки позволяют группировать и выбирать объекты API.
+* Это пары «ключ — значение» в метаданных объектов.
+* Типичный пример — объединение подов, сервисов и развёртываний одного приложения.
 </b></details>
 
-#### OpenShift - Service Accounts
+<a id="openshift---service-accounts"></a>
+#### OpenShift — сервисные учётные записи
 
 <details>
-<summary>How to list Service Accounts?</summary><br><b>
+<summary>Как вывести список сервисных учётных записей?</summary><br><b>
 
 `oc get serviceaccounts`
 </b></details>
 
-#### OpenShift - Networking
+<a id="openshift---networking"></a>
+#### OpenShift — сеть
 
 <details>
-<summary>What is a Route?</summary><br><b>
+<summary>Что такое Route?</summary><br><b>
 
-A route is exposing a service by giving it hostname which is externally reachable
+Route открывает внешний доступ к сервису, назначая ему доступное извне имя хоста.
 </b></details>
 
 <details>
-<summary>What Route is consists of?</summary><br><b>
+<summary>Из чего состоит Route?</summary><br><b>
 
-  - name
-  - service selector
-  - (optional) security configuration
+* Имя.
+* Указание сервиса.
+* Необязательные настройки безопасности.
 </b></details>
 
 <details>
-<summary>True or False? Router container can run only on the Master node</summary><br><b>
+<summary>Верно ли, что контейнер маршрутизатора может работать только на управляющем узле?</summary><br><b>
 
-False. It can run on any node.
+Нет. Он может работать и на других узлах.
 </b></details>
 
 <details>
-<summary>Given an example of how a router is used</summary><br><b>
+<summary>Приведите пример работы маршрутизатора.</summary><br><b>
 
-1. Client is using an address of application running on OpenShift
-2. DNS resolves to host running the router
-3. Router checks whether route exists
-4. Router proxies the request to the internal pod 
+1. Клиент обращается по адресу приложения OpenShift.
+2. DNS разрешает имя в адрес узла с маршрутизатором.
+3. Маршрутизатор проверяет наличие маршрута.
+4. Маршрутизатор проксирует запрос внутреннему поду.
 </b></details>
 
-#### OpenShift - Security
+<a id="openshift---security"></a>
+#### OpenShift — безопасность
 
 <details>
-<summary>What are "Security Context Constraints"?</summary><br><b>
+<summary>Что такое Security Context Constraints?</summary><br><b>
 
-From [OpenShift Docs](https://docs.openshift.com/container-platform/4.7/authentication/managing-security-context-constraints.html): "Similar to the way that RBAC resources control user access, administrators can use security context constraints (SCCs) to control permissions for pods".
-</b></details>
-
-<details>
-<summary>How to add the ability for the user `user1` to view the project `wonderland` assuming you are authorized to do so</summary><br><b>
-
-oc adm policy add-role-to-user view user1 -n wonderland
+[Документация OpenShift](https://docs.openshift.com/container-platform/4.7/authentication/managing-security-context-constraints.html): подобно тому, как RBAC управляет доступом пользователей, ограничения контекста безопасности (SCC) позволяют администраторам управлять разрешениями подов.
 </b></details>
 
 <details>
-<summary>How to check what is the current context?</summary><br><b>
+<summary>Как дать пользователю user1 возможность просматривать проект wonderland, если у вас есть необходимые полномочия?</summary><br><b>
+
+`oc adm policy add-role-to-user view user1 -n wonderland`
+</b></details>
+
+<details>
+<summary>Как проверить текущий контекст?</summary><br><b>
 
 `oc whoami --show-context`
 </b></details>
 
-#### OpenShift - Serverless
+<a id="openshift---serverless"></a>
+#### OpenShift — бессерверные вычисления
 
 <details>
-<summary>What is OpenShift Serverless?</summary><br><b>
+<summary>Что такое OpenShift Serverless?</summary><br><b>
 
-  - In general 'serverless' is a cloud computing model where scaling and provisioning is taken care for application developers, so they can focus on the development aspect rather infrastructure related tasks
-  - OpenShift Serverless allows you to dynamically scale your applications and provides the ability to build event-driven applications, whether the sources are on Kubernetes, the cloud or on-premise solutions
-  - OpenShift Serverless is based on the Knative project.
+* Serverless — модель облачных вычислений, в которой выделение ресурсов и масштабирование выполняются платформой, позволяя разработчикам сосредоточиться на приложении.
+* OpenShift Serverless обеспечивает динамическое масштабирование и создание приложений, реагирующих на события из Kubernetes, облачных сервисов и локальной инфраструктуры.
+* OpenShift Serverless основан на проекте Knative.
 </b></details>
 
 <details>
-<summary>What are some of the event sources you can use with OpenShift Serverless?</summary><br><b>
+<summary>Какие источники событий можно использовать с OpenShift Serverless?</summary><br><b>
 
-  * Kafka
-  * Kubernetes APIs
-  * AWS Kinesis
-  * AWS SQS
-  * JIRA
-  * Slack
+* Kafka.
+* API Kubernetes.
+* AWS Kinesis.
+* AWS SQS.
+* JIRA.
+* Slack.
 
-More are supported and provided with OpenShift.
+OpenShift поддерживает и другие источники.
 </b></details>
 
 <details>
-<summary>Explain serverless functions</summary><br><b>
+<summary>Объясните, что такое бессерверные функции.</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is the difference between Serverless Containers and Serverless functions?</summary><br><b>
+<summary>Чем бессерверные контейнеры отличаются от бессерверных функций?</summary><br><b>
 </b></details>
 
-#### OpenShift - Misc
+<a id="openshift---misc"></a>
+#### OpenShift — разное
 
 <details>
-<summary>What is Replication Controller?</summary><br><b>
+<summary>Что такое Replication Controller?</summary><br><b>
 
-Replication Controller responsible for ensuring the specified number of pods is running at all times.<br>
-If more pods are running than needed -> it deletes some of them<br>
-If not enough pods are running -> it creates more
+Контроллер репликации поддерживает заданное количество подов.<br>
+Если подов больше, чем требуется, он удаляет лишние.<br>
+Если меньше — создаёт недостающие.
 </b></details>
