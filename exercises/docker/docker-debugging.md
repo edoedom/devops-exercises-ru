@@ -1,39 +1,46 @@
-# Docker Scenario-Based Exercises
 
-This file contains scenario-based Docker questions to help DevOps engineers practice real-world troubleshooting and configuration tasks. Each question simulates a practical scenario with a step-by-step answer.
+<a id="docker-scenario-based-exercises"></a>
+# Практические задания по Docker
 
-## Question 1: Debugging a Docker Container Failure
+Этот файл содержит задания по Docker на основе рабочих ситуаций. Они помогают DevOps-инженерам практиковаться в диагностике неисправностей и настройке. Для каждого задания приведён пошаговый ответ.
 
-### Question
-You’re a DevOps engineer deploying a Node.js application using Docker. You run `docker run -d -p 3000:3000 my-node-app`, but the container exits immediately. Using `docker ps -a`, you see the container status as `Exited`. How would you troubleshoot and resolve this issue?
+<a id="question-1-debugging-a-docker-container-failure"></a>
+## Задание 1. Диагностика сбоя контейнера Docker
 
-### Answer
-To troubleshoot a container exiting immediately:
-1. **Check Logs**: Run `docker logs my-node-app` to view error messages. Common issues include missing dependencies (e.g., `npm install` failed) or an incorrect command.
-2. **Inspect the Container**: Use `docker inspect my-node-app` to check `Config.Cmd` or `Config.Entrypoint`. Ensure the command (e.g., `node app.js`) is valid.
-3. **Verify the Dockerfile**: Check if `CMD` or `ENTRYPOINT` is correct, e.g., `CMD ["node", "app.js"]`. Update and rebuild if needed: `docker build -t my-node-app .`.
-4. **Test Interactively**: Run `docker run -it my-node-app sh` to debug manually (e.g., `node app.js`).
-5. **Check Resources**: Ensure the host has enough memory/CPU using `docker stats`.
+### Вопрос
+Вы развёртываете приложение Node.js с помощью Docker. После запуска `docker run -d -p 3000:3000 my-node-app` контейнер сразу завершается. Команда `docker ps -a` показывает состояние `Exited`. Как найти и устранить причину?
 
-**Example Fix**: If logs show `node: command not found`, update the Dockerfile to use `FROM node:18`, rebuild, and rerun.
+### Ответ
+Если контейнер сразу завершается:
 
-### Additional Notes
-- Always start with `docker logs` for error clues.
-- Use `docker ps -a` to check container status and ID.
-- Common issues include missing dependencies or crashing apps.
+1. **Проверьте журналы.** Выполните `docker logs my-node-app`, чтобы увидеть сообщения об ошибках. Частые причины — отсутствующие зависимости (например, ошибка при `npm install`) или неправильная команда запуска.
+2. **Изучите параметры контейнера.** Командой `docker inspect my-node-app` проверьте `Config.Cmd` и `Config.Entrypoint`. Убедитесь, что команда, например `node app.js`, корректна.
+3. **Проверьте Dockerfile.** Убедитесь, что `CMD` или `ENTRYPOINT` заданы правильно, например `CMD ["node", "app.js"]`. При необходимости исправьте файл и пересоберите образ: `docker build -t my-node-app .`.
+4. **Проверьте запуск в интерактивном режиме.** Выполните `docker run -it my-node-app sh`, чтобы вручную запустить приложение, например `node app.js`, и исследовать ошибку.
+5. **Проверьте ресурсы.** Используйте `docker stats` для наблюдения за потреблением ресурсов и убедитесь, что на хосте достаточно памяти и процессорного времени.
 
+**Пример исправления:** если в журнале указано `node: command not found`, задайте в Dockerfile базовый образ `FROM node:18`, пересоберите образ и повторите запуск.
+
+> Примечание к переводу: исходная команда не задаёт имя контейнера. Для `docker logs` и `docker inspect` используйте фактическое имя или ID из `docker ps -a` либо добавьте при запуске `--name my-node-app`.
+
+### Дополнительные замечания
+
+- Начинайте с `docker logs`: сообщения журнала помогают найти причину.
+- Проверяйте состояние и ID контейнера через `docker ps -a`.
+- Частые причины сбоев — отсутствующие зависимости и ошибки приложения.
 
 ---
 
+<a id="question-2-configuring-a-multi-container-application"></a>
+## Задание 2. Настройка приложения из нескольких контейнеров
 
-## Question 2: Configuring a Multi-Container Application
+### Вопрос
+Нужно развернуть веб-приложение с серверной частью на Node.js и базой MySQL. Приложение обращается к MySQL по адресу `localhost:3306`, но при отдельном запуске контейнеров через `docker run` они не могут связаться друг с другом. Как настроить их совместную работу?
 
-### Question
-As a DevOps engineer, you need to deploy a web application with a Node.js backend and a MySQL database using Docker. The Node.js app connects to MySQL on `localhost:3306`, but running `docker run` for each container separately fails because they can’t communicate. How would you set up these containers to work together?
+### Ответ
+Чтобы обеспечить взаимодействие контейнеров Node.js и MySQL:
 
-### Answer
-To make the Node.js and MySQL containers communicate:
-1. **Use Docker Compose**: Create a `docker-compose.yml` file to define and link both services:
+1. **Используйте Docker Compose.** Создайте `docker-compose.yml` с описанием обоих сервисов:
    ```yaml
    version: '3.8'
    services:
@@ -54,43 +61,44 @@ To make the Node.js and MySQL containers communicate:
        ports:
          - "3306:3306"
    ```
-2. **Run the Application**: Execute `docker-compose up -d` to start both containers. The `node-app` service connects to `mysql-db` using the service name (`mysql-db`) as the hostname, not `localhost`.
-3. **Verify Connectivity**: Check logs with `docker-compose logs node-app` to ensure the Node.js app connects to MySQL. If it fails, verify the environment variables and MySQL’s readiness.
-4. **Alternative Without Compose**: Use a custom network:
-   - Create a network: `docker network create my-app-network`
-   - Run MySQL: `docker run -d --name mysql-db --network my-app-network -e MYSQL_ROOT_PASSWORD=secret mysql:8.0`
-   - Run Node.js: `docker run -d --name node-app --network my-app-network -p 3000:3000 -e DB_HOST=mysql-db my-node-app`
+2. **Запустите приложение.** Выполните `docker-compose up -d`. Сервис `node-app` подключается к MySQL по имени сервиса `mysql-db`, а не по адресу `localhost`.
+3. **Проверьте соединение.** Посмотрите журнал командой `docker-compose logs node-app`. Если подключение не установлено, проверьте переменные окружения и готовность MySQL принимать соединения.
+4. **Вариант без Compose:** создайте пользовательскую сеть:
+   - Создание сети: `docker network create my-app-network`
+   - Запуск MySQL: `docker run -d --name mysql-db --network my-app-network -e MYSQL_ROOT_PASSWORD=secret mysql:8.0`
+   - Запуск Node.js: `docker run -d --name node-app --network my-app-network -p 3000:3000 -e DB_HOST=mysql-db my-node-app`
 
-### Additional Notes
-- Docker Compose simplifies multi-container setups by managing networks and dependencies.
-- Always set environment variables for database credentials to avoid hardcoding.
+### Дополнительные замечания
 
+- Docker Compose упрощает работу с несколькими контейнерами, управляя сетями и зависимостями.
+- Передавайте учётные данные базы через переменные окружения, чтобы не записывать их непосредственно в код приложения.
 
 ---
 
+<a id="question-3-optimizing-a-dockerfile-for-cicd"></a>
+## Задание 3. Оптимизация Dockerfile для CI/CD
 
-## Question 3: Optimizing a Dockerfile for CI/CD
+### Вопрос
+Вы подключаете Python-приложение в Docker к конвейеру CI/CD в Jenkins. Сборка образа занимает много времени и задерживает конвейер. Как ускорить сборку, сохранив работоспособность приложения?
 
-### Question
-You’re a DevOps engineer integrating a Dockerized Python application into a Jenkins CI/CD pipeline. The Dockerfile builds slowly, causing pipeline delays. How would you optimize the Dockerfile to speed up builds while maintaining functionality?
+### Ответ
+Для ускорения сборок:
 
-### Answer
-To optimize a Dockerfile for faster CI/CD builds:
-1. **Use a Smaller Base Image**: Replace heavy images like `python:3.9` with `python:3.9-slim` to reduce size and download time.
+1. **Выберите меньший базовый образ.** Замените крупный образ, например `python:3.9`, на `python:3.9-slim`, чтобы уменьшить размер и время загрузки.
    ```dockerfile
    FROM python:3.9-slim
    ```
-2. **Leverage Layer Caching**: Order instructions from least to most likely to change. Copy `requirements.txt` and install dependencies before copying the app code:
+2. **Используйте кеширование слоёв.** Располагайте инструкции от редко меняющихся к часто меняющимся. Скопируйте `requirements.txt` и установите зависимости до копирования кода приложения:
    ```dockerfile
    COPY requirements.txt .
    RUN pip install -r requirements.txt
    COPY . .
    ```
-3. **Minimize Layers**: Combine related commands with `&&` to reduce layers:
+3. **Сократите число слоёв.** Объединяйте связанные команды с помощью `&&`:
    ```dockerfile
    RUN pip install -r requirements.txt && rm -rf /root/.cache/pip
    ```
-4. **Use Multi-Stage Builds**: If the app needs build tools, use a multi-stage build to keep the final image small:
+4. **Используйте многоэтапную сборку.** Если для сборки нужны дополнительные инструменты, отделите этап сборки от итогового образа, чтобы уменьшить его размер:
    ```dockerfile
    FROM python:3.9 AS builder
    COPY requirements.txt .
@@ -100,7 +108,7 @@ To optimize a Dockerfile for faster CI/CD builds:
    COPY . .
    CMD ["python", "app.py"]
    ```
-5. **Test in Jenkins**: Update the Jenkins pipeline to rebuild the image only when `Dockerfile` or code changes, using a cached image otherwise:
+5. **Проверьте результат в Jenkins.** Настройте конвейер так, чтобы образ пересобирался при изменении Dockerfile или кода, а в остальных случаях использовался кешированный образ:
    ```groovy
    pipeline {
        agent any
@@ -113,9 +121,9 @@ To optimize a Dockerfile for faster CI/CD builds:
    }
    ```
 
-### Additional Notes
-- Use `.dockerignore` to exclude unnecessary files (e.g., `.git`, `tests/`) from the build context.
-- Monitor build times in Jenkins to confirm improvements.
+### Дополнительные замечания
 
+- Исключите ненужные файлы, например `.git` и `tests/`, из контекста сборки через `.dockerignore`.
+- Отслеживайте длительность сборок в Jenkins, чтобы оценить результат.
 
-*Contributed by Lahiru Galhena*
+*Автор материала: Lahiru Galhena*
