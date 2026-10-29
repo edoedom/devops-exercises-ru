@@ -1,0 +1,25 @@
+# Состояние перевода на русский
+
+Перевод ведётся в закрытом репозитории на основе исходной версии `9e49ef97f16377d901db01f3562187394828ca6a`.
+
+Из 286 учитываемых Markdown-файлов переведены 274. Ещё два файла не требуют перевода: один пустой, другой содержит только ссылку на изображение. Осталось 10 файлов. Количество файлов не отражает долю переведённого текста: оставшиеся разделы существенно больше большинства завершённых.
+
+Примеры кода в ограждённых блоках сохранены. Известные ошибки исходника в отдельных местах отмечены в переводе. Это перевод исходной версии, а не подтверждение актуальности всех сервисов, экзаменов и команд.
+
+## Не требуют перевода
+
+- `topics/terraform/exercises/launch_ec2_web_instance/exercise.md` — пустой файл.
+- `scripts/aws s3 event triggering/README.md` — только ссылка на изображение.
+
+## Оставшиеся файлы
+
+- `topics/security/README.md`
+- `topics/cicd/README.md`
+- `certificates/aws-solutions-architect-associate.md`
+- `certificates/aws-cloud-practitioner.md`
+- `topics/containers/README.md`
+- `topics/terraform/README.md`
+- `topics/linux/README.md`
+- `topics/kubernetes/README.md`
+- `topics/aws/README.md`
+- `README.md`

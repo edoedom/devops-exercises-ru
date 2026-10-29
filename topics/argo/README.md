@@ -1,173 +1,173 @@
+<a id="argo"></a>
 # Argo
 
 <!-- {% raw %} -->
 
 - [Argo](#argo)
-  - [ArgoCD Exercises](#argocd-exercises)
-    - [ArgoCD 101](#argocd-101)
-    - [ArgoCD Secrets](#argocd-secrets)
-    - [ArgoCD Helm](#argocd-helm)
+  - [Упражнения по Argo CD](#argocd-exercises)
+    - [Основы Argo CD](#argocd-101)
+    - [Секреты Argo CD](#argocd-secrets)
+    - [Argo CD и Helm](#argocd-helm)
     - [Argo Rollouts](#argo-rollouts)
-  - [ArgoCD Questions](#argocd-questions)
-    - [ArgoCD 101](#argocd-101-1)
-    - [Practical ArgoCD 101](#practical-argocd-101)
+  - [Вопросы по Argo CD](#argocd-questions)
+    - [Основы Argo CD](#argocd-101-1)
+    - [Практические основы Argo CD](#practical-argocd-101)
       - [CLI](#cli)
-    - [ArgoCD Configuration](#argocd-configuration)
-    - [Advanced ArgoCD](#advanced-argocd)
-    - [ArgoCD Application Health](#argocd-application-health)
-    - [ArgoCD Syncs](#argocd-syncs)
-    - [ArgoCD and Helm](#argocd-and-helm)
-  - [Argo Rollouts Questions](#argo-rollouts-questions)
-    - [Argo Rollouts 101](#argo-rollouts-101)
-    - [Argo Advanced Rollouts](#argo-advanced-rollouts)
-    - [Argo Rollouts Commands](#argo-rollouts-commands)
+    - [Настройка Argo CD](#argocd-configuration)
+    - [Продвинутые вопросы по Argo CD](#advanced-argocd)
+    - [Работоспособность приложений](#argocd-application-health)
+    - [Синхронизация](#argocd-syncs)
+    - [Argo CD и Helm](#argocd-and-helm)
+  - [Вопросы по Argo Rollouts](#argo-rollouts-questions)
+    - [Основы Argo Rollouts](#argo-rollouts-101)
+    - [Продвинутые вопросы по Rollouts](#argo-advanced-rollouts)
+    - [Команды Argo Rollouts](#argo-rollouts-commands)
 
-## ArgoCD Exercises
+<a id="argocd-exercises"></a>
+## Упражнения по Argo CD
 
-### ArgoCD 101
+<a id="argocd-101"></a>
+### Основы Argo CD
 
-|Name|Topic|Objective & Instructions|Solution|Comments|
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
-| Creating an App | App | [Exercise](exercises/app_creation/exercise.md) | [Solution](exercises/app_creation/solution.md)
-| Syncing App - Git | Sync | [Exercise](exercises/sync_app_git/exercise.md) | [Solution](exercises/sync_app_git/solution.md)
-| Syncing App - Cluster | Sync | [Exercise](exercises/sync_app_cluster/exercise.md) | [Solution](exercises/sync_app_cluster/solution.md)
+| Создание приложения | Приложения | [Задание](exercises/app_creation/exercise.md) | [Решение](exercises/app_creation/solution.md)
+| Синхронизация приложения — Git | Синхронизация | [Задание](exercises/sync_app_git/exercise.md) | [Решение](exercises/sync_app_git/solution.md)
+| Синхронизация приложения — кластер | Синхронизация | [Задание](exercises/sync_app_cluster/exercise.md) | [Решение](exercises/sync_app_cluster/solution.md)
 
-### ArgoCD Secrets
+<a id="argocd-secrets"></a>
+### Секреты Argo CD
 
-|Name|Topic|Objective & Instructions|Solution|Comments|
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
-| Secrets 101 | Secrets | [Exercise](exercises/secrets_101/exercise.md) | [Solution](exercises/secrets_101/solution.md)
+| Основы работы с секретами | Секреты | [Задание](exercises/secrets_101/exercise.md) | [Решение](exercises/secrets_101/solution.md)
 
-### ArgoCD Helm
+<a id="argocd-helm"></a>
+### Argo CD и Helm
 
-|Name|Topic|Objective & Instructions|Solution|Comments|
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
-| Helm ArgoCD App | Secrets | [Exercise](exercises/argocd_helm_app/exercise.md) | [Solution](exercises/argocd_helm_app/solution.md)
+| Приложение Helm в Argo CD | Секреты | [Задание](exercises/argocd_helm_app/exercise.md) | [Решение](exercises/argocd_helm_app/solution.md)
 
+<a id="argo-rollouts"></a>
 ### Argo Rollouts
 
-|Name|Topic|Objective & Instructions|Solution|Comments|
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
-| Blue/Green Rollout | Rollouts | [Exercise](exercises/blue_green_rollout/exercise.md) | [Solution](exercises/blue_green_rollout/solution.md)
-| Canary Rollout | Rollouts | [Exercise](exercises/canary_rollout/exercise.md) | [Solution](exercises/canary_rollout/solution.md)
+| Сине-зелёное развёртывание | Rollouts | [Задание](exercises/blue_green_rollout/exercise.md) | [Решение](exercises/blue_green_rollout/solution.md)
+| Канареечное развёртывание | Rollouts | [Задание](exercises/canary_rollout/exercise.md) | [Решение](exercises/canary_rollout/solution.md)
 
-## ArgoCD Questions
+<a id="argocd-questions"></a>
+## Вопросы по Argo CD
 
-### ArgoCD 101
+<a id="argocd-101-1"></a>
+### Основы Argo CD
 
 <details>
-<summary>What is Argo CD?</summary><br><b>
+<summary>Что такое Argo CD?</summary><br><b>
 
-[ArgoCD](https://argo-cd.readthedocs.io/en/stable): "Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes."
+[Argo CD](https://argo-cd.readthedocs.io/en/stable): декларативный инструмент непрерывной доставки для Kubernetes, использующий GitOps.
 
-As to why Argo CD, they provide the following explanation: "Application definitions, configurations, and environments should be declarative and version controlled. Application deployment and lifecycle management should be automated, auditable, and easy to understand."
-
+Обоснование такого подхода: определения приложений, настройки и среды должны описываться декларативно и храниться под контролем версий. Развёртывание и управление жизненным циклом должны быть автоматизированными, доступными для аудита и понятными.
 </b></details>
 
 <details>
-<summary>There been a lot of CI/CD systems before ArgoCD (Jenkins, Teamcity, CircleCI, etc.) What added value ArgoCD brought?</summary><br><b>
+<summary>До Argo CD существовало множество систем CI/CD: Jenkins, TeamCity, CircleCI и другие. Что нового даёт Argo CD?</summary><br><b>
 
-Simply said, ArgoCD is CD, not CI. We still need CI systems. Secondly, ArgoCD is running on Kubernetes, it's part of its ecosystem, as opposed to some other CI/CD systems. Finally, ArgoCD was built specifically for Kubernetes, not other platforms and systems.
+Argo CD отвечает за CD; система CI по-прежнему нужна. Он работает в Kubernetes, интегрирован в его экосистему и создан специально для этой платформы.
 
-Easier to explain the need for ArgoCD by direct comparison to another system that can do CD. Let's use Jenkins for this.
+Сравним с Jenkins. Для развёртывания через Jenkins обычно нужно установить инструменты Kubernetes и настроить доступ, например для kubectl. Argo CD уже содержит механизмы взаимодействия с Kubernetes; после установки настраиваются его разрешения и подключения.
 
-With Jenkins, you need make sure to install k8s related tools and set access for commands like kubectl.
-With ArgoCD you simply need to install it in your namespace but no need to install additional tools as it's part of k8s.
+В Jenkins учётные данные обычно подключаются к конкретным конвейерам, даже если определены централизованно. В Argo CD доступ к управляемым кластерам и приложениям организован как часть его конфигурации.
 
-With Jenkins, managing access is usually done per pipeline and even if set globally in Jenkins, you still need to configure each pipeline to use that access configuration.
-With ArgoCD access management to k8s and other resources is given as it runs already on the cluster, in one or multiple namespaces.
+Для проверки состояния развёрнутого приложения в Jenkins обычно добавляют отдельные шаги конвейера. Argo CD постоянно сравнивает желаемое и фактическое состояние, показывая ресурсы и расхождения. Для этого ему не обязательно работать в том же пространстве имён или даже в том же кластере, что приложение.
 
-With Jenkins, tracking the status of what got deployed to k8s can be done only as an extra step, by running the pipeline. This is because Jenkins isn't part of the k8s cluster.
-With ArgoCD you get much better tracking and visibility of what gets deployed as it runs in the same cluster and the same namespace.
-
-With ArgoCD it's really easy to roll back to a previous version because all the changes done, are done to git which is a versioned source control. So it's enough to get to a previous commit for ArgoCD to detect a change and sync to the cluster. Worth to mention, this point specifically is true for Jenkins as well :)
+Возврат к предыдущей конфигурации упрощается благодаря Git: можно отменить изменение в репозитории, после чего Argo CD синхронизирует кластер. Сам принцип хранения версий конфигурации применим и с Jenkins.
 </b></details>
 
 <details>
-<summary>Describe an example of workflow where ArgoCD is used</summary><br><b>
+<summary>Приведите пример процесса разработки с Argo CD.</summary><br><b>
 
-1. A developer submitted change to an application repository
-2. Jenkins pipeline is triggered to run CI on the change
-3. If the Jenkins Pipeline completed successfully, build an image out of the new code
-4. Push to image to a registry
-5. Update K8S manifest file(s) in a separate app config repository
-6. ArgoCD tracks changes in the app config repository. Since there was a change in the repository, it will apply the changes from the repo
+1. Разработчик отправляет изменение в репозиторий приложения.
+2. Запускается конвейер Jenkins с проверками CI.
+3. После успешных проверок из нового кода собирается образ.
+4. Образ отправляется в реестр.
+5. В отдельном репозитории конфигурации обновляются манифесты Kubernetes.
+6. Argo CD замечает изменение в этом репозитории и применяет его согласно политике синхронизации.
 </b></details>
 
 <details>
-<summary>True or False? ArgoCD supports Kubernetes YAML files but not other manifests formats like Helm Charts and Kustomize</summary><br><b>
+<summary>Верно ли, что Argo CD поддерживает только YAML Kubernetes, но не Helm и Kustomize?</summary><br><b>
 
-False. It supports Kubernetes YAML files as well as Helm Charts and Kustomize.
-
+Нет. Поддерживаются обычные YAML-манифесты Kubernetes, чарты Helm и Kustomize.
 </b></details>
 
 <details>
-<summary>What "GitOps Repository" means in regards to ArgoCD?</summary><br><b>
+<summary>Что означает GitOps-репозиторий в контексте Argo CD?</summary><br><b>
 
-It's the repository that holds app configuration, the one updated most of the time by CI/CD processes or DevOps, SRE engineers. In regards to ArgoCD it's the repository ArgoCD tracks for changes and apply them when they are detected.
-
+Репозиторий с конфигурацией приложений, обновляемый процессами CI/CD или инженерами DevOps и SRE. Argo CD следит за ним и использует как источник желаемого состояния.
 </b></details>
 
 <details>
-<summary>What are the advantages in using GitOps approach/repository?</summary><br><b>
+<summary>Каковы преимущества GitOps?</summary><br><b>
 
-* Your whole configuration is one place, defined as code so it's completely transparent, adjustable for changes and easily reproducible
-* Everyone go through the same interface hence you have more people experiencing and testing the code, even if not intentionally
-* Engineers can use it for testing, development, ... there is no more running manual commands and hoping to reach the same status as in the cluster/cloud.
-* Single source of truth: you know that your GitOps is the repo from which changes can be done to the cluster. So even if someone tries to manually override it, it won't work.
+* Конфигурация хранится в одном месте в виде кода: её можно просматривать, изменять и воспроизводить.
+* Все работают через общий процесс изменений, поэтому больше участников проверяют конфигурацию.
+* Настройки можно повторно использовать для разработки и тестирования без ручного воспроизведения команд.
+* Есть единый источник истины. При включённом самовосстановлении ручные отклонения в кластере приводятся к состоянию из Git.
 </b></details>
 
 <details>
-<summary>Sorina, one of the engineers in your team, made manual changes to the cluster that override some of the configuration in a repo traced by ArgoCD. What will happen?</summary><br><b>
+<summary>Инженер Сорина вручную изменила кластер вопреки конфигурации в отслеживаемом репозитории. Что произойдёт?</summary><br><b>
 
-Once Sorina made the modifications, ArgoCD will detect the state diverged and will sync the changes from the GitOps repository, overwriting the manual changes done by Sorina.
-
+Argo CD обнаружит расхождение. Если включены автоматическая синхронизация и self-heal, он восстановит состояние из Git, перезаписав ручные изменения. Без соответствующих настроек автоматическое исправление не гарантируется.
 </b></details>
 
 <details>
-<summary>Nate, one of the engineers in your organization, asked whether it's possible if ArgoCD didn't sync for changes done manually to the cluster. What would be your answer?</summary><br><b>
+<summary>Инженер Нейт спрашивает, можно ли не отменять автоматически ручные изменения кластера. Что вы ответите?</summary><br><b>
 
-The answer is yes, it's possible. You can configure ArgoCD to sync to desired state when changes done manually and instead do something like sending alerts.
-
+Да. Можно отключить автоматическое исправление таких расхождений и вместо него настроить уведомления.
 </b></details>
 
 <details>
-<summary>How cluster disaster recovery becomes easier with ArgoCD?</summary><br><b>
+<summary>Как Argo CD упрощает аварийное восстановление кластера?</summary><br><b>
 
-Imagine you have a cluster in the cloud, in one of the regions. Something happens to that cluster and it's either crashes or simply no longer operational.
+Представьте, что облачный кластер вышел из строя. Если его конфигурация хранится в GitOps-репозитории, можно подготовить новый кластер, подключить его к Argo CD и применить ту же конфигурацию.
 
-If you have all your cluster configuration in a GitOps repository, ArgoCD can be pointed to that repository while be configured to use a new cluster you've set up and apply that configuration so your cluster is again up and running with the same status as o
+Так восстанавливается описанное в Git состояние ресурсов. Данные приложений и другие внешние зависимости требуют отдельного восстановления.
 </b></details>
 
 <details>
-<summary>Ella, an engineer in your team, claims ArgoCD benefit is that it's an extension Kubernetes, it's part of the cluster. Sarah, also an engineer in your team, claims it's not a real benefit as Jenkins can be also deployed in the cluster hence being part of it. What's your take?</summary><br><b>
+<summary>Элла считает преимуществом Argo CD то, что он расширяет Kubernetes. Сара возражает: Jenkins тоже можно установить в кластер. Кто прав?</summary><br><b>
 
-Ella is right, ArgoCD is an extension of the cluster, that is very different from simply being deployed in the cluster as other CI/CD systems like Jenkins. ArgoCD uses existing k8s resources like K8s controllers (for monitoring and state differences) and etcd for storing data.
+Элла указывает на более глубокую интеграцию, чем просто размещение приложения в кластере. Argo CD использует пользовательские ресурсы и контроллеры Kubernetes для наблюдения и согласования состояния; данные этих ресурсов хранятся средствами Kubernetes в etcd.
 </b></details>
 
 <details>
-<summary>How the main resource in ArgoCD called?</summary><br><b>
+<summary>Как называется основной ресурс Argo CD?</summary><br><b>
 
-"Application"
+Application.
 </b></details>
 
 <details>
-<summary>Explain what is an "Application" in regards to ArgoCD</summary><br><b>
+<summary>Что такое Application в Argo CD?</summary><br><b>
 
-It's a custom resource definitions which responsible for the deployment and synchronization of application resources to a Kubernetes cluster.
+Пользовательский ресурс, описывающий развёртывание приложения и синхронизацию его ресурсов с кластером Kubernetes. Его тип определяется CRD.
 </b></details>
 
 <details>
-<summary>How ArgoCD makes access management in the cluster easier?</summary><br><b>
+<summary>Как Argo CD упрощает управление доступом к изменениям кластера?</summary><br><b>
 
-Instead of creating Kubernetes resources, you can use Git to manage who is allowed to push code, to review it, merge it, etc - either human users or 3rd party systems and services. There is no need to use ClusterRole or User resources in Kubernetes hence the management of access is much more simplified.
+Можно управлять правами на отправку кода, ревью и слияние в Git для людей и сервисов, а применение изменений поручить Argo CD. Это снижает необходимость выдавать каждому прямой доступ к кластеру.
 
+При этом самому Argo CD всё равно нужны корректно настроенные разрешения Kubernetes и собственные правила доступа. Утверждение оригинала о полном отсутствии необходимости в ClusterRole слишком категорично.
 </b></details>
 
-### Practical ArgoCD 101
+<a id="practical-argocd-101"></a>
+### Практические основы Argo CD
 
 <details>
-<summary>Describe the purpose of the following section in a an Application YAML file
+<summary>Объясните назначение раздела YAML ресурса Application.
 
 ```YAML
 source:
@@ -177,11 +177,11 @@ source:
 ```
 </summary><br><b>
 
-This section of an Application in ArgoCD, defines which Git repository should be synced
+Он определяет репозиторий Git, из которого нужно брать желаемое состояние.
 </b></details>
 
 <details>
-<summary>Describe the purpose of the following section in a an Application YAML file
+<summary>Объясните назначение раздела YAML ресурса Application.
 
 ```YAML
 destination:
@@ -190,49 +190,50 @@ destination:
 ```
 </summary><br><b>
 
-This section defines with which Kubernetes cluster the app in the tracked Git repository should be synced with.
+Он определяет кластер Kubernetes, в который нужно синхронизировать приложение из отслеживаемого репозитория.
 </b></details>
 
 <details>
-<summary>What CRD would you use if you have multiple applications and you would like to group them together logically?</code></summary><br><b>
+<summary>Какой ресурс использовать для логического объединения нескольких приложений?</summary><br><b>
 
-AddProject
+AppProject. В оригинале опечатка: AddProject.
 </b></details>
 
 <details>
-<summary>True or False? ArgoCD sync period is 3 hours</summary><br><b>
+<summary>Верно ли, что период синхронизации Argo CD равен трём часам?</summary><br><b>
 
-False. ArgoCD sync period is 3 minutes as of today (and not hours).
+Нет. В исходнике указан интервал проверки три минуты, а не три часа. Фактическое значение зависит от версии и настроек.
 </b></details>
 
 <details>
-<summary>Describe shortly what ArgoCD does every sync period</summary><br><b>
+<summary>Что Argo CD делает при периодической проверке состояния?</summary><br><b>
 
-1. Gathers list of all the apps to sync (those that are marked with "auto-sync")
-2. Gets Git state for each repository
-3. Performs comparison between the repository Git state and the Kubernetes cluster state
-  1. If states are different, the application marked as "out-of-sync" and further action might be taken (based on the configuration)
-  2. If states are equal, the application marked as "synced"
+1. Получает приложения для проверки и их настройки синхронизации.
+2. Получает состояние соответствующих репозиториев Git.
+3. Сравнивает желаемое состояние с состоянием кластера.
+   * При расхождении приложение помечается OutOfSync; дальнейшие действия зависят от настроек.
+   * При совпадении — Synced.
 </b></details>
 
 <details>
-<summary>You deployed a new application in a namespace called "yay" but when running <code>kubectl get ns yay</code> you see there is no such namespace. What happened?</summary><br><b>
+<summary>Вы настроили новое приложение в пространстве имён yay, но kubectl get ns yay сообщает, что такого пространства нет. Почему?</summary><br><b>
 
-Deploying applications in non-existing namespaces doesn't create the namespace. For that you have to explicitly mark "Auto-create namespace".
+Само указание отсутствующего пространства имён не создаёт его. Для этого нужно явно включить Auto-create namespace либо управлять ресурсом Namespace.
 
-To fix it, you can simply run `kubectl create namespace NAMESPACE_NAME` but it's better of course to have it stored in Git rather than running kubectl commands.
+Можно выполнить `kubectl create namespace NAMESPACE_NAME`, но для GitOps предпочтительно хранить нужную конфигурацию в Git.
 </b></details>
 
+<a id="cli"></a>
 #### CLI
 
 <details>
-<summary>Create a new application with the following properties:
+<summary>Создайте приложение со следующими параметрами:
 
-* app name: some-app
-* repo: https://fake.repo.address
-* app path: ./app_path
-* namespace: default
-* cluster: my.kubernetes.cluster
+* Имя: some-app.
+* Репозиторий: https://fake.repo.address.
+* Путь: ./app_path.
+* Пространство имён: default.
+* Кластер: my.kubernetes.cluster.
 </summary><br><b>
 
 ```
@@ -243,209 +244,209 @@ argocd app create some-app \
 --dest-namespace default \
 --dest-server my.kubernetes.cluster
 ```
-
 </b></details>
 
 <details>
-<summary>List all argocd apps</summary><br><b>
+<summary>Выведите все приложения Argo CD.</summary><br><b>
 
 `argocd app list`
 </b></details>
 
 <details>
-<summary>Print detailed information on the app called "some-app"</summary><br><b>
+<summary>Выведите подробные сведения о приложении some-app.</summary><br><b>
 
 `argocd app get some-app`
 </b></details>
 
 <details>
-<summary>How to add an additional (external) cluster for ArgoCD to manage?</summary><br><b>
+<summary>Как добавить внешний кластер под управление Argo CD?</summary><br><b>
 
 `argocd cluster add CLUSTER_ADDRESS/NAME`
 </b></details>
 
 <details>
-<summary>How to list all the clusters ArgoCD manage?</summary><br><b>
+<summary>Как вывести все управляемые кластеры?</summary><br><b>
 
 `argocd cluster list`
 </b></details>
 
-### ArgoCD Configuration
+<a id="argocd-configuration"></a>
+### Настройка Argo CD
 
 <details>
-<summary>Is it possible to change default sync period of ArgoCD?</summary><br><b>
+<summary>Можно ли изменить стандартный интервал проверки состояния Argo CD?</summary><br><b>
 
-Yes, it is possible by adding the following to the argocd-cm (ConfigMap):
+Да. В ConfigMap argocd-cm добавьте:
 
 ```
 data:
   timeout.reconciliation: 300s
 ```
 
-The value can be any number of seconds you would like to set.
+Значение задаёт нужную продолжительность, в данном случае в секундах.
 </b></details>
 
 <details>
-<summary>What will be the result of setting <code>timeout.reconciliation: 0s</code>?</summary><br><b>
+<summary>Что произойдёт при <code>timeout.reconciliation: 0s</code>?</summary><br><b>
 
-sync functionality will be disabled.
+Отключится периодический опрос репозитория по этому таймеру. Это не означает отключения всех способов синхронизации, как можно понять из исходного ответа.
 </b></details>
 
-### Advanced ArgoCD
+<a id="advanced-argocd"></a>
+### Продвинутые вопросы по Argo CD
 
 <details>
-<summary>What is the "App of Apps Patterns"?</summary><br><b>
+<summary>Что такое шаблон App of Apps?</summary><br><b>
 
-A solution from Argo community in regards to managing multiple similar applications.
+Подход сообщества Argo для управления несколькими приложениями: корневое приложение управляет ресурсами дочерних Application.
 
-Basically a pattern where you have root application that consists of other child applications.
-
-So instead of creating multiple separate applications, you have the root application pointing to a repository with additional applications.
-</b></details>
-
-<details>
-<summary>Can you provide some use cases for using "App of Apps Patterns"?</summary><br><b>
-
-* Cluster Preparation: You would like to deploy multiple applications at once to bootstrap a Kubernetes cluster
-
-* Multiple environments: If deploying many versions of the same application, but with minor changes. For example, several test deployments to test different features
-
-* Multiple clusters: when the same application needs to be deployed across multiple K8s clusters connected to ArgoCD
+Вместо отдельного создания каждого приложения корневое приложение указывает на репозиторий с их описаниями.
 </b></details>
 
 <details>
-<summary>True or False? If you have multiple Kubernetes clusters you want to manage sync applications to with ArgoCD then, you must have ArgoCD installed on each one of them</summary><br><b>
+<summary>Приведите сценарии использования App of Apps.</summary><br><b>
 
-False, it can be deployed on one of them. ArgoCD is able to manage external clusters on which it doesn't run.
+* Подготовка кластера: установка нескольких приложений для начальной настройки Kubernetes.
+* Несколько сред: развёртывание вариантов одного приложения с небольшими отличиями, например для тестирования разных возможностей.
+* Несколько кластеров: размещение одного приложения в разных кластерах, подключённых к Argo CD.
 </b></details>
 
 <details>
-<summary>You've three clusters - dev, staging and prod. Whenever you update the application GitOps repo, all three clusters are being updated. What's the problem with that and how to deal with it?</summary><br><b>
+<summary>Верно ли, что Argo CD нужно установить в каждый управляемый кластер?</summary><br><b>
 
-You don't usually want to go and update all of your clusters at once, especially when some for testing and development purposes and some for actual production usage.
-
-There are multiple ways to deal with it:
-
-1. Branch driven: Have branches for your GitOps repo where you push first to development, do some testing, merge it then to staging and if everything works fine in staging, you merge it to production.
-
-2. Use overlays and Kustomize to control the context of where your changes synced based on the CI process/pipeline used.
-</b></details>
-
-### ArgoCD Application Health
-
-<details>
-<summary>What are some possible health statuses for an ArgoCD application?</summary><br><b>
-
-* Healthy
-* Missing: resource doesn't exist in the cluster
-* Suspended: resource is paused
-* Progressing: resources isn't healthy but will become healthy or has the chance to become healthy
-* Degraded: resource isn't healthy
-* Unknown: it's not known what's the app health
+Нет. Один экземпляр Argo CD может управлять внешними кластерами, в которых он не установлен.
 </b></details>
 
 <details>
-<summary>True or False? A Deployment considered to be healthy if the Pods are running</summary><br><b>
+<summary>Есть кластеры dev, staging и prod. Любое изменение GitOps-репозитория обновляет все три. В чём проблема и как её решить?</summary><br><b>
 
-Not exactly. A Deployment (as well as StatefulSet, ReplicaSet and DaemonSet) considered healthy  if the desired state equals to actual/current state (this includes the number of replicas).
+Обычно не следует одновременно обновлять тестовые среды и рабочую среду: изменения должны пройти проверку.
+
+Варианты:
+
+1. Разделить среды по веткам: сначала development, после тестирования staging, затем production.
+2. Использовать overlays и Kustomize, чтобы конвейер CI управлял тем, в какую среду попадут изменения.
+</b></details>
+
+<a id="argocd-application-health"></a>
+### Работоспособность приложений Argo CD
+
+<details>
+<summary>Какие состояния работоспособности приложения существуют?</summary><br><b>
+
+* Healthy — ресурс работоспособен.
+* Missing — ресурс отсутствует в кластере.
+* Suspended — работа ресурса приостановлена.
+* Progressing — ресурс ещё не достиг рабочего состояния, но движется или может перейти к нему.
+* Degraded — ресурс работает некорректно.
+* Unknown — состояние неизвестно.
 </b></details>
 
 <details>
-<summary>True or False? An ingress is considered healthy if status.loadBalancer.ingress list includes at least one value</summary><br><b>
+<summary>Верно ли, что Deployment считается работоспособным, если поды запущены?</summary><br><b>
 
-True.
+Не совсем. Для Deployment, StatefulSet, ReplicaSet и DaemonSet проверяется достижение ожидаемого состояния, включая нужное количество готовых реплик; одного факта запуска подов недостаточно.
 </b></details>
 
 <details>
-<summary>What can you tell about the health of custom Kubernetes resources?</summary><br><b>
+<summary>Верно ли, что Ingress считается работоспособным, если список status.loadBalancer.ingress содержит хотя бы одно значение?</summary><br><b>
 
-The health of custom Kubernetes resources is defined by writing Lua scripts.
-
-You find such list of scripts here: https://github.com/argoproj/argo-cd/tree/master/resource_customizations
-</b></details>
-
-### ArgoCD Syncs
-
-<details>
-<summary>Explain manual syncs vs. automatic syncs</summary><br><b>
-
-Automatic syncs means that once ArgoCD detected a change or a new version of your app in Git, it will apply the changes so the current/actual state can be equal to desired state.
-
-With manual syncs, ArgoCD will identify there is a difference, but will do nothing to correct it.
+Да, это описанная в исходнике стандартная проверка.
 </b></details>
 
 <details>
-<summary>Explain auto-pruning</summary><br><b>
+<summary>Как определяется работоспособность пользовательских ресурсов Kubernetes?</summary><br><b>
 
-If enabled, auto-pruning will remove resources when files or content is removed from a tracked Git repository.
+Проверки можно описывать скриптами Lua.
 
-If disabled, ArgoCD will not remove anything, even when content or files are removed.
+Примеры: https://github.com/argoproj/argo-cd/tree/master/resource_customizations
+</b></details>
+
+<a id="argocd-syncs"></a>
+### Синхронизация Argo CD
+
+<details>
+<summary>Чем отличается ручная синхронизация от автоматической?</summary><br><b>
+
+При автоматической синхронизации Argo CD применяет обнаруженные изменения Git, приводя фактическое состояние к желаемому.
+
+При ручной синхронизации он показывает расхождение, но применение изменений нужно запустить отдельно.
 </b></details>
 
 <details>
-<summary>Explain self-heal in regards to ArgoCD</summary><br><b>
+<summary>Что такое auto-pruning?</summary><br><b>
 
-Self-heal is the process of correcting the cluster state based on the desired state, when someone makes manual changes to the cluster.
-</b></details>
+При включённой автоматической очистке Argo CD удаляет управляемые ресурсы, исчезнувшие из желаемого состояния репозитория.
 
-### ArgoCD and Helm
-
-<details>
-<summary>What support is provided in ArgoCD for Helm?</summary><br><b>
-
-ArgoCD is able to track packaged Helm chart in a sense where it will monitor for new versions.
+Без неё удаление описания из Git само по себе не приводит к автоматическому удалению ресурса.
 </b></details>
 
 <details>
-<summary>True or False? When ArgoCD tracks Helm chart the chart is no longer an Helm application and it's a ArgoCD app</summary><br><b>
+<summary>Что такое self-heal в Argo CD?</summary><br><b>
 
-True. Trying to execute commands like `helm ls` will fail because helm metadata doesn't exist anymore and the application is tracked as ArgoCD app.
+Восстановление желаемого состояния кластера после ручных изменений, создавших расхождение с конфигурацией Git.
 </b></details>
 
-## Argo Rollouts Questions
-
-### Argo Rollouts 101
+<a id="argocd-and-helm"></a>
+### Argo CD и Helm
 
 <details>
-<summary>What is Argo Rollouts?</summary><br><b>
+<summary>Как Argo CD поддерживает Helm?</summary><br><b>
 
-A controller for Kubernetes to perform application deployments using different strategies like Blue/Green deployments, Canary deployments, etc.
-
-In addition, it supports A/B tests, automatic rollbacks and integrated metric analysis.
+Он может использовать упакованный чарт Helm как источник манифестов и отслеживать подходящие версии согласно конфигурации приложения.
 </b></details>
 
 <details>
-<summary>What happens when you rollout a new version of your app with argo rollouts?</summary><br><b>
+<summary>Верно ли, что приложение из чарта Helm под управлением Argo CD не является обычным релизом Helm?</summary><br><b>
 
-- Argo Rollouts creates a new replicaset (that is the new app version)
-  - Old version is still alive
-- ArgoCD marks the app as out-of-sync 
+Да. Argo CD использует Helm для генерации манифестов, а жизненным циклом управляет самостоятельно. Поэтому `helm ls` не покажет его как созданный Helm релиз: соответствующие метаданные релиза не создаются.
+</b></details>
+
+<a id="argo-rollouts-questions"></a>
+## Вопросы по Argo Rollouts
+
+<a id="argo-rollouts-101"></a>
+### Основы Argo Rollouts
+
+<details>
+<summary>Что такое Argo Rollouts?</summary><br><b>
+
+Контроллер Kubernetes для развёртывания приложений по разным стратегиям, включая сине-зелёную и канареечную.
+
+Также поддерживает A/B-тесты, автоматический откат и анализ метрик.
 </b></details>
 
 <details>
-<summary>True or False? You need to install ArgoCD in order to use Argo Rollouts</summary><br><b>
+<summary>Что происходит при развёртывании новой версии через Argo Rollouts?</summary><br><b>
 
-False. Quite common misconception today but both cab be used independency even though they work nicely together.
-</b></details>
-
-### Argo Advanced Rollouts
-
-<details>
-<summary>Scott, an engineer in your team, executes manually some smoke tests and monitors rollouts every time a new version is deployed. This way, if there is an issue he detects, he performs a rollback. What better approach you might suggest him to take?</summary><br><b>
-
-Shift towards fully automated rollbacks. Argo Rollouts supports multiple metric providers (Datadog, NewRelic, etc.) so you can use data and metrics for automating the rollbacks based on different conditions
-
+* Создаётся новый ReplicaSet для новой версии приложения.
+* Старая версия продолжает работать согласно стратегии развёртывания.
+* В исходнике также указано состояние OutOfSync в Argo CD; оно возникает при расхождении фактической конфигурации с Git и не является обязательным следствием любого rollout.
 </b></details>
 
 <details>
-<summary>Explain the concept of "Analysis" in regards to Argo Rollouts</summary><br><b>
+<summary>Верно ли, что для Argo Rollouts обязательно нужен Argo CD?</summary><br><b>
 
-Analysis is a resource deployed along a Rollout resources and defines the conditions and metrics threshols for performing a rollback
+Нет. Они хорошо сочетаются, но могут использоваться независимо.
+</b></details>
 
+<a id="argo-advanced-rollouts"></a>
+### Продвинутые вопросы по Rollouts
+
+<details>
+<summary>После каждого выпуска Скотт вручную запускает дымовые тесты, наблюдает за развёртыванием и при проблемах делает откат. Что можно улучшить?</summary><br><b>
+
+Автоматизировать решение об откате. Argo Rollouts поддерживает источники метрик, например Datadog и New Relic. По их данным можно задать условия успешности и неуспешности развёртывания.
 </b></details>
 
 <details>
-<summary>Explain the following configuration
+<summary>Что означает Analysis в Argo Rollouts?</summary><br><b>
+
+Механизм анализа, выполняемого вместе с развёртыванием: он задаёт метрики, условия и пороговые значения для решения о продолжении или прекращении выпуска. Конфигурация описывается шаблоном анализа, а выполнение — отдельным ресурсом.
+</b></details>
+
+<details>
+<summary>Объясните конфигурацию.
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -467,44 +468,44 @@ spec:
 ```
 </summary><br><b>
 
-It's an Analysis resource that fetches response status from Prometheus (monitoring instance). If it's more than 0.90 the rollout will continue, if it's less than 0.90 a rollback will be performed meaning the canary deployment failed.
-
+Анализ получает метрику из Prometheus и сравнивает результат с порогом 0,90. При выполнении условия успеха развёртывание может продолжиться; при признании анализа неуспешным канареечное развёртывание прекращается согласно его настройкам. Точная обработка граничного значения определяется выражением в приведённом коде.
 </b></details>
 
-### Argo Rollouts Commands
+<a id="argo-rollouts-commands"></a>
+### Команды Argo Rollouts
 
 <details>
-<summary>How to list rollouts?</summary><br><b>
+<summary>Как вывести список Rollout?</summary><br><b>
 
 `kubectl argo rollouts list rollouts`
 </b></details>
 
 <details>
-<summary>How to list the rollouts of a given application?</summary><br><b>
+<summary>Как получить сведения о Rollout определённого приложения?</summary><br><b>
 
 `kubectl argo rollouts get rollout SOME-APP`
 </b></details>
 
 <details>
-<summary>How to check the status of a rollout?</summary><br><b>
+<summary>Как проверить состояние Rollout?</summary><br><b>
 
 `kubectl argo rollouts status SOME-APP`
 </b></details>
 
 <details>
-<summary>How to rollout a new version (with new container tag)?</summary><br><b>
+<summary>Как развернуть новую версию с другим тегом образа?</summary><br><b>
 
 `kubectl argo rollouts set image SOME-APP web-app=some/registry/and/image:v2.0`
 </b></details>
 
 <details>
-<summary>How to manually promote to new app version?</summary><br><b>
+<summary>Как вручную продвинуть новую версию приложения?</summary><br><b>
 
 `kubectl argo rollouts promote SOME-APP`
 </b></details>
 
 <details>
-<summary>How do you monitor a rollout?</summary><br><b>
+<summary>Как наблюдать за развёртыванием?</summary><br><b>
 
 `kubectl argo rollouts get rollout SOME-APP --watch`
 </b></details>
