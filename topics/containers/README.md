@@ -58,7 +58,7 @@
 |--------|--------|------|----|----|
 |Беги, Форрест, беги!|Политики перезапуска|[Задание](run_forest_run.md)|[Решение](solutions/run_forest_run.md)
 |Слой за слоем|Слои образа|[Задание](image_layers.md)|[Решение](solutions/image_layers.md)
-|Контейнеризация приложения|Контейнеризация|[Задание](containerize_app.md)|[Решение](solutions/containerize_app.md)
+|Контейнеризация приложения|Контейнеризация|[Задание](../devops/containerize_app.md)|[Решение](../devops/solutions/containerize_app.md)
 |Многоэтапная сборка|Многоэтапная сборка|[Задание](multi_stage_builds.md)|[Решение](solutions/multi_stage_builds.md)
 
 <a id="questions"></a>
@@ -1070,7 +1070,7 @@ Compose удобен для приложений из нескольких се�
 <summary>Опишите процесс использования Docker Compose.</summary><br><br>
 
 * Опишите совместно запускаемые сервисы в файле `docker-compose.yml`.
-* Запустите их командой `docker-compose up`, как указано в исходнике. В Compose V2 используется `docker compose up`.
+* Запустите их командой `docker compose up` (Compose V2).
 </b></details>
 
 <details>
