@@ -1,83 +1,90 @@
+<a id="linux"></a>
 # Linux
 
-## Linux Master Application
+<a id="linux-master-application"></a>
+## Приложение Linux Master
 
-A completely free application for testing your knowledge on Linux.
-Disclaimer: developed by repository owner
+Полностью бесплатное приложение для проверки знаний Linux.
+Примечание: разработано владельцем репозитория.
 
 <a href="https://play.google.com/store/apps/details?id=com.codingshell.linuxmaster"><img src="../../images/linux_master.jpeg"/></a>
 
 - [Linux](#linux)
-  - [Linux Master Application](#linux-master-application)
-  - [Linux Exercises](#linux-exercises)
-    - [Basics](#basics)
-    - [Misc](#misc)
-  - [Linux Questions](#linux-questions)
-    - [Linux 101](#linux-101)
-    - [I/O Redirection](#io-redirection)
-    - [Filesystem Hierarchy Standard](#filesystem-hierarchy-standard)
-    - [Permissions](#permissions)
-    - [Scenarios](#scenarios)
+  - [Приложение Linux Master](#linux-master-application)
+  - [Упражнения Linux](#linux-exercises)
+    - [Основы](#basics)
+    - [Разное](#misc)
+  - [Вопросы Linux](#linux-questions)
+    - [Основы Linux](#linux-101)
+    - [Перенаправление ввода-вывода](#io-redirection)
+    - [Стандарт иерархии файловой системы](#filesystem-hierarchy-standard)
+    - [Права доступа](#permissions)
+    - [Практические ситуации](#scenarios)
     - [Systemd](#systemd)
-    - [Troubleshooting and Debugging](#troubleshooting-and-debugging)
-      - [Scenarios](#scenarios-1)
-    - [Kernel](#kernel)
+    - [Диагностика и отладка](#troubleshooting-and-debugging)
+      - [Практические ситуации](#scenarios-1)
+    - [Ядро](#kernel)
     - [SSH](#ssh)
-    - [Globbing & Wildcards](#globbing--wildcards)
-    - [Boot Process](#boot-process)
-    - [Disk and Filesystem](#disk-and-filesystem)
-    - [Performance Analysis](#performance-analysis)
-    - [Processes](#processes)
-    - [Security](#security)
-    - [Networking](#networking)
+    - [Шаблоны имён и подстановочные символы](#globbing--wildcards)
+    - [Процесс загрузки](#boot-process)
+    - [Диски и файловые системы](#disk-and-filesystem)
+    - [Анализ производительности](#performance-analysis)
+    - [Процессы](#processes)
+    - [Безопасность](#security)
+    - [Сеть](#networking)
     - [DNS](#dns)
-    - [Packaging](#packaging)
+    - [Пакеты](#packaging)
     - [DNF](#dnf)
-    - [Applications and Services](#applications-and-services)
-    - [Users and Groups](#users-and-groups)
-    - [Hardware](#hardware)
-    - [Namespaces](#namespaces)
-    - [Virtualization](#virtualization)
+    - [Приложения и сервисы](#applications-and-services)
+    - [Пользователи и группы](#users-and-groups)
+    - [Оборудование](#hardware)
+    - [Пространства имён](#namespaces)
+    - [Виртуализация](#virtualization)
     - [AWK](#awk)
-    - [System Calls](#system-calls)
-    - [Filesystem & Files](#filesystem--files)
-    - [Advanced Networking](#advanced-networking)
-    - [Memory](#memory)
-    - [Distributions](#distributions)
+    - [Системные вызовы](#system-calls)
+    - [Файловые системы и файлы](#filesystem--files)
+    - [Расширенные сетевые вопросы](#advanced-networking)
+    - [Память](#memory)
+    - [Дистрибутивы](#distributions)
     - [Sed](#sed)
-    - [Misc](#misc-1)
+    - [Разное](#misc-1)
 
-## Linux Exercises
+<a id="linux-exercises"></a>
+## Упражнения Linux
 
-### Basics
+<a id="basics"></a>
+### Основы
 
-|Name|Topic|Objective & Instructions|Solution|Comments|
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
-| Navigation | cd, pwd | [Exercise](exercises/navigation/README.md) | [Solution](exercises/navigation/solution.md)
-| Create and Destroy | touch, rm, mkdir | [Exercise](exercises/create_remove/README.md) | [Solution](exercises/create_remove/solution.md)
-| Copy Time | touch, cp, ls | [Exercise](exercises/copy/README.md) | [Solution](exercises/copy/solution.md)
+|Навигация|cd, pwd|[Задание](exercises/navigation/README.md)|[Решение](exercises/navigation/solution.md)
+|Создание и удаление|touch, rm, mkdir|[Задание](exercises/create_remove/README.md)|[Решение](exercises/create_remove/solution.md)
+|Копирование|touch, cp, ls|[Задание](exercises/copy/README.md)|[Решение](exercises/copy/solution.md)
 
-### Misc
+<a id="misc"></a>
+### Разное
 
-|Name|Topic|Objective & Instructions|Solution|Comments|
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
-| Unique Count |  | [Exercise](exercises/uniqe_count/README.md) | [Solution](exercises/uniqe_count/solution.md)
+|Подсчёт уникальных значений||[Задание](exercises/uniqe_count/README.md)|[Решение](exercises/uniqe_count/solution.md)
 
-## Linux Questions
+<a id="linux-questions"></a>
+## Вопросы Linux
 
-### Linux 101
+<a id="linux-101"></a>
+### Основы Linux
 
 <details>
-<summary>What is Linux?</summary><br><b>
+<summary>Что такое Linux?</summary><br><b>
 
-[Wikipedia](https://en.wikipedia.org/wiki/Linux): "Linux is a family of open-source Unix-like operating systems based on the Linux kernel, an operating system kernel first released on September 17, 1991, by Linus Torvalds. Linux is typically packaged in a Linux distribution."
+[Википедия](https://en.wikipedia.org/wiki/Linux): семейство Unix-подобных операционных систем с открытым исходным кодом на основе ядра Linux, впервые опубликованного Линусом Торвальдсом 17 сентября 1991 года. Обычно Linux распространяется в составе дистрибутива.
 
-[Red Hat](https://www.redhat.com/en/topics/linux/what-is-linux): "Linux® is an open source operating system (OS). An operating system is the software that directly manages a system’s hardware and resources, like CPU, memory, and storage. The OS sits between applications and hardware and makes the connections between all of your software and the physical resources that do the work."
+[Red Hat](https://www.redhat.com/en/topics/linux/what-is-linux): Linux — открытая ОС, которая управляет оборудованием и ресурсами компьютера: процессором, памятью и хранилищем. ОС связывает приложения с физическими ресурсами.
 
 </b></details>
 
 <details>
-<summary>Explain what each of the following commands does and give an example on how to use it:
+<summary>Объясните назначение каждой команды и приведите пример использования:
 
   * touch
   * ls
@@ -89,18 +96,18 @@ Disclaimer: developed by repository owner
   * cd
 </summary><br><b>
 
-  * touch - update file's timestamp. More commonly used for creating files
-  * ls - listing files and directories
-  * rm - remove files and directories
-  * cat - create, view and concatenate files
-  * cp - copy files and directories
-  * mkdir - create directories
-  * pwd - print current working directory (= at what path the user currently located)
-  * cd - change directory
+  * `touch` — обновляет временные метки; при отсутствии файла обычно создаёт его.
+  * `ls` — выводит файлы и каталоги.
+  * `rm` — удаляет файлы и каталоги.
+  * `cat` — читает и объединяет содержимое файлов; с перенаправлением позволяет записать результат в файл.
+  * `cp` — копирует файлы и каталоги.
+  * `mkdir` — создаёт каталоги.
+  * `pwd` — выводит текущий рабочий каталог.
+  * `cd` — меняет рабочий каталог.
 </b></details>
 
 <details>
-<summary>What each of the following commands does?
+<summary>Что делают следующие команды?
 
   * cd /
   * cd ~
@@ -110,18 +117,18 @@ Disclaimer: developed by repository owner
   * cd -
 </summary><br><b>
 
-  * cd / -> change to the root directory
-  * cd ~ -> change to your home directory
-  * cd -> change to your home directory
-  * cd .. -> change to the directory above your current i.e parent directory
-  * cd . -> change to the directory you currently in
-  * cd - -> change to the last visited path
+  * `cd /` — перейти в корневой каталог.
+  * `cd ~` — перейти в домашний каталог.
+  * `cd` — перейти в домашний каталог.
+  * `cd ..` — перейти в родительский каталог.
+  * `cd .` — остаться в текущем каталоге.
+  * `cd -` — вернуться в предыдущий рабочий каталог.
 </b></details>
 
 <details>
-<summary>Some of the commands in the previous question can be run with the -r/-R flag. What does it do? Give an example to when you would use it</summary><br><b>
+<summary>Некоторые команды поддерживают -r или -R. Что означает этот параметр? Приведите пример.</summary><br><b>
 
-The -r (or -R in some commands) flag allows the user to run a certain command recursively. For example, listing all the files under the following tree is possible when done recursively (`ls -R`):
+Для ряда команд он включает рекурсивную обработку. Например, `ls -R` выводит содержимое всего дерева каталогов:
 
 /dir1/
   dir2/
@@ -130,31 +137,31 @@ The -r (or -R in some commands) flag allows the user to run a certain command re
   dir3/
     file3
 
-To list all the files, one can run `ls -R /dir1`
+Для этого дерева: `ls -R /dir1`.
 </b></details>
 
 <details>
-<summary>Explain each field in the output of `ls -l` command</summary><br><b>
-It shows a detailed list of files in a long format. From the left:
+<summary>Объясните поля вывода ls -l.</summary><br><b>
+Это подробный список. Слева направо:
 
-* file permissions, number of links, owner name, owner group, file size, timestamp of last modification and directory/file name
+* Тип и права, число жёстких ссылок, владелец, группа, размер, время последнего изменения и имя файла или каталога.
 </b></details>
 
 <details>
-<summary>What are hidden files/directories? How to list them?</summary><br><b>
+<summary>Что такое скрытые файлы и каталоги? Как их вывести?</summary><br><b>
 
-These are files directly not displayed after performing a standard ls direct listing. An example of these files are .bashrc which are used to execute some scripts. Some also store configuration about services on your host like .KUBECONFIG. The command used to list them is, `ls -a`
+Имена, начинающиеся с точки, обычный `ls` скрывает. Пример — `.bashrc` с настройками оболочки. Для вывода используйте `ls -a`. Уточнение: `KUBECONFIG` обычно обозначает переменную окружения, а не стандартный файл `.KUBECONFIG`.
 </b></details>
 
 <details>
-<summary>What do > and < do in terms of input and output for programs?</summary><br><b>
-They take in input (<) and output for a given file (>) using stdin and stdout.
+<summary>Что делают операторы > и < с вводом и выводом программы?</summary><br><b>
+`<` направляет файл в стандартный ввод, а `>` записывает стандартный вывод в файл с его перезаписью.
 
 `myProgram < input.txt > executionOutput.txt`
 </b></details>
 
 <details>
-<summary>Explain what each of the following commands does and give an example on how to use it:
+<summary>Объясните назначение каждой команды и приведите пример использования:
 
   * sed
   * grep
@@ -162,49 +169,49 @@ They take in input (<) and output for a given file (>) using stdin and stdout.
   * awk
 </summary><br><b>
 
-  - sed: a stream editor. Can be used for various purposes like replacing a word in a file: `sed -i s/salad/burger/g`
-  - grep: a search tool. Used to search, count or match a text in a file:
-    - searching for any line that contains a word in a file: `grep 'word' file.md`
-    - or displaying the total number of times a string appears in a file: `grep -c 'This is a string' file.md`
-  - cut: a tool for cutting out selected portions of each line of a file:
-    - syntax: `cut OPTION [FILE]`
-      - cutting first two bytes from a word in a file: `cut -b 1-2 file.md`, output: `wo`
-  - awk: a programming language that is mainly used for text processing and data extraction. It can be used to manipulate and modify text in a file:
-    - syntax: awk [OPTIONS] [FILTER] [FILE]
-extracting a specific field from a CSV file: awk -F ',' '{print $1}' file.csv, output: first field of each line in the file
+  - `sed` — потоковый редактор. Например, замена слова: `sed -i 's/salad/burger/g' FILE`.
+  - `grep` — поиск строк по тексту или шаблону:
+    - Строки со словом: `grep 'word' file.md`.
+    - Число совпавших строк: `grep -c 'This is a string' file.md`. Это не число всех вхождений внутри строк.
+  - `cut` — выделение частей каждой строки:
+    - Синтаксис: `cut OPTION [FILE]`.
+    - Первые два байта: `cut -b 1-2 file.md`; для слова `word` результат — `wo`.
+  - `awk` — язык обработки текста и извлечения данных, позволяющий преобразовывать строки файла.
+    - Синтаксис: `awk [OPTIONS] [FILTER] [FILE]`.
+Пример: `awk -F ',' '{print $1}' file.csv` выводит первое поле каждой строки простого CSV. Полноценный разбор CSV с кавычками требует дополнительных средств.
 </b></details>
 
 <details>
-<summary>How to rename the name of a file or a directory?</summary><br><b>
+<summary>Как переименовать файл или каталог?</summary><br><b>
 
-Using the `mv` command.
+Командой `mv`.
 </b></details>
 
 <details>
-<summary>Specify which command would you use (and how) for each of the following scenarios 
+<summary>Какие команды вы используете в следующих случаях?
 
-  * Remove a directory with files
-  * Display the content of a file
-  * Provides access to the file /tmp/x for everyone
-  * Change working directory to user home directory
-  * Replace every occurrence of the word "good" with "great" in the file /tmp/y</summary><br><b>
+  * Удалить каталог с файлами
+  * Показать содержимое файла
+  * Предоставить всем доступ к /tmp/x
+  * Перейти в домашний каталог
+  * Заменить все good на great в /tmp/y</summary><br><b>
 
   - `rm -rf dir`
-  - `cat or less`
+   - `cat` или `less`
   - `chmod 777 /tmp/x`
   - `cd ~`
   - `sed -i s/good/great/g /tmp/y`
 </b></details>
 
 <details>
-<summary>How can you check what is the path of a certain command?</summary><br><b>
+<summary>Как узнать путь к команде?</summary><br><b>
 
   * whereis
   * which
 </b></details>
 
 <details>
-<summary>What is the difference between these two commands? Will it result in the same output?
+<summary>Чем отличаются эти команды? Совпадёт ли вывод?
 
 ```
 echo hello world
@@ -212,17 +219,17 @@ echo "hello world"
 ```
 </summary><br><b>
 
-The echo command receives two separate arguments in the first execution and in the second execution it gets one argument which is the string "hello world". The output will be the same.
+В первом случае `echo` получает два аргумента, во втором — одну строку `hello world`. Вывод совпадёт.
 </b></details>
 
 <details>
-<summary>Explain piping. How do you perform piping?</summary><br><b>
+<summary>Что такое конвейер и как его создать?</summary><br><b>
 
-Using a pipe in Linux, allows you to send the output of one command to the input of another command. For example: `cat /etc/services | wc -l`
+Конвейер передаёт стандартный вывод одной команды на стандартный ввод другой: `cat /etc/services | wc -l`.
 </b></details>
 
 <details>
-<summary>Fix the following commands:
+<summary>Исправьте команды:
 
   * sed "s/1/2/g' /tmp/myFile
   * find . -iname \*.yaml -exec sed -i "s/1/2/g" {} ;
@@ -235,528 +242,537 @@ find . -iname "*.yaml" -exec sed -i "s/1/2/g" {} \;
 </b></details>
 
 <details>
-<summary>How to check which commands you executed in the past?</summary><br><b>
+<summary>Как посмотреть ранее выполненные команды?</summary><br><b>
 
-history command or .bash_history file 
-  * also can use up arrow key to access or to show the recent commands you type
+Использовать `history` или файл `.bash_history`.
+  * Стрелка вверх также позволяет просматривать предыдущие команды.
 </b></details>
 
 <details>
-<summary>Running the command <code>df</code> you get "command not found". What could be wrong and how to fix it?</summary><br><b>
+<summary>При запуске df выводится command not found. Каковы причины и решение?</summary><br><b>
 </b>
 <p><b>
-Most likely the default/generated $PATH was somehow modified or overridden thus not containing <code>/bin/</code> where df would normally go.
-This issue could also happen if bash_profile or any configuration file of your interpreter was wrongly modified, causing erratics behaviours.
-You would solve this by fixing your $PATH variable:
+Возможно, изменён `$PATH` и в нём отсутствует каталог команды, например `/bin` или `/usr/bin`.
+Причиной могут быть неверные изменения `.bash_profile` или других файлов настройки оболочки.
+В таком случае исправьте `$PATH`.
 
-As to fix it there are several options:
+Варианты:
 
-1. Manually adding what you need to your $PATH <code>PATH="$PATH":/user/bin:/..etc</code>
-2. You have your weird env variables backed up.
-3. You would look for your distro default $PATH variable, copy paste using method #1
+1. Добавить нужный каталог, например `PATH="$PATH:/usr/bin"`. В исходнике был ошибочный путь `/user/bin`.
+2. Восстановить окружение из резервной копии.
+3. Сравнить с настройками `$PATH` по умолчанию для дистрибутива.
 
-Note: There are many ways of getting errors like this: if bash_profile or any configuration file of your interpreter was wrongly modified; causing erratics behaviours,
-permissions issues, bad compiled software (if you compiled it by yourself)... there is no answer that will be true 100% of the time.
+Это не единственная возможная причина: влияют настройки оболочки,
+права, отсутствие программы, ошибки установки или сборки. Универсального ответа нет.
 </b>
 </p>
 </details>
 
 <details>
-<summary>How do you schedule tasks periodically?</summary><br><b>
+<summary>Как запускать задачи по расписанию?</summary><br><b>
 
-You can use the commands <code>cron</code> and <code>at</code>.
-With cron, tasks are scheduled using the following format:
+Для повторяющихся задач используется cron; `at` обычно планирует однократный запуск.
+Формат задания cron:
 
-<code>*/30 * * * * bash myscript.sh</code> Executes the script every 30 minutes.
+`*/30 * * * * bash myscript.sh` — запуск каждые 30 минут.
 
-<minute> <hour> <day of month> <month> <day of week> <command to execute>
+`<минута> <час> <день месяца> <месяц> <день недели> <команда>`
 
-The tasks are stored in a cron file, you can write in it using <code>crontab -e</code>
+Редактирование таблицы заданий: `crontab -e`.
 
-Alternatively if you are using a distro with systemd it's recommended to use systemd timers.
+В системах с systemd можно использовать таймеры systemd.
 </b></details>
 
 <a name="questions-linux-redirection"></a>
-### I/O Redirection
+<a id="io-redirection"></a>
+### Перенаправление ввода-вывода
 
 <details>
-<summary>Explain Linux I/O redirection</summary><br><b>
-  In Linux, IO redirection is a way of changing the default input/output behavior of a command or program. It allows you to redirect input and output from/to different sources/destinations, such as files, devices, and other commands.
+<summary>Объясните перенаправление ввода-вывода Linux.</summary><br><b>
+Оно меняет стандартные источники ввода и назначения вывода программы: файлы, устройства или другие команды.
 
-Here are some common examples of IO redirection:
- * Redirecting Standard Output (stdout):
+Примеры:
+ * Перенаправление стандартного вывода stdout:
   <code>ls > filelist.txt</code>
-* Redirecting Standard Error (stderr):
+* Перенаправление стандартных ошибок stderr:
   <code>ls /some/nonexistent/directory 2> error.txt</code>
-* Appending to a file:
+* Добавление в конец файла:
   <code>echo "hello" >> myfile.txt</code>
-* Redirecting Input (stdin):
+* Перенаправление стандартного ввода stdin:
   <code>sort < unsorted.txt</code>
-* Using Pipes: Pipes ("|"):
+* Конвейер `|`:
   <code>ls | grep "\.txt$"</code>         
 </b></details>
 
 <details>
-<summary>Demonstrate Linux output redirection</summary><br><b>
+<summary>Покажите перенаправление stdout.</summary><br><b>
 
 <code>ls > ls_output.txt</code>
 </b></details>
 
 <details>
-<summary>Demonstrate Linux stderr output redirection</summary><br><b>
+<summary>Покажите перенаправление stderr.</summary><br><b>
 
 <code>yippiekaiyay 2> ls_output.txt</code>
 </b></details>
 
 <details>
-<summary>Demonstrate Linux stderr to stdout redirection</summary><br><b>
+<summary>Покажите перенаправление stderr в stdout.</summary><br><b>
 
-<code>yippiekaiyay &> file</code>
+`command 2>&1`. Уточнение: приведённое в исходнике `yippiekaiyay &> file` направляет оба потока в файл.
 </b></details>
 
 <details>
-<summary>What is the result of running the following command? <code>yippiekaiyay 1>&2 die_hard</code></code></summary><br><b>
+<summary>Каков результат <code>yippiekaiyay 1>&2 die_hard</code>?</summary><br><b>
 
-An output similar to: `yippikaiyay: command not found...`<br>
-The file `die_hard` will not be created
+Если команды нет, сообщение примерно такое: `yippikaiyay: command not found...`.<br>
+Файл `die_hard` не создаётся: это аргумент команды, а не назначение перенаправления.
 </b></details>
 
 <a name="questions-linux-fhs"></a>
-### Filesystem Hierarchy Standard
+<a id="filesystem-hierarchy-standard"></a>
+### Стандарт иерархии файловой системы
 
 <details>
-<summary>In Linux FHS (Filesystem Hierarchy Standard) what is the <code>/</code>?</summary><br><b>
+<summary>Что означает / в стандарте FHS?</summary><br><b>
 
-The root of the filesystem. The beginning of the tree.
+Корень файловой системы, начало дерева каталогов.
 </b></details>
 
 <details>
-<summary>What is stored in each of the following paths?
+<summary>Что находится по следующим путям?
 
-  - /bin, /sbin, /usr/bin and /usr/sbin
+  - /bin, /sbin, /usr/bin и /usr/sbin
   - /etc
   - /home
   - /var
   - /tmp</summary><br><b>
 
-  * binaries
-  * configuration files
-  * home directories of the different users
-  * files that tend to change and be modified like logs
-  * temporary files
+  * Исполняемые файлы.
+  * Конфигурационные файлы.
+  * Домашние каталоги пользователей.
+  * Изменяемые данные, например журналы.
+  * Временные файлы.
 </b></details>
 
 <details>
-<summary>What is special about the /tmp directory when compared to other directories?</summary><br><b>
+<summary>Чем /tmp отличается от других каталогов?</summary><br><b>
 
-`/tmp` folder is cleaned automatically, usually upon reboot.
+Его содержимое может очищаться автоматически, в том числе при перезагрузке; конкретные правила зависят от системы.
 </b></details>
 
 <details>
-<summary>What kind of information one can find in /proc?</summary><br><b>
+<summary>Какие сведения доступны в /proc?</summary><br><b>
  
-It contains useful information about the processes that are currently running, it is regarded as control and information center for kernel.
+Информация о процессах, ядре и ресурсах системы; часть файлов служит интерфейсом управления параметрами ядра.
 </b></details>
 
 <details>
-<summary>What makes /proc different from other filesystems?</summary><br><b>
-/proc is a special virtual filesystem in Unix-like operating systems, including Linux, that provides information about processes and system resources.
+<summary>Чем /proc отличается от обычных файловых систем?</summary><br><b>
+Это виртуальная файловая система, через которую ядро предоставляет информацию о процессах и системных ресурсах.
 </b></details>
 
 <details>
-<summary>True or False? only root can create files in /proc</summary><br><b>
+<summary>Верно ли, что создавать файлы в /proc может только root?</summary><br><b>
 
-False. No one can create file in /proc directly (certain operations can lead to files being created in /proc by the kernel).
+Неверно. Пользователи не создают там обычные файлы напрямую: записи формирует ядро в результате соответствующих операций.
 </b></details>
 
 <details>
-<summary>What can be found in /proc/cmdline?</summary><br><b>
+<summary>Что содержит /proc/cmdline?</summary><br><b>
 
-The command passed to the boot loader to run the kernel
+Командную строку параметров, переданных ядру при загрузке.
 </b></details>
 
 <details>
-<summary>In which path can you find the system devices (e.g. block storage)?</summary><br><b>
+<summary>Где представлены устройства системы, например блочные?</summary><br><b>
   /dev
 </b></details>
 
 <a name="questions-linux-permissions"></a>
-### Permissions
+<a id="permissions"></a>
+### Права доступа
 
 <details>
-<summary>How to change the permissions of a file?</summary><br><b>
+<summary>Как изменить права файла?</summary><br><b>
 
-Using the `chmod` command.
+Командой `chmod`.
 </b></details>
 
 <details>
-<summary>What does the following permissions mean?:
+<summary>Что означают следующие права?
 
   * 777
   * 644
   * 750</summary><br><b>
 
 <pre>
-777 - You give the owner, group and other: Execute (1), Write (2) and Read (4); 4+2+1 = 7.
-644 - Owner has Read (4), Write (2), 4+2 = 6; Group and Other have Read (4).
-750 - Owner has x+r+w, Group has Read (4) and Execute (1); 4+1 = 5. Other have no permissions.
+777 — владельцу, группе и остальным доступны чтение (4), запись (2) и выполнение (1).
+644 — владельцу чтение и запись (6), группе и остальным только чтение (4).
+750 — владельцу все права (7), группе чтение и выполнение (5), остальным ничего (0).
 </pre>
 </b></details>
 
 <details>
-<summary>What this command does? <code>chmod +x some_file</code></summary><br><b>
-It adds execute permissions to all sets i.e user, group and others
+<summary>Что делает <code>chmod +x some_file</code>?</summary><br><b>
+Добавляет право выполнения. Если класс пользователей не указан, при выборе затрагиваемых битов учитывается umask; для явного назначения всем используйте `a+x`.
 </b></details>
 
 <details>
-<summary>Explain what is setgid and setuid</summary><br><b>
+<summary>Объясните setgid и setuid.</summary><br><b>
 
-* setuid is a linux file permission that permits a user to run a file or program with the permissions of the owner of that file. This is possible by elevation of current user privileges.
-* setgid is a process when executed will run as the group that owns the file.
+* setuid у исполняемого файла позволяет процессу получить эффективный UID владельца файла при запуске, с учётом ограничений системы.
+* setgid у исполняемого файла аналогично задаёт эффективную группу владельца; у каталогов имеет особое значение для наследования группы.
 </b></details>
 
 <details>
-<summary>What is the purpose of sticky bit?</summary><br><b>
-Its a bit that only allows the owner or the root user to delete or modify the file.
+<summary>Зачем нужен sticky bit?</summary><br><b>
+На каталоге он ограничивает удаление и переименование файлов: обычно это может делать владелец файла, владелец каталога или привилегированный пользователь. Он не запрещает изменение содержимого файла при наличии права записи.
 </b></details>
 
 <details>
-<summary>What the following commands do?
+<summary>Что делают следующие команды?
 
   - chmod
   - chown
   - chgrp</summary><br><b>
 
-  * chmod - changes access permissions to files system objects
-  * chown - changes the owner of file system files and directories
-  * chgrp - changes the group associated with a file system object
+  * `chmod` — меняет права доступа.
+  * `chown` — меняет владельца файлов и каталогов.
+  * `chgrp` — меняет группу объекта файловой системы.
 </b></details>
 
 <details>
-<summary>What is sudo? How do you set it up?</summary><br><b>
-sudo is a command-line utility in Unix-like operating systems that allows users to run programs with the privileges of another user, usually the superuser (root). It stands for "superuser do.
+<summary>Что такое sudo и как его настроить?</summary><br><b>
+`sudo` позволяет выполнять команды с правами другого пользователя, обычно root, в соответствии с настроенной политикой.
 
-The sudo program is installed by default in almost all Linux distributions. If you need to install sudo in Debian/Ubuntu, use the command apt-get install sudo
+Пакет есть во многих дистрибутивах. В Debian/Ubuntu при необходимости установите его через `apt-get install sudo` с административными правами. Правила обычно редактируют через `visudo`.
 
 </b></details>
 
 <details>
-<summary>True or False? In order to install packages on the system one must be the root user or use the sudo command</summary><br><b>
+<summary>Верно ли, что для установки пакетов в систему нужны права root или sudo?</summary><br><b>
 
-True
+Верно.
 </b></details>
 
 <details>
-<summary>Explain what are ACLs. For what use cases would you recommend to use them?</summary><br><b>
-ACL stands for Access Control Lists. We can use ACL to have more granular control over accesses to certain files for certain users specifically. For instance, we can return the ACL of a particular file with the command <code>getfacl /absolute/file/path</code> and modify ACLs for a specific file with <code>setfacl -m</code>.
+<summary>Что такое ACL и когда они полезны?</summary><br><b>
+Access Control Lists дают более точные права для отдельных пользователей и групп. Просмотр: `getfacl /absolute/file/path`; изменение: `setfacl -m` с нужной записью и путём.
   
 </b></details>
 
 <details>
-<summary>You try to create a file but it fails. Name at least three different reason as to why it could happen</summary><br><b>
+<summary>Назовите минимум три причины, по которым не удаётся создать файл.</summary><br><b>
 
-* No more disk space
-* No more inodes
-* No permissions
+* Закончилось место.
+* Закончились inode.
+* Нет необходимых прав.
 </b></details>
 
 <details>
-<summary>A user accidentally executed the following <code>chmod -x $(which chmod)</code>. How to fix it?</summary><br><b>
+<summary>Пользователь выполнил <code>chmod -x $(which chmod)</code>. Как восстановить выполнение chmod?</summary><br><b>
 
-Using `sudo setfacl -m u::rx /usr/bin/chmod` will set the execute permissions on `chmod` for all the users. Post this, the `chmod` binary can be used as usual.
+Например, `sudo setfacl -m u::rx /usr/bin/chmod` возвращает чтение и выполнение владельцу файла. Затем владелец, обычно root, может восстановить нужные права через chmod. Уточнение: `u::rx` не означает выдачу прав всем пользователям; путь следует проверить.
 </b></details>
 
 <a name="questions-linux-scenarios"></a>
-### Scenarios
+<a id="scenarios"></a>
+### Практические ситуации
 
 <details>
-<summary>You would like to copy a file to a remote Linux host. How would you do?</summary><br><b>
+<summary>Как скопировать файл на удалённый Linux-хост?</summary><br><b>
 
-There are multiple ways to transfer files between hosts. Personal opinion: use `rsync`
+Есть несколько способов; автор предпочитает `rsync`.
 </b></details>
 
 <details>
-<summary>How to generate a random string?</summary><br><b>
+<summary>Как сгенерировать случайную строку?</summary><br><b>
 
-One way is to run the following: `cat /proc/sys/kernel/random/uuid`
+Например, `cat /proc/sys/kernel/random/uuid`.
 </b></details>
 
 <details>
-<summary>How to generate a random string of 7 characters?</summary><br><b>
+<summary>Как сгенерировать случайную строку из семи символов?</summary><br><b>
 
 `mkpasswd -l 7`
 </b></details>
 
 <a name="questions-linux-systemd"></a>
+<a id="systemd"></a>
 ### Systemd
 
 <details>
-<summary>What is systemd?</summary><br>
+<summary>Что такое systemd?</summary><br>
 <b>
-Systemd is a daemon (System 'd', d stands for daemon).
+systemd — система инициализации и управления сервисами; её основной процесс работает как демон.
 
-A daemon is a program that runs in the background without direct control of the user, although the user can at any time
-talk to the daemon.
+Демон — фоновая программа без постоянного непосредственного управления пользователем,
+хотя пользователь может взаимодействовать с ней через соответствующие интерфейсы.
 
-systemd has many features such as user processes control/tracking, snapshot support, inhibitor locks..
+systemd управляет сервисами и процессами, зависимостями, журналом, блокировками действий и другими компонентами системы.
 
-If we visualize the unix/linux system in layers, systemd would fall directly after the linux kernel.<br>
-Hardware -> Kernel -> <u>Daemons</u>, System Libraries, Server Display.
+В упрощённой модели слоёв systemd находится над ядром Linux.<br>
+Оборудование → ядро → демоны, системные библиотеки, графическая подсистема.
 </b>
 </details>
 
 <details>
-<summary>How to start or stop a service?</summary><br><b>
+<summary>Как запустить или остановить сервис?</summary><br><b>
 
-To start a service: `systemctl start <service name>`
-To stop a service: `systemctl stop <service name>`
+Запуск: `systemctl start <service name>`.
+Остановка: `systemctl stop <service name>`.
 </b></details>
 
 <details>
-<summary>How to check the status of a service?</summary><br><b>
+<summary>Как проверить состояние сервиса?</summary><br><b>
 
 `systemctl status <service name>`
 </b></details>
 
 <details>
-<summary>On a system which uses systemd, how would you display the logs?</summary><br><b>
+<summary>Как посмотреть журналы в системе с systemd?</summary><br><b>
 
 <code>journalctl</code>
 </b></details>
 
 <details>
-<summary>Describe how to make a certain process/app a service</summary><br><b>
-  The process will need a <code>.service</code> file to be created at the location <code>/etc/systemd/system/service-name.service</code> to be made into a service. The file has certain characteristics and need certain inputs to work. More details <a href="https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6">here</a>.
+<summary>Как оформить процесс или приложение как сервис?</summary><br><b>
+Создать unit-файл `/etc/systemd/system/service-name.service` с параметрами запуска и управления сервисом. Подробности — <a href="https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6">здесь</a>.
 </b></details>
 
-### Troubleshooting and Debugging
+<a id="troubleshooting-and-debugging"></a>
+### Диагностика и отладка
 
 <details>
-<summary>Where system logs are located?</summary><br><b>
+<summary>Где находятся системные журналы?</summary><br><b>
 
 /var/log
 </b></details>
 
 <details>
-<summary>How to follow file's content as it being appended without opening the file every time?</summary><br><b>
+<summary>Как следить за дописываемым содержимым файла?</summary><br><b>
 
 tail -f <file_name>
 </b></details>
 
 <details>
-<summary>What are you using for troubleshooting and debugging <b>network</b> issues?</summary><br><b>
+<summary>Чем вы диагностируете сетевые проблемы?</summary><br><b>
 
-<code>dstat -t</code> is great for identifying network and disk issues.
-<code>netstat -tnlaup</code> can be used to see which processes are running on which ports.
-<code>lsof -i -P</code> can be used for the same purpose as netstat.
-<code>ngrep -d any metafilter</code> for matching regex against payloads of packets.
-<code>tcpdump</code> for capturing packets
-<code>wireshark</code> same concept as tcpdump but with GUI (optional).
+`dstat -t` помогает сопоставлять активность системы, сети и дисков во времени.
+`netstat -tnlaup` показывает слушающие порты и связанные процессы при достаточных правах.
+`lsof -i -P` также помогает сопоставить сетевые соединения с процессами.
+`ngrep -d any metafilter` ищет совпадения с шаблоном в содержимом пакетов.
+`tcpdump` захватывает пакеты.
+Wireshark анализирует сетевой трафик и предоставляет графический интерфейс.
 </b></details>
 
 <details>
-<summary>What are you using for troubleshooting and debugging <b>disk & file system</b> issues?</summary><br><b>
+<summary>Чем вы диагностируете проблемы дисков и файловых систем?</summary><br><b>
 
-<code>dstat -t</code> is great for identifying network and disk issues.
-<code>opensnoop</code> can be used to see which files are being opened on the system (in real time).
+`dstat -t` помогает сопоставлять активность системы, сети и дисков во времени.
+`opensnoop` позволяет наблюдать, какие файлы открываются, в реальном времени.
 </b></details>
 
 <details>
-<summary>What are you using for troubleshooting and debugging <b>process</b> issues?</summary><br><b>
+<summary>Чем вы диагностируете проблемы процессов?</summary><br><b>
 
-<code>strace</code> is great for understanding what your program does. It prints every system call your program executed.
+`strace` показывает системные вызовы программы и помогает понять её поведение.
 </b></details>
 
 <details>
-<summary>What are you using for debugging CPU related issues?</summary><br><b>
+<summary>Чем вы диагностируете проблемы CPU?</summary><br><b>
 
-<code>top</code> will show you how much CPU percentage each process consumes
-<code>perf</code> is a great choice for sampling profiler and in general, figuring out what your CPU cycles are "wasted" on
-<code>flamegraphs</code> is great for CPU consumption visualization (http://www.brendangregg.com/flamegraphs.html)
+`top` показывает загрузку CPU процессами.
+`perf` позволяет профилировать выполнение и выяснять, на что расходуются процессорные циклы.
+Flame graphs визуализируют профиль выполнения: http://www.brendangregg.com/flamegraphs.html.
 </b></details>
 
 <details>
-<summary>You get a call from someone claiming "my system is SLOW". What do you do?</summary><br><b>
+<summary>Пользователь жалуется: «Система тормозит». Что делать?</summary><br><b>
 
-* Check with `top` for anything unusual
-* Run `dstat -t` to check if it's related to disk or network.
-* Check if it's network related with `sar`
-* Check I/O stats with `iostat`
+* Проверить необычную активность в `top`.
+* Через `dstat -t` оценить активность диска и сети.
+* Проверить сетевые показатели через `sar` с подходящими параметрами.
+* Проверить ввод-вывод через `iostat`.
 </b></details>
 
 <details>
-<summary>Explain iostat output</summary><br><b>
+<summary>Объясните вывод iostat.</summary><br><b>
 </b></details>
 
 <details>
-<summary>How to debug binaries?</summary><br><b>
+<summary>Как отлаживать исполняемые файлы?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is the difference between CPU load and utilization?</summary><br><b>
+<summary>Чем нагрузка CPU (load) отличается от его использования (utilization)?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How you measure time execution of a program?</summary><br><b>
+<summary>Как измерить время выполнения программы?</summary><br><b>
 </b></details>
 
-#### Scenarios
+<a id="scenarios-1"></a>
+#### Практические ситуации
 
 <details>
-<summary>You have a process writing to a file. You don't know which process exactly, you just know the path of the file. You would like to kill the process as it's no longer needed. How would you achieve it?</summary><br><b>
+<summary>Известен путь файла, в который пишет ненужный процесс. Как найти и завершить этот процесс?</summary><br><b>
 
-1. Run `lsof <FILE_PATH>`
-2. Use the pid (process ID) from the lsof command and run `kill <PID>`
+1. Выполните `lsof <FILE_PATH>`.
+2. Проверьте найденный PID и выполните `kill <PID>`.
 
 </b></details>
 
-### Kernel
+<a id="kernel"></a>
+### Ядро
 
 <details>
-<summary>What is a kernel, and what does it do?</summary><br><b>
+<summary>Что такое ядро и что оно делает?</summary><br><b>
 
-The kernel is part of the operating system and is responsible for tasks like:
+Ядро — часть ОС, отвечающая, в частности, за:
 
-  * Allocating memory
-  * Schedule processes
-  * Control CPU
-</b></details>
-
-<details>
-<summary>How do you find out which Kernel version your system is using?</summary><br><b>
-
-`uname -a` command
+  * Распределение памяти.
+  * Планирование процессов.
+  * Управление выполнением на CPU.
 </b></details>
 
 <details>
-<summary>What is a Linux kernel module and how do you load a new module?</summary><br><b>
+<summary>Как узнать версию ядра?</summary><br><b>
 
-A Linux kernel module is a piece of code that can be dynamically loaded into the kernel to extend its functionality. These modules are typically used to add support for hardware devices, filesystems, or system calls. The kernel itself is monolithic, but with modules, its capabilities can be extended without having to reboot the system or recompile the entire kernel.
+Командой `uname -a`.
 </b></details>
 
 <details>
-<summary>Explain user space vs. kernel space</summary><br><b>
+<summary>Что такое модуль ядра Linux и как его загрузить?</summary><br><b>
 
-The operating system executes the kernel in protected memory to prevent anyone from changing (and risking it crashing). This is what is known as "Kernel space".
-"User space" is where users executes their commands or applications. It's important to create this separation since we can't rely on user applications to not tamper with the kernel, causing it to crash.
-
-Applications can access system resources and indirectly the kernel space by making what is called "system calls".
+Модуль — код, динамически добавляющий функции ядру, например поддержку оборудования или файловых систем. Ядро Linux монолитное, но модули расширяют его без полной пересборки и обычно без перезагрузки.
 </b></details>
 
 <details>
-<summary>In what phases of kernel lifecycle, can you change its configuration?</summary><br><b>
+<summary>Чем пространство пользователя отличается от пространства ядра?</summary><br><b>
 
-  * Build time (when it's compiled)
-  * Boot time (when it starts)
-  * Runtime (once it's already running)
+Ядро работает в защищённом пространстве памяти, чтобы пользовательские программы не могли произвольно изменять его данные и нарушать работу системы.
+Пользовательские команды и приложения работают в пользовательском пространстве. Такое разделение защищает ядро от ошибок и вмешательства приложений.
+
+Для доступа к ресурсам ОС приложения обращаются к ядру через системные вызовы.
 </b></details>
 
 <details>
-<summary>Where can you find kernel's configuration?</summary><br><b>
+<summary>На каких этапах можно менять конфигурацию ядра?</summary><br><b>
 
-Usually it will reside in `/boot/config-<kernel version>.<os release>.<arch>`
+  * При сборке.
+  * При загрузке.
+  * Во время работы.
 </b></details>
 
 <details>
-<summary>Where can you find the file that contains the command passed to the boot loader to run the kernel?</summary><br><b>
+<summary>Где найти конфигурацию сборки ядра?</summary><br><b>
+
+Обычно в `/boot/config-<kernel version>.<os release>.<arch>`; точное имя зависит от дистрибутива.
+</b></details>
+
+<details>
+<summary>Где посмотреть командную строку, переданную ядру при загрузке?</summary><br><b>
 
 `/proc/cmdline`
 </b></details>
 
 <details>
-<summary>How to list kernel's runtime parameters?</summary><br><b>
+<summary>Как вывести параметры ядра, доступные во время работы?</summary><br><b>
 
 `sysctl -a`
 </b></details>
 
 <details>
-<summary>Will running <code>sysctl -a</code> as a regular user vs. root, produce different result?</summary><br><b>
+<summary>Может ли вывод sysctl -a отличаться для обычного пользователя и root?</summary><br><b>
 
-Yes, you might notice that in most systems, when running `systctl -a` with root, you'll get more runtime parameters compared to executing the same command with a regular user.
+Да. Обычному пользователю могут быть недоступны некоторые параметры, которые root способен прочитать.
 </b></details>
 
 <details>
-<summary>You would like to enable IPv4 forwarding in the kernel, how would you do it?</summary><br><b>
+<summary>Как включить маршрутизацию IPv4 в ядре?</summary><br><b>
 
 `sudo sysctl net.ipv4.ip_forward=1`
 
-To make it persistent (applied after reboot for example): insert `net.ipv4.ip_forward = 1` into `/etc/sysctl.conf`
+Для сохранения после перезагрузки добавьте `net.ipv4.ip_forward = 1` в поддерживаемый системой конфигурационный файл sysctl, например `/etc/sysctl.conf`.
 
-Another way to is to run `echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward`
+Другой способ немедленного изменения: `echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward`.
 </b></details>
 
 <details>
-<summary>How <code>sysctl</code> applies the changes to kernel's runtime parameters the moment you run sysctl command?</summary><br><b>
+<summary>Как sysctl изменяет параметры ядра во время работы?</summary><br><b>
 
-If you `strace` the sysctl command you can see it does it by changing the file under /proc/sys/...
+Трассировка `strace` показывает запись в соответствующие файлы `/proc/sys/`.
 
-In the past it was done with sysctl system call, but it was deprecated at some point.
+Раньше существовал системный вызов sysctl; этот интерфейс устарел.
 </b></details>
 
 <details>
-<summary>How changes to kernel runtime parameters persist? (applied even after reboot to the system for example)</summary><br><b>
+<summary>Как сохранить параметры ядра после перезагрузки?</summary><br><b>
 
-There is a service called `systemd-sysctl` that takes the content of /etc/sysctl.conf and applies it. This is how changes persist, even after reboot, when they are written in /etc/sysctl.conf
+Записать их в конфигурацию, применяемую при загрузке. `systemd-sysctl` читает файлы `sysctl.d`; обработка `/etc/sysctl.conf` зависит от дистрибутива. Уточнение: один только запуск `sysctl` изменение не сохраняет.
 </b></details>
 
 <details>
-<summary>Are the changes you make to kernel parameters in a container, affects also the kernel parameters of the host on which the container runs?</summary><br><b>
+<summary>Влияет ли изменение параметров ядра внутри контейнера на хост?</summary><br><b>
 
-No. Containers have their own /proc filesystem so any change to kernel parameters inside a container, are not affecting the host or other containers running on that host.
+Зависит от параметра и пространств имён. Некоторые параметры изолированы, другие глобальны; привилегированный контейнер способен затронуть хост. Уточнение к исходнику: собственное представление `/proc` не гарантирует изоляцию всех параметров общего ядра.
 </b></details>
 
 <a name="questions-linux-ssh"></a>
+<a id="ssh"></a>
 ### SSH
 
 <details>
-<summary>What is SSH? How to check if a Linux server is running SSH?</summary><br><b>
+<summary>Что такое SSH? Как проверить, работает ли SSH-сервер?</summary><br><b>
 
-[Wikipedia Definition](https://en.wikipedia.org/wiki/SSH_(Secure_Shell)): "SSH or Secure Shell is a cryptographic network protocol for operating network services securely over an unsecured network."
+[Википедия](https://en.wikipedia.org/wiki/SSH_(Secure_Shell)): SSH, или Secure Shell, — криптографический сетевой протокол для безопасной работы сетевых сервисов через незащищённую сеть.
 
-[Hostinger.com Definition](https://www.hostinger.com/tutorials/ssh-tutorial-how-does-ssh-work): "SSH, or Secure Shell, is a remote administration protocol that allows users to control and modify their remote servers over the Internet."
+[Hostinger.com](https://www.hostinger.com/tutorials/ssh-tutorial-how-does-ssh-work): протокол удалённого администрирования, позволяющий управлять серверами через интернет.
 
-An SSH server will have SSH daemon running. Depends on the distribution, you should be able to check whether the service is running (e.g. systemctl status sshd).
+На сервере работает демон SSH. Проверка зависит от системы, например `systemctl status sshd`.
 </b></details>
 
 <details>
-<summary>Why SSH is considered better than telnet?</summary><br><b>
+<summary>Почему SSH безопаснее Telnet?</summary><br><b>
 
-Telnet also allows you to connect to a remote host but as opposed to SSH where the communication is encrypted, in telnet, the data is sent in clear text, so it doesn't considered to be secured because anyone on the network can see what exactly is sent, including passwords.
+Telnet передаёт данные, включая пароли, открытым текстом. SSH шифрует соединение, защищая содержимое от перехвата.
 </b></details>
 
 <details>
-<summary>What is stored in <code>~/.ssh/known_hosts</code>?</summary><br><b>
+<summary>Что хранится в ~/.ssh/known_hosts?</summary><br><b>
 
-The file stores the key fingerprints for the clients connecting to the SSH server. This fingerprint creates a trust between the client and the server for future SSH connections.
+Известные клиенту открытые ключи SSH-хостов. Они позволяют проверять подлинность сервера при последующих подключениях. Уточнение: это не список ключей клиентов для входа на сервер.
 </b></details>
 
 <details>
-<summary>You try to ssh to a server and you get "Host key verification failed". What does it mean?</summary><br><b>
+<summary>Что означает Host key verification failed при подключении SSH?</summary><br><b>
 
-It means that the key of the remote host was changed and doesn't match the one that stored on the machine (in ~/.ssh/known_hosts).
+Клиент не смог подтвердить ключ хоста. Например, ключ сервера изменился и не совпадает с записью в `~/.ssh/known_hosts`; причину изменения нужно проверить.
 </b></details>
 
 <details>
-<summary>What is the difference between SSH and SSL?</summary><br><b>
+<summary>Чем отличаются SSH и SSL?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What <code>ssh-keygen</code> is used for?</summary><br><b>
+<summary>Для чего используется ssh-keygen?</summary><br><b>
 
-<code>ssh-keygen</code> is a tool to generate an authentication key pair for SSH, that consists of a private and a public key. It supports a number of algorithms to generate authentication keys : 
+Для создания и обслуживания ключей SSH. Пара состоит из закрытого и открытого ключа. В исходнике перечислены следующие алгоритмы; их поддержка зависит от версии:
 - dsa
 - ecdsa
 - ecdsa-sk
 - ed25519
 - ed25519-sk
-- rsa (default)
+- rsa (в исходнике указан как вариант по умолчанию)
 
-One can also specify number of bits in key. Command below generates an SSH key pair with RSA 4096-bits :
+Для некоторых алгоритмов можно задать размер ключа. Следующая команда создаёт RSA-ключ длиной 4096 бит:
 ```
 $ ssh-keygen -t rsa -b 4096
 ```
 
-The output looks like this:
+Пример вывода:
 ```
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/user/.ssh/id_rsa): 
@@ -780,228 +796,231 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-One can check how many bits an SSH key has with :
+Размер существующего ключа можно проверить так:
 ```
 $ ssh-keygen -l -f /home/user/.ssh/id_rsa
 ```
 
-Output should look like this :
+Ожидаемый вид вывода:
 ```
 4096 SHA256:f5MOGnhzYfC0ZCHvbSXXiRiNVYETjxpHcXD5xSojx+M user@mac-book-pro (RSA)
 ```
-It shows the key is RSA 4096-bits.
+Он показывает RSA-ключ длиной 4096 бит.
 
-`-l` and `-f` parameters usage explanation :
+Объяснение параметров `-l` и `-f`:
 ```
 -l          Show the fingerprint of the key file.
 -f filename Filename of the key file.
 ```
 
-Learn more : [How can I tell how many bits my ssh key is? - Superuser](https://superuser.com/a/139311)
+Подробнее: [Как определить размер SSH-ключа — Superuser](https://superuser.com/a/139311).
 </b></details>
 
 <details>
-<summary>What is SSH port forwarding?</summary><br><b>
+<summary>Что такое перенаправление портов SSH?</summary><br><b>
 </b></details>
 
 <a name="questions-linux-wildcards"></a>
-### Globbing & Wildcards
+<a id="globbing--wildcards"></a>
+### Шаблоны имён и подстановочные символы
 
 <details>
-<summary>What is Globbing?</summary><br><b>
+<summary>Что такое globbing — раскрытие шаблонов имён файлов?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What are wildcards? Can you give an example of how to use them?</summary><br><b>
+<summary>Что такое подстановочные символы? Приведите пример.</summary><br><b>
 </b></details>
 
 <details>
-<summary>Explain what will <code>ls [XYZ]</code> match</summary><br><b>
+<summary>Какие имена сопоставляются шаблону <code>ls [XYZ]</code>?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Explain what will <code>ls [^XYZ]</code> match</summary><br><b>
+<summary>Какие имена сопоставляются шаблону <code>ls [^XYZ]</code>?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Explain what will <code>ls [0-5]</code> match</summary><br><b>
+<summary>Какие имена сопоставляются шаблону <code>ls [0-5]</code>?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What each of the following matches
+<summary>Чему соответствуют следующие шаблоны?
 
   - ?
   - *</summary><br><b>
 
-  * The ? matches any single character
-  * The * matches zero or more characters
+  * `?` — одному символу.
+  * `*` — нулю или нескольким символам.
 </b></details>
 
 <details>
-<summary>What do we grep for in each of the following commands?:
+<summary>Что ищет каждая команда grep?
 
   * <code>grep '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' some_file</code>
   * <code>grep -E "error|failure" some_file</code>
   * <code>grep '[0-9]$' some_file</code>
 </summary><br><b>
 
-1. An IP address
-2. The word "error" or "failure"
-3. Lines which end with a number
+1. Строку вида IPv4-адреса. Уточнение: выражение не проверяет допустимость октетов 0–255.
+2. `error` или `failure`.
+3. Строки, оканчивающиеся цифрой.
 </b></details>
 
 <details>
-<summary>Which line numbers will be printed when running `grep '\baaa\b'` on the following content:
+<summary>Какие строки выберет `grep '\baaa\b'` из следующего текста? Сама команда без -n номера не выводит.
 
 aaa
 bbb
 ccc.aaa
 aaaaaa</summary><br><b>
 
-lines 1 and 3.
+Первая и третья строки.
 </b></details>
 
 <details>
-<summary>What is the difference single and double quotes?</summary><br><b>
+<summary>Чем отличаются одинарные и двойные кавычки?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is escaping? What escape character is used for escaping?</summary><br><b>
+<summary>Что такое экранирование? Какой символ для него используется?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is an exit code? What exit codes are you familiar with?</summary><br><b>
+<summary>Что такое код завершения? Какие коды вы знаете?</summary><br><b>
 
-An exit code (or return code) represents the code returned by a child process to its
-parent process.
+Код завершения — значение, которое дочерний процесс возвращает
+родительскому после завершения.
 
-0 is an exit code which represents success while anything higher than 1 represents error.
-Each number has different meaning, based on how the application was developed.
+Обычно 0 означает успех, а любое ненулевое значение, включая 1, — ошибку или иной особый результат.
+Конкретный смысл зависит от программы.
 
-I consider this as a good blog post to read more about it: https://shapeshed.com/unix-exit-codes
+Дополнительное объяснение: https://shapeshed.com/unix-exit-codes.
 </b></details>
 
 <a name="questions-linux-boot"></a>
-### Boot Process
+<a id="boot-process"></a>
+### Процесс загрузки
 
 <details>
-<summary>Tell me everything you know about the Linux boot process</summary><br><b>
+<summary>Расскажите о процессе загрузки Linux.</summary><br><b>
 
-Another way to ask this: what happens from the moment you turned on the server until you get a prompt
+Иначе говоря, что происходит от включения сервера до появления приглашения командной строки?
 </b></details>
 
 <details>
-<summary>What is GRUB2?</summary><br><b>
+<summary>Что такое GRUB2?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is Secure Boot?</summary><br><b>
+<summary>Что такое Secure Boot?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What can you find in /boot?</summary><br><b>
+<summary>Что находится в /boot?</summary><br><b>
 </b></details>
 
 <a name="questions-linux-disk-fs"></a>
-### Disk and Filesystem
+<a id="disk-and-filesystem"></a>
+### Диски и файловые системы
 
 <details>
-<summary>What's an inode?</summary><br><b>
+<summary>Что такое inode?</summary><br><b>
 
-For each file (and directory) in Linux there is an inode, a data structure which stores meta data
-related to the file like its size, owner, permissions, etc.
+Структура данных файловой системы, связанная с файлом или каталогом
+и содержащая его метаданные: размер, владельца, права и другие сведения.
 </b></details>
 
 <details>
-<summary>Which of the following is not included in inode:
+<summary>Чего нет в inode?
 
-  * Link count
-  * File size
-  * File name
-  * File timestamp</summary><br><b>
+  * Числа ссылок
+  * Размера файла
+  * Имени файла
+  * Временных меток</summary><br><b>
 
-File name (it's part of the directory file)
+Имени файла: сопоставление имени и inode хранится в каталоге.
 </b></details>
 
 <details>
-<summary>How to check which disks are currently mounted?</summary><br><b>
+<summary>Как посмотреть текущие монтирования?</summary><br><b>
 
-Run `mount`
+Выполнить `mount`.
 </b></details>
 
 <details>
-<summary>You run the <code>mount</code> command but you get no output. How would you check what mounts you have on your system?</summary><br><b>
+<summary>Команда mount ничего не вывела. Где ещё посмотреть монтирования?</summary><br><b>
 
 `cat /proc/mounts`
 </b></details>
 
 <details>
-<summary>What is the difference between a soft link and hard link?</summary><br><b>
+<summary>Чем символическая ссылка отличается от жёсткой?</summary><br><b>
 
-Hard link is the same file, using the same inode.
-Soft link is a shortcut to another file, using a different inode.
+Жёсткая ссылка — ещё одно имя того же файла с тем же inode.
+Символическая ссылка имеет отдельный inode и хранит путь к цели.
 </b></details>
 
 <details>
-<summary>True or False? You can create an hard link for a directory</summary><br><b>
+<summary>Верно ли, что обычный пользователь может создать жёсткую ссылку на каталог?</summary><br><b>
 
-False
+Неверно.
 </b></details>
 
 <details>
-<summary>True or False? You can create a soft link between different filesystems</summary><br><b>
+<summary>Верно ли, что символическая ссылка может указывать в другую файловую систему?</summary><br><b>
 
-True
+Верно.
 </b></details>
 
 <details>
-<summary>True or False? Directories always have by minimum 2 links</summary><br><b>
+<summary>Верно ли, что каталог всегда имеет минимум две жёсткие ссылки?</summary><br><b>
 
-True.
+В классической Unix-модели — да: учитываются имя каталога в родительском каталоге и запись `.`. Однако это не универсальное правило для всех файловых систем.
 </b></details>
 
 <details>
-<summary>What happens when you delete the original file in case of soft link and hard link?</summary><br><b>
+<summary>Что произойдёт с символической и жёсткой ссылками при удалении исходного имени файла?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Can you check what type of filesystem is used in /home?</summary><br><b>
+<summary>Как узнать тип файловой системы /home?</summary><br><b>
 
-There are many answers for this question. One way is running `df -T`
+Например, `df -T`.
 </b></details>
 
 <details>
-<summary>What is a swap partition? What is it used for?</summary><br><b>
+<summary>Что такое раздел swap и зачем он нужен?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How to create a
+<summary>Как создать:
 
-  - new empty file
-  - a file with text (without using text editor)
-  - a file with given size</summary><br><b>
+  - Пустой файл
+  - Файл с текстом без редактора
+  - Файл заданного размера?</summary><br><b>
   
   * touch new_file.txt
-  * cat > new_file [enter] submit text; ctrl + d to exit insert mode
+  * `cat > new_file`, затем ввод текста; `Ctrl+D` завершает ввод.
   * truncate -s <size> new_file.txt
 </b></details>
 
 <details>
-<summary>You are trying to create a new file but you get "File system is full". You check with df for free space and you see you used only 20% of the space. What could be the problem?</summary><br><b>
+<summary>Создание файла завершается ошибкой File system is full, но df показывает только 20% занятого места. В чём может быть причина?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How would you check what is the size of a certain directory?</summary><br><b>
+<summary>Как узнать размер каталога?</summary><br><b>
 
 `du -sh`
 </b></details>
 
 <details>
-<summary>What is LVM?</summary><br><b>
+<summary>Что такое LVM?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Explain the following in regards to LVM:
+<summary>Объясните понятия LVM:
 
   * PV
   * VG
@@ -1011,331 +1030,335 @@ There are many answers for this question. One way is running `df -T`
 </b></details>
 
 <details>
-<summary>What is NFS? What is it used for?</summary><br><b>
+<summary>Что такое NFS и для чего его используют?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What RAID is used for? Can you explain the differences between RAID 0, 1, 5 and 10?</summary><br><b>
+<summary>Для чего нужен RAID? Чем отличаются RAID 0, 1, 5 и 10?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Describe the process of extending a filesystem disk space</summary><br><b>
+<summary>Опишите расширение диска и файловой системы.</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is lazy umount?</summary><br><b>
+<summary>Что такое ленивое размонтирование (lazy umount)?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is tmpfs?</summary><br><b>
+<summary>Что такое tmpfs?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is stored in each of the following logs?
+<summary>Что содержат следующие журналы?
 
   * /var/log/messages
   * /var/log/boot.log</summary><br><b>
 </b></details>
 
 <details>
-<summary>True or False? both /tmp and /var/tmp cleared upon system boot</summary><br><b>
+<summary>Верно ли, что /tmp и /var/tmp очищаются при загрузке?</summary><br><b>
 
-False. /tmp is cleared upon system boot while /var/tmp is cleared every a couple of days or not cleared at all (depends on distro).
+Неверно. `/var/tmp` предназначен для временных файлов, сохраняемых между перезагрузками; `/tmp` может очищаться при загрузке. Точные правила очистки зависят от системы.
 </b></details>
 
 <a name="questions-linux-performance-analysis"></a>
-### Performance Analysis
+<a id="performance-analysis"></a>
+### Анализ производительности
 
 <details>
-<summary>How to check what is the current load average?</summary><br><b>
+<summary>Как узнать текущую среднюю нагрузку (load average)?</summary><br><b>
 
-One can use `uptime` or `top`
+Через `uptime` или `top`.
 </b></details>
 
 <details>
-<summary>You know how to see the load average, great. but what each part of it means? for example 1.43, 2.34, 2.78</summary><br><b>
+<summary>Что означают три значения load average, например 1.43, 2.34, 2.78?</summary><br><b>
 
-[This article](http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html) summarizes the load average topic in a great way
+Подробное объяснение — в [этой статье](http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html).
 </b></details>
 
 <details>
-<summary>How to check process usage?</summary><br><b>
+<summary>Как посмотреть использование ресурсов процессами?</summary><br><b>
 
 pidstat
 </b></details>
 
 <details>
-<summary>How to check disk I/O?</summary><br><b>
+<summary>Как проверить дисковый ввод-вывод?</summary><br><b>
 
 `iostat -xz 1`
 </b></details>
 
 <details>
-<summary>How to check how much free memory a system has? How to check memory consumption by each process?</summary><br><b>
+<summary>Как проверить доступную память системы и потребление памяти процессами?</summary><br><b>
 
-You can use the commands <code>top</code> and <code>free</code>
+Командами `top` и `free`.
 </b></details>
 
 <details>
-<summary>How to check TCP stats?</summary><br><b>
+<summary>Как посмотреть статистику TCP?</summary><br><b>
 
 sar -n TCP,ETCP 1
 </b></details>
 
 <a name="questions-linux-processes"></a>
-### Processes
+<a id="processes"></a>
+### Процессы
 
 <details>
-<summary>how to list all the processes running in your system?</summary><br><b>
+<summary>Как вывести все процессы системы?</summary><br><b>
 
-The "ps" command can be used to list all the processes running in a system. The "ps aux" command provides a detailed list of all the processes, including the ones running in the background.
+Например, `ps aux` выводит подробный список, включая фоновые процессы.
 </b></details>
 
 <details>
-<summary>How to run a process in the background and why to do that in the first place?</summary><br><b>
+<summary>Как запустить процесс в фоне и зачем это нужно?</summary><br><b>
 
-You can achieve that by specifying & at the end of the command.
-As to why, since some commands/processes can take a lot of time to finish
-execution or run forever, you may want to run them in the background instead of waiting for them to finish before gaining control again in current session.
+Добавить `&` в конце команды.
+Это полезно для долгих или постоянно работающих задач:
+оболочка остаётся доступной, не ожидая их завершения.
 </b></details>
 
 <details>
-<summary>How can you find how much memory a specific process consumes?</summary><br><b>
+<summary>Как узнать, сколько памяти использует определённый процесс?</summary><br><b>
 <code>
 mem()
 {                                                                                                      
     ps -eo rss,pid,euser,args:100 --sort %mem | grep -v grep | grep -i $@ | awk '{printf $1/1024 "MB"; $1=""; print }'
 }
 </code>
-[Source](https://stackoverflow.com/questions/3853655/in-linux-how-to-tell-how-much-memory-processes-are-using)
+[Источник](https://stackoverflow.com/questions/3853655/in-linux-how-to-tell-how-much-memory-processes-are-using).
 </b></details>
 
 <details>
-<summary>What signal is used by default when you run 'kill *process id*'?</summary><br><b>
+<summary>Какой сигнал по умолчанию отправляет kill PID?</summary><br><b>
 <pre>
-The default signal is SIGTERM (15). This signal kills
-process gracefully which means it allows it to save current
-state configuration.
+SIGTERM (15). Процесс может обработать его
+и завершиться корректно, сохранив нужные данные
+и освободив ресурсы.
 </pre>
 </b></details>
 
 <details>
-<summary>What signals are you familiar with?</summary><br><b>
+<summary>Какие сигналы вы знаете?</summary><br><b>
 
-SIGTERM - default signal for terminating a process
-SIGHUP - common usage is for reloading configuration
-SIGKILL - a signal which cannot caught or ignored
+SIGTERM — запрос на завершение по умолчанию для kill.
+SIGHUP — часто используется приложениями для перечитывания конфигурации.
+SIGKILL — принудительное завершение; сигнал нельзя перехватить или игнорировать.
 
-To view all available signals run `kill -l`
+Список сигналов: `kill -l`.
 </b></details>
 
 <details>
-<summary>What <code>kill 0</code> does?</summary><br><b>
-"kill 0" sends a signal to all processes in the current process group. It is used to check if the processes exist or not
+<summary>Что делает kill 0?</summary><br><b>
+Отправляет сигнал по умолчанию процессам текущей группы. Уточнение: это не проверка существования процесса — для неё используется сигнал 0, как в следующем вопросе.
 </b></details>
 
 <details>
-<summary>What <code>kill -0 <PID></code> does?</summary><br><b>
-"kill -0" checks if a process with a given process ID exists or not. It does not actually send any signal to the process.
+<summary>Что делает <code>kill -0 PID</code>?</summary><br><b>
+Проверяет существование процесса и возможность послать ему сигнал, не отправляя реального сигнала.
 </b></details>
 
 <details>
-<summary>What is a trap?</summary><br><b>
-A trap is a mechanism that allows the shell to intercept signals sent to a process and perform a specific action, such as handling errors or cleaning up resources before terminating the process.
+<summary>Что такое trap?</summary><br><b>
+Механизм оболочки для обработки сигналов и событий заданными действиями, например очисткой ресурсов перед завершением.
 
 </b></details>
 
 <details>
-<summary>Every couple of days, a certain process stops running. How can you look into why it's happening?</summary><br><b>
-One way to investigate why a process stops running is to check the system logs, such as the messages in /var/log/messages or journalctl. Additionally, checking the process's resource usage and system load may provide clues as to what caused the process to stop
+<summary>Процесс останавливается каждые несколько дней. Как выяснить причину?</summary><br><b>
+Проверить журналы приложения и системы, например `/var/log/messages` или `journalctl`, а также историю потребления ресурсов и нагрузки.
 </b></details>
 
 <details>
-<summary>What happens when you press ctrl + c?</summary><br><b>
-When you press "Ctrl+C," it sends the SIGINT signal to the foreground process, asking it to terminate gracefully.
+<summary>Что происходит при нажатии Ctrl+C?</summary><br><b>
+Терминал обычно отправляет SIGINT всей группе процессов переднего плана.
 </b></details>
 
 <details>
-<summary>What is a Daemon in Linux?</summary><br><b>
+<summary>Что такое демон Linux?</summary><br><b>
 
-A background process. Most of these processes are waiting for requests or set of conditions to be met before actually running anything.
-Some examples: sshd, crond, rpcbind.
+Фоновый процесс, часто ожидающий запросов или определённых событий.
+Примеры: sshd, crond, rpcbind.
 </b></details>
 
 <details>
-<summary>What are the possible states of a process in Linux?</summary><br><b>
+<summary>Какие состояния процесса бывают в Linux?</summary><br><b>
 <pre>
-Running (R)
-Uninterruptible Sleep (D) - The process is waiting for I/O
-Interruptible Sleep (S)
-Stopped (T)
-Dead (x)
-Zombie (z)
+Выполняется или готов к выполнению (R).
+Непрерываемое ожидание (D), часто связанное с вводом-выводом.
+Прерываемый сон (S).
+Остановлен (T).
+Завершён (X/x).
+Зомби (Z).
 </pre>
 </b></details>
 
 <details>
-<summary>How do you kill a process in D state?</summary><br><b>
-A process in D state (also known as "uninterruptible sleep") cannot be killed using the "kill" command. The only way to terminate it is to reboot the system.
+<summary>Как завершить процесс в состоянии D?</summary><br><b>
+Пока он находится в непрерываемом ожидании, сигнал завершения обычно не обрабатывается. Сначала нужно устранить причину ожидания; после выхода из него сигнал может сработать. Перезагрузка — крайний вариант, а не всегда единственный способ, как утверждается в исходнике.
 </b></details>
 
 <details>
-<summary>What is a zombie process?</summary><br><b>
+<summary>Что такое процесс-зомби?</summary><br><b>
 
-A process which has finished to run but has not exited.
+Процесс уже завершён, но его запись с кодом выхода ещё не забрана родителем.
 
-One reason it happens is when a parent process is programmed incorrectly. Every parent process should execute wait() to get the exit code from the child process which finished to run. But when the parent isn't checking for the child exit code, the child process can still exists although it finished to run.
+Родитель должен вызвать `wait()` или аналогичный интерфейс. Если он этого не делает, запись завершённого дочернего процесса остаётся в таблице процессов.
 </b></details>
 
 <details>
-<summary>How to get rid of zombie processes?</summary><br><b>
+<summary>Как избавиться от процессов-зомби?</summary><br><b>
 
-You can't kill a zombie process the regular way with `kill -9` for example as it's already dead.
+`kill -9` не поможет: процесс уже завершён.
 
-One way to kill zombie process is by sending SIGCHLD to the parent process telling it to terminate its child processes. This might not work if the parent process wasn't programmed properly. The invocation is `kill -s SIGCHLD [parent_pid]`
+Можно послать родителю `kill -s SIGCHLD [parent_pid]`, чтобы его обработчик попытался собрать статусы детей. Это сработает только при корректной реализации обработчика; сигнал не завершает детей сам по себе.
 
-You can also try closing/terminating the parent process. This will make the zombie process a child of init (1) which does periodic cleanups and will at some point clean up the zombie process.
+Другой вариант — корректно завершить родителя. Осиротевших потомков примет init или subreaper, который сможет забрать их статусы.
 </b></details>
 
 <details>
-<summary>How to find all the
+<summary>Как найти все:
 
-  * Processes executed/owned by a certain user
-  * Process which are Java processes
-  * Zombie Processes
+  * Процессы определённого пользователя
+  * Процессы Java
+  * Процессы-зомби
 </summary><br><b>
 
-If you mention at any point ps command with arguments, be familiar with what these arguments does exactly.
+Если используете `ps` с параметрами, объясните назначение каждого из них.
 </b></details>
 
 <details>
-<summary>What is the init process?</summary><br><b>
-It is the first process executed by the kernel during the booting of a system. It is a daemon process which runs till the system is shutdown. That is why, it is the parent of all the processes
+<summary>Что такое процесс init?</summary><br><b>
+Первый пользовательский процесс, запускаемый ядром, с PID 1. Он работает до выключения и является корнем дерева пользовательских процессов.
 </b></details>
 
 <details>
-<summary>Can you describe how processes are being created?</summary><br><b>
+<summary>Опишите создание процессов.</summary><br><b>
 </b></details>
 
 <details>
-<summary>How to change the priority of a process? Why would you want to do that?</summary><br><b>
-To change the priority of a process, you can use the nice command in Linux. The nice command allows you to specify the priority of a process by assigning a priority value ranging from -20 to 19. A higher value of priority means lower priority for the process, and vice versa.
+<summary>Как изменить приоритет процесса и зачем?</summary><br><b>
+`nice` задаёт значение nice при запуске, `renice` меняет его для существующего процесса. Диапазон обычно от -20 до 19; меньшее число означает более высокий приоритет.
 
-You may want to change the priority of a process to adjust the amount of CPU time it is allocated by the system scheduler. For example, if you have a CPU-intensive process running on your system that is slowing down other processes, you can lower its priority to give more CPU time to other processes.
+Например, CPU-интенсивной фоновой задаче можно снизить приоритет, чтобы другие процессы получали больше процессорного времени.
 </b></details>
 
 <details>
-<summary>Can you explain how network process/connection is established and how it's terminated?></summary><br></b>
-When a client process on one system wants to establish a connection with a server process on another system, it first creates a socket using the socket system call. The client then calls the connect system call, passing the address of the server as an argument. This causes a three-way handshake to occur between the client and server, where the two systems exchange information to establish a connection.
+<summary>Как устанавливается и завершается сетевое соединение?</summary><br><b>
+Для TCP клиент создаёт сокет через `socket()` и вызывает `connect()` с адресом сервера. Установление TCP-соединения включает трёхстороннее рукопожатие.
 
-Once the connection is established, the client and server can exchange data using the read and write system calls. When the connection is no longer needed, the client or server can terminate the connection by calling the close system call on the socket.
+После установления стороны обмениваются данными через `read()`, `write()` и другие операции. Для закрытия используется `close()`; завершение TCP имеет собственный обмен сегментами.
 </b></details>
 
 <details>
-<summary>What <code>strace</code> does? What about <code>ltrace</code>?</summary><br><b>
-Strace is a debugging tool that is used to monitor the system calls made by a process. It allows you to trace the execution of a process and see the system calls it makes, as well as the signals it receives. This can be useful for diagnosing issues with a process, such as identifying why it is hanging or crashing.
+<summary>Что делают strace и ltrace?</summary><br><b>
+`strace` отслеживает системные вызовы и сигналы процесса, помогая диагностировать зависания и сбои.
 
-Ltrace, on the other hand, is a similar tool that is used to trace the library calls made by a process. It allows you to see the function calls made by a process to shared libraries, as well as the arguments passed to those functions. This can be useful for diagnosing issues with a process that involve library calls, such as identifying why a particular library is causing a problem.
+`ltrace` отслеживает вызовы функций динамических библиотек и их аргументы, помогая разбирать проблемы библиотечного уровня.
 
 </b></details>
 
 <details>
-<summary>Find all the files which end with '.yml' and replace the number 1 in 2 in each file</summary><br><b>
+<summary>Найдите файлы с расширением .yml и замените в них 1 на 2.</summary><br><b>
 
 find /some_dir -iname \*.yml -print0 | xargs -0 -r sed -i "s/1/2/g"
 </b></details>
 
 <details>
-<summary>You run ls and you get "/lib/ld-linux-armhf.so.3 no such file or directory". What is the problem?</summary><br><b>
+<summary>Команда ls сообщает: /lib/ld-linux-armhf.so.3 no such file or directory. В чём причина?</summary><br><b>
 
-The ls executable is built for an incompatible architecture.
+Не найден требуемый динамический загрузчик; например, исполняемый файл собран для несовместимой архитектуры.
 </b></details>
 
 <details>
-<summary>How would you split a 50 lines file into 2 files of 25 lines each?</summary><br><b>
+<summary>Как разделить файл из 50 строк на два по 25?</summary><br><b>
 
-You can use the <code>split</code> command this way: <code>split -l 25 some_file</code>
+`split -l 25 some_file`.
 </b></details>
 
 <details>
-<summary>What is a file descriptor? What file descriptors are you familiar with?</summary><br><b>
-Kerberos
-File descriptor, also known as file handler, is a unique number which identifies an open file in the operating system.
+<summary>Что такое файловый дескриптор? Какие дескрипторы вы знаете?</summary><br><b>
+В исходнике здесь отдельно упомянут Kerberos; к описанию файловых дескрипторов это не относится.
+Файловый дескриптор — целочисленный идентификатор открытого объекта в таблице дескрипторов процесса.
 
-In Linux (and Unix) the first three file descriptors are:
+Стандартные дескрипторы Unix/Linux:
 
-  * 0 - the default data stream for input
-  * 1 - the default data stream for output
-  * 2 - the default data stream for output related to errors
+  * 0 — стандартный ввод.
+  * 1 — стандартный вывод.
+  * 2 — стандартный поток ошибок.
 
-This is a great article on the topic: https://www.computerhope.com/jargon/f/file-descriptor.htm
+Подробнее: https://www.computerhope.com/jargon/f/file-descriptor.htm.
 </b></details>
 
 <details>
-<summary>What is NTP? What is it used for?</summary><br><b>
+<summary>Что такое NTP и для чего он нужен?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Explain Kernel OOM</summary><br><b>
+<summary>Объясните механизм OOM ядра.</summary><br><b>
 </b></details>
 
 <a name="questions-linux-security"></a>
-### Security
+<a id="security"></a>
+### Безопасность
 
 <details>
-<summary>What is chroot? In what scenarios would you consider using it?</summary><br><b>
+<summary>Что такое chroot? Когда его стоит использовать?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is SELiunx?</summary><br><b>
+<summary>Что такое SELinux?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is Kerberos?</summary><br><b>
+<summary>Что такое Kerberos?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is nftables?</summary><br><b>
+<summary>Что такое nftables?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What firewalld daemon is responsible for?</summary><br><b>
+<summary>За что отвечает демон firewalld?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Do you have experience with hardening servers? Can you describe the process?</summary><br><b>
+<summary>Есть ли у вас опыт усиления защиты серверов? Опишите процесс.</summary><br><b>
 </b></details>
 
 <details>
-<summary>How do you create a private key for a CA (certificate authority)?</summary><br><b>
+<summary>Как создать закрытый ключ центра сертификации?</summary><br><b>
 
-One way is using openssl this way:
+Например, через OpenSSL:
 
 `openssl genrsa -aes256 -out ca-private-key.pem 4096`
 </b></details>
 
 <details>
-<summary>How do you create a public key for a CA (certificate authority)?</summary><br><b>
+<summary>Как создать самоподписанный сертификат CA (в исходнике назван открытым ключом)?</summary><br><b>
 
 `openssl req -new -x509 -days 730 -key [private key file name] -sha256 -out ca.pem`
 
-If using the private key from the previous question then the command would be:
+С закрытым ключом из предыдущего вопроса:
 
 `openssl req -new -x509 -days 730 -key ca-private-key.pem -sha256 -out ca.pem`
 </b></details>
 
 <details>
-<summary>Demonstrate one way to encode and decode data in Linux</summary><br><b>
+<summary>Покажите кодирование и декодирование данных в Linux.</summary><br><b>
 
-Encode: `echo -n "some password" | base64`
-Decode: `echo -n "allE19remO91" | base64`
+Кодирование: `echo -n "some password" | base64`.
+Декодирование: `echo -n "c29tZSBwYXNzd29yZA==" | base64 -d`. Уточнение: в исходнике отсутствовал `-d`. Base64 — кодирование, не шифрование.
 </b></details>
 
 <a name="questions-linux-networking"></a>
-### Networking
+<a id="networking"></a>
+### Сеть
 
 <details>
-<summary>How to list all the interfaces?</summary><br><b>
+<summary>Как вывести все сетевые интерфейсы?</summary><br><b>
 
 ```
 ip link show
@@ -1343,13 +1366,13 @@ ip link show
 </b></details>
 
 <details>
-<summary>What is the loopback (lo) interface?</summary><br><b>
+<summary>Что такое loopback-интерфейс lo?</summary><br><b>
 
-The loopback interface is a special, virtual network interface that your computer uses to communicate with itself. It is used mainly for diagnostics and troubleshooting, and to connect to servers running on the local machine.
+Виртуальный интерфейс для связи системы с самой собой. Используется для локальных сервисов, диагностики и тестирования.
 </b></details>
 
 <details>
-<summary>What the following commands are used for?
+<summary>Для чего нужны следующие команды?
 
   * ip addr
   * ip route
@@ -1360,13 +1383,13 @@ The loopback interface is a special, virtual network interface that your compute
 </b></details>
 
 <details>
-<summary>What is a network namespace? What is it used for?</summary><br><b>
+<summary>Что такое сетевое пространство имён и зачем оно нужно?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How to check if a certain port is being used?</summary><br><b>
+<summary>Как проверить, используется ли определённый порт?</summary><br><b>
 
-One of the following would work:
+Например, одной из следующих команд:
 
 ```
 netstat -tnlp | grep <port_number>
@@ -1375,95 +1398,96 @@ lsof -i -n -P | grep <port_number>
 </b></details>
 
 <details>
-<summary>How can you turn your Linux server into a router?</summary><br><b>
+<summary>Как превратить Linux-сервер в маршрутизатор?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is a virtual IP? In what situation would you use it?</summary><br><b>
+<summary>Что такое виртуальный IP и когда он нужен?</summary><br><b>
 </b></details>
 
 <details>
-<summary>True or False? The MAC address of an interface is assigned/set by the OS</summary><br><b>
+<summary>Верно ли, что MAC-адрес интерфейса назначается ОС?</summary><br><b>
 
-False
+Неверно.
 </b></details>
 
 <details>
-<summary>Can you have more than one default gateway in a given system?</summary><br><b>
+<summary>Может ли система иметь несколько шлюзов по умолчанию?</summary><br><b>
 
-Technically, yes.
+Технически — да.
 </b></details>
 
 <details>
-<summary>What is telnet and why is it a bad idea to use it in production? (or at all)</summary><br><b>
+<summary>Что такое Telnet и почему его не стоит использовать для удалённого администрирования?</summary><br><b>
 
-Telnet is a type of client-server protocol that can be used to open a command line on a remote computer, typically a server.
-By default, all the data sent and received via telnet is transmitted in clear/plain text, therefore it should not be used as it does not encrypt any data between the client and the server.
+Клиент-серверный протокол, позволяющий, в частности, открыть командную строку удалённого компьютера.
+Обычно передаёт данные открытым текстом без шифрования, поэтому не защищает обмен клиента и сервера.
 </b></details>
 
 <details>
-<summary>What is the routing table? How do you view it?</summary><br><b>
+<summary>Что такое таблица маршрутизации и как её посмотреть?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How can you send an HTTP request from your shell?</summary><br><b>
+<summary>Как отправить HTTP-запрос из оболочки?</summary><br><b>
 <br>
-Using nc is one way<br>
+Один из вариантов — `nc`.<br>
 </b></details>
 
 <details>
-<summary>What are packet sniffers? Have you used one in the past? If yes, which packet sniffers have you used and for what purpose?</summary><br><b>
-It is a network utility that analyses and may inject tasks into the data-stream travelling over the targeted network.
+<summary>Что такое анализаторы пакетов? Какими вы пользовались и для чего?</summary><br><b>
+Средства захвата и анализа сетевого трафика. Некоторые инструменты также умеют формировать пакеты, но это отдельная возможность, не обязательная для анализатора.
 </b></details>
 
 <details>
-<summary>How to list active connections?</summary><br><b>
+<summary>Как вывести активные соединения?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How to trigger neighbor discovery in IPv6?</summary><br><b>
+<summary>Как инициировать обнаружение соседей IPv6?</summary><br><b>
 
-One way would be `ping6 ff02::1`
+В исходнике предложен `ping6 ff02::1`: это запрос всем узлам локального канала; обычно нужно указать интерфейс. Это не универсальная замена протоколу Neighbor Discovery.
 </b></details>
 
 <details>
-<summary>What is network interface bonding and do you know how it's performed in Linux?</summary><br><b>
+<summary>Что такое объединение интерфейсов (bonding) и как его настроить в Linux?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What network bonding modes are there?</summary><br><b>
+<summary>Какие режимы bonding вы знаете?</summary><br><b>
 
-There a couple of modes:
+Например:
 
-  * balance-rr: round robing bonding
-  * active-backup: a fault tolerance mode where only one is active
-  * balance-tlb: Adaptive transmit load balancing
-  * balance-alb: Adaptive load balancing
+  * balance-rr — циклическое распределение пакетов.
+  * active-backup — один активный интерфейс, остальные резервные.
+  * balance-tlb — адаптивная балансировка передачи.
+  * balance-alb — адаптивная балансировка нагрузки.
 </b></details>
 
 <details>
-<summary>What is a bridge? How it's added in Linux OS?</summary><br><b>
+<summary>Что такое сетевой мост и как его добавить в Linux?</summary><br><b>
 </b></details>
 
 <a name="questions-linux-dns"></a>
+<a id="dns"></a>
 ### DNS
 
 <details>
-<summary>How to check what is the hostname of the system?</summary><br><b>
+<summary>Как узнать имя хоста?</summary><br><b>
 
 `cat /etc/hostname`
 
-You can also run `hostnamectl` or `hostname` but that might print only a temporary hostname. The one in the file is the permanent one.
+Также используйте `hostnamectl` или `hostname`. Файл обычно содержит постоянное имя; действующее имя может отличаться.
 </b></details>
 
 <details>
-<summary>What the file <code>/etc/resolv.conf</code> is used for? What does it include?</summary><br><b>
+<summary>Для чего нужен /etc/resolv.conf и что он содержит?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What commands are you using for performing DNS queries (or troubleshoot DNS related issues)?</summary><br><b>
+<summary>Какими командами вы выполняете DNS-запросы и диагностику DNS?</summary><br><b>
 
-You can specify one or more of the following:
+Например:
 
  * <code>dig</code>
  * <code>host</code>
@@ -1471,44 +1495,44 @@ You can specify one or more of the following:
 </b></details>
 
 <details>
-<summary>You run <code>dig codingshell.com</code> and get the following result: 
+<summary>Команда <code>dig codingshell.com</code> вернула:
 
 ```
 ANSWER SECTION:
 codingshell.com.	3515	IN	A	185.199.109.153
 ```
 
-What is the meaning of the number 3515?
+Что означает число 3515?
 </summary><br><b>
 
-This is the TTL. When you lookup for an address using a domain/host name, your OS is performing DNS resolution by contacting DNS name servers to get the IP address of the host/domain you are looking for.<br>
-When you get a reply, this reply in cached in your OS for a certain period of time. This is period of time is also known as TTL and this is the meaning of 3515 number - it will be cached for 3515 seconds before removed from the cache and during that period of time, you'll get the value from the cache instead of asking DNS name servers for the address again.
+Это TTL записи. При разрешении имени DNS-резолвер получает данные от DNS-сервера.<br>
+TTL определяет, сколько секунд запись допускается хранить в кеше: здесь 3515. Пока срок не истёк, кеширующий резолвер может отвечать без повторного обращения за этой записью. Наличие кеша именно в ОС зависит от её настройки.
 </b></details>
 
 <details>
 
-<summary> How can we modify the network connection via `nmcli` command, to use `8.8.8.8` as a DNS server? </summary><br><b>
+<summary>Как через nmcli задать DNS-сервер 8.8.8.8 для подключения?</summary><br><b>
 
-1. Find the connection name: 
+1. Найдите имя подключения:
     ```
     # nmcli con show
     NAME         UUID                                  TYPE      DEVICE
     System ens5  8126c120-a964-e959-ff98-ac4973344505  ethernet  ens5
     System eth0  5fb06bd0-0bb0-7ffb-45f1-d6edd65f3e03  ethernet  --
     ```
-    Here the connection name is "System ens5". Let's say we want to modify settings for this connection.
+    В примере это `System ens5`; изменим его настройки.
 
-2. Modify the connection to use 8.8.8.8 as DNS server:
+2. Задайте DNS 8.8.8.8:
     ```
     # nmcli con mod "System ens5" ipv4.dns "8.8.8.8"
     ```
 
-3. We need to reactivate the connection for the change to take effect:
+3. Повторно активируйте подключение, чтобы применить изменения:
     ```
     nmcli con up "System ens5"
     ```
 
-4. Verify our settings once more:
+4. Проверьте настройки:
     ```
     cat /etc/resolv.conf
     nmcli -f ipv4.dns con show "System ens5"
@@ -1518,344 +1542,351 @@ When you get a reply, this reply in cached in your OS for a certain period of ti
 </details>
  
 <a name="questions-linux-packaging"></a>
-### Packaging
+<a id="packaging"></a>
+### Пакеты
 
 <details>
-<summary>Do you have experience with packaging? (as in building packages) Can you explain how does it works?</summary><br><b>
+<summary>Есть ли у вас опыт сборки пакетов? Объясните процесс.</summary><br><b>
 </b></details>
 
 <details>
-<summary>How packages installation/removal is performed on the distribution you are using?</summary><br><b>
+<summary>Как устанавливать и удалять пакеты в вашем дистрибутиве?</summary><br><b>
 
-The answer depends on the distribution being used.
+Зависит от дистрибутива.
 
-In Fedora/CentOS/RHEL/Rocky it can be done with `rpm` or `dnf` commands.
-In Ubuntu it can be done with the `apt` command.
+В Fedora/CentOS/RHEL/Rocky используются `rpm` и соответствующий пакетный менеджер, например `dnf`.
+В Ubuntu — `apt`.
 </b></details>
 
 <details>
-<summary>RPM: explain the spec format (what it should and can include)</summary><br><b>
+<summary>Объясните формат spec для RPM: что он должен и может содержать?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How do you list the content of a package without actually installing it?</summary><br><b>
+<summary>Как посмотреть содержимое пакета без установки?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How to know to which package a file on the system belongs to? Is it a problem if it doesn't belongs to any package?</summary><br><b>
+<summary>Как узнать, какому пакету принадлежит файл? Проблема ли, если он не относится ни к одному пакету?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Where repositories are stored? (based on the distribution you are using)</summary><br><b>
+<summary>Где находятся настройки репозиториев в вашем дистрибутиве?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is an archive? How do you create one in Linux?</summary><br><b>
+<summary>Что такое архив и как его создать в Linux?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How to extract the content of an archive?</summary><br><b>
+<summary>Как извлечь содержимое архива?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Why do we need package managers? Why not simply creating archives and publish them?</summary><br><b>
+<summary>Зачем нужны пакетные менеджеры? Почему недостаточно публиковать архивы?</summary><br><b>
 
-Package managers allow you to manage packages lifecycle as in installing, removing and updating the packages.<br>
-In addition, you can specify in a spec how a certain package will be installed - where to copy the files, which commands to run prior to the installation, post the installation, etc.
+Они управляют жизненным циклом пакетов: установкой, удалением и обновлением.<br>
+В описании пакета можно задавать размещение файлов и действия до и после установки.
 </b></details>
 
 <a name="questions-linux-dnf"></a>
+<a id="dnf"></a>
 ### DNF
 
 <details>
-<summary>What is DNF?</summary><br><b>
+<summary>Что такое DNF?</summary><br><b>
 
-From the [repo](https://github.com/rpm-software-management/dnf):
+Из [репозитория проекта](https://github.com/rpm-software-management/dnf):
 
-"Dandified YUM (DNF) is the next upcoming major version of YUM. It does package management using RPM, libsolv and hawkey libraries."
+Dandified YUM (DNF) — преемник YUM, использующий RPM, libsolv и hawkey для управления пакетами. Это описание версии из исходника.
 
-Official [docs](https://dnf.readthedocs.io/en/latest/)
+Официальная [документация](https://dnf.readthedocs.io/en/latest/).
 
 </b></details>
 
 <details>
-<summary>How to look for a package that provides the command /usr/bin/git? (the package isn't necessarily installed)</summary><br><b>
+<summary>Как найти пакет, предоставляющий /usr/bin/git, даже если он не установлен?</summary><br><b>
 
 dnf provides /usr/bin/git
 </b></details>
 
 <a name="questions-linux-apps-and-services"></a>
-### Applications and Services
+<a id="applications-and-services"></a>
+### Приложения и сервисы
 
 <details>
-<summary>What can you find in /etc/services?</summary><br><b>
+<summary>Что содержится в /etc/services?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How to make sure a Service starts automatically after a reboot or crash?</summary><br><b>
+<summary>Как обеспечить запуск сервиса после перезагрузки или сбоя?</summary><br><b>
 
-Depends on the init system.
+Зависит от системы инициализации.
 
-Systemd: <code> systemctl enable [service_name] </code>
-System V: <code> update-rc.d [service_name] </code> and add this line <code> id:5678:respawn:/bin/sh /path/to/app </code> to /etc/inittab
-Upstart: add Upstart init script at /etc/init/service.conf
+Systemd: `systemctl enable [service_name]` включает автозапуск. Для восстановления после сбоя отдельно настраивают `Restart=`.
+System V: настройка через `update-rc.d` и, для подходящих систем, запись `respawn` в `/etc/inittab`. Строка `id:5678:respawn:/bin/sh /path/to/app` из исходника требует адаптации к допустимым уровням запуска системы.
+Upstart: конфигурация задания в `/etc/init/service.conf`.
 </b></details>
 
 <details>
-<summary>You run <code>ssh 127.0.0.1</code> but it fails with "connection refused". What could be the problem?</summary><br><b>
+<summary>Почему ssh 127.0.0.1 может вернуть connection refused?</summary><br><b>
 
-1. SSH server is not installed
-2. SSH server is not running
+1. SSH-сервер не установлен.
+2. SSH-сервер не запущен или не слушает этот адрес и порт.
 </b></details>
 
 <details>
-<summary>How to print the shared libraries required by a certain program? What is it useful for?</summary><br><b>
+<summary>Как вывести динамические библиотеки, необходимые программе? Зачем это нужно?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is CUPS?</summary><br><b>
+<summary>Что такое CUPS?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What types of web servers are you familiar with?</summary><br><b>
+<summary>Какие веб-серверы вы знаете?</summary><br><b>
 
 Nginx, Apache httpd.
 </b></details>
 
 <a name="questions-linux-users-and-groups"></a>
-### Users and Groups
+<a id="users-and-groups"></a>
+### Пользователи и группы
 
 <details>
-<summary>What is a "superuser" (or root user)? How is it different from regular users?</summary><br><b>
+<summary>Что такое суперпользователь root и чем он отличается от обычного пользователя?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How do you create users? Where user information is stored?</summary><br>
+<summary>Как создать пользователя? Где хранятся его данные?</summary><br>
 
-Command to create users is `useradd` 
+Команда `useradd`.
 
-Syntax:
+Синтаксис:
 `useradd [options] Username`
 
-There are 2 configuration files, which stores users information
+Основные файлы локальных учётных записей:
 
-1. `/etc/passwd` - Users information like, username, shell etc is stored in this file 
+1. `/etc/passwd` — имя, UID, GID, оболочка и другие сведения.
 
-2. `/etc/shadow` - Users password is stored in encrypted format 
+2. `/etc/shadow` — хеш пароля и параметры его действия; это не обратимое шифрование пароля.
 </details>
 
 <details>
-<summary>Which file stores information about groups?</summary><br>
+<summary>Где хранятся сведения о группах?</summary><br>
 
-`/etc/groups` file stores the group name, group ID, usernames which are in secondary group.
+В `/etc/group`: имя, GID и список дополнительных участников. В исходнике путь ошибочно указан как `/etc/groups`.
 </details>
 
 <details>
-<summary>How do you change/set the password of a user?</summary><br>
+<summary>Как задать или изменить пароль пользователя?</summary><br>
 
-`passwd <username>` is the command to set/change password of a user.
+`passwd <username>`.
 </details>
 
 <details>
-<summary>Which file stores users passwords? Is it visible for everyone?</summary><br>
+<summary>Где хранятся пароли? Доступны ли они всем?</summary><br>
 
-`/etc/shadow` file holds the passwords of the users in encrypted format. NO, it is only visible to the `root` user
+Хеши локальных паролей находятся в `/etc/shadow`. Доступ ограничен привилегированными пользователями и разрешёнными системными компонентами.
 </details>
 
 <details>
-<summary>Do you know how to create a new user without using adduser/useradd command?</summary><br>
+<summary>Можно ли создать пользователя без adduser/useradd?</summary><br>
 
-YES, we can create new user by manually adding an entry in the `/etc/passwd` file. 
+Да, вручную согласовав записи учётных файлов. Ниже упрощённый пример исходника; для реальной системы нужны также корректные shadow-записи, права и домашний каталог.
 
-For example, if we need to create a user called `john`. 
+Например, пользователь `john`:
 
-Step 1: Add an entry to `/etc/passwd` file, so user gets created.
+Шаг 1. Добавить запись в `/etc/passwd`:
 
 `echo "john:x:2001:2001::/home/john:/bin/bash" >> /etc/passwd` 
 
-Step 2: Add an entry to `/etc/group` file, because every user belong to the primary group that has same name as the username.
+Шаг 2. Добавить нужную основную группу в `/etc/group`. Уточнение: совпадение её имени с именем пользователя необязательно.
 
 `echo "john:x:2001:" >> /etc/group`
 
-Step 3: Verify if the user got created
+Шаг 3. Проверить запись:
 
 `id john`
 
 </details>
 
 <details>
-<summary>What information is stored in /etc/passwd? explain each field</summary><br>
+<summary>Что хранится в /etc/passwd? Объясните каждое поле.</summary><br>
 
-`/etc/passwd` is a configuration file, which contains users information. Each entry in this file has, 7 fields,
+Каждая запись содержит семь полей:
 
 `username:password:UID:GID:Comment:home directory:shell`
 
-`username` - The name of the user.
+`username` — имя пользователя.
 
-`password` - This field is actually a placeholder of the password field. Due to security concerns, this field does not contain the password, just a placeholder (x) to the encrypted password stored in `/etc/shadow` file.
+`password` — обычно `x`, означающий хранение хеша в `/etc/shadow`, а не самого пароля в этом поле.
 
-`UID` - User ID of the user.
+`UID` — идентификатор пользователя.
 
-`GID` - Group ID 
+`GID` — идентификатор основной группы.
 
-`Comment` - This field is to provide description about the user.
+`Comment` — описание пользователя.
 
-`home directory` - Abousulte path of the user's home directory. This directory gets created once the user is added.
+`home directory` — абсолютный путь домашнего каталога; его создание зависит от параметров команды создания пользователя.
 
-`shell` - This field contains the absolute path of the shell that will be used by the respective user.
+`shell` — абсолютный путь входной оболочки.
 </details>
 
 <details>
-<summary>How to add a new user to the system without providing him the ability to log-in into the system?</summary><br><b>
+<summary>Как создать пользователя без интерактивного входа?</summary><br><b>
 
 `adduser user_name --shell=/bin/false --no-create-home`
-You can also add a user and then edit /etc/passwd.
+Также можно изменить оболочку существующего пользователя; ручную правку `/etc/passwd` следует выполнять подходящими средствами.
 </b></details>
 
 <details>
-<summary>How to switch to another user? How to switch to the root user?</summary><br><b>
+<summary>Как переключиться на другого пользователя или root?</summary><br><b>
 
-su command.
-Use su - to switch to root
+Командой `su`.
+Для входного окружения root: `su -`.
 </b></details>
 
 <details>
-<summary>What is the UID the root user? What about a regular user?</summary><br>
+<summary>Какой UID у root и обычных пользователей?</summary><br>
 
-UID of root user is 0
+У root UID 0.
 
-Default values of UID_MIN and UID_MAX in `/etc/login.defs`
-`UID_MIN` is `1000`
-`UID_MAX` is `60000`
+Границы для обычных пользователей задаются `UID_MIN` и `UID_MAX` в `/etc/login.defs`. В примере исходника:
+`UID_MIN` — `1000`.
+`UID_MAX` — `60000`.
 
-Actually, we can change this value. But UID < 1000 are reserved for system accounts.
-Therefore, as per the default configuration, for regular user UID starts from `1000`. 
+Настройки можно менять; меньшие UID обычно используются системными аккаунтами.
+Таким образом, в приведённой конфигурации обычные UID начинаются с 1000; значения зависят от дистрибутива.
 </details>
 
 <details>
-<summary>What can you do if you lost/forogt the root password?</summary><br><b>
+<summary>Что делать, если вы забыли пароль root?</summary><br><b>
 
-Re-install the OS IS NOT the right answer :)
+Переустановка ОС — не ожидаемый ответ :)
 </b></details>
 
 <details>
-<summary>What is /etc/skel?</summary><br>
+<summary>Что такое /etc/skel?</summary><br>
 
-`/etc/skel` is a directory, that contains files or directories, so when a new user is created, these files/directories created under `/etc/skel` will be copied to user's home directory.
+Каталог шаблонных файлов и подкаталогов, копируемых в домашний каталог при создании пользователя соответствующими средствами.
 </details>
 
 <details>
-<summary>How to see a list of who logged-in to the system?</summary><br><b>
+<summary>Как посмотреть историю входов в систему?</summary><br><b>
 
-Using the `last` command.
+Командой `last`.
 </b></details>
 
 <details>
-<summary>Explain what each of the following commands does:
+<summary>Объясните назначение команд:
 
   * useradd
   * usermod
   * whoami
   * id</summary><br><b>
 
-  `useradd` - Command for creating new users 
-  `usermod` - Modify the users setting
-  `whoami`  - Outputs, the username that we are currently logged in
-  `id`      - Prints the  
+  `useradd` — создание пользователя.
+  `usermod` — изменение его настроек.
+  `whoami` — имя текущего эффективного пользователя.
+  `id` — идентификаторы пользователя и групп.
 </b></details>
 
 <details>
-<summary>You run <code>grep $(whoami) /etc/passwd</code> but the output is empty. What might be a possible reason for that?</summary><br><b>
+<summary>Почему grep $(whoami) /etc/passwd может ничего не вывести?</summary><br><b>
 
-The user you are using isn't defined locally but originates from services like LDAP.<br>
-You can verify with: `getent passwd`
+Пользователь может поступать из LDAP или другого внешнего источника, а не локального файла.<br>
+Проверьте через `getent passwd`.
 </b></details>
 
 <a name="questions-linux-hardware"></a>
-### Hardware
+<a id="hardware"></a>
+### Оборудование
 
 <details>
-<summary>Where can you find information on the processor (like number of CPUs)?</summary><br><b>
+<summary>Где посмотреть сведения о процессорах?</summary><br><b>
 
 /proc/cpuinfo
 
-You can also use `nproc` for number of processors
+Количество доступных процессоров также показывает `nproc`.
 </b></details>
 
 <details>
-<summary>How can you print information on the BIOS, motherboard, processor and RAM?</summary><br><b>
+<summary>Как вывести сведения о BIOS, плате, процессоре и RAM?</summary><br><b>
 
-dmidecoode
+`dmidecode` — в исходнике была опечатка.
 </b></details>
 
 <details>
-<summary>How can you print all the information on connected block devices in your system?</summary><br><b>
+<summary>Как вывести информацию о блочных устройствах?</summary><br><b>
 
 lsblk
 </b></details>
 
 <details>
-<summary>True or False? In user space, applications don't have full access to hardware resources</summary><br><b>
+<summary>Верно ли, что приложения в пользовательском пространстве не имеют неограниченного доступа к оборудованию?</summary><br><b>
 
-True. Only in kernel space they have full access to hardware resources.
+Верно. Привилегированные операции контролируются ядром.
 </b></details>
 
 <a name="questions-linux-namespaces"></a>
-### Namespaces
+<a id="namespaces"></a>
+### Пространства имён
 
 <details>
-<summary>What types of namespaces are there in Linux?</summary><br><b>
+<summary>Какие пространства имён есть в Linux?</summary><br><b>
 
-  - Process ID namespaces: these namespaces include independent set of process IDs
-  - Mount namespaces: Isolation and control of mountpoints
-  - Network namespaces: Isolates system networking resources such as routing table, interfaces, ARP table, etc.
-  - UTS namespaces: Isolate host and domains
-  - IPC namespaces: Isolates interprocess communications
-  - User namespaces: Isolate user and group IDs
-  - Time namespaces: Isolates time machine
+  - PID — отдельное представление идентификаторов процессов.
+  - Mount — изоляция и управление точками монтирования.
+  - Network — изоляция сетевых ресурсов: таблиц маршрутизации, интерфейсов, ARP-таблиц и т. д.
+  - UTS — изоляция имени хоста и доменного имени NIS.
+  - IPC — изоляция механизмов межпроцессного взаимодействия.
+  - User — изоляция идентификаторов пользователей и групп.
+  - Time — отдельные представления некоторых системных часов. Это не полная виртуализация всех часов системы.
 </b></details>
 
 <details>
-<summary>True or False? In every PID (Process ID) namespace the first process assigned with the process id number 1</summary><br><b>
+<summary>Верно ли, что первый процесс пространства PID получает внутри него PID 1?</summary><br><b>
 
-True. Inside the namespace it's PID 1 while to the parent namespace the PID is a different one.
+Верно. В родительском пространстве у него другой PID.
 </b></details>
 
 <details>
-<summary>True or False? In a child PID namespace all processes are aware of parent PID namespace and processes and the parent PID namespace has no visibility of child PID namespace processes</summary><br><b>
+<summary>Верно ли, что дочернее пространство PID видит процессы родительского, а родительское не видит дочерних?</summary><br><b>
 
-False. The opposite is true. Parent PID namespace is aware and has visibility of processes in child PID namespace and child PID namespace has no visibility as to what is going on in the parent PID namespace.
+Неверно: наоборот. Родительское видит процессы дочернего пространства, а дочернее не видит процессы за своими границами.
 </b></details>
 
 <details>
-<summary>True or False? By default, when creating two separate network namespaces, a ping from one namespace to another will work fine</summary><br><b>
+<summary>Верно ли, что два только что созданных сетевых пространства имён сразу могут обмениваться ping?</summary><br><b>
 
-False. Network namespace has its own interfaces and routing table. There is no way (without creating a bridge for example) for one network namespace to reach another.
+Неверно. У каждого свои интерфейсы и маршруты; связь нужно организовать, например парой veth и необходимой адресацией, при необходимости используя мост.
 </b></details>
 
 <details>
-<summary>True or False? With UTS namespaces, processes may appear as if they run on different hosts and domains while running on the same host</summary><br><b>
+<summary>Верно ли, что UTS позволяет процессам на одном хосте видеть разные имена хостов и доменов?</summary><br><b>
 
-True
+Верно.
 </b></details>
 
 <details>
-<summary>True or False? It's not possible to have a root user with ID 0 in child user namespaces</summary><br><b>
+<summary>Верно ли, что в дочернем пользовательском пространстве нельзя иметь UID 0?</summary><br><b>
 
-False. In every child user namespace, it's possible to have a separate root user with uid of 0.
+Неверно. Внутри него может быть UID 0, сопоставленный другому UID снаружи.
 </b></details>
 
 <details>
-<summary>What time namespaces are used for?</summary><br><b>
+<summary>Зачем нужны пространства имён времени?</summary><br><b>
 
-In time namespaces processes can use different system time.
+Они позволяют процессам иметь отдельные смещения некоторых часов системы; это не независимая настройка всех видов системного времени.
 </b></details>
 
 <a name="questions-linux-virtualization"></a>
-### Virtualization
+<a id="virtualization"></a>
+### Виртуализация
 
 <details>
-<summary>What virtualization solutions are available for Linux?</summary><br><b>
+<summary>Какие решения виртуализации доступны для Linux?</summary><br><b>
 
   * [KVM](https://www.linux-kvm.org/page/Main_Page)
   * [XEN](http://www.xen.org/)
@@ -1866,207 +1897,210 @@ In time namespaces processes can use different system time.
 </b></details>
 
 <details>
-<summary>What is KVM?</summary><br><b>
+<summary>Что такое KVM?</summary><br><b>
 
-Is an open source virtualization technology used to operate on x86 hardware. 
+Открытая технология виртуализации на основе ядра Linux, в том числе для x86 с аппаратной поддержкой виртуализации.
 
-From the official [docs](https://www.linux-kvm.org/page/Main_Page)
-Recommended read:
-  * [Red Hat Article - What is KVM?](https://www.redhat.com/en/topics/virtualization/what-is-KVM)
+Официальная [документация](https://www.linux-kvm.org/page/Main_Page).
+Дополнительное чтение:
+  * [Статья Red Hat: что такое KVM?](https://www.redhat.com/en/topics/virtualization/what-is-KVM)
 </b></details>
 
 <details>
-<summary>What is Libvirt?</summary><br><b>
+<summary>Что такое libvirt?</summary><br><b>
 
-It's an open source collection of software used to manage virtual machines. It can be used with: KVM, Xen, LXC and others. It's also called Libvirt Virtualization API.
+Набор открытых средств и API управления виртуализацией; поддерживает KVM, Xen, LXC и другие технологии.
 
-From the official [docs](https://libvirt.org/)
-Hypervisor supported [docs](https://libvirt.org/drivers.html)
+Официальная [документация](https://libvirt.org/).
+[Поддерживаемые драйверы](https://libvirt.org/drivers.html).
 </b></details>
 
 <a name="questions-linux-awk"></a>
+<a id="awk"></a>
 ### AWK
 
 <details>
-<summary>What the <code>awk</code> command does? Have you used it? What for?</summary><br><b>
+<summary>Что делает awk? Использовали ли вы его и для чего?</summary><br><b>
 
-From Wikipedia: "AWK is domain-specific language designed for text processing and typically used as a data extraction and reporting tool"
+По определению Википедии, AWK — предметно-ориентированный язык обработки текста, часто применяемый для извлечения данных и построения отчётов.
 </b></details>
 
 <details>
-<summary>How to print the 4th column in a file?</summary><br><b>
+<summary>Как вывести четвёртое поле файла?</summary><br><b>
 
 `awk '{print $4}' file`
 </b></details>
 
 <details>
-<summary>How to print every line that is longer than 79 characters?</summary><br><b>
+<summary>Как вывести строки длиннее 79 символов?</summary><br><b>
 
 `awk 'length($0) > 79' file`
 </b></details>
 
 <details>
-<summary>What the <code>lsof</code> command does? Have you used it? What for?</summary><br><b>
+<summary>Что делает lsof? Для чего вы его использовали?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is the difference between find and locate?</summary><br><b>
+<summary>Чем отличаются find и locate?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How a user process performs a privileged operation, such as reading from the disk?</summary><br><b>
+<summary>Как пользовательский процесс выполняет привилегированную операцию, например чтение диска?</summary><br><b>
 
-Using system calls
+Через системные вызовы.
 </b></details>
 
 <a name="questions-linux-system-calls"></a>
-### System Calls
+<a id="system-calls"></a>
+### Системные вызовы
 
 <details>
-<summary>What is a system call? What system calls are you familiar with?</summary><br><b>
+<summary>Что такое системный вызов? Какие вызовы вы знаете?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How a program executes a system call?</summary><br><b>
+<summary>Как программа выполняет системный вызов?</summary><br><b>
 
-- A program executes a trap instruction. The instruction jump into the kernel while raising the privileged level to kernel space.
-- Once in kernel space, it can perform any privileged operation
-- Once it's finished, it calls a "return-from-trap" instruction which returns to user space while reducing back the privilege level to user space.
+- Специальная инструкция переводит выполнение в режим ядра через предусмотренную точку входа.
+- Ядро проверяет запрос и выполняет разрешённую операцию. Программа не получает произвольных прав ядра.
+- Инструкция возврата переводит выполнение обратно в пользовательский режим.
 </b></details>
 
 <details>
-<summary>Explain the fork() system call</summary><br><b>
+<summary>Объясните fork().</summary><br><b>
 
-fork() is used for creating a new process. It does so by cloning the calling process but the child process has its own PID and any memory locks, I/O operations and semaphores are not inherited.
+Создаёт дочерний процесс на основе вызывающего с собственным PID. Многие свойства наследуются, но есть исключения, например блокировки памяти и незавершённые асинхронные операции ввода-вывода.
 </b></details>
 
 <details>
-<summary>What is the return value of fork()?</summary><br><b>
+<summary>Что возвращает fork()?</summary><br><b>
 
-  - On success, the PID of the child process in parent and 0 in child process
-  - On error, -1 in the parent
+  - При успехе: PID ребёнка родителю и 0 ребёнку.
+  - При ошибке: -1 родителю.
 </b></details>
 
 <details>
-<summary>Name one reason for fork() to fail</summary><br><b>
+<summary>Назовите причину ошибки fork().</summary><br><b>
 
-Not enough memory to create a new process
+Например, недостаточно памяти для нового процесса.
 </b></details>
 
 <details>
-<summary>Why do we need the wait() system call?</summary><br><b>
+<summary>Зачем нужен wait()?</summary><br><b>
 
-wait() is used by a parent process to wait for the child process to finish execution.
-If wait is not used by a parent process then a child process might become a zombie process.
+Родитель ожидает изменение состояния ребёнка и получает его статус завершения.
+Если не забирать статусы завершившихся детей, могут оставаться процессы-зомби.
 </b></details>
 
 <details>
-<summary>How the kernel notifies the parent process about child process termination?</summary><br><b>
+<summary>Как ядро уведомляет родителя о завершении ребёнка?</summary><br><b>
 
-The kernel notifies the parent by sending the SIGCHLD to the parent.
+Отправляет SIGCHLD.
 </b></details>
 
 <details>
-<summary>How the waitpid() is different from wait()?</summary><br><b>
+<summary>Чем waitpid() отличается от wait()?</summary><br><b>
 
-The waitpid() is a non-blocking version of the wait() function.<br>
-It also supports using library routine (e.g. system()) to wait a child process without messing up with other children processes for which the process has not waited.
+Позволяет выбирать конкретного ребёнка или группу и задавать параметры ожидания. Неблокирующий режим включается `WNOHANG`; он не является безусловным.<br>
+Так можно ожидать нужного ребёнка, не забирая статусы других, например при реализации библиотечной функции `system()`.
 </b></details>
 
 <details>
-<summary>True or False? The wait() system call won't return until the child process has run and exited</summary><br><b>
+<summary>Верно ли, что wait() не возвращается до завершения ребёнка?</summary><br><b>
 
-True in most cases though there are cases where wait() returns before the child exits.
+Обычно он ждёт подходящего изменения состояния, но может вернуться раньше, например при ошибке или прерывании сигналом.
 </b></details>
 
 <details>
-<summary>Explain the exec() system call</summary><br><b>
+<summary>Объясните семейство exec().</summary><br><b>
 
-It transforms the current running program into another program.<br>
-Given the name of an executable and some arguments, it loads the code and static data from the specified executable and overwrites its current code segment and current static code data. After initializing its memory space (like stack and heap) the OS runs the program passing any arguments as the argv of that process.
+Заменяет выполняемую программу новой в том же процессе.<br>
+ОС загружает код и данные указанного исполняемого файла, формирует новое адресное пространство, стек, аргументы и окружение, затем начинает выполнение новой программы.
 </b></details>
 
 <details>
-<summary>True or False? A successful call to exec() never returns</summary><br><b>
+<summary>Верно ли, что успешный exec() не возвращается?</summary><br><b>
 
-True<br>
-Since a successful exec replace the current process, it can't return anything to the process that made the call.
+Верно.<br>
+Прежняя программа заменена, поэтому вернуться в вызывающий код уже невозможно.
 </b></details>
 
 <details>
-<summary>What system call is used for listing files?</summary><br><b>
+<summary>Какие системные вызовы используются для чтения содержимого каталога?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What system calls are used for creating a new process?</summary><br><b>
+<summary>Какие системные вызовы участвуют в запуске нового процесса?</summary><br><b>
 
-fork(), exec() and the wait() system call is also included in this workflow.
+Например, `fork()` создаёт процесс, `exec()` заменяет его программу, а `wait()` используется родителем для ожидания и получения статуса.
 </b></details>
 
 <details>
-<summary>What execve() does?</summary><br><b>
+<summary>Что делает execve()?</summary><br><b>
 
-Executes a program. The program is passed as a filename (or path) and must be a binary executable or a script.
+Запускает программу по заданному пути, заменяя текущую. Цель — исполняемый файл или поддерживаемый скрипт.
 </b></details>
 
 <details>
-<summary>What is the return value of malloc?</summary><br><b>
+<summary>Что возвращает malloc()?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Explain the pipe() system call. What does it used for?</summary><br><b>
+<summary>Объясните pipe(). Для чего он нужен?</summary><br><b>
 
-[Unix pipe implementation](https://toroid.org/unix-pipe-implementation)
+[Реализация Unix-конвейера](https://toroid.org/unix-pipe-implementation).
 
-"Pipes provide a unidirectional interprocess communication channel. A pipe has a read end and a write end. Data written to the write end of a pipe can be read from the read end of the pipe.
-A pipe is created using pipe(2), which returns two file descriptors, one referring to the read end of the pipe, the other referring to the write end."
+Канал обеспечивает однонаправленную связь процессов: у него есть конец для записи и конец для чтения.
+`pipe(2)` возвращает два файловых дескриптора — для чтения и записи соответственно.
 </b></details>
 
 <details>
-<summary>What happens when you execute <code>ls -l</code>?</summary><br><b>
+<summary>Что происходит при выполнении <code>ls -l</code>?</summary><br><b>
 
-* Shell reads the input using getline() which reads the input file stream and stores into a buffer as a string
-* The buffer is broken down into tokens and stored in an array this way: {"ls", "-l", "NULL"}
-* Shell checks if an expansion is required (in case of ls *.c)
+* Оболочка читает ввод; например, реализация может использовать `getline()` для чтения строки в буфер.
+* Разбирает строку на команду и аргументы: `{"ls", "-l", NULL}`.
+* Выполняет необходимые раскрытия, например `*.c`.
 
-* Once the program in memory, its execution starts. First by calling readdir()
+* Запускает программу, которая читает записи каталога, например через библиотечную `readdir()`. Это упрощённая схема, конкретные вызовы зависят от реализации.
 
-Notes:
+Примечания:
 
-* getline() originates in GNU C library and used to read lines from input stream and stores those lines in the buffer
+* `getline()` — библиотечная функция чтения строки из потока в буфер.
 </b></details>
 
 <details>
-<summary>What happens when you execute <code>ls -l *.log</code>?</summary><br><b>
+<summary>Что происходит при выполнении <code>ls -l *.log</code>?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What readdir() system call does?</summary><br><b>
+<summary>Что делает библиотечная функция readdir()?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What exactly the command <code>alias x=y</code> does?</summary><br><b>
+<summary>Что делает <code>alias x=y</code>?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Why running a new program is done using the fork() and exec() system calls? why a different API wasn't developed where there is one call to run a new program?</summary><br><b>
+<summary>Зачем разделять создание процесса через fork() и запуск программы через exec(), а не использовать один вызов?</summary><br><b>
 
-This way provides a lot of flexibility. It allows the shell for example, to run code after the call to fork() but before the call to exec(). Such code can be used to alter the environment of the program it about to run.
+Это даёт гибкость: между `fork()` и `exec()` оболочка может изменить окружение, дескрипторы и другие параметры будущей программы.
 </b></details>
 
 <details>
-<summary>Describe shortly what happens when you execute a command in the shell</summary><br><b>
+<summary>Кратко опишите выполнение команды оболочкой.</summary><br><b>
 
-The shell figures out, using the PATH variable, where the executable of the command resides in the filesystem. It then calls fork() to create a new child process for running the command. Once the fork was executed successfully, it calls a variant of exec() to execute the command and finally, waits the command to finish using wait(). When the child completes, the shell returns from wait() and prints out the prompt again.
+Для внешней команды оболочка ищет исполняемый файл, обычно по PATH, создаёт дочерний процесс через `fork()` и запускает программу через вариант `exec()`. Для обычной команды переднего плана она ожидает завершения через `wait()` или аналог, затем снова выводит приглашение. Встроенные команды и фоновые задания обрабатываются иначе.
 </b></details>
 
 <a name="questions-linux-fs-files"></a>
-### Filesystem & Files
+<a id="filesystem--files"></a>
+### Файловые системы и файлы
 
 <details>
-<summary>How to create a file of a certain size?</summary><br><b>
+<summary>Как создать файл заданного размера?</summary><br><b>
 
-There are a couple of ways to do that:
+Несколько способов:
 
   * dd if=/dev/urandom of=new_file.txt bs=2MB count=1
   * truncate -s 2M new_file.txt
@@ -2074,7 +2108,7 @@ There are a couple of ways to do that:
 </b></details>
 
 <details>
-<summary>What does the following block do?:
+<summary>Что делает следующий блок?
 
 ```
 open("/my/file") = 5
@@ -2082,168 +2116,173 @@ read(5, "file content")
 ```
 </summary><br><b>
 
-These system calls are reading the file <code>/my/file</code> and 5 is the file descriptor number.
+Показанные вызовы читают `/my/file`; 5 — файловый дескриптор.
 </b></details>
 
 <details>
-<summary>Describe three different ways to remove a file (or its content)</summary><br><b>
+<summary>Назовите три способа удалить файл или очистить его содержимое.</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is the difference between a process and a thread?</summary><br><b>
+<summary>Чем процесс отличается от потока?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is context switch?</summary><br><b>
+<summary>Что такое переключение контекста?</summary><br><b>
 
-From [wikipedia](https://en.wikipedia.org/wiki/Context_switch): a context switch is the process of storing the state of a process or thread, so that it can be restored and resume execution at a later point
+По [Википедии](https://en.wikipedia.org/wiki/Context_switch), это сохранение состояния процесса или потока, позволяющее позднее восстановить его и продолжить выполнение.
 </b></details>
 
 <details>
-<summary>You found there is a server with high CPU load but you didn't find a process with high CPU. How is that possible?</summary><br><b>
+<summary>На сервере высокий load average, но нет процесса с большим потреблением CPU. Как это возможно?</summary><br><b>
 </b></details>
 
 <a name="questions-linux-advanced-networking"></a>
-### Advanced Networking
+<a id="advanced-networking"></a>
+### Расширенные сетевые вопросы
 
 <details>
-<summary>When you run <code>ip a</code> you see there is a device called 'lo'. What is it and why do we need it?</summary><br><b>
+<summary>В выводе ip a есть устройство lo. Что это и зачем оно нужно?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What the <code>traceroute</code> command does? How does it works?</summary><br><b>
+<summary>Что делает traceroute и как он работает?</summary><br><b>
 
-Another common way to task this questions is "what part of the tcp header does traceroute modify?"
+В исходнике также предлагается вопрос об изменяемом поле TCP-заголовка. Уточнение: ключевой механизм traceroute связан с TTL заголовка IP или Hop Limit IPv6, а не полем TCP.
 </b></details>
 
 <details>
-<summary>What is network bonding? What types are you familiar with?</summary><br><b>
+<summary>Что такое bonding? Какие режимы вы знаете?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How to link two separate network namespaces so you can ping an interface on one namespace from the second one?</summary><br><b>
+<summary>Как соединить два сетевых пространства имён, чтобы между их интерфейсами проходил ping?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What are cgroups?</summary><br><b>
+<summary>Что такое cgroups?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Explain Process Descriptor and Task Structure</summary><br><b>
+<summary>Объясните дескриптор процесса и структуру task_struct.</summary><br><b>
 </b></details>
 
 <details>
-<summary>What are the differences between threads and processes?</summary><br><b>
+<summary>Чем потоки отличаются от процессов?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Explain Kernel Threads</summary><br><b>
+<summary>Объясните потоки ядра.</summary><br><b>
 </b></details>
 
 <details>
-<summary>What happens when socket system call is used?</summary><br><b>
+<summary>Что происходит при системном вызове socket()?</summary><br><b>
 
-This is a good article about the topic: https://ops.tips/blog/how-linux-creates-sockets
+Статья по теме: https://ops.tips/blog/how-linux-creates-sockets.
 </b></details>
 
 <details>
-<summary>You executed a script and while still running, it got accidentally removed. Is it possible to restore the script while it's still running?</summary><br><b>
-It is possible to restore a script while it's still running if it has been accidentally removed. The running script process still has the code in memory. You can use the /proc filesystem to retrieve the content of the running script.
-1.Find the Process ID by running 
+<summary>Выполняющийся скрипт случайно удалили. Можно ли восстановить его, пока он работает?</summary><br><b>
+Иногда да — если процесс ещё держит удалённый файл открытым. Его можно прочитать через `/proc`. Уточнение: наличие процесса само по себе не гарантирует доступность всего текста скрипта.
+1. Найдите PID:
 ```
 ps aux | grep yourscriptname.sh
 ```
-Replace yourscriptname.sh with your script name.
-2.Once you have the PID, you can access the script's memory through the /proc filesystem. The script will be available at /proc/<PID>/fd/, where <PID> is the process ID of the running script. Typically, the script's file descriptor is 0 or 1.
+Замените `yourscriptname.sh` именем скрипта.
+2. Проверьте `/proc/<PID>/fd/` и найдите дескриптор удалённого файла. В исходнике ошибочно предполагается, что это обычно 0 или 1: номер нужно определить по фактическим ссылкам.
 
-You can copy the script content to a new file using the cp command:
+Скопируйте содержимое найденного дескриптора в новый файл. В примере ниже номер дескриптора необходимо заменить на проверенный:
 ```
 cp /proc/<PID>/fd/0 /path_to_restore_your_file/yourscriptname.sh
 ```
-Replace <PID> with the actual PID of the  script and /path_to_restore_your_file/yourscriptname.sh with the path where you want to restore the script.
+Подставьте настоящий PID и путь восстановления вместо значений примера.
 
 </b></details>
 
 <a name="questions-linux-memory"></a>
-### Memory
+<a id="memory"></a>
+### Память
 
 <details>
-<summary>What is the difference between MemFree and MemAvailable in /proc/meminfo?</summary><br><b>
+<summary>Чем отличаются MemFree и MemAvailable в /proc/meminfo?</summary><br><b>
 
-MemFree - The amount of unused physical RAM in your system
-MemAvailable - The amount of available memory for new workloads (without pushing system to use swap) based on MemFree, Active(file), Inactive(file), and SReclaimable.
+MemFree — физическая память, которая сейчас не используется.
+MemAvailable — оценка памяти, доступной новым нагрузкам без подкачки, с учётом свободной памяти, освобождаемого файлового кеша и других возвращаемых ресурсов.
 </b></details>
 
 <details>
-<summary>What is the difference between paging and swapping?</summary><br><b>
+<summary>Чем отличаются paging и swapping?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Explain what is OOM killer</summary><br><b>
+<summary>Что такое OOM killer?</summary><br><b>
 </b></details>
 
 <a name="questions-linux-distributions"></a>
-### Distributions
+<a id="distributions"></a>
+### Дистрибутивы
 
 <details>
-<summary>What is a Linux distribution?</summary><br><b>
+<summary>Что такое дистрибутив Linux?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What Linux distributions are you familiar with?</summary><br><b>
+<summary>Какие дистрибутивы Linux вы знаете?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What are the components of a Linux distribution?</summary><br><b>
+<summary>Из каких компонентов состоит дистрибутив?</summary><br><b>
 
-* Kernel
-* Utilities
-* Services
-* Software/Packages Management
+* Ядро.
+* Утилиты.
+* Сервисы.
+* Средства установки и управления ПО.
 </b></details>
 
 <a name="questions-linux-sed"></a>
+<a id="sed"></a>
 ### Sed
 
 <details>
-<summary>Using sed, extract the date from the following line: <code>201.7.19.90 - - [05/Jun/1985:13:42:99 +0000] "GET /site HTTP/1.1" 200 32421</code></summary><br><b>
+<summary>Извлеките дату с помощью sed: <code>201.7.19.90 - - [05/Jun/1985:13:42:99 +0000] "GET /site HTTP/1.1" 200 32421</code>.</summary><br><b>
 
 `echo $line | sed 's/.*\[//g;s/].*//g;s/:.*//g'`
 </b></details>
 
 <a name="questions-linux-misc"></a>
-### Misc
+<a id="misc-1"></a>
+### Разное
 
 <details>
-<summary>What is a Linux distribution?</summary><br><b>
+<summary>Что такое дистрибутив Linux?</summary><br><b>
 
-* A collection of packages - kernel, GNU, third party apps, ...
-* Sometimes distributions store some information on the distribution in `/etc/*-release` file
-    * For example for Red Hat distribution it will be `/etc/redhat-release` and for Amazon it will be `/etc/os-release`
-    * `lsb_release` is a common command you can use in multiple different distributions
+* Дистрибутив — набор пакетов: ядро, GNU-инструменты, сторонние приложения и другое ПО.
+* Сведения о выпуске часто находятся в `/etc/*-release`.
+    * Например, `/etc/redhat-release` в Red Hat и `/etc/os-release` в Amazon Linux.
+    * Во многих дистрибутивах доступна команда `lsb_release`.
 </b></details>
 
 <details>
-<summary>Name 5 commands which are two letters long</summary><br><b>
+<summary>Назовите пять команд из двух букв.</summary><br><b>
 
 ls, wc, dd, df, du, ps, ip, cp, cd ...
 </b></details>
 
 <details>
-<summary>What ways are there for creating a new empty file?</summary><br><b>
+<summary>Какими способами создать пустой файл?</summary><br><b>
 
   * touch new_file
-  * echo "" > new_file
+  * `: > new_file`. Уточнение: `echo "" > new_file` из исходника записывает перевод строки, а не ноль байт.
 </b></details>
 
 <details>
-<summary>How `cd -` works? How does it knows the previous location?</summary><br><b>
+<summary>Как cd - узнаёт предыдущий каталог?</summary><br><b>
 
 $OLDPWD
 </b></details>
 
 <details>
-<summary>List three ways to print all the files in the current directory</summary><br><b>
+<summary>Назовите три способа вывести имена файлов текущего каталога.</summary><br><b>
 
 * ls
 * find .
@@ -2251,75 +2290,77 @@ $OLDPWD
 </b></details>
 
 <details>
-<summary>How to count the number of lines in a file? What about words?</summary><br><b>
+<summary>Как посчитать строки и слова в файле?</summary><br><b>
 
-For these we can use `wc` command.
+Командой `wc`.
 
-1. To count the number of lines in file
+1. Число строк:
 ```wc -l```
 
-2. To count the number of words in file
+2. Число слов:
 ```wc -w```
 </b></details>
 
 <details>
-<summary>You define x=2 in /etc/bashrc and x=6 ~/.bashrc you then login to the system. What would be the value of x?</summary><br><b>
+<summary>В /etc/bashrc задано x=2, а в ~/.bashrc — x=6. Вы входите в систему. Каково значение x?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is the difference between man and info?</summary><br><b>
+<summary>Чем отличаются man и info?</summary><br><b>
 
-A good answer can be found [here](https://askubuntu.com/questions/9325/what-is-the-difference-between-man-and-info-documentation)
+Объяснение — [здесь](https://askubuntu.com/questions/9325/what-is-the-difference-between-man-and-info-documentation).
 </b></details>
 
 <details>
-<summary>Explain "environment variables". How do you list all environment variables?</summary><br><b>
+<summary>Что такое переменные окружения? Как вывести их все?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is a TTY device?</summary><br><b>
+<summary>Что такое устройство TTY?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How to create your own environment variables?</summary><br><b>
+<summary>Как создать переменную окружения?</summary><br><b>
 
-`X=2` for example. But this will persist to new shells. To have it in new shells as well, use `export X=2`
+`X=2` задаёт переменную оболочки. Чтобы её наследовали дочерние процессы, используйте `export X=2`. Это не делает значение постоянным для всех будущих сеансов.
 </b></details>
 
 <details>
-<summary>What a double dash (--) mean?</summary><br><b>
+<summary>Что означает двойной дефис --?</summary><br><b>
 
-It's used in commands to mark the end of commands options. One common example is when used with git to discard local changes: `git checkout -- some_file`
+Во многих командах он обозначает конец параметров. Например, `git checkout -- some_file` восстанавливает файл, отделяя путь от параметров.
 </b></details>
 
 <details>
-<summary>Wildcards are implemented on user or kernel space?</summary><br><b>
+<summary>Подстановочные шаблоны раскрываются в пользовательском пространстве или в ядре?</summary><br><b>
 </b></details>
 
 <details>
-<summary>If I plug a new device into a Linux machine, where on the system, a new device entry/file will be created?</summary><br><b>
+<summary>Где обычно появляется файл нового подключённого устройства?</summary><br><b>
 
 /dev
 </b></details>
 
 <details>
-<summary>Why there are different sections in man? What is the difference between the sections?</summary><br><b>
+<summary>Почему man разделён на секции? Чем они отличаются?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is User-mode Linux?</summary><br><b>
-In Linux, user mode is a restricted operating mode in which a user's application or process runs. User mode is a non-privileged mode that prevents user-level processes from accessing sensitive system resources directly.
+<summary>Что такое User-mode Linux?</summary><br><b>
+Уточнение: User-mode Linux — запуск ядра Linux как пользовательского процесса на Linux-хосте. Исходный ответ ниже вместо этого описывает обычный пользовательский режим процессора.
 
-In user mode, an application can only access hardware resources indirectly, by calling system services or functions provided by the operating system. This ensures that the system's security and stability are maintained by preventing user processes from interfering with or damaging system resources.
+В пользовательском режиме приложение обращается к оборудованию через системные интерфейсы ОС, что защищает системные ресурсы от произвольного вмешательства.
 
-Additionally, user mode also provides memory protection to prevent applications from accessing unauthorized memory locations. This is done by assigning each process its own virtual memory space, which is isolated from other processes.
+Каждый процесс имеет изолированное виртуальное адресное пространство, ограничивающее доступ к чужой памяти.
 
-In contrast to user mode, kernel mode is a privileged operating mode in which the operating system's kernel has full access to system resources, and can perform low-level operations, such as accessing hardware devices and managing system resources directly.
+Режим ядра, напротив, предоставляет ОС привилегированные возможности работы с оборудованием и управления ресурсами.
 
 </b></details>
 
 <details>
-<summary>Under which license Linux is distributed? </summary><br><b>
+<summary>Под какой лицензией распространяется ядро Linux?</summary><br><b>
 
 GPL v2
 </b></details>
+
+Примечание к переводу: примеры в блоках кода сохранены из исходной версии. Отдельные технические неточности уточнены в пояснениях. Справка по уточнениям: https://man7.org/linux/man-pages/man2/kill.2.html
