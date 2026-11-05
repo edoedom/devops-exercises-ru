@@ -1,140 +1,147 @@
+<a id="terraform"></a>
 # Terraform
 
 - [Terraform](#terraform)
-  - [Exercises](#exercises)
-    - [Terraform 101](#terraform-101)
+  - [Упражнения](#exercises)
+    - [Основы Terraform](#terraform-101)
     - [AWS](#aws)
-  - [Questions](#questions)
-    - [Terraform 101](#terraform-101-1)
-    - [Terraform Hands-On Basics](#terraform-hands-on-basics)
-    - [Dependencies](#dependencies)
-    - [Providers](#providers)
-    - [Variables](#variables)
-      - [Input Variables](#input-variables)
-      - [Output Variables](#output-variables)
-      - [Locals](#locals)
-      - [Variables Hands-On](#variables-hands-on)
-    - [Data Sources](#data-sources)
-    - [Lifecycle](#lifecycle)
-    - [Provisioners](#provisioners)
-    - [State](#state)
-      - [Terraform Backend](#terraform-backend)
-      - [Workspaces](#workspaces)
-      - [State Hands-On](#state-hands-on)
-    - [Terraform Structures and Syntax](#terraform-structures-and-syntax)
-      - [Lists](#lists)
-      - [Loops](#loops)
-      - [Maps](#maps)
-      - [Conditionals](#conditionals)
-      - [Misc](#misc)
-    - [Modules](#modules)
-      - [Modules Hands-On](#modules-hands-on)
-      - [Interview Cheatsheet](#interview-cheatsheet)
-    - [Import](#import)
-    - [Version Control](#version-control)
+  - [Вопросы](#questions)
+    - [Основы Terraform](#terraform-101-1)
+    - [Основы практической работы с Terraform](#terraform-hands-on-basics)
+    - [Зависимости](#dependencies)
+    - [Провайдеры](#providers)
+    - [Переменные](#variables)
+      - [Входные переменные](#input-variables)
+      - [Выходные значения](#output-variables)
+      - [Локальные значения](#locals)
+      - [Практика с переменными](#variables-hands-on)
+    - [Источники данных](#data-sources)
+    - [Жизненный цикл](#lifecycle)
+    - [Провижионеры](#provisioners)
+    - [Состояние](#state)
+      - [Backend Terraform](#terraform-backend)
+      - [Рабочие пространства](#workspaces)
+      - [Практика с состоянием](#state-hands-on)
+    - [Структуры данных и синтаксис Terraform](#terraform-structures-and-syntax)
+      - [Списки](#lists)
+      - [Циклы](#loops)
+      - [Отображения](#maps)
+      - [Условия](#conditionals)
+      - [Разное](#misc)
+    - [Модули](#modules)
+      - [Практика с модулями](#modules-hands-on)
+      - [Шпаргалка для собеседования](#interview-cheatsheet)
+    - [Импорт](#import)
+    - [Контроль версий](#version-control)
     - [AWS](#aws-1)
-    - [Validations](#validations)
-    - [Secrets](#secrets)
-    - [Production](#production)
+    - [Проверки значений](#validations)
+    - [Секреты](#secrets)
+    - [Рабочая среда](#production)
 
-## Exercises
+<a id="exercises"></a>
+## Упражнения
 
 <a name="exercises-terraform-101"></a>
 
-### Terraform 101
+<a id="terraform-101"></a>
+### Основы Terraform
 
-| Name           | Topic  | Objective & Instructions                                   | Solution                                                   | Comments |
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 | -------------- | ------ | ---------------------------------------------------------- | ---------------------------------------------------------- | -------- |
-| Local Provider | Basics | [Exercise](exercises/terraform_local_provider/exercise.md) | [Solution](exercises/terraform_local_provider/solution.md) |          |
+|Локальный провайдер|Основы|[Задание](exercises/terraform_local_provider/exercise.md)|[Решение](exercises/terraform_local_provider/solution.md)||
 
+<a id="aws"></a>
 ### AWS
 
-The following exercises require account in AWS and might cost you $$$
+Для следующих упражнений нужен аккаунт AWS; использование ресурсов может повлечь расходы.
 
-| Name                          | Topic | Objective & Instructions                              | Solution                                              | Comments |
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 | ----------------------------- | ----- | ----------------------------------------------------- | ----------------------------------------------------- | -------- |
-| Launch EC2 instance           | EC2   | [Exercise](exercises/launch_ec2_instance/exercise.md) | [Solution](exercises/launch_ec2_instance/solution.md) |          |
-| Rename S3 bucket              | S3    | [Exercise](exercises/s3_bucket_rename/exercise.md)    | [Solution](exercises/s3_bucket_rename/solution.md)    |          |
-| Create Custom VPC and Subnets | VPC   | [Exercise](exercises/vpc_subnet_creation/exercise.md) | [Solution](exercises/vpc_subnet_creation/solution.md) |          |
+|Запуск экземпляра EC2|EC2|[Задание](exercises/launch_ec2_instance/exercise.md)|[Решение](exercises/launch_ec2_instance/solution.md)||
+|Переименование бакета S3|S3|[Задание](exercises/s3_bucket_rename/exercise.md)|[Решение](exercises/s3_bucket_rename/solution.md)||
+|Создание VPC и подсетей|VPC|[Задание](exercises/vpc_subnet_creation/exercise.md)|[Решение](exercises/vpc_subnet_creation/solution.md)||
 
-## Questions
+<a id="questions"></a>
+## Вопросы
 
-### Terraform 101
+<a id="terraform-101-1"></a>
+### Основы Terraform
 
 <details>
-<summary>What is Terraform?</summary><br><b>
+<summary>Что такое Terraform?</summary><br><b>
 
-[Terraform](https://www.terraform.io/intro): "HashiCorp Terraform is an infrastructure as code tool that lets you define both cloud and on-prem resources in human-readable configuration files that you can version, reuse, and share. You can then use a consistent workflow to provision and manage all of your infrastructure throughout its lifecycle. Terraform can manage low-level components like compute, storage, and networking resources, as well as high-level components like DNS entries and SaaS features."
+[Terraform](https://www.terraform.io/intro): инструмент HashiCorp для управления инфраструктурой как кодом. Облачные и локальные ресурсы описываются в читаемых конфигурационных файлах, которые можно версионировать, переиспользовать и передавать другим. Единый процесс позволяет управлять всем жизненным циклом инфраструктуры: вычислениями, хранилищами, сетью, DNS-записями и возможностями SaaS.
 </b></details>
 
 <details>
-<summary>What are the advantages in using Terraform or IaC in general?</summary><br><b>
+<summary>Какие преимущества даёт Terraform или IaC в целом?</summary><br><b>
 
-- Full automation: In the past, resource creation, modification and removal were handled manually or by using a set of tooling. With Terraform or other IaC technologies, you manage the full lifecycle in an automated fashion.<br>
-- Modular and Reusable: Code that you write for certain purposes can be used and assembled in different ways. You can write code to create resources on a public cloud and it can be shared with other teams who can also use it in their account on the same (or different) cloud><br>
-- Improved testing: Concepts like CI can be easily applied on IaC based projects and code snippets. This allow you to test and verify operations beforehand
+- Автоматизация: вместо ручного создания, изменения и удаления ресурсов Terraform и другие средства IaC автоматизируют весь жизненный цикл.<br>
+- Модульность и повторное использование: код можно комбинировать и передавать другим командам, которые используют его для своих аккаунтов и облачных сред.<br>
+- Тестирование: к проектам IaC легко применять CI, чтобы заранее проверять конфигурации и планируемые операции.
 - </b></details>
 
 <details>
-<summary>What is one reason why manual processes can be helpful?</summary><br><b>
-For learning a platform when first starting out
+<summary>В каком случае ручные операции могут быть полезны?</summary><br><b>
+При первоначальном знакомстве с платформой.
 </b></details>
 
 <details>
-<summary>Why is it advisable to avoid using manual processes when creating infrastructure at scale?</summary>
-Manual processes for creating infrastructure are slow because they require human intervention for each step, which delays deployment. They are error-prone since manual configuration increases the risk of mistakes and inconsistencies. Additionally, these processes are not easily repeatable, making it difficult to ensure the same infrastructure setup across different environments—unlike Infrastructure as Code (IaC), which automates and standardizes deployments.
+<summary>Почему стоит избегать ручного создания инфраструктуры в больших масштабах?</summary>
+Ручные операции требуют участия человека на каждом шаге, замедляют развёртывание, повышают вероятность ошибок и различий между средами. Их сложно точно повторять. IaC автоматизирует и стандартизирует развёртывание, помогая воспроизводить одинаковые конфигурации.
 </b></details>
 
 <details>
-<summary>What are some of Terraform features?</summary><br><b>
+<summary>Назовите особенности Terraform.</summary><br><b>
 
-- Declarative: Terraform uses the declarative approach (rather than the procedural one) in order to define end-status of the resources
-- No agents: as opposed to other technologies (e.g. Puppet) where you use a model of agent and server, with Terraform you use the different APIs (of clouds, services, etc.) to perform the operations
-- Community: Terraform has strong community who constantly publishes modules and fixes when needed. This ensures there is good modules maintenance and users can get support quite quickly at any point
+- Декларативность: описывается желаемое конечное состояние ресурсов, а не последовательность действий.
+- Отсутствие агентов: вместо модели «сервер — агент», как у Puppet, Terraform обращается к API облаков и сервисов.
+- Сообщество: участники публикуют модули и исправления, поддерживают решения и помогают пользователям.
 - </b></details>
 
 <details>
-<summary>What language does Terraform uses?</summary><br><b>
+<summary>Какой язык использует Terraform?</summary><br><b>
 
-A DSL called "HCL" (Hashicorp Configuration Language). A declarative language for defining infrastructure.
-
-</b></details>
-
-<details>
-<summary>What's a typical Terraform workflow?</summary><br><b>
-
-1. Write Terraform definitions: `.tf` files written in HCL that described the desired infrastructure state (and run `terraform init` at the very beginning)
-2. Review: With command such as `terraform plan` you can get a glance at what Terraform will perform with the written definitions
-3. Apply definitions: With the command `terraform apply` Terraform will apply the given definitions, by adding, modifying or removing the resources
-
-This is a manual process. Most of the time this is automated so user submits a PR/MR to propose terraform changes, there is a process to test these changes and once merged they are applied (`terraform apply`).
+Предметно-ориентированный язык HCL (HashiCorp Configuration Language) для декларативного описания инфраструктуры.
 
 </b></details>
 
 <details>
-<summary>What are some use cases for using Terraform?</summary><br><b>
+<summary>Как выглядит типичный процесс работы с Terraform?</summary><br><b>
 
-- Infra provisioning and management: You need to automated or code your infra so you are able to test it easily, apply it and make any changes necessary.
-- Multi-cloud environment: You manage infrastructure on different clouds, but looking for a consistent way to do it across the clouds
-- Consistent environments: You manage environments such as test, production, staging, ... and looking for a way to have them consistent so any modification in one of them, applies to other environments as well
+1. Описать желаемую инфраструктуру в файлах `.tf` на HCL; в начале работы выполнить `terraform init`.
+2. Проверить план командой `terraform plan`, чтобы увидеть будущие действия.
+3. Применить конфигурацию через `terraform apply`, создавая, изменяя или удаляя ресурсы.
+
+Так выглядит ручной процесс. Обычно его автоматизируют: пользователь предлагает изменения через PR/MR, они проходят проверки, а после слияния применяется `terraform apply`.
 
 </b></details>
 
 <details>
-<summary>What's the difference between Terraform and technologies such as Ansible, Puppet, Chef, etc.</summary><br><b>
+<summary>Для каких задач используют Terraform?</summary><br><b>
 
-Terraform is considered to be an IaC technology. It's used for provisioning resources, for managing infrastructure on different platforms.
-
-Ansible, Puppet and Chef are Configuration Management technologies. They are used once there is an instance running and you would like to apply some configuration on it like installing an application, applying security policy, etc.
-
-To be clear, CM tools can be used to provision resources so in the end goal of having infrastructure, both Terraform and something like Ansible, can achieve the same result. The difference is in the how. Ansible doesn't saves the state of resources, it doesn't know how many instances there are in your environment as opposed to Terraform. At the same time while Terraform can perform configuration management tasks, it has less modules support for that specific goal and it doesn't track the task execution state as Ansible. The differences are there and it's most of the time recommended to mix the technologies, so Terraform used for managing infrastructure and CM technologies used for configuration on top of that infrastructure.
+- Создание и управление инфраструктурой: её описание кодом упрощает проверку, развёртывание и внесение изменений.
+- Несколько облаков: единый подход к управлению инфраструктурой на разных платформах.
+- Согласованные среды: одинаковые принципы управления тестовой, подготовительной и рабочей средами позволяют последовательно переносить изменения между ними.
 
 </b></details>
 
-### Terraform Hands-On Basics
+<details>
+<summary>Чем Terraform отличается от Ansible, Puppet, Chef и подобных инструментов?</summary><br><b>
+
+Terraform — инструмент IaC для создания ресурсов и управления инфраструктурой на разных платформах.
+
+Ansible, Puppet и Chef прежде всего управляют конфигурацией: например, устанавливают приложения или применяют политики безопасности на уже работающих серверах.
+
+Возможности пересекаются: средства управления конфигурацией тоже создают ресурсы, а Terraform может выполнять задачи настройки. Различается подход: Terraform хранит состояние управляемых ресурсов; Ansible не ведёт аналогичный постоянный файл состояния. Для настройки ОС и приложений у средств управления конфигурацией обычно больше специализированных возможностей. Часто их сочетают: Terraform создаёт инфраструктуру, а Ansible или другой инструмент настраивает её.
+
+</b></details>
+
+<a id="terraform-hands-on-basics"></a>
+### Основы практической работы с Terraform
 
 <details>
-<summary>Explain the following block of Terraform code
+<summary>Объясните следующий блок Terraform:
 
 ```
 resource "aws_instance" "some-instance" {
@@ -145,13 +152,13 @@ resource "aws_instance" "some-instance" {
 
 </summary><br><b>
 
-It's a resource of type "aws_instance" used to provision an instance. The name of the resource (NOT INSTANCE) is "some-instance".
+Ресурс типа `aws_instance` создаёт экземпляр EC2. Локальное имя ресурса Terraform, а не имя самого экземпляра, — `some-instance`.
 
-The instance itself will be provisioned with type "t2.micro" and using an image of the AMI "ami-201720221991yay".
+Тип экземпляра — `t2.micro`, AMI — `ami-201720221991yay` (условное значение из примера).
 </b></details>
 
 <details>
-<summary>What do you do next after writing the following in main.tf file?
+<summary>Что сделать после записи следующей конфигурации в main.tf?
 
 ```
 resource "aws_instance" "some-instance" {
@@ -162,54 +169,55 @@ resource "aws_instance" "some-instance" {
 
 </summary><br><b>
 
-Run `terraform init`. This will scan the code in the directory to figure out which providers are used (in this case AWS provider) and will download them.
+Выполнить `terraform init`. Terraform определит используемые провайдеры, в данном случае AWS, и установит их.
 </b></details>
 
 <details>
-<summary>You've executed <code>terraform init</code> and now you would like to move forward to creating the resources but you have concerns and would like to make be 100% sure on what you are going to execute. What should you be doing?</summary><br><b>
+<summary>Вы выполнили <code>terraform init</code>, но перед созданием ресурсов хотите проверить предстоящие действия. Что сделать?</summary><br><b>
 
-Execute `terraform plan`. That will provide a detailed information on what Terraform will do once you apply the changes.
+Выполнить `terraform plan`, чтобы увидеть подробный план изменений.
 </b></details>
 
 <details>
-<summary>You've downloaded the providers, seen the what Terraform will do (with terraform plan) and you are ready to actually apply the changes. What should you do next?</summary><br><b>
+<summary>Провайдеры установлены, план terraform plan проверен. Как применить изменения?</summary><br><b>
 
-Run `terraform apply`. That will apply the changes described in your .tf files.
+Выполнить `terraform apply`: команда применит изменения, описанные в файлах `.tf`.
 </b></details>
 
 <details>
-<summary>Explain the meaning of the following strings that seen at the beginning of each line When you run <code>terraform apply</code>
+<summary>Что означают следующие символы в начале строк вывода <code>terraform apply</code>?
 
 - '+'
 - '-'
 - '-/+'
 </summary><br><b>
 
-- '+' - The resource or attribute is going to be added
-- '-' - the resource or attribute is going to be removed
-- '-/+' - the resource or attribute is going to be replaced
+- `+` — добавление ресурса или атрибута.
+- `-` — удаление ресурса или атрибута.
+- `-/+` — замена ресурса: удаление и последующее создание.
   </b></details>
 
 <details>
-<summary>How to cleanup Terraform resources? Why the user should be careful doing so?</summary><br><b>
+<summary>Как удалить ресурсы Terraform? Почему нужна осторожность?</summary><br><b>
 
-`terraform destroy` will cleanup all the resources tracked by Terraform.
+`terraform destroy` удаляет ресурсы, отслеживаемые в текущем состоянии Terraform.
 
-A user should be careful with this command because there is no way to revert it. Sure, you can always run again "apply" but that can take time, generates completely new resources, etc.
+Операцию нельзя просто отменить. Повторный `apply` создаст новые ресурсы, займёт время и не восстановит автоматически утраченные данные.
 </b></details>
 
-### Dependencies
+<a id="dependencies"></a>
+### Зависимости
 
 <details>
-<summary>Sometimes you need to reference some resources in the same or separate .tf file. Why and how it's done?</summary><br><b>
+<summary>Зачем ссылаться на ресурсы в том же или другом файле .tf и как это сделать?</summary><br><b>
 
-Why: because resources are sometimes connected or need to be connected. For example, you create an AWS instance with "aws_instance" resource but, at the same time you would like also to allow some traffic to it (because by default traffic is not allowed). For that you'll create a "aws_security_group" resource and then, in your aws_instance resource, you'll reference it.
+Ресурсы могут зависеть друг от друга. Например, для экземпляра `aws_instance` создаётся группа безопасности `aws_security_group`, разрешающая нужный трафик, а затем ссылка на неё указывается в конфигурации экземпляра.
 
-How:
+Как это сделать:
 
-Using the syntax <PROVIDER TYPE>.<NAME>.<ATTRIBUTE>
+Использовать синтаксис `<RESOURCE_TYPE>.<NAME>.<ATTRIBUTE>`.
 
-In your AWS instance it would like that:
+Для экземпляра AWS это выглядит так:
 
 ```
 resource "aws_instance" "some-instance" {
@@ -224,37 +232,38 @@ resource "aws_instance" "some-instance" {
 </b></details>
 
 <details>
-<summary>Does it matter in which order Terraform creates resources?</summary><br><b>
+<summary>Важен ли порядок создания ресурсов Terraform?</summary><br><b>
 
-Yes, when there is a dependency between different Terraform resources, you want the resources to be created in the right order and this is exactly what Terraform does.
+Да. Если между ресурсами есть зависимости, Terraform должен создавать их в соответствующем порядке.
 
-To make it ever more clear, if you have a resource X that references the ID of resource Y, it doesn't makes sense to create first resource X because it won't have any ID to get from a resource that wasn't created yet.
+Например, если ресурс X использует ID ресурса Y, сначала нужно создать Y: иначе его идентификатор ещё неизвестен.
 </b></details>
 
 <details>
-<summary>Is there a way to print/see the dependencies between the different resources?</summary><br><b>
+<summary>Можно ли увидеть зависимости между ресурсами?</summary><br><b>
 
-Yes, with `terraform graph`
+Да, командой `terraform graph`.
 
-The output is in DOT - A graph description language.
+Результат выдаётся на языке описания графов DOT.
 </b></details>
 
-### Providers
+<a id="providers"></a>
+### Провайдеры
 
 <details>
-<summary>Explain what is a "provider"</summary><br><b>
+<summary>Что такое провайдер?</summary><br><b>
 
-[terraform.io](https://www.terraform.io/docs/language/providers/index.html): "Terraform relies on plugins called "providers" to interact with cloud providers, SaaS providers, and other APIs...Each provider adds a set of resource types and/or data sources that Terraform can manage. Every resource type is implemented by a provider; without providers, Terraform can't manage any kind of infrastructure."
-</b></details>
-
-<details>
-<summary>Where can you find publicly available providers?</summary><br><b>
-
-In the [Terraform Registry](https://registry.terraform.io/browse/providers)
+[terraform.io](https://www.terraform.io/docs/language/providers/index.html): провайдеры — плагины, через которые Terraform взаимодействует с облаками, SaaS и другими API. Они добавляют типы ресурсов и источники данных. Каждый тип ресурса реализуется провайдером; без провайдеров Terraform не управляет инфраструктурой.
 </b></details>
 
 <details>
-<summary>What are the names of the providers in this case?
+<summary>Где найти общедоступные провайдеры?</summary><br><b>
+
+В [Terraform Registry](https://registry.terraform.io/browse/providers).
+</b></details>
+
+<details>
+<summary>Как называются провайдеры в этом примере?
 
 ```
 terraform {
@@ -272,13 +281,13 @@ terraform {
 
 </summary><br><b>
 
-azurerm and aws
+`azurerm` и `aws`.
 </b></details>
 
 <details>
-<summary>How to install a provider? </summary><br><b>
+<summary>Как установить провайдер?</summary><br><b>
 
-You write a provider block like the following one and run `terraform init`
+Описать провайдер, как в следующем примере, и выполнить `terraform init`.
 
 ```
 provider "aws" {
@@ -289,7 +298,7 @@ provider "aws" {
 </b></details>
 
 <details>
-<summary>True or False? Applying the following Terraform configuration will fail since no source or version specific for 'aws' provider
+<summary>Верно ли, что следующая конфигурация не сработает, поскольку для провайдера aws не указаны источник и версия?
 
 ```
 terraform {
@@ -301,13 +310,13 @@ terraform {
 
 </summary><br><b>
 
-False. It will look for "aws" provider in the public Terraform registry and will take the latest version.
+Неверно. Для такого сокращённого имени Terraform ищет провайдер AWS в публичном реестре. Без ограничений и существующей фиксации версии выбирается последняя подходящая версия.
 </b></details>
 
 <details>
-<summary>Write a configuration of a Terraform provider (any type you would like)</summary><br><b>
+<summary>Напишите конфигурацию любого провайдера Terraform.</summary><br><b>
 
-AWS is one of the most popular providers in Terraform. Here is an example of how to configure it to use one specific region and specifying a specific version of the provider
+AWS — один из популярных провайдеров. Пример ниже задаёт регион и версию провайдера.
 
 ```
 terraform {
@@ -328,25 +337,25 @@ provider "aws" {
 </b></details>
 
 <details>
-<summary>Where Terraform installs providers from by default? </summary><br><b>
+<summary>Откуда Terraform по умолчанию устанавливает провайдеры?</summary><br><b>
 
-By default Terraform providers are installed from Terraform Registry
+Из Terraform Registry.
 </b></details>
 
 <details>
-<summary>What is the Terraform Registry?</summary><br><b>
+<summary>Что такое Terraform Registry?</summary><br><b>
 
-The Terraform Registry provides a centralized location for official and community-managed providers and modules.
+Централизованный каталог официальных и поддерживаемых сообществом провайдеров и модулей.
 </b></details>
 
 <details>
-<summary>Where providers are downloaded to? (when for example you run <code>terraform init</code>)</summary><br><b>
+<summary>Куда скачиваются провайдеры, например при <code>terraform init</code>?</summary><br><b>
 
-`.terraform` directory.
+В каталог `.terraform`.
 </b></details>
 
 <details>
-<summary>Describe in high level what happens behind the scenes when you run terraform init on on the following Terraform configuration
+<summary>В общих чертах опишите, что происходит при terraform init для следующей конфигурации:
 
 ```
 terraform {
@@ -361,28 +370,30 @@ terraform {
 
 </summary><br><b>
 
-1. Terraform checks if there is an aws provider in this address: `registry.terraform.io/hashicorp/aws`
-2. Installs latest version of aws provider (assuming the URL exists and valid)
+1. Terraform ищет провайдер по адресу `registry.terraform.io/hashicorp/aws`.
+2. Если источник доступен, устанавливает подходящую версию; при отсутствии ограничений и фиксации — последнюю.
    </b></details>
 
 <details>
-<summary>True or False? You can install providers only from hashicorp</summary><br><b>
+<summary>Верно ли, что можно устанавливать провайдеры только HashiCorp?</summary><br><b>
 
-False. You can specify any provider from any URL, not only those from hashicorp.
+Неверно. Можно использовать провайдеры других издателей и поддерживаемые альтернативные источники установки.
 </b></details>
 
-### Variables
+<a id="variables"></a>
+### Переменные
 
-#### Input Variables
+<a id="input-variables"></a>
+#### Входные переменные
 
 <details>
-<summary>What are input variables good for in Terraform?</summary><br><b>
+<summary>Зачем нужны входные переменные Terraform?</summary><br><b>
 
-Variables allow you define piece of data in one location instead of repeating the hardcoded value of it in multiple different locations. Then when you need to modify the variable's value, you do it in one location instead of changing each one of the hardcoded values.
+Они позволяют задавать значение в одном месте, а не повторять его по всей конфигурации. При изменении достаточно обновить одно значение.
 </b></details>
 
 <details>
-<summary>What type of input variables are supported in Terraform?</summary><br><b>
+<summary>Какие типы входных переменных поддерживает Terraform?</summary><br><b>
 
 ```
 string
@@ -398,123 +409,126 @@ tuple([<TYPE>, ...])
 </b></details>
 
 <details>
-<summary>What's the default input variable type in Terraform?</summary><br><b>
+<summary>Какое ограничение типа применяется к входной переменной по умолчанию?</summary><br><b>
 
 `any`
 </b></details>
 
 <details>
-<summary>What ways are there to pass values for input variables?</summary><br><b>
+<summary>Как передать значения входных переменных?</summary><br><b>
 
-- Using `-var` option in the CLI
-- Using a file by using the `-var-file` option in the CLI
-- Environment variable that starts with `TF_VAR_<VAR_NAME>`
+- Параметром CLI `-var`.
+- Через файл с параметром CLI `-var-file`.
+- Через переменную окружения `TF_VAR_<VAR_NAME>`.
 
-If no value given, user will be prompted to provide one.
+Если значения и значения по умолчанию нет, Terraform в интерактивном режиме запросит ввод.
 </b></details>
 
 <details>
-<summary>How to reference a variable?</summary><br><b>
+<summary>Как сослаться на переменную?</summary><br><b>
 
-Using the syntax `var.<VAR_NAME>`
+Синтаксис: `var.<VAR_NAME>`.
 </b></details>
 
 <details>
-[Question] You are configuring a variable for your Terraform configuration. Which arguments are required when configuring a `variable` block? 1. `type` and `description` 2. There are no required arguments 3. `type` 4. `type`, `description` and `default`
+[Вопрос] Какие аргументы обязательны в блоке `variable`? 1. `type` и `description` 2. Обязательных аргументов нет 3. `type` 4. `type`, `description` и `default`
 
-[Answer]</b> 2. There are no required arguments
+[Ответ]</b> 2. Обязательных аргументов нет.
 
-In Terraform, when declaring a variable block, there are no mandatory arguments. You can create a variable with an empty block like:
+Переменную можно объявить пустым блоком:
 
 variable "example" {}
 
-While `type`, `description`, and `default` are commonly used, they're all optional. The `type` argument helps with validation, `description` documents the variable's purpose, and `default` provides a fallback value if none is specified.
+Часто используемые `type`, `description` и `default` необязательны. `type` задаёт ограничение типа, `description` описывает назначение, а `default` — значение при отсутствии явно переданного.
 
 </details>
 
 <details>
-<summary>What is the effect of setting variable as "sensitive"?</summary><br><b>
+<summary>Что даёт параметр sensitive у переменной?</summary><br><b>
 
-It doesn't show its value when you run `terraform apply` or `terraform plan` but eventually it's still recorded in the state file.
+Terraform скрывает значение в обычном выводе `plan` и `apply`, но оно по-прежнему может сохраняться в файле состояния.
 </b></details>
 
 <details>
-<summary>True or False? If an expression's result depends on a sensitive variable, it will be treated as sensitive as well</summary><br><b>
+<summary>Верно ли, что результат выражения, зависящего от чувствительной переменной, также считается чувствительным?</summary><br><b>
 
-True
+Верно.
 </b></details>
 
 <details>
-<summary>The same variable is defined in the following places:
+<summary>Одна переменная задана в следующих местах:
 
-- The file `terraform.tfvars`
-- Environment variable
-- Using `-var` or `-var-file`
+- Файл `terraform.tfvars`
+- Переменная окружения
+- Параметры `-var` или `-var-file`
 
-According to variable precedence, which source will be used first?</summary><br><b>
+Какой источник имеет приоритет?</summary><br><b>
 
-Terraform loads variables in the following order, with later sources taking precedence over earlier ones:
+Terraform загружает значения в следующем порядке; более поздние источники переопределяют предыдущие:
 
-- Environment variable
-- The file `terraform.tfvars`
-- Using `-var` or `-var-file`
-
-</b></details>
-
-<details>
-<summary>Whenever you run terraform apply, it prompts to enter a value for a given variable. How to avoid being prompted?</summary><br><b>
-
-While removing the variable is theoretically a correct answer, it will probably fail the execution.
-
-You can use something like the `-var` option to provide the value and avoid being prompted to insert a value. Another option is to run `export TF_VAR_<VAR_NAME>=<VALUE>`.
-
-</b></details>
-
-#### Output Variables
-
-<details>
-<summary>What are output variables? Why do we need them?</summary><br><b>
-
-Output variable allow you to display/print certain piece of data as part of Terraform execution.
-
-The most common use case for it is probably to print the IP address of an instance. Imagine you provision an instance and you would like to know what the IP address to connect to it. Instead of looking for it for the console/OS, you can use the output variable and print that piece of information to the screen
+- Переменная окружения
+- Файл `terraform.tfvars`
+- Параметры `-var` или `-var-file`
 
 </b></details>
 
 <details>
-<summary>Explain the "sensitive" parameter of output variable</summary><br><b>
+<summary>При каждом terraform apply запрашивается значение переменной. Как избежать запроса?</summary><br><b>
 
-When set to "true", Terraform will avoid logging output variable's data. The use case for it is sensitive data such as password or private keys.
+Удаление объявления переменной теоретически уберёт запрос, но, вероятно, нарушит конфигурацию.
+
+Передайте значение через `-var` либо задайте `export TF_VAR_<VAR_NAME>=<VALUE>`.
+
+</b></details>
+
+<a id="output-variables"></a>
+#### Выходные значения
+
+<details>
+<summary>Что такое выходные значения и зачем они нужны?</summary><br><b>
+
+Выходные значения позволяют выводить определённые данные при работе Terraform.
+
+Например, после создания экземпляра можно вывести его IP-адрес для подключения, не разыскивая его в консоли или ОС.
 
 </b></details>
 
 <details>
-<summary>Explain the "depends" parameter of output variable</summary><br><b>
+<summary>Объясните параметр sensitive у выходного значения.</summary><br><b>
 
-It is used to set explicitly dependency between the output variable and any other resource. Use case: some piece of information is available only once another resource is ready.
-
-</b></details>
-
-#### Locals
-
-<details>
-<summary>What are locals?</summary><br><b>
-
-Similarly to variables they serve as placeholders for data and values. Differently from variables, users can't override them by passing different values.
+При `true` значение скрывается в обычном выводе Terraform. Это полезно для паролей и закрытых ключей, но само по себе не шифрует состояние.
 
 </b></details>
 
 <details>
-<summary>What's the use case for using locals?</summary><br><b>
+<summary>Объясните параметр depends_on у выходного значения (в исходнике назван depends).</summary><br><b>
 
-You have multiple hardcoded values that repeat themselves in different sections, but at the same time you don't want to expose them as in, allow users to override values.
+Он явно задаёт зависимость от ресурса, например когда значение следует выдавать только после его готовности.
 
 </b></details>
 
-#### Variables Hands-On
+<a id="locals"></a>
+#### Локальные значения
 
 <details>
-<summary>Demonstrate input variable definition with type, description and default parameters</summary><br><b>
+<summary>Что такое локальные значения — locals?</summary><br><b>
+
+Они задают имена для выражений и значений. В отличие от входных переменных, пользователь не переопределяет их передачей параметров.
+
+</b></details>
+
+<details>
+<summary>Когда полезны locals?</summary><br><b>
+
+Когда одинаковые значения повторяются в разных местах, но вы не хотите предоставлять пользователю возможность их переопределения.
+
+</b></details>
+
+<a id="variables-hands-on"></a>
+#### Практика с переменными
+
+<details>
+<summary>Покажите объявление входной переменной с type, description и default.</summary><br><b>
 
 ```
 variable "app_id" {
@@ -524,12 +538,12 @@ variable "app_id" {
 }
 ```
 
-Unrelated note: variables are usually defined in their own file (vars.tf for example).
+Примечание: объявления переменных часто выносят в отдельный файл, например `vars.tf`.
 
 </b></details>
 
 <details>
-<summary>How to define an input variable which is an object with attributes "model" (string), "color" (string), year (number)?</summary><br><b>
+<summary>Как объявить переменную-объект с атрибутами model (string), color (string) и year (number)?</summary><br><b>
 
 ```
 variable "car_model" {
@@ -542,14 +556,14 @@ variable "car_model" {
 }
 ```
 
-Note: you can also define a default for it.
+Примечание: можно также задать значение по умолчанию.
 
 </b></details>
 
 <details>
-<summary>How to reference variables?</summary><br><b>
+<summary>Как обращаться к переменным?</summary><br><b>
 
-Variable are referenced with `var.VARIABLE_NAME` syntax. Let's have a look at an example:
+Используется `var.VARIABLE_NAME`. Пример:
 
 vars.tf:
 
@@ -578,11 +592,11 @@ resource "libvirt_domain" "vm1" {
 </b></details>
 
 <details>
-<summary>How to reference variable from inside of string literal? (bonus question: how that type of expression is called?)</summary><br><b>
+<summary>Как обратиться к переменной внутри строкового литерала? Как называется такое выражение?</summary><br><b>
 
-Using the syntax: `"${var.VAR_NAME}"`. It's called "interpolation".
+Синтаксис: `"${var.VAR_NAME}"`. Это интерполяция.
 
-Very common to see it used in user_data attribute related to instances.
+Часто используется в атрибуте `user_data` экземпляров.
 
 ```
 user_data = <<-EOF
@@ -595,21 +609,21 @@ user_data = <<-EOF
 </b></details>
 
 <details>
-<summary>How can list all outputs without applying Terraform changes?</summary><br><b>
+<summary>Как вывести все выходные значения без применения изменений?</summary><br><b>
 
-`terraform output` will list all outputs without applying any changes
+`terraform output` выводит сохранённые выходные значения без применения изменений.
 </b></details>
 
 <details>
-<summary>Can you see the output of specific variable without applying terrafom changes?</summary><br><b>
+<summary>Можно ли вывести одно выходное значение без применения изменений?</summary><br><b>
 
-Yes, with `terraform output <OUTPUT_VAR>`.
+Да: `terraform output <OUTPUT_VAR>`.
 
-Very useful for scripts :)
+Удобно для скриптов :)
 </b></details>
 
 <details>
-<summary>Demonstrate how to define locals</summary><br><b>
+<summary>Покажите объявление локальных значений.</summary><br><b>
 
 ```
 locals {
@@ -622,9 +636,9 @@ locals {
 </b></details>
 
 <details>
-<summary>Demonstrate how to use a local</summary><br><b>
+<summary>Покажите использование локального значения.</summary><br><b>
 
-if we defined something like this
+Если значение определено следующим образом:
 
 ```
 locals {
@@ -632,22 +646,23 @@ locals {
 }
 ```
 
-then to use it, you have to use something like this: `local.x`
+то обратиться к нему можно через `local.x`.
 </b></details>
 
-### Data Sources
+<a id="data-sources"></a>
+### Источники данных
 
 <details>
-<summary>Explain data sources in Terraform</summary><br><b>
+<summary>Объясните источники данных Terraform.</summary><br><b>
 
-- Data sources used to get data from providers or in general from external resources to Terraform (e.g. public clouds like AWS, GCP, Azure).
-- Data sources used for reading. They are not modifying or creating anything
-- Many providers expose multiple data sources
+- Источники данных получают информацию через провайдеров, например из AWS, GCP, Azure или других внешних систем.
+- Они предназначены для чтения, а не для создания или изменения управляемых ресурсов.
+- Многие провайдеры предоставляют несколько источников данных.
 
 </b></details>
 
 <details>
-<summary>Demonstrate how to use data sources</summary><br><b>
+<summary>Покажите использование источника данных.</summary><br><b>
 
 ```
 data "aws_vpc" "default {
@@ -658,11 +673,11 @@ data "aws_vpc" "default {
 </b></details>
 
 <details>
-<summary>How to get data out of a data source?</summary><br><b>
+<summary>Как получить значение из источника данных?</summary><br><b>
 
-The general syntax is `data.<PROVIDER_AND_TYPE>.<NAME>.<ATTRIBUTE>`
+Общий синтаксис: `data.<PROVIDER_AND_TYPE>.<NAME>.<ATTRIBUTE>`.
 
-So if you defined the following data source
+Например, если объявлен такой источник:
 
 ```
 data "aws_vpc" "default {
@@ -670,15 +685,15 @@ data "aws_vpc" "default {
 }
 ```
 
-You can retrieve the ID attribute this way: `data.aws_vpc.default.id`
+его ID доступен как `data.aws_vpc.default.id`.
 </b></details>
 
 <details>
-<summary>Is there such a thing as combining data sources? What would be the use case?</summary><br><b>
+<summary>Можно ли комбинировать источники данных? Зачем?</summary><br><b>
 
-Yes, you can define a data source while using another data source as a filter for example.
+Да, например использовать результат одного источника как фильтр другого.
 
-Let's say we want to get AWS subnets but only from our default VPC:
+Допустим, нужны подсети AWS только из VPC по умолчанию:
 
 ```
 data "aws_subnets" "default" {
@@ -691,21 +706,22 @@ data "aws_subnets" "default" {
 
 </b></details>
 
-### Lifecycle
+<a id="lifecycle"></a>
+### Жизненный цикл
 
 <details>
-<summary>When you update a resource, how it works?</summary><br><b>
+<summary>Как происходит обновление ресурса?</summary><br><b>
 
-By default the current resource is deleted, a new one is created and any references pointing the old resource are updated to point the new resource
+Уточнение к исходнику: обычные изменения могут применяться на месте. Если изменение требует замены, по умолчанию старый ресурс удаляется, создаётся новый и обновляются ссылки на него.
 
 </b></details>
 
 <details>
-<summary>Is it possible to modify the default lifecycle? How? Why?</summary><br><b>
+<summary>Можно ли изменить стандартный жизненный цикл? Как и зачем?</summary><br><b>
 
-Yes, it's possible. There are different lifecycles one can choose from. For example "create_before_destroy" which inverts the order and first creates the new resource, updates all the references from old resource to the new resource and then removes the old resource.
+Да. Например, `create_before_destroy` при замене сначала создаёт новый ресурс, а затем удаляет старый, позволяя зависимостям переключиться на новый.
 
-How to use it:
+Пример использования:
 
 ```
 lifecycle {
@@ -713,108 +729,109 @@ lifecycle {
 }
 ```
 
-Why to use it in the first place: you might have resources that have dependency where they dependency itself is immutable (= you can't modify it hence you have to create a new one), in such case the default lifecycle won't work because you won't be able to remove the resource that has the dependency as it still references an old resource. AWS ASG + launch configurations is a good example of such use case.
+Это полезно для зависимостей, которые нельзя изменить на месте. При стандартном порядке удаление старого объекта может быть невозможно, пока на него ссылаются другие ресурсы. Пример — AWS Auto Scaling Group и launch configuration.
 
 </b></details>
 
 <details>
-<summary>You've deployed a virtual machine with Terraform and you would like to pass data to it (or execute some commands). Which concept of Terraform would you use?</summary><br><b>
+<summary>Вы создали ВМ через Terraform и хотите передать ей данные или выполнить команды. Какую возможность использовать?</summary><br><b>
 
-[Provisioners](https://www.terraform.io/docs/language/resources/provisioners)
-
-</b></details>
-
-### Provisioners
-
-<details>
-<summary>What are "Provisioners"? What they are used for?</summary><br><b>
-
-Provisioners can be described as plugin to use with Terraform, usually focusing on the aspect of service configuration and make it operational.
-
-Few example of provisioners:
-
-- Run configuration management on a provisioned instance using technology like Ansible, Chef or Puppet.
-- Copying files
-- Executing remote scripts
+[Провижионеры](https://www.terraform.io/docs/language/resources/provisioners).
 
 </b></details>
 
-<details>
-<summary>Why is it often recommended to use provisioners as last resort?</summary><br><b>
+<a id="provisioners"></a>
+### Провижионеры
 
-Since a provisioner can run a variety of actions, it's not always feasible to plan and understand what will happen when running a certain provisioner. For this reason, it's usually recommended to use Terraform built-in option, whenever's possible.
+<details>
+<summary>Что такое провижионеры и зачем они нужны?</summary><br><b>
+
+Провижионеры выполняют дополнительные действия настройки ресурсов, чтобы подготовить сервис к работе.
+
+Примеры:
+
+- Запуск Ansible, Chef или Puppet для настройки созданного экземпляра.
+- Копирование файлов.
+- Выполнение удалённых скриптов.
 
 </b></details>
 
 <details>
-<summary>What is <code>local-exec</code> and <code>remote-exec</code> in the context of provisioners?</summary><br><b>
+<summary>Почему провижионеры рекомендуют использовать лишь в крайнем случае?</summary><br><b>
 
-<code>local-exec</code> provisioners run commands on the machine where Terraform is executed, while <code>remote-exec</code> provisioners run commands on the remote resource.
-
-</b></details>
-
-<details>
-<summary>What is a "tainted resource"?</summary><br><b>
-
-It's a resource which was successfully created but failed during provisioning. Terraform will fail and mark this resource as "tainted".
+Они могут выполнять произвольные действия, результат которых Terraform не всегда способен заранее спланировать и отследить. По возможности предпочтительны штатные возможности провайдеров и ресурсов.
 
 </b></details>
 
 <details>
-<summary>What <code>terraform taint</code> does?</summary><br><b>
-<code>terraform taint resource.id</code> manually marks the resource as tainted in the state file. So when you run <code>terraform apply</code> the next time, the resource will be destroyed and recreated.
+<summary>Чем отличаются провижионеры local-exec и remote-exec?</summary><br><b>
+
+`local-exec` выполняет команды на машине, где запущен Terraform; `remote-exec` — на удалённом ресурсе.
 
 </b></details>
 
 <details>
-<summary>What is a data source? In what scenarios for example would need to use it?</summary><br><b>
-Data sources lookup or compute values that can be used elsewhere in terraform configuration.
+<summary>Что такое tainted resource?</summary><br><b>
 
-There are quite a few cases you might need to use them:
-
-- you want to reference resources not managed through terraform
-- you want to reference resources managed by a different terraform module
-- you want to cleanly compute a value with typechecking, such as with <code>aws_iam_policy_document</code>
+Ресурс, помеченный как требующий замены, например после ошибки провижионера при создании.
 
 </b></details>
 
 <details>
-<summary>What are output variables and what <code>terraform output</code> does?</summary><br><b>
-Output variables are named values that are sourced from the attributes of a module. They are stored in terraform state, and can be used by other modules through <code>remote_state</code>
-</b></details>
-
-<details>
-<summary>Explain "Remote State". When would you use it and how?</summary><br><b>
-  Terraform generates a `terraform.tfstate` json file that describes components/service provisioned on the specified provider. Remote
-  State stores this file in a remote storage media to enable collaboration amongst team.
+<summary>Что делает <code>terraform taint</code>?</summary><br><b>
+`terraform taint resource.id` помечает ресурс в состоянии для замены: следующий `apply` удалит и создаст его заново. Это историческая команда из исходника; для планируемой замены существует `-replace`.
 
 </b></details>
 
 <details>
-<summary>Explain "State Locking"</summary><br><b>
-  State locking is a mechanism that blocks an operations against a specific state file from multiple callers so as to avoid conflicting operations from different team members. Once the first caller's operation's lock is released the other team member may go ahead to
-  carryout his own operation. Nevertheless Terraform will first check the state file to see if the desired resource already exist and
-  if not it goes ahead to create it.
+<summary>Что такое источник данных и когда он нужен?</summary><br><b>
+Источник данных получает или вычисляет значения для использования в конфигурации Terraform.
+
+Примеры:
+
+- Обращение к ресурсам, которыми Terraform не управляет.
+- Получение данных ресурсов из другой конфигурации или модуля.
+- Вычисление структурированного значения с проверкой типов, например через `aws_iam_policy_document`.
 
 </b></details>
 
 <details>
-<summary>Aside from <code>.tfvars</code> files or CLI arguments, how can you inject dependencies from other modules?</summary><br><b>
-  The built-in terraform way would be to use <code>remote-state</code> to lookup the outputs from other modules.
-  It is also common in the community to use a tool called <code>terragrunt</code> to explicitly inject variables between modules.
+<summary>Что такое выходные значения и что делает terraform output?</summary><br><b>
+Это именованные результаты модуля, сохраняемые в состоянии. `terraform output` выводит их; другие конфигурации могут получать корневые выходные значения через `terraform_remote_state`.
 </b></details>
 
 <details>
-<summary>How do you import existing resource using Terraform import?</summary><br><b>
+<summary>Что такое удалённое состояние? Когда и как его использовать?</summary><br><b>
+Terraform хранит сведения об управляемых ресурсах в JSON-состоянии `terraform.tfstate`.
+Удалённое состояние размещается в общем хранилище для совместной работы команды.
 
-1. Identify which resource you want to import.
-2. Write terraform code matching configuration of that resource.
-3. Run terraform command <code>terraform import RESOURCE ID</code><br>
+</b></details>
 
-eg. Let's say you want to import an aws instance. Then you'll perform following:
+<details>
+<summary>Объясните блокировку состояния.</summary><br><b>
+Блокировка не позволяет нескольким участникам одновременно изменять одно состояние и создавать конфликты. После освобождения блокировки
+следующий участник может выполнить свою операцию. Terraform проверяет текущее состояние ресурсов
+и сопоставляет его с желаемой конфигурацией перед изменениями.
 
-1. Identify that aws instance in console
-2. Refer to it's configuration and write Terraform code which will look something like:
+</b></details>
+
+<details>
+<summary>Как передавать зависимости из других модулей, кроме файлов .tfvars и аргументов CLI?</summary><br><b>
+Для отдельных конфигураций можно использовать `terraform_remote_state`, чтобы прочитать выходные значения другого состояния.
+Также в сообществе используют Terragrunt для явной передачи зависимостей между конфигурациями.
+</b></details>
+
+<details>
+<summary>Как импортировать существующий ресурс командой Terraform import?</summary><br><b>
+
+1. Определить ресурс для импорта.
+2. Написать соответствующую ему конфигурацию Terraform.
+3. Выполнить `terraform import RESOURCE ID`.<br>
+
+Например, для экземпляра AWS:
+
+1. Найдите экземпляр в консоли.
+2. По его настройкам подготовьте конфигурацию примерно следующего вида:
 
 ```
 resource "aws_instance" "tf_aws_instance" {
@@ -827,104 +844,106 @@ resource "aws_instance" "tf_aws_instance" {
 }
 ```
 
-3. Run terraform command <code>terraform import aws_instance.tf_aws_instance i-12345678</code>
+3. Выполните `terraform import aws_instance.tf_aws_instance i-12345678`.
    </b></details>
 
-### State
+<a id="state"></a>
+### Состояние
 
 <details>
-<summary>Can you name three different things included in the state file?</summary><br><b>
+<summary>Назовите три вида данных в файле состояния.</summary><br><b>
 
-- The representation of resources - JSON format of the resources, their attributes, IDs, ... everything that required to identify the resource and also anything that was included in the .tf files on these resources
-- Terraform version
-- Outputs
+- Представление ресурсов в JSON: их атрибуты, идентификаторы и другие необходимые сведения.
+- Версия Terraform.
+- Выходные значения.
   </b></details>
 
 <details>
-<summary>Why does Terraform keep state and how do local and remote state differ?</summary><br><b>
+<summary>Зачем Terraform хранит состояние и чем локальное состояние отличается от удалённого?</summary><br><b>
 
-Terraform stores state to map real infrastructure objects to the resources declared in code, keep track of dependencies, detect drift, and speed up planning by caching attribute data.<br><br>
+Состояние связывает реальные объекты с ресурсами конфигурации, хранит зависимости и атрибуты, помогает обнаруживать расхождения и ускоряет планирование.<br><br>
 
-- Local state is stored in a `terraform.tfstate` file on disk and is suitable for quick experiments or single-operator workflows.<br>
-- Remote state lives in a backend (such as S3, GCS, Terraform Cloud) that can enforce locking, access controls, and versioning so teams share a single source of truth.<br>
-  Always choose a remote backend once there is more than one operator or automation pipeline touching the configuration.
+- Локальное состояние хранится в `terraform.tfstate` на диске; подходит для экспериментов и работы одного оператора.<br>
+- Удалённое размещается в backend, например S3, GCS или Terraform Cloud. В зависимости от backend доступны блокировки, контроль доступа и версии; команда использует общие актуальные данные.<br>
+  При работе нескольких операторов или конвейеров используйте подходящий удалённый backend.
   </b></details>
 
 <details>
-<summary>Why does it matter where you store the tfstate file? In your answer make sure to address the following:
+<summary>Почему важно место хранения tfstate? Рассмотрите:
 
-- Public vs. Private
-- Git repository vs. Other locations
+- Публичный и частный доступ
+- Git-репозиторий и другие хранилища
 </summary><br><b>
 
-* tfstate contains credentials in plain text. You don't want to put it in publicly shared location.<br>
-* tfstate shouldn't be modified concurrently so putting it in a shared location available for everyone with "write" permissions might lead to issues. (Terraform remote state doesn't has this problem).<br>
-* tfstate is an important file. As such, it might be better to put it in a location that has regular backups and good security.<br><br>
-  As such, tfstate shouldn't be stored in git repositories. secured storage such as secured buckets, is a better option.
+* В tfstate могут находиться незашифрованные учётные данные; публичное размещение недопустимо.<br>
+* Одновременные изменения состояния опасны. Просто общий каталог с правом записи не заменяет backend с блокировками.<br>
+* Состояние важно для управления инфраструктурой: нужны защита и регулярные резервные копии.<br><br>
+  Поэтому вместо Git предпочтительно защищённое хранилище, например закрытый бакет с подходящими настройками.
   </b></details>
 
 <details>
-<summary>True or False? it's common to edit terraform state file directly by hand and even recommended for many different use cases</summary><br><b>
+<summary>Верно ли, что ручное редактирование состояния — обычная рекомендуемая практика?</summary><br><b>
 
-False. You should avoid as much possible to edit Terraform state files directly by hand. Prefer supported commands such as `terraform state mv`, `terraform state rm`, or `terraform state replace-provider` so the CLI keeps metadata consistent.
+Неверно. Предпочитайте `terraform state mv`, `terraform state rm` и `terraform state replace-provider`: CLI согласованно обновляет метаданные.
 </b></details>
 
 <details>
-<summary>Why storing state file locally on your computer may be problematic?</summary><br><b>
+<summary>Чем может быть неудобно локальное хранение состояния?</summary><br><b>
 
-In general, storing state file on your computer isn't a problem. It starts to be a problem when you are part of a team that uses Terraform and then you would like to make sure it's shared. In addition to being shared, you want to be able to handle the fact that different teams members can edit the file and can do it at the same time, so locking is quite an important aspect as well.
+Для одного пользователя оно допустимо, но команде нужен общий актуальный файл. Необходимо также предотвращать одновременную запись, поэтому важны блокировки.
 </b></details>
 
 <details>
-<summary>Mention some best practices related to tfstate</summary><br><b>
+<summary>Назовите рекомендации по работе с tfstate.</summary><br><b>
 
-- Don't edit it manually. tfstate was designed to be manipulated by terraform and not by users directly.<br>
-- Store it in secured location (since it can include credentials and sensitive data in general).<br>
-- Backup it regularly so you can roll-back easily when needed.<br>
-- Store it in remote shared storage. This is especially needed when working in a team and the state can be updated by any of the team members.<br>
-- Enabled versioning if the storage where you store the state file, supports it. Versioning is great for backups and roll-backs in case of an issue.<br>
-- Designate "state owners" who review access, rotate credentials, and execute migrations.<br>
-- Keep `.tfstate` files and the `.terraform/` directory out of version control (`.gitignore`) and encrypt any ad-hoc backups.
+- Не редактируйте вручную: файлом должен управлять Terraform.<br>
+- Храните его в защищённом месте: он может содержать секреты.<br>
+- Регулярно создавайте резервные копии.<br>
+- Для командной работы используйте общее удалённое хранилище.<br>
+- Включите версионирование хранилища для восстановления предыдущих состояний.<br>
+- Назначьте ответственных за состояние, доступ, смену учётных данных и миграции.<br>
+- Исключите `.tfstate` и `.terraform/` из системы контроля версий через `.gitignore`; шифруйте дополнительные резервные копии.
   </b></details>
 
 <details>
-<summary>How and why concurrent edits of the state file should be avoided?</summary><br><b>
+<summary>Почему нельзя допускать одновременного изменения состояния и как этого избежать?</summary><br><b>
 
-If there are two users or processes concurrently editing the state file it can result in invalid state file that doesn't actually represents the state of resources.<br><br>
-To avoid that, Terraform can apply state locking if the backend supports that. For example, AWS s3 supports state locking and consistency via DynamoDB. Often, if the backend supports it, Terraform will make use of state locking automatically so nothing is required from the user to activate it. Automation pipelines should wait for locks to clear instead of forcing unlocks.
+Параллельная запись двумя пользователями или процессами может привести к состоянию, не соответствующему реальным ресурсам.<br><br>
+Используйте поддерживаемую backend блокировку. В исходнике приведён вариант S3 с DynamoDB; применимость и настройка зависят от версии Terraform и backend. Конвейеры должны ожидать освобождения блокировки, а не принудительно снимать её.
 </b></details>
 
 <details>
-<summary>Describe how you manage state file(s) when you have multiple environments (e.g. development, staging and production)</summary><br><b>
+<summary>Как организовать состояние для нескольких сред: разработки, подготовки и рабочей?</summary><br><b>
 
-Probably no right or wrong answer here, but it seems, based on different source, that the overall preferred way is to have a dedicated state file per environment.<br><br>
-Common patterns:<br>
+Универсального ответа нет, но распространён подход с отдельным состоянием для каждой среды.<br><br>
+Типичные варианты:<br>
 
-- Separate backend configurations per environment (different S3 prefixes or even different buckets and DynamoDB tables).<br>
-- Distinct workspaces or directories when you need isolated state plus different credentials.<br>
-- Terraform Cloud organizations/workspaces mapped to environments with role-based access control.
+- Отдельные настройки backend: разные префиксы S3 либо разные бакеты и таблицы блокировок.<br>
+- Отдельные рабочие пространства или каталоги для изоляции состояния и учётных данных.<br>
+- Организации и рабочие пространства Terraform Cloud, сопоставленные средам, с ролевым управлением доступом.
   </b></details>
 
 <details>
-<summary>Why storing the state in versioned control repo is not a good idea?</summary><br><b>
+<summary>Почему не стоит хранить состояние в репозитории системы контроля версий?</summary><br><b>
 
-- Sensitive data: some resources may specify sensitive data (like passwords and tokens) and everything in a state file is stored in plain text.<br>
-- Prone to errors: when working with Git repos, you mayo often find yourself switch branches, checkout specific commits, perform rebases, ... all these operations may end up in you eventually performing `terraform apply` on non-latest version of your Terraform code. Keeping state outside Git eliminates that risk.<br>
-- Lack of locking and audit trails compared to managed backends.
+- Оно может содержать пароли, токены и другие секреты в открытом виде.<br>
+- Переключение веток, checkout старых коммитов и rebase могут вернуть устаревшее состояние; его применение опасно. Отдельное хранилище устраняет этот риск для состояния.<br>
+- Git не обеспечивает блокировки и специализированный аудит операций состояния, доступные управляемым backend.
   </b></details>
 
-#### Terraform Backend
+<a id="terraform-backend"></a>
+#### Backend Terraform
 
 <details>
-<summary>What's a Terraform backend? What is the default backend?</summary><br><b>
+<summary>Что такое backend Terraform? Какой используется по умолчанию?</summary><br><b>
 
-Terraform backend determines how the Terraform state is stored and loaded. By default the state is local, but it's possible to set a remote backend.
+Backend определяет хранение и загрузку состояния. По умолчанию оно локальное; можно настроить удалённое.
 </b></details>
 
 <details>
-<summary>How do you configure an AWS S3 backend with DynamoDB state locking?</summary><br><b>
+<summary>Как настроить backend AWS S3 с блокировкой через DynamoDB?</summary><br><b>
 
-Use a remote backend when you need a shared, durable source of truth. A minimal configuration looks like:
+Удалённый backend нужен для общего надёжного состояния. Ниже исторический пример из исходника; поддерживаемый механизм блокировки следует выбирать для своей версии Terraform:
 
 ```hcl
 terraform {
@@ -940,13 +959,13 @@ terraform {
 }
 ```
 
-- Create the S3 bucket with versioning, default encryption, and block public access before enabling the backend.<br>
-- Provision a DynamoDB table with the primary key `LockID` so Terraform can acquire locks.<br>
-- Use IAM least privilege policies that allow only state operations on the bucket and table to reduce blast radius.
+- Заранее создайте бакет S3 с версионированием, шифрованием и запретом публичного доступа.<br>
+- Для показанной схемы создайте таблицу DynamoDB с первичным ключом `LockID`.<br>
+- Выдайте минимальные IAM-права только на необходимые операции с состоянием и блокировкой.
   </b></details>
 
 <details>
-<summary>Which commands help you inspect, migrate, and safely manipulate Terraform state?</summary><br><b>
+<summary>Какие команды помогают проверять, переносить и безопасно изменять состояние?</summary><br><b>
 
 ```bash
 terraform init -migrate-state
@@ -956,141 +975,145 @@ terraform show -json | jq '.values.root_module.resources[].address' | head
 terraform state mv module.vpc.aws_subnet.public[0] module.vpc.aws_subnet.public_a
 ```
 
-- `terraform init -migrate-state`: moves an existing local state file into the configured backend with locking.<br>
-- `terraform plan -refresh-only`: detects drift by refreshing remote object attributes without proposing changes.<br>
-- `terraform state list`: confirms which objects are tracked in the state after migrations or imports.<br>
-- `terraform show -json`: enables scripted inspections (paired here with `jq`) so you can audit addresses or metadata.<br>
-- `terraform state mv`: renames or relocates resources/modules without recreation, useful during refactors.
+- `terraform init -migrate-state` — перенос состояния в настроенный backend.<br>
+- `terraform plan -refresh-only` — план обновления состояния по реальным объектам без изменения самой инфраструктуры.<br>
+- `terraform state list` — список отслеживаемых объектов после переноса или импорта.<br>
+- `terraform show -json` — данные для программной проверки адресов и метаданных, например через `jq`.<br>
+- `terraform state mv` — изменение адреса ресурса или модуля в состоянии без пересоздания, полезное при рефакторинге.
   </b></details>
 
 <details>
-<summary>What best practices keep Terraform state secure and reliable?</summary><br><b>
+<summary>Как обеспечить безопасность и надёжность состояния?</summary><br><b>
 
-- Encrypt and version your remote backend (for example `aws_s3_bucket_versioning` plus SSE-KMS on S3).<br>
-- Enforce locking (DynamoDB, GCS locking, or Terraform Cloud workspaces) and monitor stuck locks.<br>
-- Grant IAM minimum privileges and rotate access keys; automation should assume roles with short-lived credentials.<br>
-- Schedule automated backups of the backend (S3 replication, DynamoDB PITR) and periodically test restores.<br>
-- Document "state owner" responsibility, incident response, and break-glass steps for unlocks or manual edits (should be last resort).
+- Включите шифрование и версионирование backend, например версионирование S3 и SSE-KMS.<br>
+- Используйте блокировки и отслеживайте зависшие блокировки.<br>
+- Выдавайте минимальные IAM-права; автоматизации лучше получать временные учётные данные через роли.<br>
+- Автоматизируйте резервное копирование, например репликацию S3 и PITR DynamoDB, и проверяйте восстановление.<br>
+- Документируйте ответственность, реагирование на инциденты и аварийный доступ. Принудительное снятие блокировки и ручная правка — крайние меры.
   </b></details>
 
 <details>
-<summary>How do you migrate from local state to a new remote backend?</summary><br><b>
+<summary>Как перейти с локального состояния на удалённый backend?</summary><br><b>
 
-1. Provision backend resources (for example an S3 bucket with versioning and a DynamoDB table) from a separate bootstrap configuration.<br>
-2. Add the backend block to your Terraform configuration and run `terraform init -migrate-state`.<br>
-3. Verify the migration with `terraform state list` or `terraform state pull` and keep a secure backup of the previous file.<br>
-4. Remove or archive the local `terraform.tfstate` only after confirming new plans operate against the remote backend.
+1. Отдельной начальной конфигурацией создайте backend: например бакет S3 с версионированием и таблицу DynamoDB для выбранной схемы.<br>
+2. Добавьте блок backend и выполните `terraform init -migrate-state`.<br>
+3. Проверьте перенос через `terraform state list` или `terraform state pull`; сохраните защищённую резервную копию.<br>
+4. Удаляйте или архивируйте локальный файл только после проверки работы с удалённым состоянием.
    </b></details>
 
 <details>
-<summary>How <code>terraform apply</code> workflow is different when a remote backend is used?</summary><br><b>
+<summary>Как меняется процесс terraform apply при удалённом backend?</summary><br><b>
 
-It starts with acquiring a state lock so others can't modify the state at the same time. The apply will also download the latest state snapshot before planning and upload the updated state atomically after the run completes.
+Если backend поддерживает блокировку, Terraform получает её, загружает актуальное состояние и после успешной операции сохраняет обновлённое. Это защищает от параллельных изменений.
 </b></details>
 
 <details>
-<summary>What would be the process of switching back from remote backend to local?</summary><br><b>
+<summary>Как вернуться с удалённого backend на локальный?</summary><br><b>
 
-1. You remove the backend code and perform `terraform init` to switch back to `local` backend.<br>
-2. You remove the resources that are the remote backend itself.<br>
-3. Archive the latest remote state file so you can recover if the local copy gets corrupted.
+1. Уберите конфигурацию удалённого backend и выполните инициализацию с переносом состояния в `local`.<br>
+2. После проверки переноса при необходимости удалите больше не используемые ресурсы backend.<br>
+3. Сохраните защищённую копию последнего удалённого состояния на случай повреждения локального файла.
    </b></details>
 
 <details>
-<summary>True or False? it's NOT possible to use variable in a backend configuration</summary><br><b>
+<summary>Верно ли, что в конфигурации backend нельзя использовать переменные Terraform?</summary><br><b>
 
-That's true and quite a limitation as it means you'll have to go to the resources of the remote backend and copy some values to the backend configuration.<br><br>
-One way to deal with it is using partial configurations in a completely separate file from the backend itself and then load them with `terraform init -backend-config=some_backend_partial_conf.hcl`.
-
-</b></details>
-
-<details>
-<summary>Is there a way to obtain information from a remote backend/state using Terraform?</summary><br><b>
-
-Yes, using the concept of data sources. There is a data source for a remote state called "terraform_remote_state".<br><br>
-You can use it the following syntax `data.terraform_remote_state.<NAME>.outputs.<ATTRIBUTE>`
+Верно. Значения для backend приходится передавать отдельно.<br><br>
+Один из способов — частичная конфигурация в отдельном файле, загружаемая через `terraform init -backend-config=some_backend_partial_conf.hcl`.
 
 </b></details>
 
 <details>
-<summary>How does a remote state backend improve collaboration for a Terraform project?</summary><br><b>
+<summary>Можно ли получить данные удалённого состояния через Terraform?</summary><br><b>
 
-By storing the state file in a shared location enabling multiple people or processes to work with the same state.
-A remote state backend improves collaboration on Terraform projects by addressing the core challenge of sharing infrastructure state. When a team works on infrastructure, everyone needs access to the current state to safely make changes, and locking prevents clashing applies.
-</b></details>
-
-#### Workspaces
-
-<details>
-<summary>Explain what is a Terraform workspace</summary><br><b>
-
-[developer.hashicorp.com](https://developer.hashicorp.com/terraform/language/state/workspaces): "The persistent data stored in the backend belongs to a workspace. The backend initially has only one workspace containing one Terraform state associated with that configuration. Some backends support multiple named workspaces, allowing multiple states to be associated with a single configuration."
+Да, с помощью источника данных `terraform_remote_state`.<br><br>
+Синтаксис: `data.terraform_remote_state.<NAME>.outputs.<ATTRIBUTE>`.
 
 </b></details>
 
 <details>
-<summary>True or False? Each workspace has its own state file</summary><br><b>
+<summary>Как удалённый backend улучшает командную работу?</summary><br><b>
 
-True
+Он размещает состояние в общем хранилище, доступном участникам и автоматизации.
+Все используют актуальные сведения об инфраструктуре, а поддерживаемые блокировки предотвращают конфликтующие применения изменений.
+</b></details>
+
+<a id="workspaces"></a>
+#### Рабочие пространства
+
+<details>
+<summary>Что такое рабочее пространство Terraform?</summary><br><b>
+
+[developer.hashicorp.com](https://developer.hashicorp.com/terraform/language/state/workspaces): данные backend принадлежат рабочему пространству. Изначально оно одно и содержит состояние данной конфигурации. Некоторые backend поддерживают несколько именованных пространств — отдельных состояний одной конфигурации.
 
 </b></details>
 
 <details>
-<summary>Why workspaces might not be the best solution for managing states for different environments? like staging and production</summary><br><b>
+<summary>Верно ли, что у каждого рабочего пространства своё состояние?</summary><br><b>
 
-One reason is that all the workspaces are stored in one location (as in one backend) and usually you don't want to use the same access control and authentication for both staging and production for obvious reasons. Also working in workspaces is quite prone to human errors as you might accidentally think you are in one workspace, while you are working a completely different one.
+Верно.
+
 </b></details>
 
-#### State Hands-On
+<details>
+<summary>Почему рабочие пространства могут не подойти для разделения staging и production?</summary><br><b>
+
+Они используют один backend, а средам часто нужны разные правила доступа и учётные данные. Кроме того, легко ошибиться и выполнить команду не в том рабочем пространстве.
+</b></details>
+
+<a id="state-hands-on"></a>
+#### Практика с состоянием
 
 <details>
-<summary>Which command will produce a state file?</summary><br><b>
+<summary>Какая команда создаёт файл состояния?</summary><br><b>
 
 `terraform apply`
 
 </b></details>
 
 <details>
-<summary>How to inspect current state?</summary><br><b>
+<summary>Как посмотреть текущее состояние?</summary><br><b>
 
 `terraform show`
 
 </b></details>
 
 <details>
-<summary>How to list resources created with Terraform?</summary><br><b>
+<summary>Как вывести список ресурсов, отслеживаемых Terraform?</summary><br><b>
 
 `terraform state list`
 
 </b></details>
 
 <details>
-<summary>How do you rename an existing resource?</summary><br><b>
+<summary>Как переименовать адрес существующего ресурса в состоянии?</summary><br><b>
 
 `terraform state mv`
 
 </b></details>
 
 <details>
-<summary>How to create a new workspace?</summary><br><b>
+<summary>Как создать рабочее пространство?</summary><br><b>
 
 `terraform workspace new <WORKSPACE_NAME>`
 
 </b></details>
 
 <details>
-<summary>How to identify which workspace are you using?</summary><br><b>
+<summary>Как узнать текущее рабочее пространство?</summary><br><b>
 
 `terraform workspace show`
 
 </b></details>
 
-### Terraform Structures and Syntax
+<a id="terraform-structures-and-syntax"></a>
+### Структуры данных и синтаксис Terraform
 
-#### Lists
+<a id="lists"></a>
+#### Списки
 
 <details>
-<summary>How to define an input variable which is a list of numbers?</summary><br><b>
+<summary>Как объявить входную переменную — список чисел?</summary><br><b>
 
 ```
 variable "list_of_nums" {
@@ -1103,7 +1126,7 @@ variable "list_of_nums" {
 </b></details>
 
 <details>
-<summary>How to create a number of resources based on the length of a list?</summary><br><b>
+<summary>Как создать количество ресурсов, равное длине списка?</summary><br><b>
 
 ```
 resource "some_resource" "some_name" {
@@ -1114,7 +1137,7 @@ resource "some_resource" "some_name" {
 </b></details>
 
 <details>
-<summary>You have a list variable called "users" with an object containing a name attribute like this:<br>
+<summary>Есть список users с объектами, содержащими атрибут name:<br>
 
 ```
 variable "users" {
@@ -1125,30 +1148,31 @@ variable "users" {
 }
 ```
 
-How to access the name attribute of the second item in that list?</summary><br><b>
+Как получить name второго элемента?</summary><br><b>
 
 `users[1].name`
 
 </b></details>
 
 <details>
-<summary>Given the same list, how to access attribute "name" of all items?</summary><br><b>
+<summary>Как получить name всех элементов этого списка?</summary><br><b>
 
 `users[*].name`
 
 </b></details>
 
-#### Loops
+<a id="loops"></a>
+#### Циклы
 
 <details>
-<summary>What loops are useful for in Terraform?</summary><br><b>
+<summary>Зачем нужны циклы в Terraform?</summary><br><b>
 
-The most common use case is when you need to create multiple resources with only a slight difference (like different name). Instead of defining multiple separate resources, you can define it once and create multiple instances of it using loops.
+Они позволяют создавать несколько похожих ресурсов, например с разными именами, из одного объявления вместо множества повторяющихся блоков.
 
 </b></details>
 
 <details>
-<summary>Demonstrate how to define a simple Terraform loop</summary><br><b>
+<summary>Покажите простой цикл Terraform.</summary><br><b>
 
 ```
 resource "aws_instance" "server" {
@@ -1156,12 +1180,12 @@ resource "aws_instance" "server" {
 }
 ```
 
-The above configuration will create 15 aws instances.
+Конфигурация создаст 15 экземпляров AWS.
 
 </b></details>
 
 <details>
-<summary>How to create multiple AWS instances but each with a different name?</summary><br><b>
+<summary>Как создать несколько экземпляров AWS с разными именами?</summary><br><b>
 
 ```
 resource "aws_instance" "server" {
@@ -1173,12 +1197,12 @@ resource "aws_instance" "server" {
 }
 ```
 
-The above configuration will create 6 instances, each with a different name.
+Конфигурация создаст 6 экземпляров с разными именами.
 
 </b></details>
 
 <details>
-<summary>You have the following variable defined in Terraform
+<summary>Объявлена следующая переменная Terraform:
 
 ```
 variable "users" {
@@ -1187,7 +1211,7 @@ variable "users" {
 }
 ```
 
-How to use it to create users on one of the public clouds (or any other platform, infra)?
+Как использовать её для создания пользователей в облаке или другой системе?
 
 </summary><br><b>
 
@@ -1202,22 +1226,22 @@ resource "aws_iam_user" "user" {
 </b></details>
 
 <details>
-<summary>Is there any limitation to "count" meta-argument?</summary><br><b>
+<summary>Какие ограничения есть у count?</summary><br><b>
 
-- `count` isn't supported within an inline block
-- It's quite limited when it comes to lists.You'll notice that modifying items in lists or even operations like removal sometimes interpreted in a way you didn't expect. For example, removing an item from a list, may shift other items to a new position and since each position represents a resource with count, that may lead to a result where wrong resources are being modified and removed. There are ways to do deal it, but still using count with lists is not always straightforward
+- `count` не применяется непосредственно к вложенному блоку.
+- При использовании индексов списка удаление элемента сдвигает последующие индексы. Terraform может интерпретировать это как изменение или замену других ресурсов. Поэтому `count` не всегда удобен для меняющихся списков.
   </b></details>
 
 <details>
-<summary>What's a for_each loop? How is it different from "count"?</summary><br><b>
+<summary>Что такое for_each и чем он отличается от count?</summary><br><b>
 
-- for_each can applied only on collections like maps or sets (as opposed to count that can be applied on lists)
-- for_each helps to deal with the limitation of `count` which isn't optimal for use cases of modifying lists
-- for_each supports inline blocks as opposed to `count`
+- `for_each` ресурсов принимает map или set строк; `count` задаёт число экземпляров, например по длине списка.
+- Стабильные ключи `for_each` помогают избежать проблем со сдвигом индексов.
+- Для генерации вложенных блоков используется `dynamic` со своим `for_each`, а не метааргумент ресурса непосредственно.
   </b></details>
 
 <details>
-<summary>Demonstrate how to use the for_each loop</summary><br><b>
+<summary>Покажите использование for_each.</summary><br><b>
 
 ```
 resource “google_compute_instance” “instances” {
@@ -1230,7 +1254,7 @@ resource “google_compute_instance” “instances” {
 </b></details>
 
 <details>
-<summary>The following resource tries to use for_each loop on a list of strings but it fails, why?
+<summary>Почему следующий ресурс с for_each над списком строк не работает?
 
 ```
 resource “google_compute_instance” “instances” {
@@ -1242,12 +1266,12 @@ resource “google_compute_instance” “instances” {
 
 </summary><br><b>
 
-for_each can applied only on collections like maps or sets so the list should be converted to a set like this: `for_each = toset(var.names)`
+Нужно передать map или set строк. Преобразуйте список: `for_each = toset(var.names)`.
 
 </b></details>
 
 <details>
-<summary>How to use for_each loop for inline blocks?</summary><br><b>
+<summary>Как использовать for_each для генерации вложенных блоков?</summary><br><b>
 
 ```
 resource "some_instance" "instance" {
@@ -1266,7 +1290,7 @@ dynamic "tag" {
 </b></details>
 
 <details>
-<summary>There is a list variable called "users". You would like to define an output variable with a value of all users in uppercase. How to achieve that?</summary><br><b>
+<summary>Есть список users. Как вывести все имена в верхнем регистре?</summary><br><b>
 
 ```
 output "users" {
@@ -1277,7 +1301,7 @@ output "users" {
 </b></details>
 
 <details>
-<summary>What's the result of the following code?
+<summary>Каков результат следующего кода?
 
 ```
 resource "random_integer" "num" {
@@ -1292,12 +1316,12 @@ resource "aws_instance" "instances" {
 
 </summary><br><b>
 
-The above code will fail as it's not possible to reference resource outputs with count, because Terraform has to compute count before any resources are created (or modified).
+Пример завершится ошибкой, если `count` зависит от неизвестного до применения результата ресурса. Значение `count` должно быть известно при планировании.
 
 </b></details>
 
 <details>
-<summary>There is a variable called "values" with the following value: ["mario", "luigi", "peach"]. How to create an output variable with the string value of the items in the list: "mario, luigi, peach," ?</summary><br><b>
+<summary>Переменная values равна ["mario", "luigi", "peach"]. Как получить выходную строку "mario, luigi, peach,"?</summary><br><b>
 
 ```
 output "users" {
@@ -1308,7 +1332,7 @@ output "users" {
 </b></details>
 
 <details>
-<summary>There is a list variable called "users". You would like to define an output variable with a value of all users in uppercase but only if the name is longer than 3 characters. How to achieve that?</summary><br><b>
+<summary>Как вывести в верхнем регистре только те имена из списка users, длина которых больше трёх символов?</summary><br><b>
 
 ```
 output "users" {
@@ -1318,22 +1342,23 @@ output "users" {
 
 </b></details>
 
-#### Maps
+<a id="maps"></a>
+#### Отображения
 
 <details>
-<summary>There is a map called "instances"
+<summary>Есть map с именем instances:
 
-- How to extract only the values of that map?
-- How to extract only the attribute "name" from each value?
+- Как получить только значения?
+- Как получить атрибут name каждого значения?
 </summary><br><b>
 
-- Using the values built-in function: `values(instances)`
+- Встроенная функция `values(instances)`.
 - `values(instances)[*].name`
 
 </b></details>
 
 <details>
-<summary>You have a map variable, called "users", with the keys "name" and "age". Define an output list variable with the following "my name is {name} and my age is {age}"</summary><br><b>
+<summary>Есть map users с полями name и age. Создайте выходной список строк "my name is {name} and my age is {age}".</summary><br><b>
 
 ```
 output "name_and_age" {
@@ -1344,7 +1369,7 @@ output "name_and_age" {
 </b></details>
 
 <details>
-<summary>You have a map variable, called "users", with the keys "name" (string) and "age" (number). Define an output map variable with the key being name in uppercase and value being age in the closest whole number </summary><br><b>
+<summary>Есть map users с полями name (string) и age (number). Создайте выходной map: ключ — имя в верхнем регистре, значение — возраст, округлённый до целого.</summary><br><b>
 
 ```
 output "name_and_age" {
@@ -1354,33 +1379,34 @@ output "name_and_age" {
 
 </b></details>
 
-#### Conditionals
+<a id="conditionals"></a>
+#### Условия
 
 <details>
-<summary>How to use conditional expressions in Terraform?</summary><br><b>
+<summary>Как использовать условные выражения Terraform?</summary><br><b>
 
 `some_condition ? "value_if_true" : "value_if_false"`
 
 </b></details>
 
 <details>
-<summary>Explain the following condition: <code>var.x ? 1 : 0</code></summary><br><b>
+<summary>Объясните <code>var.x ? 1 : 0</code>.</summary><br><b>
 
-If `x` evaluated to true, the result is 1, otherwise (if false) the result is 0.
-
-</b></details>
-
-<details>
-<summary>Explain the following condition: <code>var.x != "" ? var.x : "yay"</code></summary><br><b>
-
-If `x` is an empty string the result is "yay", otherwise it's the value of `x` variable
+Если `x` истинно, результат — 1, иначе — 0.
 
 </b></details>
 
 <details>
-<summary>Can conditionals be used with meta-arguments?</code></summary><br><b>
+<summary>Объясните <code>var.x != "" ? var.x : "yay"</code>.</summary><br><b>
 
-Yes, for example the "count" meta-argument:
+Если `x` — пустая строка, результат — `yay`, иначе — значение `x`.
+
+</b></details>
+
+<details>
+<summary>Можно ли использовать условия с метааргументами?</summary><br><b>
+
+Да, например с `count`:
 
 ```
 resource "aws_instance" "server" {
@@ -1392,9 +1418,9 @@ resource "aws_instance" "server" {
 </b></details>
 
 <details>
-<summary>Is it possible to combine conditionals and loop?</code></summary><br><b>
+<summary>Можно ли сочетать условия и циклы?</summary><br><b>
 
-Yes, for example:
+Да, например:
 
 ```
 dynamic "tag" {
@@ -1408,101 +1434,103 @@ dynamic "tag" {
 
 </b></details>
 
-#### Misc
+<a id="misc"></a>
+#### Разное
 
 <details>
-<summary>What are meta-arguments in Terraform?</summary><br><b>
+<summary>Что такое метааргументы Terraform?</summary><br><b>
 
-Arguments that affect the lifecycle of a resources (its creation, modification, ...) and supported by Terraform regardless to the type of resource in which they are used.
+Аргументы, которые Terraform поддерживает независимо от конкретного типа ресурса и которые влияют на создание, зависимости и жизненный цикл ресурсов.
 
-Some examples:
+Примеры:
 
-- count: how many resources to create out of one definition of a resource
-- lifecycle: how to treat resource creation or removal
+- `count` — число экземпляров одного объявления ресурса.
+- `lifecycle` — правила создания, замены и удаления.
 
 </b></details>
 
 <details>
-<summary>What meta-arguments are you familiar with?</summary><br><b>
+<summary>Какие метааргументы вы знаете?</summary><br><b>
 
-- count: how many resources to create out of one definition of a resource
-- lifecycle: how to treat resource creation or removal
-- depends_on: create a dependency between resources
+- `count` — число экземпляров одного объявления ресурса.
+- `lifecycle` — правила создания, замены и удаления.
+- `depends_on` — явная зависимость между ресурсами.
   </b></details>
 
 <details>
-<summary>What <code>templatefile</code> function does?</summary><br><b>
+<summary>Что делает функция templatefile?</summary><br><b>
 
-Renders a template file and returns the result as string.
-
-</b></details>
-
-<details>
-<summary>You are trying to use templatefile as part of a module and you use a relative path to load a file but sometimes it fails, especially when others try to reuse the module. How can you deal with that?</summary><br><b>
-
-Switch relative paths with what is known as path references. These are fixes: paths like module root path, module expression file path, etc.
+Обрабатывает файл шаблона и возвращает результат строкой.
 
 </b></details>
 
 <details>
-<summary>How do you test terraform syntax?</summary><br><b>
+<summary>Относительный путь в templatefile иногда не работает при повторном использовании модуля. Что делать?</summary><br><b>
 
-A valid answer could be "I write Terraform configuration and try to execute it" but this makes testing cumbersome and quite complex in general.
-
-There is `terraform console` command which allows you to easily execute terraform functions and experiment with general syntax.
+Используйте ссылки на расположение конфигурации, например `path.module` для пути к каталогу модуля.
 
 </b></details>
 
 <details>
-<summary>True or False? Terraform console should be used carefully as it may modify your resources</summary><br><b>
+<summary>Как проверять синтаксис выражений Terraform?</summary><br><b>
 
-False. terraform console is ready-only.
+Можно написать конфигурацию и попробовать выполнить её, но это неудобно для небольших экспериментов.
 
-</b></details>
-
-<details>
-<summary>You need to render a template and get it as string. Which function would you use?</summary><br><b>
-
-`templatefile` function.
+`terraform console` позволяет интерактивно проверять функции и выражения.
 
 </b></details>
 
 <details>
-<summary>Explain what <code>depends_on</code> used for and given an example</summary><br><b>
+<summary>Верно ли, что terraform console может изменить ресурсы?</summary><br><b>
 
-`depends_on` used to create an explicit dependency between resources in Terraform. For example, there is an application you would like to deploy in a cluster. If the cluster isn't ready (and also managed by Terraform of course) then you can't deploy the app. In this case, you will define "depends_on" in the app configuration and its value will be the cluster resource.
-
-</b></details>
-
-### Modules
-
-<details>
-<summary>Explain Modules</summary><br><b>
-
-[Terraform.io](https://www.terraform.io/language/modules/develop): "A module is a container for multiple resources that are used together. Modules can be used to create lightweight abstractions, so that you can describe your infrastructure in terms of its architecture, rather than directly in terms of physical objects."
-
-In addition, modules are great for creating reusable Terraform code that can be shared and used not only between different repositories but even within the same repo, between different environments (like staging and production). Well-designed modules also expose a small, opinionated surface and hide implementation details.
+Неверно. Консоль предназначена для вычисления выражений, а не применения изменений инфраструктуры.
 
 </b></details>
 
 <details>
-<summary>What makes a Terraform code module? In other words, what a module is from practical perspective?</summary><br><b>
+<summary>Какая функция обработает шаблон и вернёт строку?</summary><br><b>
 
-Basically any file or files in a directory is a module in Terraform. There is no special syntax to use in order to define a module. The root configuration is itself a module, and any module that is called from it is considered a child module.
+`templatefile`.
 
 </b></details>
 
 <details>
-<summary>When should you use a module instead of inline resources?</summary><br><b>
+<summary>Для чего нужен depends_on? Приведите пример.</summary><br><b>
 
-- You need to reuse infrastructure patterns across environments, teams, or regions without copy-paste.<br>
-- You want to codify best practices (naming, tagging, security controls) behind a stable interface.<br>
-- You need to version and promote infrastructure changes using semantic releases and CI pipelines.<br>
-- You want to limit blast radius by updating one module and rolling it out gradually.
+Он задаёт явную зависимость. Например, приложение нельзя развернуть до готовности кластера; в ресурсе приложения можно указать зависимость от ресурса кластера.
+
+</b></details>
+
+<a id="modules"></a>
+### Модули
+
+<details>
+<summary>Объясните, что такое модули.</summary><br><b>
+
+[Terraform.io](https://www.terraform.io/language/modules/develop): модуль объединяет совместно используемые ресурсы. Он создаёт абстракцию, позволяющую описывать инфраструктуру в терминах архитектуры, а не отдельных физических объектов.
+
+Модули позволяют переиспользовать код между репозиториями и средами одного проекта, например staging и production. Хороший модуль предоставляет небольшой понятный интерфейс и скрывает детали реализации.
+
+</b></details>
+
+<details>
+<summary>Что практически представляет собой модуль Terraform?</summary><br><b>
+
+Набор конфигурационных файлов Terraform в одном каталоге. Специального объявления не нужно. Основная конфигурация — корневой модуль, а вызываемые из неё — дочерние.
+
+</b></details>
+
+<details>
+<summary>Когда стоит использовать модуль вместо отдельных ресурсов в корневой конфигурации?</summary><br><b>
+
+- Когда инфраструктурные шаблоны повторяются в разных средах, командах или регионах.<br>
+- Когда нужно закрепить правила именования, тегов и безопасности за стабильным интерфейсом.<br>
+- Когда изменения нужно версионировать и продвигать через выпуски и CI.<br>
+- Когда обновления нужно внедрять постепенно, ограничивая область воздействия.
   </b></details>
 
 <details>
-<summary>What is a recommended layout for a reusable module?</summary><br><b>
+<summary>Как организовать файлы повторно используемого модуля?</summary><br><b>
 
 ```text
 modules/vpc/
@@ -1516,15 +1544,15 @@ modules/vpc/
       main.tf
 ```
 
-- `main.tf` defines resources, data sources, and locals.<br>
-- `variables.tf` contains typed inputs with descriptions and validations.<br>
-- `outputs.tf` exposes the minimal set of outputs downstream stacks need.<br>
-- `versions.tf` pins compatible Terraform and provider versions.<br>
-- `examples/` hosts runnable samples for documentation and testing, usually referenced by CI.
+- `main.tf` — ресурсы, источники данных и локальные значения.<br>
+- `variables.tf` — типизированные входные переменные с описаниями и проверками.<br>
+- `outputs.tf` — минимальный набор выходных значений.<br>
+- `versions.tf` — ограничения совместимых версий Terraform и провайдеров.<br>
+- `examples/` — запускаемые примеры для документации, тестирования и CI.
   </b></details>
 
 <details>
-<summary>How do you consume a versioned module from a VCS or the Terraform Registry?</summary><br><b>
+<summary>Как использовать версионированный модуль из VCS или Terraform Registry?</summary><br><b>
 
 ```hcl
 module "vpc" {
@@ -1534,32 +1562,32 @@ module "vpc" {
 }
 ```
 
-- For registry modules, use `version` constraints (for example `version = ">= 1.2.0, < 2.0.0"`).<br>
-- Always pin module versions to keep plans reproducible and review upstream releases before upgrading.<br>
-- Prefer tags or immutable SHAs for VCS sources to guarantee repeatable builds.
+- Для реестра задавайте ограничение `version`, например `version = ">= 1.2.0, < 2.0.0"`.<br>
+- Фиксируйте выбранные версии для воспроизводимости и проверяйте изменения перед обновлением.<br>
+- Для VCS используйте теги или, для строгой фиксации, неизменяемые SHA коммитов.
   </b></details>
 
 <details>
-<summary>How do modules handle inputs, outputs, locals and validation effectively?</summary><br><b>
+<summary>Как правильно организовать входы, выходы, locals и проверки в модуле?</summary><br><b>
 
-- Define typed variables with defaults and `validation` blocks to guard against invalid CIDRs, AZ counts, or empty strings.<br>
-- Use `locals` to transform data or derive names, and combine with `for_each`/`count` for deterministic resource creation.<br>
-- Document outputs in `outputs.tf`, mark sensitive ones, and keep outputs minimal to reduce coupling.<br>
-- Surface module metadata (like version or tags) through outputs for downstream modules or automation.
+- Используйте типы, значения по умолчанию и блоки `validation` для CIDR, количества зон и пустых строк.<br>
+- Вычисляйте имена и преобразуйте данные через `locals`; сочетайте с `for_each` или `count`.<br>
+- Документируйте выходы в `outputs.tf`, помечайте чувствительные и не выдавайте лишнее.<br>
+- При необходимости передавайте метаданные, например версию и теги, через выходные значения.
   </b></details>
 
 <details>
-<summary>Which module anti-patterns should you avoid?</summary><br><b>
+<summary>Каких ошибок проектирования модулей следует избегать?</summary><br><b>
 
-- Embedding provider blocks inside the module which makes reuse across accounts harder.<br>
-- Accepting overly generic `map(any)` inputs that hide required structure instead of typed objects.<br>
-- Outputting secrets or credentials without `sensitive = true` or secret stores.<br>
-- Creating "god" root modules that mix networking, compute, and application concerns instead of composing smaller modules.<br>
-- Copying and pasting modules without versioning, documentation, or automated tests.
+- Встроенных конфигураций провайдера, затрудняющих использование в разных аккаунтах.<br>
+- Слишком общих входов `map(any)`, скрывающих обязательную структуру.<br>
+- Вывода секретов без `sensitive = true` и надлежащего хранения.<br>
+- Огромного корневого модуля, смешивающего сеть, вычисления и приложения вместо композиции небольших модулей.<br>
+- Копирования модулей без версий, документации и автоматических тестов.
   </b></details>
 
 <details>
-<summary>How do you test and lint modules during development?</summary><br><b>
+<summary>Как проверять и тестировать модули при разработке?</summary><br><b>
 
 ```bash
 terraform -chdir=examples/vpc init
@@ -1568,31 +1596,31 @@ terraform -chdir=examples/vpc plan
 tflint --module
 ```
 
-- `terraform validate` catches syntax errors and missing providers.<br>
-- Running `plan` against an example stack surfaces integration issues before promotion.<br>
-- `tflint --module` adds provider-specific linting; tools like Terratest can provision ephemeral infra for assertions.<br>
-- Include these commands in CI so every module change is exercised automatically.
+- `terraform validate` проверяет корректность конфигурации после инициализации.<br>
+- `plan` на примере выявляет интеграционные проблемы до внедрения.<br>
+- TFLint выполняет дополнительные проверки, а Terratest может создавать временную инфраструктуру для тестов. Флаг `tflint --module` приведён в исходнике и зависит от версии инструмента.<br>
+- Включите проверки в CI для каждого изменения модуля.
   </b></details>
 
 <details>
-<summary>How do you test a Terraform module?</summary><br><b>
+<summary>Как протестировать модуль Terraform?</summary><br><b>
 
-There are multiple answers, but the most common answer would likely to be using the tool <code>terratest</code>, and to test that a module can be initialized, can create resources, and can destroy those resources cleanly. You can also rely on `terraform validate`, `terraform plan` with sample configurations, and linting tools such as `tflint`.
-
-</b></details>
-
-<details>
-<summary>When creating a module, do you prefer to use inline blocks, separate resources or both? why?</summary><br><b>
-
-No right or wrong here.<br><br>
-Personally, I prefer to use only separate resources in modules as it makes modules more flexible. So if a resource includes inline blocks, that may limit you at some point.
+Например, через Terratest: проверить инициализацию, создание и корректное удаление ресурсов. Также полезны `terraform validate`, `terraform plan` на примерах и TFLint.
 
 </b></details>
 
 <details>
-<summary>True or False? Module source can be only local path</summary><br><b>
+<summary>Что предпочитаете в модуле: вложенные блоки, отдельные ресурсы или оба варианта? Почему?</summary><br><b>
 
-False. It can be a Git URL, HTTP URL, ... for example:
+Единственно верного ответа нет.<br><br>
+Автор предпочитает отдельные ресурсы ради гибкости: вложенные блоки иногда ограничивают дальнейшее расширение конфигурации.
+
+</b></details>
+
+<details>
+<summary>Верно ли, что источником модуля может быть только локальный путь?</summary><br><b>
+
+Неверно. Поддерживаются Git, HTTP и другие источники. Например:
 
 ```
 module "some_module" {
@@ -1604,31 +1632,32 @@ module "some_module" {
 </b></details>
 
 <details>
-<summary>Where can you obtain Terraform modules?</summary><br><b>
+<summary>Где найти готовые модули Terraform?</summary><br><b>
 
-Terraform modules can be found at the [Terrafrom registry](https://registry.terraform.io/browse/modules)
+В [Terraform Registry](https://registry.terraform.io/browse/modules).
 
 </b></details>
 
 <details>
-<summary>You noticed there are relative paths in some of your modules and you would like to change that. What can you do and why is that a problem in the first place?</summary><br><b>
+<summary>В модулях используются относительные пути. Чем это мешает и что можно изменить?</summary><br><b>
 
-Relative paths usually work fine in your own environment as you are familiar with the layout and paths used, but when sharing a module and making it reusable, you may bump into issues as it runs on different environments where the relative paths may no longer be relevant.
+В вашей структуре каталогов такие пути могут работать, а в чужой среде при повторном использовании модуля — нет.
 
-A better approach would be to use `path reference` like one of the following:
+Используйте ссылки на пути:
 
-- `path.module`: the path of the module where the expression is used
-- `path.cwd`: the path of the current working directory
-- `path.root`: the path of the root module
+- `path.module` — каталог модуля, в котором находится выражение.
+- `path.cwd` — текущий рабочий каталог.
+- `path.root` — каталог корневого модуля.
 
 </b></details>
 
-#### Modules Hands-On
+<a id="modules-hands-on"></a>
+#### Практика с модулями
 
 <details>
-<summary>How to use a module?</summary><br><b>
+<summary>Как использовать модуль?</summary><br><b>
 
-The general syntax is:
+Общий синтаксис:
 
 ```hcl
 module "<MODULE_NAME>" {
@@ -1639,11 +1668,11 @@ module "<MODULE_NAME>" {
 }
 ```
 
-The critical part is the source which you use to tell Terraform where the module can be found. When the module comes from the registry, you can pin the `version`; for local paths omit that attribute.
+Ключевой аргумент — `source`, указывающий расположение модуля. Для модулей реестра можно задать `version`; для локального пути этот аргумент не используется.
 </b></details>
 
 <details>
-<summary>Demonstrate using a module called "amazing_modle" in the path "../modules/amazing-module"</summary><br><b>
+<summary>Покажите вызов модуля amazing_modle из ../modules/amazing-module.</summary><br><b>
 
 ```
 module "amazing_module" {
@@ -1654,20 +1683,20 @@ module "amazing_module" {
 </b></details>
 
 <details>
-<summary>What should be done every time you modify the source parameter of a module?</summary><br><b>
+<summary>Что делать после изменения source модуля?</summary><br><b>
 
-Run `terraform init -upgrade` (or `terraform get -update` on older versions) so Terraform downloads the new version of the module and updates the `.terraform/modules` directory.
+Повторно выполните инициализацию. Для обновления установленных версий используется `terraform init -upgrade`; в исходнике также упомянут `terraform get -update`. Учтите, что `-upgrade` может обновить и другие зависимости в пределах ограничений.
 </b></details>
 
 <details>
-<summary>How to access module output variables?</summary><br><b>
+<summary>Как обратиться к выходному значению модуля?</summary><br><b>
 
-The general syntax is `module.<MODULE_NAME>.<OUTPUT_VAR_NAME>`
+Синтаксис: `module.<MODULE_NAME>.<OUTPUT_VAR_NAME>`.
 
 </b></details>
 
 <details>
-<summary>You would like to load and render a file from module directory. How to do that?</summary><br><b>
+<summary>Как загрузить и обработать шаблон из каталога модуля?</summary><br><b>
 
 script = templatefile("${path.module}/user-data.sh", {
 ...
@@ -1676,9 +1705,9 @@ script = templatefile("${path.module}/user-data.sh", {
 </b></details>
 
 <details>
-<summary>There is a module to create a compute instance. How would you use the module to create three separate instances?</summary><br><b>
+<summary>Как использовать модуль вычислительного экземпляра для создания трёх экземпляров?</summary><br><b>
 
-starting with Terraform 0.13, the `count` meta-argument can be used with modules. So you could use something like this:
+Начиная с Terraform 0.13, модули поддерживают метааргумент `count`. Например:
 
 ```
 module "instances" {
@@ -1688,12 +1717,12 @@ module "instances" {
 }
 ```
 
-You can also use it in outputs vars: `value = module.instances[*]`
+Можно использовать его и в выходных значениях: `value = module.instances[*]`.
 
 </b></details>
 
 <details>
-<summary>How to use a module with <code>for_each</code> to create networks per availability zone?</summary><br><b>
+<summary>Как с помощью for_each вызывать модуль для создания сетей по зонам доступности?</summary><br><b>
 
 ```hcl
 module "subnet" {
@@ -1705,45 +1734,48 @@ module "subnet" {
 }
 ```
 
-`for_each` keeps addresses stable and lets you add or remove AZs without re-creating the entire module.
+`for_each` сохраняет стабильность адресов: добавление или удаление зоны не требует пересоздавать остальные экземпляры модуля.
 </b></details>
 
-#### Interview Cheatsheet
+<a id="interview-cheatsheet"></a>
+#### Шпаргалка для собеседования
 
-- Remote state belongs in an encrypted, versioned S3 bucket with a DynamoDB table for locking.
-- Run `terraform init -migrate-state` when enabling a backend so existing state moves safely.
-- Detect drift quickly with `terraform plan -refresh-only` before every change.
-- Script state reviews with `terraform show -json | jq '.values.root_module.resources[].address'`.
-- Keep `.tfstate*` out of Git; grant IAM least privilege and rotate state access credentials.
-- Structure reusable modules with `main.tf`, `variables.tf`, `outputs.tf`, `versions.tf`, `README.md`, and an `examples/` folder.
-- Pin module versions (`?ref=` or `version` constraints) to make plans reproducible and review upgrades deliberately.
-- Validate modules in CI using `terraform validate`, `terraform plan` on examples, and `tflint --module`.
-- Avoid module anti-patterns like embedding provider blocks, exposing secrets, or hyper-generic inputs.
-- Use `locals` plus `for_each` inside modules for predictable names and per-environment customization.
+- Храните удалённое состояние в зашифрованном версионируемом backend с блокировкой; в исходнике пример — S3 и DynamoDB.
+- При подключении backend переносите состояние через `terraform init -migrate-state`.
+- Проверяйте расхождения командой `terraform plan -refresh-only`.
+- Проверяйте адреса программно: `terraform show -json | jq '.values.root_module.resources[].address'`.
+- Исключите `.tfstate*` из Git; выдавайте минимальные права и обновляйте учётные данные доступа.
+- Используйте `main.tf`, `variables.tf`, `outputs.tf`, `versions.tf`, `README.md` и каталог `examples/`.
+- Фиксируйте версии модулей через `?ref=` или `version` и проверяйте обновления.
+- Проверяйте модули в CI через validate, plan на примерах и совместимую версию TFLint.
+- Избегайте встроенных провайдеров, раскрытия секретов и чрезмерно общих входных типов.
+- Используйте `locals` и `for_each` для предсказуемых имён и настройки сред.
 
-### Import
-
-<details>
-<summary>Explain Terraform's import functionality</summary><br><b>
-
-`terraform import` is a CLI command used for importing an existing infrastructure into Terraform's state.
-
-It's does NOT create the definitions/configuration for creating such infrastructure.
-
-</b></details>
+<a id="import"></a>
+### Импорт
 
 <details>
-<summary>State two use cases where you would use <code>terraform import</code></summary><br><b>
+<summary>Объясните импорт Terraform.</summary><br><b>
 
-1. You have existing resources in one of the providers and they are not managed by Terraform (as in not included in the state)
-2. You lost your tfstate file and need to rebuild it
+CLI-команда `terraform import` добавляет существующий объект инфраструктуры в состояние Terraform.
+
+Сама эта команда не создаёт конфигурацию ресурса.
 
 </b></details>
 
-### Version Control
+<details>
+<summary>Назовите два случая использования terraform import.</summary><br><b>
+
+1. Уже существующие ресурсы ещё не отслеживаются Terraform.
+2. Файл состояния утрачен и его нужно восстановить.
+
+</b></details>
+
+<a id="version-control"></a>
+### Контроль версий
 
 <details>
-<summary>You have a Git repository with Terraform files but no .gitignore. What would you add to a .gitignore file in Terraform repository?</summary><br><b>
+<summary>Что добавить в .gitignore репозитория Terraform?</summary><br><b>
 
 ```
 **/.terraform/*
@@ -1753,14 +1785,15 @@ It's does NOT create the definitions/configuration for creating such infrastruct
 *.tfvars.json
 ```
 
-You don't want to store state file nor any downloaded providers in .terraform directory. It also doesn't makes sense to share/store the state backup files.
+Файлы состояния и их резервные копии, а также каталог `.terraform` с установленными зависимостями. Не следует исключать файл фиксации провайдеров только потому, что он относится к Terraform.
 
 </b></details>
 
+<a id="aws-1"></a>
 ### AWS
 
 <details>
-<summary>What happens if you update user_data in the following case and apply the changes?
+<summary>Что произойдёт после изменения user_data и применения следующей конфигурации?
 
 ```
 resource "aws_instance" "example" {
@@ -1776,16 +1809,16 @@ resource "aws_instance" "example" {
 
 </summary><br><b>
 
-Nothing, because user_data is executed on boot so if an instance is already running, it won't change anything.
+Сам скрипт user_data обычно выполняется при первоначальной загрузке, поэтому изменение его текста не гарантирует повторное выполнение на уже созданном экземпляре. Реакция Terraform зависит от версии провайдера и настроек ресурса.
 
-To make it effective you'll have to use `user_data_replace_on_change = true`.
+Чтобы изменение требовало замены экземпляра, можно задать `user_data_replace_on_change = true`.
 
 </b></details>
 
 <details>
-<summary>You manage ASG with Terraform which means you also have "aws_launch_configuration" resources. The problem is that launch configurations are immutable and sometimes you need to change them. This creates a problem where Terraform isn't able to delete ASG because they reference old launch configuration. How to do deal with it?</summary><br><b>
+<summary>ASG ссылается на неизменяемую aws_launch_configuration. Как заменить конфигурацию, если её нельзя удалить, пока она используется?</summary><br><b>
 
-Add the following to "aws_launch_configuration" resource
+Добавьте в `aws_launch_configuration`:
 
 ```
 lifecycle {
@@ -1793,12 +1826,12 @@ lifecycle {
 }
 ```
 
-This will change the order of how Terraform works. First it will create the new resource (launch configuration). then it will update other resources to reference the new launch configuration and finally, it will remove old resources
+Сначала создаётся новая launch configuration, затем обновляются ссылки зависимых ресурсов и удаляется старая.
 
 </b></details>
 
 <details>
-<summary>How to manage multiple regions in AWS provider configuration?</summary><br><b>
+<summary>Как настроить несколько регионов провайдера AWS?</summary><br><b>
 
 ```
 provider "aws" {
@@ -1820,7 +1853,7 @@ data "aws_region" "east_region" {
 }
 ```
 
-To use it:
+Пример использования:
 
 ```
 resource "aws_instance" "west_region_instance" {
@@ -1833,7 +1866,7 @@ resource "aws_instance" "west_region_instance" {
 </b></details>
 
 <details>
-<summary>Assuming you have multiple regions configured and you would like to use a module in one of them. How to achieve that?</summary><br><b>
+<summary>Как использовать модуль в одном из нескольких настроенных регионов?</summary><br><b>
 
 ```
 module "some_module" {
@@ -1850,9 +1883,9 @@ module "some_module" {
 </b></details>
 
 <details>
-<summary>How to manage multiple AWS accounts?</summary><br><b>
+<summary>Как работать с несколькими аккаунтами AWS?</summary><br><b>
 
-One way is to define multiple different provider blocks, each with its own "assume_role"
+Например, определить отдельные конфигурации провайдера, каждая со своим `assume_role`.
 
 ```
 provider "aws" {
@@ -1867,12 +1900,13 @@ provider "aws" {
 
 </b></details>
 
-### Validations
+<a id="validations"></a>
+### Проверки значений
 
 <details>
-<summary>How would you enforce users that use your variables to provide values with certain constraints? For example, a number greater than 1</summary><br><b>
+<summary>Как ограничить допустимые значения переменной, например разрешить только числа больше 1?</summary><br><b>
 
-Using `validation` block
+Использовать блок `validation`.
 
 ```
 variable "some_var" {
@@ -1888,10 +1922,11 @@ variable "some_var" {
 
 </b></details>
 
-### Secrets
+<a id="secrets"></a>
+### Секреты
 
 <details>
-<summary>What's the issue with the following provider configuration?
+<summary>В чём проблема следующей конфигурации провайдера?
 
 ```
 provider "aws" {
@@ -1904,24 +1939,24 @@ provider "aws" {
 
 </summary><br><b>
 
-It's not secure! you should never store credentials in plain text this way.
+Учётные данные записаны открытым текстом. Не храните секреты таким способом в конфигурации.
 
 </b></details>
 
 <details>
-<summary>What can you do to NOT store provider credentials in Terraform configuration files in plain text?</summary><br><b>
+<summary>Как избежать хранения учётных данных провайдера открытым текстом в файлах Terraform?</summary><br><b>
 
-1. Use environment variables
-2. Use password CLIs (like 1Password which is generic but there also specific provider options like aws-vault)
+1. Передавать их через окружение.
+2. Использовать CLI хранилища секретов, например 1Password, или специализированные средства вроде aws-vault.
 
 </b></details>
 
 <details>
-<summary>How can you manage secrets/credentials in CI/CD?</summary><br><b>
+<summary>Как управлять секретами в CI/CD?</summary><br><b>
 
-That very much depends on the CI/CD system/platform you are using.
+Подход зависит от платформы CI/CD.
 
-- GitHub Actions: Use Open ID Connect (OIDC) to establish connection with your provider. You then can specify in your GitHub Actions workflow the following:
+- GitHub Actions: настроить доверие OIDC с провайдером и указать соответствующие параметры workflow:
 
 ```
 - uses: aws-actions/configure-aws-credentials@v1
@@ -1930,8 +1965,8 @@ with:
  aws-region: ...
 ```
 
-- Jenkins: If Jenkins runs on the provider, you can use the provider access entities (like roles, policies, ...) to grant the instance, on which Jenkins is running, access control
-- CircleCI: you can use `CircleCI Context` and then specify it in your CircleCI config file
+- Jenkins: если он работает у провайдера, предоставить его экземпляру необходимые права через роли и политики.
+- CircleCI: использовать Context и указать его в конфигурации.
 
 ```
 context:
@@ -1941,45 +1976,46 @@ context:
 </b></details>
 
 <details>
-<summary>What are the pros and cons of using environment variables for managing secrets in Terraform configurations?</summary><br><b>
+<summary>Какие плюсы и минусы у передачи секретов через переменные окружения?</summary><br><b>
 
-Pros:
+Преимущества:
 
-- You avoid using secrets directly in configurations in plain text
-- free (no need to pay for secret management platforms/solutions)
-- Straightforward to use
+- Секреты не записываются непосредственно в конфигурацию.
+- Не требуется отдельная платная платформа.
+- Простота использования.
 
-Cons:
+Недостатки:
 
-- Configurations might not be usable without the environment variables which may make impact the user experience as the user has to know what environment variables he should pass for everything to work properly
-- Mostly managed outside of Terraform mechanisms which makes it hard to enforce, track, ... anything that is related to secrets when it depends on the user to pass environment variables
-
-</b></details>
-
-<details>
-<summary>True or False? If you pass secrets with environment variables, they are not visible in your state file</summary><br><b>
-
-False. State files include sensitive data as it is. Which means it's very important that wherever you store your state file, it's encrypted and accessible only to those who should be able to access it.
+- Без нужного окружения конфигурация не работает; пользователь должен знать, какие переменные передать.
+- Передача происходит вне основных механизмов Terraform, что усложняет контроль, учёт и соблюдение правил.
 
 </b></details>
 
 <details>
-<summary>True or False? If you pass secrets from a centralized secrets store (like Hashicorp Vault) they are not visible in plan files (terraform plan)</summary><br><b>
+<summary>Верно ли, что секреты, переданные через окружение, не попадут в состояние?</summary><br><b>
 
-False. It doesn't matter where your secrets store (file, environment variables, centralized secrets store), they will be visible in both state file and plan output.
+Неверно. Значения атрибутов ресурсов могут попасть в состояние независимо от способа передачи. Состояние нужно шифровать и защищать контролем доступа.
 
 </b></details>
 
-### Production
+<details>
+<summary>Верно ли, что секреты из централизованного хранилища, например Vault, не попадают в файлы плана?</summary><br><b>
 
-This section is about how Terraform is actually used in real-life scenarios and organizations.
+Неверно. Источник секрета сам по себе не исключает его сохранения в плане или состоянии. Уточнение к исходнику: обычный текстовый вывод может скрывать значения, помеченные `sensitive`, но это не равнозначно удалению секрета из сохранённого плана.
+
+</b></details>
+
+<a id="production"></a>
+### Рабочая среда
+
+Раздел посвящён практическому использованию Terraform в организациях.
 
 <details>
-<summary>What structure layout do you use for your projects?</summary><br><b>
+<summary>Какую структуру каталогов вы используете в проектах?</summary><br><b>
 
-There is no right or wrong answer, just what you personally adopted or your team, and being able to explain why.
+Единого правильного ответа нет: расскажите о принятом в команде подходе и его причинах.
 
-One common approach is to have a separate directory for each environment.
+Распространён вариант с отдельным каталогом для каждой среды.
 
 ```
 terraform_project/
@@ -1987,9 +2023,9 @@ terraform_project/
   production/
 ```
 
-Each environment has its own backend (as you don't want to use the same authentication and access controls for all environments)
+У каждой среды свой backend и настройки доступа.
 
-Going further, under each environment you'll separate between components, applications and services
+Внутри среды конфигурация дополнительно разделяется по компонентам, приложениям и сервисам.
 
 ```
 terraform_project/
@@ -2006,9 +2042,9 @@ terraform_project/
 </b></details>
 
 <details>
-<summary>What files do you have you have in your Terraform projects?</summary><br><b>
+<summary>Какие файлы есть в ваших проектах Terraform?</summary><br><b>
 
-Again, no right or wrong answer. Just your personal experience.
+Ответ зависит от личного опыта. Например:
 
 main.tf
 providers.tf
@@ -2016,65 +2052,67 @@ outputs.tf
 variables.tf
 dependencies.tf
 
-Each one of these files can be divided to smaller parts if needed (no reason to maintain VERY long files)
+При необходимости эти файлы можно разделить на меньшие; поддерживать очень большие файлы необязательно.
 
 </b></details>
 
 <details>
-<summary>An engineer in your team complains about having to copy-paste quite a lot of code between different folders and files of Terraform. What would you do?</summary><br><b>
+<summary>Инженер жалуется на копирование большого количества Terraform-кода между каталогами. Что предложить?</summary><br><b>
 
-Suggest to use Terraform modules.
-
-</b></details>
-
-<details>
-<summary>When working with nested layout of many directories, it can make it cumbresome to run terraform commands in many different folders. How to deal with it?</summary><br><b>
-
-There are multiple ways to deal with it:
-
-1. Write scripts that perform some commands recursively with different conditions
-2. Use tools like Terragrunt where you commands like "run-all" that can run in parallel on multiple different paths
+Использовать модули Terraform.
 
 </b></details>
 
 <details>
-<summary>One of the engineers in your team complains the inline shell scripts are quite big and maintaining them in Terraform files seems like a bad idea. What would you do?</summary><br><b>
+<summary>Как упростить запуск Terraform во множестве вложенных каталогов?</summary><br><b>
 
-A good solution for not including shell scripts inline (as in inside terraform configuration files) is to keep them in a separate file and then use the terraform `templatefile` function to render and get them as a string
+Возможные варианты:
 
-</b></details>
-
-<details>
-<summary>You noticed a lot of your Terraform code/configuration is duplicated, between repositories and also within the same repository between different directories. What one way you may adopt that will help handling with that?</summary><br><b>
-
-Using Terraform modules can help greatly with duplicated code and so different environments for example (staging and production) can reuse the same code by using the same modules.
+1. Скрипты, запускающие команды в нужных каталогах по заданным правилам.
+2. Средства вроде Terragrunt с командами запуска для нескольких конфигураций; в исходнике указан `run-all`.
 
 </b></details>
 
 <details>
-<summary>You noticed your Terraform code includes quite a lot of hardcoded values (like ports, subnets, ...) and they are duplicated in many locations. How'd you deal with it?</summary><br><b>
+<summary>Большие shell-скрипты внутри Terraform-файлов неудобно сопровождать. Что делать?</summary><br><b>
 
-Using variables might not be a good solution because some things shouldn't be exposed and accidentally overridden. In such case you might want to use the concept of `locals`
-
-</b></details>
-
-<details>
-<summary>Every time there is a change in tags standards (for example your team decided to change one of the tags' name) you find yourself changing tags in multiple files and you find the process quite tedious. What can be done about it?</summary><br><b>
-
-Instead of defining tags at resource level, consider using `default_tags` as part of the provider configuration.
+Вынести скрипты в отдельные файлы и загружать их как строки через `templatefile`.
 
 </b></details>
 
 <details>
-<summary>You would like to change the name of a resource but afraid to cause downtime. What can be done?</summary><br><b>
+<summary>Как сократить дублирование Terraform-кода между репозиториями и средами?</summary><br><b>
 
-If it's a matter of changing a resource name, you could make use of `terraform state mv <ORIGINAL_RESOURCE_NAME> <NEW_RESOURCE_NAME>`
+Вынести общий код в модули, которые используют, например, staging и production.
 
 </b></details>
 
 <details>
-<summary>You try to deploy a cluster and an app on that cluster, but the app resource was created before the cluster. How to manage such situation?</summary><br><b>
+<summary>В конфигурации много повторяющихся фиксированных значений: портов, подсетей и т. д. Как это исправить?</summary><br><b>
 
-Use the meta-argument `depends_on` in the app resource definition. This way the app will depend on the cluster resource and order will be maintained in creation of the resources.
+Если пользователь не должен их переопределять, лучше использовать `locals`, а не входные переменные.
 
 </b></details>
+
+<details>
+<summary>Изменение правил тегирования требует правок многих файлов. Как упростить работу?</summary><br><b>
+
+Рассмотрите `default_tags` в конфигурации провайдера вместо повторения тегов у каждого ресурса.
+
+</b></details>
+
+<details>
+<summary>Как переименовать ресурс, не вызывая простой?</summary><br><b>
+
+Для изменения адреса в Terraform можно использовать `terraform state mv <ORIGINAL_RESOURCE_NAME> <NEW_RESOURCE_NAME>`, согласовав его с конфигурацией. Это не переименовывает автоматически сам объект у провайдера.
+
+</b></details>
+
+<details>
+<summary>Приложение пытается создаться до готовности кластера. Что делать?</summary><br><b>
+
+Задайте зависимость от кластера через `depends_on` в ресурсе приложения, если она не выражена обычной ссылкой на его атрибуты.
+
+</b></details>
+
+Примечание к переводу: примеры в блоках кода сохранены из исходной версии. Отдельные технические неточности уточнены в пояснениях. Справка по уточнениям: https://developer.hashicorp.com/terraform/language/manage-sensitive-data
