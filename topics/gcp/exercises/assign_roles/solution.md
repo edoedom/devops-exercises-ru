@@ -26,3 +26,5 @@
 ### Terraform
 
 [Посмотреть файл main.tf](main.tf).
+
+Terraform создаёт service account в `project_id`, затем добавляет три роли без замены других участников IAM. Нужны права создавать service accounts и изменять IAM проекта; используйте отдельный учебный проект. Передайте `project_id` и `env_id` (например, `dev`) в plan/apply. `google_project_iam_member` добавляет одного участника; authoritative binding/policy могут конфликтовать с такими ресурсами, если управляют той же ролью/политикой. Не применяйте эти широкие учебные роли как готовый профиль production-доступа. После задания удалите созданные bindings и service account через Terraform.

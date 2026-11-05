@@ -20,20 +20,20 @@
 Краткое описание знаний для экзамена приведено [здесь](https://aws.amazon.com/certification/certified-sysops-admin-associate).
 
 <a id="who-should-take-this-exam"></a>
-### <b>Кому подходит этот экзамен?</b>
+### <b>Кому подходит этот экзамен?
 <br>
 AWS Certified SysOps Administrator — Associate предназначен для системных администраторов, работающих с облачной инфраструктурой, и подтверждает технические навыки.
 
-<summary>Перед сдачей экзамена в исходном материале рекомендуется иметь:</summary><br><b>
+**Перед сдачей экзамена в исходном материале рекомендуется иметь:**
 
 * Не менее года практического опыта работы с AWS.
 * Опыт развёртывания, управления и эксплуатации рабочих нагрузок AWS, внедрения средств безопасности и выполнения требований соответствия.
 * Навыки работы с AWS Management Console и AWS CLI.
 * Понимание AWS Well-Architected Framework, сетевых сервисов и сервисов безопасности AWS.
-</b>
+
 
 <a id="prepare-for-your-exam"></a>
-### <b>Подготовка к экзамену</b>
+### <b>Подготовка к экзамену
 <br>
 Начните с бесплатных материалов или изучите дополнительные ресурсы, включая официальные пробные экзамены, доступные по подписке AWS Skill Builder.
 
@@ -42,7 +42,7 @@ AWS Certified SysOps Administrator — Associate предназначен для
 * [Бесплатная подготовка к AWS Certified SysOps Administrator — Associate](https://explore.skillbuilder.aws/learn/course/external/view/elearning/9313/exam-prep-aws-certified-sysops-administrator-associate).
 
 <a id="certification-resource"></a>
- ### <b>Материалы для сертификации</b>
+ ### <b>Материалы для сертификации
  <br>
 Материалы для изучения и подготовки к экзамену AWS Cloud SysOps Associate:
 

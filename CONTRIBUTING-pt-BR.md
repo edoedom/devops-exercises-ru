@@ -4,11 +4,13 @@ Use pull requests para contribuir com o projeto.
 
 Siga o seguinte formato:
 
-\<details>
+```md
+<details>
 <summary>[Pergunta]</summary><br><b>
 
 [Resposta]
-\</b></details>
+</b></details>
+```
 
 * Se você adicionou várias perguntas e gostaria de saber quantas perguntas existem, você pode usar o script "count_questions.sh" no diretório de scripts.
 

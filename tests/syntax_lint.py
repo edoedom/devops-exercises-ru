@@ -1,159 +1,98 @@
-"""
-Testing suite for https://github.com/bregman-arie/devops-interview-questions
-written by surister
-
-Even though both check_details_tag and check_summary_tags are practically the
-same, due to readability and functionality it was decided to be split like
-that.
-
-Usage:
-$ python tests/syntax_lint.py
-
-"""
-
+"""Проверка details/summary вне примеров кода; CLI: python tests/syntax_lint.py FILE."""
+from collections import Counter
+from html.parser import HTMLParser
+from pathlib import Path
 import sys
 
-p = sys.argv[1] if len(sys.argv) > 1 else "README.md"
+from markdown_it import MarkdownIt
+
+errors = []  # Совместимость с первоначальным API тестов.
 
 
-errors = []
+def _text(lines):
+    if isinstance(lines, str):
+        return lines
+    if isinstance(lines, bytes):
+        return lines.decode('utf-8')
+    return '\n'.join(_text(line) for line in lines)
+
+
+class Structure(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.stack = []
+        self.frames = []
+        self.issues = []
+        self.counts = Counter()
+
+    def handle_starttag(self, tag, attrs):
+        if tag not in {'details', 'summary'}:
+            return
+        self.counts[tag] += 1
+        if tag == 'details':
+            self.frames.append({'summary': False})
+        elif not self.frames or not self.stack or self.stack[-1] != 'details':
+            self.issues.append('summary должен находиться непосредственно внутри details')
+        elif self.frames[-1]['summary']:
+            self.issues.append('Повторный summary в одном details')
+        else:
+            self.frames[-1]['summary'] = True
+        self.stack.append(tag)
+
+    def handle_endtag(self, tag):
+        if tag not in {'details', 'summary'}:
+            return
+        self.counts['/' + tag] += 1
+        if not self.stack or self.stack[-1] != tag:
+            self.issues.append(f'Нарушен порядок закрытия {tag}')
+            return
+        self.stack.pop()
+        if tag == 'details':
+            frame = self.frames.pop()
+            if not frame['summary']:
+                self.issues.append('В details отсутствует summary')
+
+
+def structure(lines):
+    parser = Structure()
+    for token in MarkdownIt('commonmark').parse(_text(lines)):
+        if token.type == 'html_block':
+            parser.feed(token.content)
+        for child in token.children or []:
+            if child.type == 'html_inline':
+                parser.feed(child.content)
+    if parser.stack:
+        parser.issues.append('Незакрытые теги в конце файла: ' + ', '.join(parser.stack))
+    return parser
 
 
 def count_details(file_list):
-    """
-    Counts the total amount of <details> and </details>
-
-    Used for debugging purpose, not meant to be used in actual tests
-    """
-    details_final_count = 0
-    details_count = 0
-
-    for line_number, line in enumerate(file_list):
-        if b"<details>" in line:
-            details_count += 1
-        if b"</details>" in line:
-            details_final_count += 1
-
-    return details_count == details_final_count
+    counts = structure(file_list).counts
+    return counts['details'] == counts['/details']
 
 
 def count_summary(file_list):
-    """
-    Counts the total amount of <details> and </details>
-
-    Used for debugging purpose, not meant to be used in actual tests
-    """
-    details_final_count = 0
-    details_count = 0
-
-    for line_number, line in enumerate(file_list):
-        if b"<summary>" in line:
-            details_count += 1
-        if b"</summary>" in line:
-            details_final_count += 1
-
-    return details_count == details_final_count
+    counts = structure(file_list).counts
+    return counts['summary'] == counts['/summary']
 
 
 def check_details_tag(file_list):
-    """
-    Check whether the structure:
-    <details>
-    ...
-    </details>
-
-    Is correctly followed, if not generates an error.
-
-    """
-
-    after_detail = False
-    error = False
-    err_message = ""
-    for line_number, line in enumerate(file_list):
-        if b"<details>" in line and b"</details>" in line:
-            pass
-        else:
-            if b"<details>" in line and after_detail:
-                err_message = f"Missing closing detail tag round line {line_number - 1}"
-                error = True
-            if b"</details>" in line and not after_detail:
-                err_message = f"Missing opening detail tag round line {line_number - 1}"
-                error = True
-
-            if b"<details>" in line:
-                after_detail = True
-
-            if b"</details>" in line and after_detail:
-                after_detail = False
-
-            if error:
-                errors.append(err_message)
-
-        error = False
-
-    if after_detail:
-        errors.append("Unclosed details tag at end of file")
+    errors.extend(structure(file_list).issues)
 
 
 def check_summary_tag(file_list):
-    """
-    Check whether the structure:
-    <summary>
-    ...
-    </summary>
-
-    Is correctly followed, if not generates an error.
-
-    """
-
-    after_summary = False
-    error = False
-    err_message = ""
-    for idx, line in enumerate(file_list):
-        line_number = idx + 1
-        if b"<summary>" in line and b"</summary>" in line:
-            if after_summary:
-                err_message = f"Missing closing summary tag around line {line_number}"
-                error = True
-
-        else:
-            if b"<summary>" in line and after_summary:
-                err_message = f"Missing closing summary tag around line {line_number}"
-                error = True
-            if b"</summary>" in line and not after_summary:
-                err_message = f"Missing opening summary tag around line {line_number}"
-                error = True
-
-            if b"<summary>" in line:
-                after_summary = True
-
-            if b"</summary>" in line and after_summary:
-                after_summary = False
-
-        if error:
-            errors.append(err_message)
-
-        error = False
-
-    if after_summary:
-        errors.append("Unclosed summary tag at end of file")
+    errors.extend(structure(file_list).issues)
 
 
 def check_md_file(file_name):
     errors.clear()
-    with open(file_name, "rb") as f:
-        file_list = [line.rstrip() for line in f.readlines()]
-    check_details_tag(file_list)
-    check_summary_tag(file_list)
+    errors.extend(structure(Path(file_name).read_text(encoding='utf-8')).issues)
 
 
-if __name__ == "__main__":
-    print(f"..........Checking {p}..........")
-    check_md_file(p)
+if __name__ == '__main__':
+    target = sys.argv[1] if len(sys.argv) > 1 else 'README.md'
+    check_md_file(target)
     if errors:
-        print(f"{p} failed", file=sys.stderr)
-        for error in errors:
-            print(error, file=sys.stderr)
-        exit(1)
-
-    print("Tests passed successfully.")
+        print(target + ': ' + '; '.join(errors), file=sys.stderr)
+        raise SystemExit(1)
+    print('Markdown structure OK:', target)

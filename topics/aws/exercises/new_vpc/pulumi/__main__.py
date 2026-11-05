@@ -1,10 +1,7 @@
 import pulumi
-import pulumi_awsx as awsx
+import pulumi_aws as aws
 
-vpc = awsx.ec2.Vpc("exercise-vpc", cidr_block="10.0.0.0/16")
-
-pulumi.export("vpc_id", vpc.vpc_id)
-pulumi.export("publicSubnetIds", vpc.public_subnet_ids)
-pulumi.export("privateSubnetIds", vpc.private_subnet_ids)
-
-# Run 'pulumi up' to create it
+# Только VPC: подсети, NAT Gateway и Internet Gateway в этом задании не нужны.
+vpc = aws.ec2.Vpc("exercise-vpc", cidr_block="10.0.0.0/16",
+                 tags={"Name": "exercise-vpc"})
+pulumi.export("vpc_id", vpc.id)

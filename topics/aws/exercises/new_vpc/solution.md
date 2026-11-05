@@ -34,6 +34,10 @@
 <a id="verify-solution"></a>
 ### Проверка решения
 
-Для проверки создания VPC в оригинале приведена команда: `aws ec2 describe-vpcs -filters Name=tag:Name,Values=exercise-vpc`.
+Проверьте созданную VPC, указав тот же регион, который использовался в IaC:
 
-> Примечание к переводу: в команде исходника опечатка — параметр должен начинаться с двух дефисов: `--filters`.
+```bash
+aws ec2 describe-vpcs --filters Name=tag:Name,Values=exercise-vpc
+```
+
+Перед Terraform задайте AWS credentials/region, затем выполните `terraform init`, `terraform validate`, `terraform plan`. Pulumi-пример требует Python-проект с `pulumi`, `pulumi-aws` и `pulumi config set aws:region REGION`. Оба варианта создают только VPC — без платных NAT Gateway и подсетей. После проверки удалите ресурсы выбранным инструментом (`terraform destroy` или `pulumi destroy`).

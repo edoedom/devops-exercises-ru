@@ -12,10 +12,10 @@
 <a id="openshift-self-assessment"></a>
 ### Самопроверка по OpenShift
 
-* [Основы OpenShift](#Openshift-101)
-* [Архитектура OpenShift](#Openshift-architecture)
-* [Практические основы OpenShift](#Openshift-hands-on-basics)
-* [Проекты OpenShift](#Openshift-projects)
+* [Основы OpenShift](#openshift-101)
+* [Архитектура OpenShift](#openshift-architecture)
+* [Практические основы OpenShift](#openshift-hands-on-basics)
+* [Проекты OpenShift](#openshift-projects)
 
 <a name="openshift-101"></a>
 <a id="openshift-101"></a>
