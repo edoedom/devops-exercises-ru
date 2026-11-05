@@ -27,14 +27,14 @@
 1. Откройте приложение:
    1. Убедитесь, что оно синхронизировано и имеет состояние healthy.
 2. Внесите изменение и проверьте ресурсы кластера:
-   1. `kubectl scale --replicas=0 <DEPLOYMENT_NAME>`
-   2. `kubectl get rs <DEPLOYMENT_NAME>`
+   1. `kubectl scale deployment/<DEPLOYMENT_NAME> --replicas=0`
+   2. `kubectl get replicasets`
 3. Вернитесь в интерфейс и проверьте состояние:
    1. Если оно всё ещё синхронизировано, нажмите **Refresh**.
    2. Приложение должно перейти в состояние out-of-sync.
    3. Нажмите **Sync**, затем **Synchronize**.
 
-> Примечание к переводу: команды исходника содержат неточности. Для масштабирования Deployment нужно указать тип ресурса, например `kubectl scale deployment/<имя> --replicas=0`. Имя ReplicaSet обычно отличается от имени Deployment; перед второй командой следует определить фактическое имя ReplicaSet.
+> Команды исправлены: тип ресурса указан явно. При включённом auto-sync/self-heal Argo CD может автоматически вернуть реплики раньше ручной синхронизации; для этой части упражнения отключите self-heal в тестовом приложении.
 
 <a id="cli"></a>
 ### CLI
@@ -44,8 +44,8 @@
 argocd app get app-demo
 
 # Run the following k8s commands (or any other commands that will change the state of your app)
-kubectl scale --replicas=0 <DEPLOYMENT_NAME>
-kubectl get rs <DEPLOYMENT_NAME>
+kubectl scale deployment/<DEPLOYMENT_NAME> --replicas=0
+kubectl get replicasets
 
 # Check app state again
 argocd app get app-demo
