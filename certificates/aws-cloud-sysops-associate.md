@@ -1,6 +1,22 @@
 <a id="aws-cloud-sysops-administration-associate"></a>
 ## AWS Cloud SysOps Administration Associate
 
+## Актуальное название: CloudOps Engineer — Associate
+
+С 30 сентября 2025 года используется SOA-C03 — **AWS Certified CloudOps Engineer — Associate** вместо экзамена SysOps Administrator SOA-C02. Старое имя файла и anchor сохранены для ссылок. Название ранее выданного сертификата автоматически не меняется.
+
+Сверено 5 ноября 2026 года: [официальная страница](https://aws.amazon.com/certification/certified-cloudops-engineer-associate/), [сравнение программ](https://docs.aws.amazon.com/aws-certification/latest/sysops-administrator-associate-03/sysops-administrator-associate-03-comparison.html).
+
+| Раздел SOA-C03 | Вес |
+|---|---:|
+| Мониторинг, логи, анализ, устранение проблем и производительность | 22% |
+| Надёжность и непрерывность работы | 22% |
+| Развёртывание, provisioning и автоматизация | 22% |
+| Безопасность и соответствие требованиям | 16% |
+| Сети и доставка контента | 18% |
+
+Отработайте CloudWatch/CloudTrail, backup/restore, отказоустойчивость, IaC и Systems Manager, политики IAM/KMS и сетевую диагностику. Умейте объяснить действия при инциденте и проверить восстановление. Нижеследующие заметки по SysOps сохраняют учебную ценность, но не составляют полную программу SOA-C03.
+
 Краткое описание знаний для экзамена приведено [здесь](https://aws.amazon.com/certification/certified-sysops-admin-associate).
 
 <a id="who-should-take-this-exam"></a>

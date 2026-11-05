@@ -85,3 +85,7 @@ Jenkins-решения найдены в `topics/cicd/solutions`: предыду
 Terraform 1.13.5 скачан, init загрузил провайдеры, но последующий validate остановился на несовпадении контрольных сумм пакетов с созданным lock-файлом. Проверка контрольных сумм не отключалась; Terraform validate/plan/apply не считаются пройденными. Lock-файлы этого неудачного окружения не публикуются. Провайдерные схемы следует дополнительно проверить в чистом окружении.
 
 Источники: [Flask factories](https://flask.palletsprojects.com/en/stable/patterns/appfactories/), [S3 public access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/granting-public-access.html), [S3 notifications](https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html), [Lambda runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html), [Jenkins Pipeline](https://www.jenkins.io/doc/book/pipeline/syntax/), [Ansible Kubernetes](https://docs.ansible.com/projects/ansible/latest/collections/kubernetes/core/k8s_module.html).
+
+## Пятая партия: программы сертификаций
+
+Все семь файлов certificates и отдельный конспект CKA снабжены проверенными ссылками, датой сверки, действующими названиями и весами разделов. Для CKA/CKAD добавлены направления, которых не хватает в старом наборе задач. Учтены CloudOps SOA-C03 вместо SysOps SOA-C02, CLF-C02, SAA-C03 и программа AZ-900 от 20 июля 2026 года. Старая PDF-схема AWS заменена живым каталогом; отмечены закрытые Specialty-экзамены. Это сопоставление программ и добавление направлений подготовки, а не гарантия исчерпывающего покрытия каждого exam objective.

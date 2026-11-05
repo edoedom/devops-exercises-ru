@@ -1,6 +1,18 @@
 <a id="az-900"></a>
 ## AZ-900
 
+## Программа AZ-900
+
+Сверено 5 ноября 2026 года с [Microsoft study guide](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900), программа от 20 июля 2026 года.
+
+| Раздел | Вес |
+|---|---:|
+| Основы облачных технологий | 25–30% |
+| Архитектура и сервисы Azure | 35–40% |
+| Управление Azure и governance | 30–35% |
+
+Дополните конспект практикой выбора compute/storage/network, region/AZ, subscriptions/resource groups/management groups, Entra ID и RBAC, Azure Policy/locks/tags, оценки стоимости и Azure Monitor/Service Health/Advisor. Entra ID — нынешнее название Azure Active Directory; Azure AD в старых примерах относится к тому же сервису, а не к Windows Server Active Directory. Уточняйте действующие условия оплаты и SLA у Microsoft.
+
 <details>
 <summary>Что такое облачные вычисления?</summary><br><b>
 
