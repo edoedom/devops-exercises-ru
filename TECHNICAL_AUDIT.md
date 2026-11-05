@@ -60,3 +60,11 @@
 После этой партии в исходных вопросах осталось 206 пустых ответов. Удаление всех пустот само по себе не будет означать завершения проверки остальных утверждений и исполнимости всех проектов.
 
 Источники дополнений: [Git](https://git-scm.com/docs/merge-strategies), [Linux cgroups](https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html), [Bash](https://www.gnu.org/software/bash/manual/bash.html), [PostgreSQL](https://www.postgresql.org/docs/current/transaction-iso.html), [Ansible](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html), [OAuth Security BCP](https://www.rfc-editor.org/rfc/rfc9700.html), [NIST CMVP](https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules).
+
+## Третья партия: оставшиеся текстовые пробелы
+
+Дополнены оставшиеся 206 вопросов без текстового ответа: 204 действительно пустых ответа и две схемы Kubernetes, у которых исходное решение было только картинкой. Изображения сохранены, к ним добавлено текстовое объяснение. Таким образом, исходный поиск 378 «пустых» случаев включал 376 пустых ответов и два графических решения.
+
+В результате во всех 286 исходных Markdown-файлах не осталось блоков вопроса без текста ответа. Вопросы о личном опыте и работодателе снабжены ориентирами, а не фиктивными ответами кандидата или компании. Добавлены материалы по хранилищам Kubernetes, маршрутизации, system design, Elastic, Azure/Entra и облачным сервисам. Названия Azure AD/ATP актуализированы с сохранением исторического контекста; для CloudSearch отмечена недоступность новым клиентам.
+
+Это завершение заполнения пробелов, а не утверждение, что проверено каждое старое утверждение, каждая картинка и каждый внешний URL. Продолжается проверка исполняемого кода и учебных проектов.
