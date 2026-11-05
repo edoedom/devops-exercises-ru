@@ -2103,9 +2103,9 @@ kubectl top pod
 <details>
 <summary>Объясните CRD.</summary><br><b>
 
-CustomResourceDefinition — объект, добавляющий пользовательский тип ресурса в API Kubernetes.
+CustomResourceDefinition (CRD) регистрирует новый тип API: группу, версии, имена, scope (Namespaced или Cluster) и структурную OpenAPI-схему. Custom Resource — конкретный объект такого типа. API server хранит и валидирует эти объекты, но сама CRD не запускает бизнес-логику: для согласования состояния нужен контроллер. Для нескольких версий задают served/storage и при необходимости conversion webhook. Удаление CRD удаляет и хранимые экземпляры этого типа, поэтому перед удалением нужна миграция или резервная копия.
 
-Примечание исходника: раздел планируется дополнить.
+[Custom resources](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
 
 </b></details>
 
@@ -2143,7 +2143,6 @@ OLM управляет установкой, обновлением и зави�
 1. Operator SDK — создание операторов.
 2. Operator Lifecycle Manager — установка, обновление и управление жизненным циклом.
 3. Operator Metering — исторический компонент отчётности об использовании сервисов операторов.
-4. 
 </b></details>
 
 <details>
@@ -2213,7 +2212,9 @@ OLM управляет установкой, обновлением и зави�
 <details>
 <summary>Что означает type: Opaque? Какие ещё типы Secret существуют?</summary><br><b>
 
-Opaque — тип по умолчанию для произвольных пар ключ–значение.
+Opaque — тип по умолчанию для произвольных пар ключ–значение. Встроенные типы также включают `kubernetes.io/tls`, `kubernetes.io/dockerconfigjson`, `kubernetes.io/basic-auth`, `kubernetes.io/ssh-auth`, `kubernetes.io/service-account-token` и `bootstrap.kubernetes.io/token`. Некоторые типы задают обязательные ключи или проверки формата. Для доступа ServiceAccount предпочтительны короткоживущие токены TokenRequest/projected volume, а не вручную созданный долгоживущий token Secret.
+
+[Типы Secret](https://kubernetes.io/docs/concepts/configuration/secret/#secret-types).
 </b></details>
 
 <details>

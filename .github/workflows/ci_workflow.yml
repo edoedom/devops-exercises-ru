@@ -40,6 +40,7 @@ jobs:
       max-parallel: 2
       matrix:
         module:
+          - topics/aws/exercises/launch_ec2_web_instance/terraform
           - topics/aws/exercises/new_vpc/terraform
           - topics/aws/exercises/subnets/terraform
           - topics/aws/exercises/s3/new_bucket/terraform

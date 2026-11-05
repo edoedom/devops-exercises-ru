@@ -1,98 +1,31 @@
 <a id="aws---launch-ec2-web-instance"></a>
-## AWS: запуск экземпляра EC2 с веб-сервером
+## AWS: EC2 с веб-сервером — решение
 
-<a id="objectives"></a>
-### Задание
+Используйте [условия задания](exercise.md). Amazon Linux 2023 x86_64 совместим с выбранным t3.micro; ARM-образ для него не подходит.
 
-Запустите один экземпляр EC2 со следующими параметрами:
+### Консоль
 
-1. Образ Amazon Linux 2.
-2. Тип экземпляра с 1 vCPU и 1 ГиБ памяти.
-3. Хранилище экземпляра должно удаляться при завершении его существования (terminate).
-4. При запуске экземпляра:
-   1. Установите пакет httpd.
-   2. Запустите службу httpd.
-   3. Запишите в /var/www/html/index.html строку `I made it! This is is awesome!`.
-5. Назначьте тег Type: web и имя web-1.
-6. Разрешите HTTP-трафик на порт 80 от любых источников.
+Выберите регион, образ AL2023 x86_64, тип t3.micro и публичную подсеть. Включите публичный IPv4, настройте корневой диск и теги по заданию. Создайте отдельную группу безопасности в той же VPC: входящий TCP/80 из 0.0.0.0/0; исходящий доступ для загрузки пакетов. Проверьте также route table и NACL. Пару SSH-ключей создавать необязательно.
 
-<a id="solution"></a>
-### Решение
+В User data вставьте содержимое [user-data.sh](terraform/user-data.sh), включая первую строку `#!/bin/bash`. Он выполняется от root, обычно только при первом запуске. После завершения cloud-init откройте HTTP-адрес экземпляра. При ошибке проверьте `/var/log/cloud-init-output.log` доступным в учебной среде способом.
 
-1. Выберите ближайший подходящий регион.
-2. Откройте EC2.
-3. Выберите **Instances → Launch instances**.
-4. Образ: Amazon Linux 2.
-5. Тип экземпляра: t2.micro.
-6. В настройках хранилища включите **Delete on Termination**.
-7. В поле **User data** вставьте:
+### Terraform
 
-```
-yum update -y
-yum install -y httpd
-systemctl start httpd
-systemctl enable httpd
-echo "<h1>I made it! This is is awesome!</h1>" > /var/www/html/index.html
+[Полный модуль](terraform/main.tf) использует региональный AMI из публичного SSM-параметра, user data вместо SSH provisioner и группу безопасности выбранной VPC. Изменение user data заменяет экземпляр; обновление AMI может также привести к замене — смотрите plan.
+
+В каталоге модуля укажите реальные регион и subnet_id:
+
+```bash
+terraform init
+terraform plan -var='region=us-east-1' -var='subnet_id=subnet-REPLACE' -out=exercise.tfplan
+terraform apply exercise.tfplan
+terraform output -raw url
 ```
 
-8. Добавьте теги:
-   * Ключ Type, значение web.
-   * Ключ Name, значение web-1.
-9. В группе безопасности разрешите входящий HTTP-трафик по TCP на порт 80 от любого источника.
-10. Нажмите **Review**, проверьте параметры и нажмите **Launch**.
-11. Если пары ключей нет, создайте и скачайте её.
+`subnet-REPLACE` — обязательная подстановка, не готовый ID. Учётной записи нужны права на создание ресурсов и чтение AMI/SSM/подсети. Apply создаёт платные ресурсы. Сохраните значения переменных в локальном tfvars для последующего destroy.
 
-**Решение с Terraform:**
+Проверьте страницу командой `curl --fail http://PUBLIC_IP/`, заменив PUBLIC_IP полученным адресом. Ожидаемая строка: `I made it! This is awesome!`. Terraform validate не проверяет наличие маршрута, IAM-права и HTTP-готовность.
 
-```
- 
-provider "aws" {
-  region = "us-east-1" // Or your desired region
-}
+После работы выполните `terraform destroy -var='region=us-east-1' -var='subnet_id=subnet-REPLACE'` с теми же реальными значениями и проверьте удаление учебных ресурсов. Подсеть в модуле — источник данных, она не удаляется.
 
-resource "aws_instance" "web_server" {
-  ami           = "ami-12345678" // Replace with the correct AMI for Amazon Linux 2
-  instance_type = "t2.micro" // Or any instance type with 1 vCPU and 1 GiB memory
-
-  tags = {
-    Name = "web-1"
-    Type = "web"
-  }
-
-  root_block_device {
-    volume_size           = 8 // Or any desired size
-    delete_on_termination = true
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo yum update -y",
-      "sudo yum install -y httpd",
-      "sudo systemctl start httpd",
-      "sudo bash -c 'echo \"I made it! This is awesome!\" > /var/www/html/index.html'",
-      "sudo systemctl enable httpd"
-    ]
-
-    connection {
-      type        = "ssh"
-      user        = "ec2-user"
-      private_key = file("~/.ssh/your_private_key.pem") // Replace with the path to your private key
-      host        = self.public_ip
-    }
-  }
-
-  security_group_ids = [aws_security_group.web_sg.id]
-}
-
-resource "aws_security_group" "web_sg" {
-  name        = "web_sg"
-  description = "Security group for web server"
-  
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-```
+[User data AWS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) · [Сроки поддержки AL2023](https://docs.aws.amazon.com/linux/al2023/ug/release-cadence.html).
