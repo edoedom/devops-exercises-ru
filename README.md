@@ -4,7 +4,7 @@
 
 :information_source: &nbsp;В репозитории собраны вопросы и упражнения по техническим темам, в том числе DevOps и SRE.
 
-:bar_chart: &nbsp;**2713** вопросов и упражнений (2604 вопросов, 109 ссылок на уникальные задания в основном README и README разделов; без повторов сертификаций).
+:bar_chart: &nbsp;**2723** вопросов и упражнений (2613 вопросов, 110 ссылок на уникальные задания в основном README и README разделов; без повторов сертификаций).
 
 :warning: &nbsp;Материалы подходят для подготовки к собеседованиям, но большинство вопросов и упражнений не взяты из реальных интервью. Подробнее — [в FAQ](faq.md).
 
@@ -129,6 +129,8 @@
 
 <a id="network"></a>
 ## Сети
+
+[Задание](topics/network/exercises/cidr/exercise.md): расчёт IPv4-подсетей, исключения /31 и /32 и выбор наиболее специфичного маршрута без сетевых подключений.
 
 <details>
 <summary>Что в общем случае необходимо для общения?</summary><br><b>
@@ -322,28 +324,26 @@ TCP предоставляет надёжный упорядоченный по�
 </b></details>
 
 <details>
-<summary>Что такое RTT?</summary><br><b>
+<summary>Что такое RTT?</summary>
 
-По [Wikipedia](https://en.wikipedia.org/wiki/Round-trip_delay), это время прохождения сигнала к получателю и получения ответного подтверждения.
-
-Дополнительный вопрос: какой RTT характерен для LAN?
-</b></details>
+Round-trip time — время пути туда и обратно для конкретного измерения. Оно включает распространение сигнала, передачу, очереди и обработку. «RTT в LAN» не имеет универсальной константы: зависит от среды, нагрузки и точки измерения. ICMP echo RTT, TCP handshake и время ответа приложения измеряют разные части взаимодействия.
+</details>
 
 <details>
-<summary>Как происходит рукопожатие SSL/TLS?</summary><br><b>
-Оно согласует защищённое соединение. SSL устарел; ниже — упрощённый сценарий TLS до версии 1.3 с исправлением ошибок исходника. Конкретные сообщения зависят от версии и обмена ключами.
+<summary>Как происходит рукопожатие SSL/TLS?</summary>
 
-1. ClientHello передаёт поддерживаемые версии, криптографические наборы, расширения и случайное значение клиента.
-2. ServerHello сообщает выбранные параметры и случайное значение сервера.
-3. Сервер передаёт сертификат, если используется сертификатная аутентификация.
-4. Передаёт необходимые параметры обмена ключами и ServerHelloDone для соответствующих сценариев TLS 1.2.
-5. Клиент проверяет сертификат и отправляет данные обмена ключами. Это не обязательно его открытый ключ.
-6. Стороны вычисляют сеансовые ключи; клиент переключается на согласованную защиту через ChangeCipherSpec в соответствующем протоколе.
-7. Клиент отправляет Finished, подтверждающий целостность рукопожатия. Это не сообщение с pre-master secret, как ошибочно указано в исходнике.
-8. Сервер также переключается на согласованную защиту.
-9. Сервер отправляет Finished. Он не возвращает клиенту pre-master secret.
-10. Стороны обмениваются защищёнными данными приложения.
-</b></details>
+SSL устарел. Ниже — упрощённое полное рукопожатие **TLS 1.3** с аутентификацией сервера сертификатом, без PSK и клиентского сертификата:
+
+1. ClientHello сообщает поддерживаемые параметры и key_share для обмена ключами.
+2. ServerHello выбирает параметры и key_share; стороны вычисляют общий секрет и handshake keys.
+3. Под защитой handshake keys сервер отправляет EncryptedExtensions, Certificate, CertificateVerify и Finished.
+4. Клиент проверяет цепочку доверия, имя сервера, сроки и криптографические доказательства. Наличие сертификата само по себе недостаточно.
+5. Клиент отправляет Finished; стороны используют выведенные ключи для защищённых данных приложения.
+
+HelloRetryRequest может добавить обмен, а resumption и mTLS меняют последовательность. В TLS 1.3 нет шага ServerHelloDone и нет RSA key transport с шифрованием pre-master secret открытым ключом сертификата. Сертификат удостоверяет сторону, а key exchange и шифрование данных выполняют другие части протокола. 0-RTT early data имеет риск повторного воспроизведения; его не следует бездумно применять к операциям с побочным эффектом.
+
+[RFC 8446](https://www.rfc-editor.org/rfc/rfc8446.html).
+</details>
 
 <details>
 <summary>Чем TCP отличается от UDP?</summary><br><b>
@@ -417,12 +417,10 @@ Dynamic Host Configuration Protocol выдаёт сетевые настройк
 </b></details>
 
 <details>
-<summary>Что такое сокет? Как посмотреть сокеты системы?</summary><br><b>
+<summary>Что такое сокет? Как посмотреть сокеты системы?</summary>
 
-* Сокет — программная конечная точка обмена данными. Он предоставляет интерфейс взаимодействия процессов по сети или локально. Пример команды Linux:
-`netstat -an`
-* Вывод показывает протоколы, локальные и удалённые адреса и состояния. Также можно использовать `ss -an`.
-</b></details>
+Сокет — программная конечная точка обмена данными по сети или локально. В Linux используйте `ss -an` для списка и `ss -ltnp` для слушающих TCP-сокетов с процессами. Параметр `-u` выбирает UDP, `-x` — Unix sockets. Сведения о чужих процессах зависят от прав. `netstat` остаётся в старых примерах, но может отсутствовать без отдельного пакета net-tools.
+</details>
 
 <details>
 <summary>Что такое IPv6 и зачем он нужен при наличии IPv4?</summary><br><b>
@@ -541,6 +539,30 @@ NAT преобразует адреса, а NAPT/PAT — также порты, 
 Диапазон IPv4 link-local — 169.254.0.0/16. Для автоматического выбора адреса используются 169.254.1.0–169.254.254.255; крайние /24 зарезервированы. Диапазон исходника неточен.
 
 </b></details>
+
+<details>
+<summary>Почему ping может работать, а HTTPS зависать?</summary>
+
+Успешный маленький ICMP echo не проверяет порт, TLS, HTTP и передачу больших пакетов. Проверьте DNS, маршрут, TCP/QUIC, SNI/сертификат и приложение по отдельности. При потере крупных пакетов разберите MTU и PMTUD: блокирование нужных ICMP/ICMPv6 сообщений может создавать black hole. Не начинайте с отключения проверки сертификатов. [IPv6 PMTUD](https://www.rfc-editor.org/rfc/rfc8201.html).
+</details>
+
+<details>
+<summary>Как IPv6-узел узнаёт шлюз и нужен ли для этого DHCPv6?</summary>
+
+IPv6 Neighbor Discovery использует ICMPv6; Router Advertisements сообщают о маршрутизаторах и префиксах. DHCPv6 не заменяет этот механизм обнаружения default router. SLAAC и DHCPv6 могут применяться вместе; IPv6 не использует ARP и обычное IPv4 broadcast. Бездумная блокировка всего ICMPv6 ломает работу сети. [RFC 4861](https://www.rfc-editor.org/rfc/rfc4861.html).
+</details>
+
+<details>
+<summary>Какой MAC используется при отправке IPv4-пакета в другую подсеть?</summary>
+
+По таблице маршрутизации выбирается next hop; Ethernet-кадр обычно адресуется MAC этого маршрутизатора, который узнают через ARP на локальном канале. IP назначения при обычной пересылке остаётся конечным адресом, а L2-заголовок меняется на каждом Ethernet-участке. NAT и туннели вносят отдельные преобразования.
+</details>
+
+<details>
+<summary>Почему перенаправления порта дома недостаточно при CGNAT?</summary>
+
+Перед домашним роутером может стоять NAT провайдера, который клиент не управляет. Shared Address Space `100.64.0.0/10` предназначен в том числе для CGNAT и не является RFC 1918. Нужен поддерживаемый способ входящего доступа: публичный адрес/услуга провайдера, корректно настроенный IPv6 или туннель. Публичный адрес тоже не отменяет firewall и политику доступа. [RFC 6598](https://www.rfc-editor.org/rfc/rfc6598.html).
+</details>
 
 <a id="control-plane-and-data-plane"></a>
 #### Управление и пересылка данных
@@ -696,10 +718,16 @@ Open Shortest Path First — протокол внутренней маршру�
 </b></details>
 
 <details>
-<summary>Какое кодовое слово получится для 100111010001101 при использовании кода Хэмминга?</summary><br><b>
+<summary>Какое кодовое слово получится для 100111010001101 при использовании кода Хэмминга?</summary>
 
+Без соглашения о нумерации и чётности ответ неоднозначен. Для even parity, позиций с 1 **слева**, контрольных битов 1, 2, 4, 8, 16 и записи данных слева направо:
+
+```text
 00110011110100011101
-</b></details>
+```
+
+Это 20 бит: 15 информационных и 5 контрольных. [Реализация](coding/python/hamming.py) и регрессионные тесты проверяют нулевой синдром и обнаружение одиночной инверсии. Ненулевой синдром не доказывает, что повреждён ровно один бит: обычный код нельзя считать SECDED без дополнительной общей проверки чётности.
+</details>
 
 <details>
 <summary>Приведите примеры протоколов прикладного уровня.</summary><br><b>
@@ -1447,14 +1475,7 @@ func main() {
 
 </b></details>
 
-<details>
-<summary>Чем SQL-БД отличаются от NoSQL?</summary><br><b>
-
-Реляционные СУБД организуют данные в таблицы со строками,
-столбцами, связями и ограничениями. NoSQL — общее название
-других моделей: ключ–значение, документы, графы и т. д.
-Называть все NoSQL-данные неструктурированными неправильно: у них тоже есть структура, но она устроена иначе.
-</b></details>
+Сравнение моделей данных — в [разделе SQL](#sql).
 
 <details>
 <summary>Когда предпочесть MongoDB или другую NoSQL-СУБД реляционной?</summary><br><b>
@@ -1478,10 +1499,10 @@ func main() {
 </b></details>
 
 <details>
-<summary>Что лучше: вложенные документы или ссылки?</summary><br><b>
+<summary>Что лучше: вложенные документы или ссылки?</summary>
 
-* Зависит от запросов и модели данных. Вложение удобно для совместного чтения и атомарного изменения документа; ссылки уменьшают дублирование и поддерживают независимые сущности.
-</b></details>
+Выбирают по доступу и жизненному циклу данных. Вложение удобно для совместного чтения и атомарной записи одного документа; ссылки — для независимых сущностей, больших/растущих коллекций и связей. Не накапливайте бесконечный массив истории в одном документе: у BSON-документа есть предел 16 MiB, а конкурирующие записи и разрастание документа влияют на работу. [Ограничения MongoDB](https://www.mongodb.com/docs/manual/reference/limits/).
+</details>
 
 <details>
 <summary>Как вы оптимизировали чтение MongoDB? Что можно сделать с медленным запросом?</summary><br><b>
@@ -1505,18 +1526,34 @@ func main() {
 </b></details>
 
 <details>
-<summary>Чем отличаются find() и find_one()?</summary><br><b>
-	
-* `find()` возвращает курсор для документов, соответствующих условию.
-* `find_one()` возвращает один документ или значение отсутствия результата, зависящее от драйвера.
-</b></details>
+<summary>Чем отличаются find() и find_one()?</summary>
+
+В PyMongo `find()` возвращает курсор, а `find_one()` — один документ или None. В mongosh аналог одиночного поиска называется `findOne()`, а не `find_one()`. Если несколько документов подходят, порядок без явной сортировки не гарантирует желаемый бизнес-результат. Синтаксис shell и API драйвера нельзя смешивать.
+</details>
 
 <details>
-<summary>Как экспортировать данные MongoDB?</summary><br><b>
+<summary>Как экспортировать данные MongoDB?</summary>
 
-* `mongoexport`.
-* Программой с использованием драйвера MongoDB.
-</b></details>
+`mongoexport` создаёт JSON/CSV и запускается как отдельная CLI-утилита, а не команда внутри mongosh. Возможен и экспорт через драйвер. Это не полная резервная копия deployment: для backup/restore отдельно выбирают поддерживаемую стратегию, совместимость версий, согласованность при записи и проверяют восстановление. `mongodump`/`mongorestore` могут быть частью такой стратегии, но не отменяют её проектирование. [mongoexport](https://www.mongodb.com/docs/database-tools/mongoexport/), [mongodump](https://www.mongodb.com/docs/database-tools/mongodump/).
+</details>
+
+<details>
+<summary>Является ли атомарность одного документа MongoDB транзакцией над всей коллекцией?</summary>
+
+Нет. Операция над одним документом атомарна, но серия независимых обновлений разных документов не становится атомарной автоматически. Для нужных междокументных инвариантов применяют поддерживаемые transactions на replica set/sharded cluster с корректными sessions и read/write concern. Стоимость транзакций не отменяет необходимость подходящей модели данных. [Transactions](https://www.mongodb.com/docs/manual/core/transactions/).
+</details>
+
+<details>
+<summary>Означает ли чтение MongoDB с secondary, что получено последнее значение?</summary>
+
+Нет. Read preference выбирает узел, read concern — гарантии видимости, write concern — подтверждение записи. Secondary может отставать; majority не следует путать с «всегда самое последнее во всём кластере». Требования causal/read-your-writes задают отдельно с поддерживаемыми sessions и настройками. [Read concern majority](https://www.mongodb.com/docs/manual/reference/read-concern-majority/).
+</details>
+
+<details>
+<summary>Как различать старые CRUD-методы mongo shell и современные примеры?</summary>
+
+Для mongosh используйте insertOne/insertMany, updateOne/updateMany, deleteOne/deleteMany и countDocuments/estimatedDocumentCount по нужной семантике. Старые insert/update/remove/save/count помечены deprecated в mongosh. Оценка количества по метаданным не равна точному подсчёту с фильтром. Сверяйте API драйвера: имена методов и возвращаемые значения отличаются. [Совместимость mongosh](https://www.mongodb.com/docs/mongodb-shell/reference/compatibility/).
+</details>
 
 <a id="sql"></a>
 ## SQL
@@ -1588,34 +1625,42 @@ Customer_ID | Order_ID | Item | Price | Date_sold
 100204 | X202 | Coffee | 20.00 | 2019-04-29
 
 <details>
-<summary>Как выбрать все поля таблицы?</summary><br><b>
+<summary>Как выбрать все поля таблицы?</summary>
 
-Select * <br>
-From Customers;
-</b></details>
-
-<details>
-<summary>Сколько товаров в корзине John Smith?</summary><br><b>
-
-Select Items_in_cart <br>
-From Customers <br>
-Where Customer_Name = "John Smith";
-</b></details>
+```sql
+SELECT *
+FROM Customers;
+```
+</details>
 
 <details>
-<summary>Какова общая сумма расходов всех покупателей?</summary><br><b>
+<summary>Сколько товаров в корзине John Smith?</summary>
 
-Select SUM(Cash_spent_to_Date) as SUM_CASH <br>
-From Customers;
-</b></details>
+```sql
+SELECT Items_in_cart
+FROM Customers
+WHERE Customer_Name = 'John Smith';
+```
+</details>
 
 <details>
-<summary>У скольких покупателей корзина непустая?</summary><br><b>
+<summary>Какова общая сумма расходов всех покупателей?</summary>
 
-Select count(1) as Number_of_People_w_items <br>
-From Customers <br>
-where Items_in_cart > 0;
-</b></details>
+```sql
+SELECT SUM(Cash_spent_to_Date) AS total_cash
+FROM Customers;
+```
+</details>
+
+<details>
+<summary>У скольких покупателей корзина непустая?</summary>
+
+```sql
+SELECT COUNT(*) AS customers_with_items
+FROM Customers
+WHERE Items_in_cart > 0;
+```
+</details>
 
 <details>
 <summary>Как соединить таблицы покупателей и заказов?</summary><br><b>
@@ -1625,37 +1670,34 @@ where Items_in_cart > 0;
 </b></details>
 
 <details>
-<summary>Как показать, кто какие товары заказал?</summary><br><b>
+<summary>Как показать, кто какие товары заказал?</summary>
 
-Select c.Customer_Name, o.Item <br>
-From Customers c <br>
-Left Join Orders o <br>
-  On c.Customer_ID = o.Customer_ID;
+```sql
+SELECT c.Customer_Name, o.Item
+FROM Customers AS c
+LEFT JOIN Orders AS o ON o.Customer_ID = c.Customer_ID;
+```
 
-</b></details>
+LEFT JOIN сохраняет покупателя без заказов: столбцы Orders для него будут NULL. Если нужны только покупатели с заказами, используйте INNER JOIN.
+</details>
 
 <details>
-<summary>Как с помощью WITH показать покупателей кошачьего корма и сумму их покупок корма?</summary><br><b>
+<summary>Как с помощью WITH показать покупателей кошачьего корма и сумму их покупок корма?</summary>
 
-with cat_food as ( <br>
-Select Customer_ID, SUM(Price) as TOTAL_PRICE <br>
-From Orders <br>
-Where Item like "%Cat Food%" <br>
-Group by Customer_ID <br>
-) <br>
-Select Customer_name, TOTAL_PRICE <br>
-From Customers c <br>
-Inner JOIN cat_food f <br>
-  ON c.Customer_ID = f.Customer_ID <br>
-where c.Customer_ID in (Select Customer_ID from cat_food);
+```sql
+WITH cat_food AS (
+    SELECT Customer_ID, SUM(Price) AS total_price
+    FROM Orders
+    WHERE Item LIKE '%Cat Food%'
+    GROUP BY Customer_ID
+)
+SELECT c.Customer_Name, f.total_price
+FROM Customers AS c
+JOIN cat_food AS f ON f.Customer_ID = c.Customer_ID;
+```
 
-Этот пример прост, но WITH особенно полезен,
-когда перед соединением нужна сложная промежуточная выборка.
-CTE задаёт именованный результат в пределах запроса, не требуя создания постоянной таблицы.
-
-Здесь сначала рассчитывается сумма покупок корма по каждому Customer_ID,
-затем результат соединяется с Customers. Фактическая материализация зависит от СУБД и оптимизатора.
-</b></details>
+CTE задаёт именованный результат внутри запроса. Повторный фильтр IN здесь не требуется: INNER JOIN уже оставляет только найденных покупателей. Материализация зависит от СУБД и оптимизатора.
+</details>
 
 <details>
 <summary>Какой из следующих запросов вы бы выбрали?
@@ -1664,8 +1706,8 @@ CTE задаёт именованный результат в пределах �
 SELECT count(*)                             SELECT count(*)
 FROM shawarma_purchases                     FROM shawarma_purchases
 WHERE                               vs.     WHERE
-  YEAR(purchased_at) == '2017'              purchased_at >= '2017-01-01' AND
-                                            purchased_at <= '2017-31-12'
+  YEAR(purchased_at) = 2017              purchased_at >= '2017-01-01' AND
+                                            purchased_at < '2018-01-01'
 ```
 </summary><br><b>
 
@@ -1674,10 +1716,10 @@ SELECT count(*)
 FROM shawarma_purchases
 WHERE
   purchased_at >= '2017-01-01' AND
-  purchased_at <= '2017-31-12'
+  purchased_at < '2018-01-01'
 ```
 
-Применение `YEAR(purchased_at)` может мешать использованию обычного индекса по дате. Сравнение исходного столбца с границами диапазона часто лучше; итог зависит от СУБД, функциональных индексов и плана, а полный просмотр не обязательно охватывает всю БД.
+Здесь `YEAR` — пример синтаксиса MySQL, не переносимый в любую СУБД. У полуинтервала правая граница исключена: это включает весь 31 декабря даже при наличии времени. Применение `YEAR(purchased_at)` может мешать использованию обычного индекса по дате. Сравнение исходного столбца с границами диапазона часто лучше; итог зависит от СУБД, функциональных индексов и плана, а полный просмотр не обязательно охватывает всю БД.
 </b></details>
 
 <a id="openstack"></a>
@@ -1803,10 +1845,10 @@ WHERE
 </b></details>
 
 <details>
-<summary>Что такое TripleO и чем он отличается от DevStack и Packstack?</summary><br><b>
+<summary>Что такое TripleO и чем он отличается от DevStack и Packstack?</summary>
 
-Историческая документация TripleO — [здесь](https://docs.openstack.org/tripleo-docs/latest).
-</b></details>
+TripleO исторически развёртывал OpenStack средствами OpenStack, разделяя undercloud и overcloud. Проект retired, его репозитории архивированы: это материал для сопровождения старых систем, а не актуальный выбор по умолчанию для новой установки. DevStack предназначен для разработки/тестов; Packstack — отдельный способ развёртывания, часто лабораторный. Для нового стенда проверяйте действующий deployment guide выбранного проекта и релиза, например Kolla-Ansible или OpenStack-Ansible. [Архив TripleO](https://github.com/openstack-archive/tripleo-repos), [Kolla-Ansible](https://docs.openstack.org/kolla-ansible/latest/user/quickstart.html).
+</details>
 
 <a id="openstack-compute"></a>
 #### Вычисления OpenStack
@@ -1823,13 +1865,10 @@ WHERE
 </b></details>
 
 <details>
-<summary>Опишите архитектуру Nova.</summary><br><b>
+<summary>Опишите архитектуру Nova.</summary>
 
-* `nova-api` обрабатывает API вычислительного сервиса; метаданные обслуживаются соответствующим API-компонентом.
-* Компоненты используют очередь сообщений, обычно RabbitMQ, и БД.
-* `nova-scheduler` выбирает вычислительный узел для нового экземпляра.
-* `nova-compute` взаимодействует с гипервизором и управляет жизненным циклом экземпляров.
-</b></details>
+Nova API принимает запросы; conductor координирует операции и взаимодействие с БД; scheduler выбирает размещение, используя информацию Placement о ресурсах/allocations. `nova-compute` управляет гипервизором и экземплярами. Cells v2 разделяют масштабируемую инфраструктуру на области с собственными БД и messaging; это не просто одна общая БД для всех compute. Каталог Keystone, Neutron, Glance и Cinder участвуют в соответствующих этапах, но являются отдельными сервисами. [Архитектура Nova](https://docs.openstack.org/nova/latest/admin/architecture.html).
+</details>
 
 <a id="openstack-networking-neutron"></a>
 #### Сети OpenStack: Neutron
@@ -1936,14 +1975,10 @@ Modular Layer 2 позволяет сочетать разные сетевые 
 </b></details>
 
 <details>
-<summary>Как диагностировать сеть OpenStack?</summary><br><b>
-Полезны следующие средства:
-* Журналы Neutron, например `neutron-server.log`, `openvswitch-agent.log`, `l3-agent.log` в `/var/log/neutron/`.
-* CLI OpenStack/Neutron для проверки сетей, подсетей, портов и маршрутизаторов.
-* `ip netns` для просмотра изолированных сетевых стеков.
-* `ovs-vsctl` и `ovs-ofctl` для конфигурации мостов и таблиц потоков OVS.
-* `tcpdump` для отслеживания пакетов на разных участках пути.
-</b></details>
+<summary>Как диагностировать сеть OpenStack?</summary>
+
+Сначала определите backend и путь трафика. Проверьте сети, subnet/port, port binding, security groups, DHCP, router/floating IP, MTU и физическую достижимость. Для ML2/OVS полезны агенты, namespace и OVS flows; для OVN — northbound/southbound DB, chassis и ovn-controller. Не искать отсутствующий neutron-l3-agent в любой установке: OVN реализует функции иначе. Журналы зависят от развёртывания и могут быть в контейнерах. tcpdump и журналы собирайте на конкретных участках без изменения состояния БД вслепую. [Neutron OVN](https://docs.openstack.org/neutron/latest/index.html).
+</details>
 
 <a id="openstack---glance"></a>
 #### OpenStack - Glance
@@ -2073,6 +2108,8 @@ Modular Layer 2 позволяет сочетать разные сетевые 
 <a id="openstack-advanced---services"></a>
 #### OpenStack: дополнительные сервисы
 
+Сверяйте статус каждого проекта с выбранным релизом. Например, [Sahara архивирован](https://github.com/openstack-archive/sahara); историческое название в вопросе не означает действующего сопровождения.
+
 <details>
 <summary>Опишите назначение сервисов:
 
@@ -2085,7 +2122,7 @@ Modular Layer 2 позволяет сочетать разные сетевые 
 </summary><br><b>
 
   * Swift — распределённое объектное хранилище с высокой доступностью и eventual consistency.
-  * Sahara — управление кластерами обработки данных, включая Hadoop.
+  * Sahara — исторический сервис управления кластерами обработки данных; проект retired и архивирован.
   * Ironic — развёртывание на физическом оборудовании.
   * Trove — базы данных как сервис.
   * Aodh — сервис сигналов и оповещений.
@@ -2107,8 +2144,7 @@ Modular Layer 2 позволяет сочетать разные сетевые 
   * Физическое оборудование — Ironic.
   * Данные об использовании — Ceilometer.
   * Сигналы и оповещения — Aodh.
-  * Управление кластерами Hadoop.
-  * Кластеры Hadoop — Sahara.
+  * Кластеры Hadoop — исторически Sahara; проект retired, не текущая рекомендация для новых установок.
   * Объектное хранилище — Swift.
 </b></details>
 
@@ -2126,21 +2162,10 @@ Modular Layer 2 позволяет сочетать разные сетевые 
 </b></details>
 
 <details>
-<summary>Опишите архитектуру Keystone.</summary><br><b>
+<summary>Опишите архитектуру Keystone.</summary>
 
-* Запросы поступают через API; разделение service/admin API в исходнике отражает историческую архитектуру.
-* Среди подсистем:
-  * Token — выдача и проверка временных токенов.
-  * Policy — интерфейсы политик в соответствующей версии.
-  * Identity — пользователи и группы, например в SQL или LDAP.
-  * Catalog — каталог endpoints.
-* В исходнике перечислены разные исторические способы интеграции и хранения; их поддержка зависит от компонента и версии:
-    * LDAP
-    * KVS — хранилище ключ–значение.
-    * SQL
-    * PAM
-    * Memcached
-</b></details>
+Identity API v3 управляет пользователями/группами, назначениями ролей, projects/domains, каталогом и токенами. Backend identity, например SQL/LDAP, и каталог/назначения — разные подсистемы. В современных схемах распространены Fernet tokens: сами токены не требуют хранения в БД, но ключи нужно безопасно ротировать и согласованно доставлять нужным Keystone-узлам. Устаревшие KVS/PAM/token backend из исходника не являются универсальным списком актуальных драйверов. [Token overview](https://docs.openstack.org/keystone/latest/admin/tokens-overview.html).
+</details>
 
 <details>
 <summary>Как проходит аутентификация Keystone?</summary><br><b>

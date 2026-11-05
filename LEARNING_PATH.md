@@ -4,7 +4,7 @@
 
 | Этап | Материал | Проверяемый результат |
 |---|---|---|
-| Основа | [Linux](topics/linux/README.md), [Bash](topics/shell/README.md), [Git](topics/git/README.md), [DNS](topics/dns/README.md) | Найти причину отказа процесса, разобрать права/порты/DNS, восстановить изменение через Git |
+| Основа | [Linux](topics/linux/README.md), [Bash](topics/shell/README.md), [Git](topics/git/README.md), [DNS](topics/dns/README.md), [CIDR-практика](topics/network/exercises/cidr/exercise.md) | Найти причину отказа процесса, разобрать права/порты/DNS, восстановить изменение через Git |
 | Доставка приложения | [Контейнеры](topics/containers/README.md), [CI/CD](topics/cicd/README.md), [Flask](topics/flask_container_ci/README.md) | Собрать воспроизводимый артефакт и обнаружить регрессию тестами |
 | Инфраструктура | [Kubernetes](topics/kubernetes/README.md), [Terraform](topics/terraform/README.md), [Ansible](topics/ansible/README.md) | Объяснить diff/plan, развернуть в учебной среде и проверить rollout/restore |
 | Эксплуатация | [SRE](topics/sre/README.md), [наблюдаемость](topics/observability/README.md), [Grafana](topics/grafana/README.md) | Определить пользовательское SLO, обнаружить сбой и проверить восстановление |
@@ -56,3 +56,5 @@ python scripts/random_question.py --topic gitops --once --show-answer --seed 42
 ```
 
 По умолчанию вопросы выбираются из всех разделов. Для главного README задайте `--topic main`; команда работает из любого текущего каталога. `--once` удобен для одной короткой проверки, а фиксированный seed воспроизводит выбор при неизменном содержимом.
+
+Дополнительная практика без облака: [IPv4 CIDR](topics/network/exercises/cidr/exercise.md), [схема доски сообщений](topics/databases/solutions/table_for_message_board_system.md) и [границы SQL-дат](topics/sql/improve_query.md). SQL-тесты выполняют запросы из README и проверяют ошибки целостности на SQLite in-memory; это не замена проверке своей production-СУБД.
