@@ -1,158 +1,168 @@
+<a id="kubernetes"></a>
 # Kubernetes
 
 <!-- {% raw %} -->
 
-What's your goal?
+Какова ваша цель?
 
-* I would like to prepare for CKA certification
-  * See [CKA](CKA.md) page
-* I would like to learn Kubernetes by practicing both theoritcal and practical material
-  * Solve [exercises](#kubernetes-exercises)
-  * Solve [questions](#kubernetes-questions)
-* I would like to learn practical Kubernetes
-  * Solve [exercises](#kubernetes-exercises)
+* Подготовиться к сертификации CKA.
+  * Откройте страницу [CKA](CKA.md).
+* Изучить Kubernetes, сочетая теорию и практику.
+  * Выполняйте [упражнения](#kubernetes-exercises).
+  * Отвечайте на [вопросы](#kubernetes-questions).
+* Освоить Kubernetes на практике.
+  * Выполняйте [упражнения](#kubernetes-exercises).
 
 - [Kubernetes](#kubernetes)
-  - [Kubernetes Exercises](#kubernetes-exercises)
-    - [Pods](#pods)
+  - [Упражнения Kubernetes](#kubernetes-exercises)
+    - [Поды](#pods)
     - [Service](#service)
     - [ReplicaSet](#replicaset)
-    - [Labels and Selectors](#labels-and-selectors)
-    - [Scheduler](#scheduler)
+    - [Метки и селекторы](#labels-and-selectors)
+    - [Планировщик](#scheduler)
     - [Kustomize](#kustomize)
-  - [Kubernetes Questions](#kubernetes-questions)
-    - [Kubernetes 101](#kubernetes-101)
-    - [Cluster and Architecture](#cluster-and-architecture)
+  - [Вопросы Kubernetes](#kubernetes-questions)
+    - [Основы Kubernetes](#kubernetes-101)
+    - [Кластер и архитектура](#cluster-and-architecture)
       - [Kubelet](#kubelet)
-      - [Nodes Commands](#nodes-commands)
-    - [Pods](#pods-1)
-      - [Static Pods](#static-pods)
-      - [Pods Commands](#pods-commands)
-      - [Pods Troubleshooting and Debugging](#pods-troubleshooting-and-debugging)
-    - [Labels and Selectors](#labels-and-selectors-1)
+      - [Команды для узлов](#nodes-commands)
+    - [Поды](#pods-1)
+      - [Статические поды](#static-pods)
+      - [Команды для подов](#pods-commands)
+      - [Диагностика подов](#pods-troubleshooting-and-debugging)
+    - [Метки и селекторы](#labels-and-selectors-1)
     - [Deployments](#deployments)
-      - [Deployments Commands](#deployments-commands)
+      - [Команды для Deployment](#deployments-commands)
     - [Services](#services)
     - [Ingress](#ingress)
     - [ReplicaSets](#replicasets)
     - [DaemonSet](#daemonset)
-      - [DaemonSet - Commands](#daemonset---commands)
+      - [Команды для DaemonSet](#daemonset---commands)
     - [StatefulSet](#statefulset)
-    - [Storage](#storage)
-      - [Volumes](#volumes)
-    - [Networking](#networking)
-    - [Network Policies](#network-policies)
+    - [Хранение данных](#storage)
+      - [Тома](#volumes)
+    - [Сеть](#networking)
+    - [Сетевые политики](#network-policies)
     - [etcd](#etcd)
-    - [Namespaces](#namespaces)
-      - [Namespaces - commands](#namespaces---commands)
-      - [Resources Quota](#resources-quota)
-    - [Operators](#operators)
-    - [Secrets](#secrets)
-    - [Volumes](#volumes-1)
-    - [Access Control](#access-control)
-    - [Patterns](#patterns)
+    - [Пространства имён](#namespaces)
+      - [Команды для namespace](#namespaces---commands)
+      - [Квоты ресурсов](#resources-quota)
+    - [Операторы](#operators)
+    - [Секреты](#secrets)
+    - [Тома](#volumes-1)
+    - [Управление доступом](#access-control)
+    - [Паттерны](#patterns)
     - [CronJob](#cronjob)
-    - [Misc](#misc)
+    - [Разное](#misc)
     - [Gatekeeper](#gatekeeper)
-    - [Policy Testing](#policy-testing)
+    - [Проверка политик](#policy-testing)
     - [Helm](#helm)
-      - [Commands](#commands)
-    - [Security](#security)
-    - [Troubleshooting Scenarios](#troubleshooting-scenarios)
+      - [Команды](#commands)
+    - [Безопасность](#security)
+    - [Сценарии диагностики](#troubleshooting-scenarios)
     - [Istio](#istio)
-    - [Controllers](#controllers)
-    - [Scheduler](#scheduler-1)
-      - [Node Affinity](#node-affinity)
-    - [Taints](#taints)
-    - [Resource Limits](#resource-limits)
-      - [Resources Limits - Commands](#resources-limits---commands)
-    - [Monitoring](#monitoring)
+    - [Контроллеры](#controllers)
+    - [Планировщик](#scheduler-1)
+      - [Привязка к узлам](#node-affinity)
+    - [Ограничения taint](#taints)
+    - [Лимиты ресурсов](#resource-limits)
+      - [Команды для лимитов ресурсов](#resources-limits---commands)
+    - [Мониторинг](#monitoring)
     - [Kustomize](#kustomize-1)
-    - [Deployment Strategies](#deployment-strategies)
-    - [Scenarios](#scenarios)
+    - [Стратегии развёртывания](#deployment-strategies)
+    - [Практические ситуации](#scenarios)
 
-## Kubernetes Exercises
+<a id="kubernetes-exercises"></a>
+## Упражнения Kubernetes
 
-### Pods
+<a id="pods"></a>
+### Поды
 
-|Name|Topic|Objective & Instructions|Solution|Comments|
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
-| My First Pod | Pods | [Exercise](pods_01.md) | [Solution](solutions/pods_01_solution.md)
-| "Killing" Containers | Pods | [Exercise](killing_containers.md) | [Solution](solutions/killing_containers.md)
+|Мой первый под|Поды|[Задание](pods_01.md)|[Решение](solutions/pods_01_solution.md)
+|Завершение контейнеров|Поды|[Задание](killing_containers.md)|[Решение](solutions/killing_containers.md)
 
+<a id="service"></a>
 ### Service
 
-|Name|Topic|Objective & Instructions|Solution|Comments|
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
-| Creating a Service | Service | [Exercise](services_01.md) | [Solution](solutions/services_01_solution.md)
+|Создание Service|Service|[Задание](services_01.md)|[Решение](solutions/services_01_solution.md)
 
+<a id="replicaset"></a>
 ### ReplicaSet
 
-|Name|Topic|Objective & Instructions|Solution|Comments|
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
-| Creating a ReplicaSet | ReplicaSet | [Exercise](replicaset_01.md) | [Solution](solutions/replicaset_01_solution.md)
-| Operating ReplicaSets | ReplicaSet | [Exercise](replicaset_02.md) | [Solution](solutions/replicaset_02_solution.md)
-| ReplicaSets Selectors | ReplicaSet | [Exercise](replicaset_03.md) | [Solution](solutions/replicaset_03_solution.md)
+|Создание ReplicaSet|ReplicaSet|[Задание](replicaset_01.md)|[Решение](solutions/replicaset_01_solution.md)
+|Управление ReplicaSet|ReplicaSet|[Задание](replicaset_02.md)|[Решение](solutions/replicaset_02_solution.md)
+|Селекторы ReplicaSet|ReplicaSet|[Задание](replicaset_03.md)|[Решение](solutions/replicaset_03_solution.md)
 
-### Labels and Selectors
+<a id="labels-and-selectors"></a>
+### Метки и селекторы
 
-|Name|Topic|Objective & Instructions|Solution|Comments|
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
-| Labels and Selectors 101 | Labels, Selectors | [Exercise](exercises/labels_and_selectors/exercise.md) | [Solution](exercises/labels_and_selectors/solution.md)
-| Node Selectors | Labels, Selectors | [Exercise](exercises/node_selectors/exercise.md) | [Solution](exercises/node_selectors/solution.md)
+|Основы меток и селекторов|Labels, Selectors|[Задание](exercises/labels_and_selectors/exercise.md)|[Решение](exercises/labels_and_selectors/solution.md)
+|Селекторы узлов|Labels, Selectors|[Задание](exercises/node_selectors/exercise.md)|[Решение](exercises/node_selectors/solution.md)
 
 
-### Scheduler
+<a id="scheduler"></a>
+### Планировщик
 
-|Name|Topic|Objective & Instructions|Solution|Comments|
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
-| Taints 101 | Taints | [Exercise](exercises/taints_101/exercise.md) | [Solution](exercises/taints_101/solution.md)
+|Основы taints|Ограничения taint|[Задание](exercises/taints_101/exercise.md)|[Решение](exercises/taints_101/solution.md)
 
+<a id="kustomize"></a>
 ### Kustomize
 
-|Name|Topic|Objective & Instructions|Solution|Comments|
+|Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
-| common labels | Kustomize | [Exercise](exercises/kustomize_common_labels/exercise.md) | [Solution](exercises/kustomize_common_labels/solution.md)
+|Общие метки|Kustomize|[Задание](exercises/kustomize_common_labels/exercise.md)|[Решение](exercises/kustomize_common_labels/solution.md)
 
-## Kubernetes Questions
+<a id="kubernetes-questions"></a>
+## Вопросы Kubernetes
 
-### Kubernetes 101
+<a id="kubernetes-101"></a>
+### Основы Kubernetes
 
 <details>
-<summary>What is Kubernetes? Why organizations are using it?</summary><br><b>
+<summary>Что такое Kubernetes? Зачем его используют организации?</summary><br><b>
 
-Kubernetes is an open-source system that provides users with the ability to manage, scale and deploy containerized applications.
+Открытая система развёртывания, масштабирования и управления контейнерными приложениями.
 
-To understand what Kubernetes is good for, let's look at some examples:
+Примеры задач:
 
-* You would like to run a certain application in a container on multiple different locations and sync changes across all of them, no matter where they run
-* Performing updates and changes across hundreds of containers
-* Handle cases where the current load requires to scale up (or down)
+* Запуск приложения в контейнерах на разных узлах и согласованное применение изменений.
+* Обновление сотен контейнеров.
+* Увеличение или уменьшение числа экземпляров в зависимости от нагрузки.
 
 </b></details>
 
 <details>
-<summary>When or why NOT to use Kubernetes?</summary><br><b>
+<summary>Когда Kubernetes может быть не нужен?</summary><br><b>
 
-  - If you manage low level infrastructure or baremetals, Kubernetes is probably not what you need or want
-  - If you are a small team (like less than 20 engineers) running less than a dozen of containers, Kubernetes might be an overkill (even if you need scale, rolling out updates, etc.). You might still enjoy the benefits of using managed Kubernetes, but you definitely want to think about it carefully before making a decision on whether to adopt it.
-
-</b></details>
-
-<details>
-<summary>What are some of Kubernetes features?</summary><br><b>
-
-  - Self-Healing: Kubernetes uses health checks to monitor containers and run certain actions upon failure or other type of events, like restarting the container
-  - Load Balancing: Kubernetes can split and/or balance requests to applications running in the cluster, based on the state of the Pods running the application
-  - Operators: Kubernetes packaged applications that can use the API of the cluster to update its state and trigger actions based on events and application state changes
-  - Automated Rollout: Gradual updates roll out to applications and support in roll back in case anything goes wrong
-  - Scaling: Scaling horizontally (down and up) based on different state parameters and custom defined criteria
-  - Secrets: you have a mechanism for storing user names, passwords and service endpoints in a private way, where not everyone using the cluster are able to view it
+  - Если задача — только управление физическими серверами или низкоуровневой инфраструктурой, Kubernetes сам по себе её не решает.
+  - Для небольшой команды и малого числа контейнеров его сложность может быть избыточной. Управляемый сервис снижает нагрузку на эксплуатацию, но решение нужно принимать по требованиям, а не по произвольному числу инженеров.
 
 </b></details>
 
 <details>
-<summary>What Kubernetes objects are there?</summary><br><b>
+<summary>Какие возможности есть у Kubernetes?</summary><br><b>
+
+  - Самовосстановление: проверки состояния и действия при сбоях, например перезапуск контейнера.
+  - Балансировка трафика между подходящими подами приложения.
+  - Операторы: автоматизация управления приложениями через API и реакции на изменения состояния.
+  - Постепенное развёртывание обновлений и возможность отката.
+  - Горизонтальное масштабирование по показателям и заданным правилам.
+  - Secrets: механизм передачи чувствительных данных с контролем доступа. Сам объект Secret не гарантирует шифрование хранения.
+
+</b></details>
+
+<details>
+<summary>Какие объекты Kubernetes вы знаете?</summary><br><b>
 
   * Pod
   * Service
@@ -165,109 +175,110 @@ To understand what Kubernetes is good for, let's look at some examples:
 </b></details>
 
 <details>
-<summary>What fields are mandatory with any Kubernetes object?</summary><br><b>
+<summary>Какие поля нужны в манифесте объекта Kubernetes?</summary><br><b>
 
-metadata, kind and apiVersion
-
-</b></details>
-
-<details>
-<summary>What is kubectl?</summary><br><b>
-
-Kubectl is the Kubernetes command line tool that allows you to run commands against Kubernetes clusters. For example, you can use kubectl to deploy applications, inspect and manage cluster resources, and view logs.
+`apiVersion`, `kind`, `metadata`; остальные обязательные поля зависят от типа объекта.
 
 </b></details>
 
 <details>
-<summary>What Kubernetes objects do you usually use when deploying applications in Kubernetes?</summary><br><b>
+<summary>Что такое kubectl?</summary><br><b>
 
-* Deployment - creates the Pods () and watches them
-* Service: route traffic to Pods internally
-* Ingress: route traffic from outside the cluster
+CLI Kubernetes для работы с кластером: развёртывания приложений, просмотра и управления ресурсами, чтения журналов.
 
 </b></details>
 
 <details>
-<summary>Why there is no such command in Kubernetes? <code>kubectl get containers</code></summary><br><b>
+<summary>Какие объекты обычно нужны для развёртывания приложения?</summary><br><b>
 
-Becaused container is not a Kubernetes object. The smallest object unit in Kubernetes is a Pod. In a single Pod you can find one or more containers.
-
-</b></details>
-
-<details>
-<summary>What actions or operations you consider as best practices when it comes to Kubernetes?</summary><br><b>
-
-  - Always make sure Kubernetes YAML files are valid. Applying automated checks and pipelines is recommended.
-  - Always specify requests and limits to prevent situation where containers are using the entire cluster memory which may lead to OOM issue
-  - Specify labels to logically group Pods, Deployments, etc. Use labels to identify the type of the application for example, among other things
-
-</b></details>
-
-### Cluster and Architecture
-
-<details>
-<summary>What is a Kubernetes Cluster?</summary><br><b>
-
-Red Hat Definition: "A Kubernetes cluster is a set of node machines for running containerized applications. If you’re running Kubernetes, you’re running a cluster.
-At a minimum, a cluster contains a worker node and a master node."
-
-Read more [here](https://www.redhat.com/en/topics/containers/what-is-a-kubernetes-cluster)
-</b></details>
-
-<details>
-<summary>What is a Node?</summary><br><b>
-
-A node is a virtual or a physical machine that serves as a worker for running the applications.<br>
-It's recommended to have at least 3 nodes in a production environment.
-</b></details>
-
-<details>
-<summary>What the master node is responsible for?</summary><br><b>
-
-The master coordinates all the workflows in the cluster:
-
-* Scheduling applications
-* Managing desired state
-* Rolling out new updates
+* Deployment — управляет ReplicaSet и через него подами.
+* Service — обеспечивает стабильный доступ и направление трафика к подам.
+* Ingress — правила входящего HTTP(S)-трафика, реализуемые Ingress-контроллером.
 
 </b></details>
 
 <details>
-<summary>Describe shortly and in high-level, what happens when you run <code>kubectl get nodes</code></summary><br><b>
+<summary>Почему нет команды <code>kubectl get containers</code>?</summary><br><b>
 
-1. Your user is getting authenticated
-2. Request is validated by the kube-apiserver
-3. Data is retrieved from etcd
+Контейнер не является самостоятельным API-объектом Kubernetes. Единица запуска — Pod, содержащий один или несколько контейнеров.
+
 </b></details>
 
 <details>
-<summary>True or False? Every cluster must have 0 or more master nodes and at least 1 worker</summary><br><b>
+<summary>Каких рекомендаций по Kubernetes вы придерживаетесь?</summary><br><b>
 
-False. A Kubernetes cluster consists of at least 1 master and can have 0 workers (although that wouldn't be very useful...)
+  - Проверяйте манифесты YAML автоматически в конвейере.
+  - Настраивайте requests и limits по потребностям приложения, чтобы управлять размещением и потреблением ресурсов.
+  - Используйте метки для группировки и идентификации подов, Deployment и других объектов.
+
+</b></details>
+
+<a id="cluster-and-architecture"></a>
+### Кластер и архитектура
+
+<details>
+<summary>Что такое кластер Kubernetes?</summary><br><b>
+
+По определению Red Hat, это набор узлов для запуска контейнерных приложений.
+Он содержит компоненты управления и вычислительные узлы; в небольшом кластере роли могут совмещаться на одной машине.
+
+Подробнее — [здесь](https://www.redhat.com/en/topics/containers/what-is-a-kubernetes-cluster).
+</b></details>
+
+<details>
+<summary>Что такое узел (Node)?</summary><br><b>
+
+Физическая или виртуальная машина, предоставляющая ресурсы для запуска подов.<br>
+Число узлов рабочей среды выбирают по нагрузке и требованиям отказоустойчивости. Исходник рекомендует минимум три, но это не универсальное требование.
+</b></details>
+
+<details>
+<summary>За что отвечает управляющий узел?</summary><br><b>
+
+Компоненты управления координируют работу кластера:
+
+* Планирование размещения приложений.
+* Поддержание желаемого состояния.
+* Развёртывание обновлений.
+
+</b></details>
+
+<details>
+<summary>Что в общих чертах происходит при <code>kubectl get nodes</code>?</summary><br><b>
+
+1. Запрос аутентифицируется.
+2. API-сервер проверяет права и обрабатывает запрос.
+3. Возвращаются сведения об узлах из состояния кластера, хранимого в etcd; возможна выдача через кеш API-сервера.
+</b></details>
+
+<details>
+<summary>Верно ли, что кластер может иметь ноль управляющих узлов, но обязан иметь хотя бы один рабочий?</summary><br><b>
+
+Неверно. Для работы необходим control plane. Выделенных рабочих узлов может не быть, например при совмещении ролей.
 
 </b></details> 
 
 <details>
-<summary>What are the components of the master node (aka control plane)?</summary><br><b>
+<summary>Какие компоненты входят в control plane?</summary><br><b>
 
-  * API Server - the Kubernetes API. All cluster components communicate through it
-  * Scheduler - assigns an application with a worker node it can run on
-  * Controller Manager - cluster maintenance (replications, node failures, etc.)
-  * etcd - stores cluster configuration
-
-</b></details>
-
-<details>
-<summary>What are the components of a worker node (aka data plane)?</summary><br><b>
-
-  * Kubelet - an agent responsible for node communication with the master.
-  * Kube-proxy - load balancing traffic between app components
-  * Container runtime - the engine runs the containers (Podman, Docker, ...)
+  * API Server — API Kubernetes, через который взаимодействуют компоненты.
+  * Scheduler — выбирает узел для ещё не назначенного пода.
+  * Controller Manager — контроллеры состояния кластера: реплики, узлы и другие ресурсы.
+  * etcd — хранилище состояния и конфигурации кластера.
 
 </b></details>
 
 <details>
-<summary>Place the components on the right side of the image in the right place in the drawing<br>
+<summary>Какие компоненты работают на рабочем узле?</summary><br><b>
+
+  * Kubelet — агент управления подами узла и взаимодействия с API-сервером.
+  * Kube-proxy — реализация сетевых правил Service; в некоторых сетевых решениях заменяется другим механизмом.
+  * Контейнерная среда выполнения с интерфейсом CRI, например containerd или CRI-O. Уточнение: Podman и Docker не являются прямой заменой CRI-runtime без дополнительной интеграции.
+
+</b></details>
+
+<details>
+<summary>Разместите компоненты справа в соответствующих местах схемы.<br>
 <img src="images/cluster_architecture_exercise.png"/>
 </summary><br><b>
 <img src="images/cluster_architecture_solution.png"/>
@@ -275,183 +286,186 @@ False. A Kubernetes cluster consists of at least 1 master and can have 0 workers
 </b></details>
 
 <details>
-<summary>You are managing multiple Kubernetes clusters. How do you quickly change between the clusters using kubectl?</summary><br><b>
+<summary>Как быстро переключать kubectl между несколькими кластерами?</summary><br><b>
 
 `kubectl config use-context`
 </b></details>
 
 <details>
-<summary>How do you prevent high memory usage in your Kubernetes cluster and possibly issues like memory leak and OOM?</summary><br><b>
+<summary>Как ограничить высокое потребление памяти и риск OOM в кластере?</summary><br><b>
 
-Apply requests and limits, especially on third party applications (where the uncertainty is even bigger)
+Настроить requests и limits, особенно для сторонних приложений. Это ограничивает потребление, но не устраняет сами утечки памяти.
 </b></details>
 
 <details>
-<summary>Do you have experience with deploying a Kubernetes cluster? If so, can you describe the process in high-level?</summary><br><b>
+<summary>Есть ли у вас опыт развёртывания Kubernetes? Опишите основные шаги.</summary><br><b>
 
-1. Create multiple instances you will use as Kubernetes nodes/workers. Create also an instance to act as the Master. The instances can be provisioned in a cloud or they can be virtual machines on bare metal hosts.
-2. Provision a certificate authority that will be used to generate TLS certificates for the different components of a Kubernetes cluster (kubelet, etcd, ...)
-  1. Generate a certificate and private key for the different components
-3. Generate kubeconfigs so the different clients of Kubernetes can locate the API servers and authenticate.
-4. Generate encryption key that will be used for encrypting the cluster data
-5. Create an etcd cluster
+1. Подготовить управляющие и рабочие узлы: облачные экземпляры, виртуальные или физические машины.
+2. Настроить центр сертификации для TLS-сертификатов компонентов, включая kubelet и etcd.
+   1. Создать соответствующие сертификаты и закрытые ключи.
+3. Подготовить kubeconfig с адресами API-серверов и данными аутентификации.
+4. Подготовить ключ и настройки шифрования сохраняемых данных.
+5. Развернуть etcd. Это начало ручного процесса, а не полный перечень установки кластера.
 </b></details>
 
 <details>
-<summary>Which command will list all the object types in a cluster?</summary><br><b>
+<summary>Какая команда выводит доступные типы API-ресурсов?</summary><br><b>
 
 `kubectl api-resources`
 </b></details>
 
 <details>
-<summary>What <code>kubectl get componentstatus</code> does?</summary><br><b>
+<summary>Что делает kubectl get componentstatus?</summary><br><b>
 
-Outputs the status of each of the control plane components.
+Исторически выводит состояние компонентов control plane. API ComponentStatus устарел, поэтому не следует считать его надёжной полной проверкой современного кластера.
 </b></details>
 
+<a id="kubelet"></a>
 #### Kubelet
 
 <details>
-<summary>What happens to running pods if if you stop Kubelet on the worker nodes?</summary><br><b>
+<summary>Что будет с подами, если остановить kubelet на рабочем узле?</summary><br><b>
 
-When you stop the kubelet service on a worker node, it will no longer be able to communicate with the Kubernetes API server. As a result, the node will be marked as NotReady and the pods running on that node will be marked as Unknown. The Kubernetes control plane will then attempt to reschedule the pods to other available nodes in the cluster. 
+Уже запущенные контейнеры могут продолжать работать, но kubelet перестанет управлять ими и отправлять состояние. После тайм-аутов узел признаётся недоступным; контроллеры могут создать заменяющие поды на других узлах. Поды не «переезжают»: создаются новые объекты, а поведение зависит от контроллеров и tolerations.
 </b></details>
 
-#### Nodes Commands
+<a id="nodes-commands"></a>
+#### Команды для узлов
 
 <details>
-<summary>Run a command to view all nodes of the cluster</summary><br><b>
+<summary>Выведите все узлы кластера.</summary><br><b>
 
 `kubectl get nodes`
 
-Note: You might want to create an alias (`alias k=kubectl`) and get used to `k get no`
+Можно создать псевдоним `alias k=kubectl` и использовать `k get no`.
 </b></details>
 
 <details>
-<summary>Create a list of all nodes in JSON format and store it in a file called "some_nodes.json"</summary><br><b>
+<summary>Сохраните список узлов в JSON-файл some_nodes.json.</summary><br><b>
 
 `k get nodes -o json > some_nodes.json`
 </b></details>
 
 <details>
-<summary>Check what labels one of your nodes in the cluster has</summary><br><b>
+<summary>Посмотрите метки одного из узлов.</summary><br><b>
 
 `k get no minikube --show-labels`
 </b></details>
 
-### Pods
+<a id="pods-1"></a>
+### Поды
 
 <details>
-<summary>Explain what is a Pod</summary><br><b>
+<summary>Что такое Pod?</summary><br><b>
 
-A Pod is a group of one or more containers, with shared storage and network resources, and a specification for how to run the containers.
+Группа одного или нескольких контейнеров с общими сетевыми ресурсами, подключаемыми томами и спецификацией запуска.
 
-Pods are the smallest deployable units of computing that you can create and manage in Kubernetes. 
+Pod — минимальная единица развёртывания вычислительной нагрузки Kubernetes.
 
 </b></details>
 
 <details>
-<summary>Deploy a pod called "my-pod" using the nginx:alpine image</summary><br><b>
+<summary>Запустите под my-pod из nginx:alpine.</summary><br><b>
 
 `kubectl run my-pod --image=nginx:alpine`
 
-If you are a Kubernetes beginner you should know that this is not a common way to run Pods. The common way is to run a Deployment which in turn runs Pod(s).
+На практике поды обычно создаёт контроллер, например Deployment, а не пользователь напрямую.
 
-In addition, Pods and/or Deployments are usually defined in files rather than executed directly using only the CLI arguments.
+Конфигурации подов и Deployment обычно хранят в манифестах, а не только в аргументах CLI.
 </b></details>
 
 <details>
-<summary>What are your thoughts on "Pods are not meant to be created directly"?</summary><br><b>
+<summary>Как вы понимаете фразу «поды не следует создавать напрямую»?</summary><br><b>
 
-Pods are usually indeed not created directly. You'll notice that Pods are usually created as part of another entities such as Deployments or ReplicaSets.
+Обычно ими управляют Deployment, ReplicaSet и другие контроллеры.
 
-If a Pod dies, Kubernetes will not bring it back. This is why it's more useful for example to define ReplicaSets that will make sure that a given number of Pods will always run, even after a certain Pod dies.
+Самостоятельный под после удаления не восстанавливается контроллером. ReplicaSet, напротив, создаёт замену для поддержания заданного числа реплик. Это отличается от перезапуска контейнера внутри существующего пода.
 </b></details>
 
 <details>
-<summary>How many containers can a pod contain?</summary><br><b>
+<summary>Сколько контейнеров может быть в поде?</summary><br><b>
 
-A pod can include multiple containers but in most cases it would probably be one container per pod.
+Несколько, хотя распространён вариант с одним основным контейнером приложения.
 
-There are some patterns where it makes to run more than one container like the "side-car" pattern where you might want to perform logging or some other operation that is executed by another container running with your app container in the same Pod.
+Например, паттерн sidecar добавляет вспомогательный контейнер для журналирования или другой тесно связанной задачи.
 </b></details>
 
 <details>
-<summary>What use cases exist for running multiple containers in a single pod?</summary><br><b>
+<summary>Когда нужны несколько контейнеров в одном поде?</summary><br><b>
 
-A web application with separate (= in their own containers) logging and monitoring components/adapters is one examples.<br>
-A CI/CD pipeline (using Tekton for example) can run multiple containers in one Pod if a Task contains multiple commands.
+Например, приложение и отдельные вспомогательные компоненты сбора журналов или мониторинга.<br>
+В CI/CD, например Tekton, шаги одной задачи могут выполняться разными контейнерами одного пода.
 </b></details>
 
 <details>
-<summary>What are the possible Pod phases?</summary><br><b>
+<summary>Какие фазы Pod существуют?</summary><br><b>
 
-  * Running - The Pod bound to a node and at least one container is running
-  * Failed/Error - At least one container in the Pod terminated with a failure
-  * Succeeded - Every container in the Pod terminated with success
-  * Unknown - Pod's state could not be obtained
-  * Pending - Containers are not yet running (Perhaps images are still being downloaded or the pod wasn't scheduled yet)
+  * Running — под назначен узлу, контейнеры созданы; хотя бы один работает, запускается или перезапускается.
+  * Failed — все контейнеры завершены и хотя бы один завершился неуспешно. `Error` не является отдельной фазой Pod.
+  * Succeeded — все контейнеры успешно завершились и не будут перезапускаться.
+  * Unknown — состояние пода определить не удалось.
+  * Pending — под принят, но подготовка ещё не завершена: например, ожидается назначение узла или скачивание образа.
 </b></details>
 
 <details>
-<summary>True or False? By default, pods are isolated. This means they are unable to receive traffic from any source</summary><br><b>
+<summary>Верно ли, что поды по умолчанию изолированы от любого входящего трафика?</summary><br><b>
 
-False. By default, pods are non-isolated = pods accept traffic from any source.
+Неверно. В модели NetworkPolicy под по умолчанию не изолирован, пока подходящая политика не задаёт изоляцию.
 </b></details>
 
 <details>
-<summary>True or False? The "Pending" phase means the Pod was not yet accepted by the Kubernetes cluster so the scheduler can't run it unless it's accepted</summary><br><b>
+<summary>Верно ли, что Pending означает, что кластер ещё не принял под?</summary><br><b>
 
-False. "Pending" is after the Pod was accepted by the cluster, but the container can't run for different reasons like images not yet downloaded.
+Неверно. Под уже принят, но запуск ещё не завершён, например из-за скачивания образа или ожидания планирования.
 </b></details>
 
 <details>
-<summary>True or False? A single Pod can be split across multiple nodes</summary><br><b>
+<summary>Верно ли, что контейнеры одного пода могут работать на разных узлах?</summary><br><b>
 
-False. A single Pod can run on a single node.
+Неверно. Один под размещается на одном узле.
 </b></details>
 
 <details>
-<summary>You run a pod and you see the status <code>ContainerCreating</code></summary><br><b>
+<summary>Под показывает ContainerCreating. Как вы это объясните?</summary><br><b>
 </b></details>
 
 <details>
-<summary>True or False? A volume defined in Pod can be accessed by all the containers of that Pod</summary><br><b>
+<summary>Верно ли, что том пода может быть подключён ко всем его контейнерам?</summary><br><b>
 
-True.
+Верно.
 </b></details>
 
 <details>
-<summary>What happens when you run a Pod with kubectl?</summary><br><b>
+<summary>Что происходит при создании пода через kubectl?</summary><br><b>
 
-1. Kubectl sends a request to the API server (kube-apiserver) to create the Pod
-   1. In the the process the user gets authenticated and the request is being validated.
-   2. etcd is being updated with the data
-2. The Scheduler detects that there is an unassigned Pod by monitoring the API server (kube-apiserver)
-3. The Scheduler chooses a node to assign the Pod to
-   1. etcd is being updated with the information
-4. The Scheduler updates the API server about which node it chose
-5. Kubelet (which also monitors the API server) notices there is a Pod assigned to the same node on which it runs and that Pod isn't running
-6. Kubelet sends request to the container engine (e.g. Docker) to create and run the containers
-7. An update is sent by Kubelet to the API server (notifying it that the Pod is running)
-   1. etcd is being updated by the API server again
+1. Kubectl отправляет запрос создания в kube-apiserver.
+   1. Выполняются аутентификация, авторизация и проверки запроса.
+   2. API-сервер сохраняет объект в etcd.
+2. Scheduler через API замечает неназначенный под.
+3. Scheduler выбирает узел.
+   1. Результат назначения должен быть сохранён через API-сервер, а не прямой записью Scheduler в etcd.
+4. Scheduler сообщает назначение API-серверу.
+5. Kubelet выбранного узла замечает назначенный ему под.
+6. Kubelet через CRI поручает среде выполнения подготовить и запустить контейнеры.
+7. Kubelet сообщает состояние пода API-серверу.
+   1. API-сервер сохраняет обновлённое состояние в etcd.
 </b></details>
 
 <details>
-<summary>How to confirm a container is running after running the command <code>kubectl run web --image nginxinc/nginx-unprivileged</code></summary><br><b>
+<summary>Как проверить запуск после <code>kubectl run web --image nginxinc/nginx-unprivileged</code>?</summary><br><b>
 
-* When you run `kubectl describe pods <POD_NAME>` it will tell whether the container is running:
+* Посмотрите состояние пода и его контейнеров: `kubectl describe pods <POD_NAME>`.
 `Status:       Running`
-* Run a command inside the container: `kubectl exec web -- ls`
+* Выполните команду внутри контейнера: `kubectl exec web -- ls`.
 </b></details>
 
 <details>
-<summary>After running <code>kubectl run database --image mongo</code> you see the status is "CrashLoopBackOff". What could possibly went wrong and what do you do to confirm?</summary><br><b>
+<summary>После kubectl run database --image mongo появился CrashLoopBackOff. Как выяснить причину?</summary><br><b>
 
-"CrashLoopBackOff" means the Pod is starting, crashing, starting...and so it repeats itself.<br>
-There are many different reasons to get this error - lack of permissions, init-container misconfiguration, persistent volume connection issue, etc.
+Контейнер многократно завершается и перезапускается, а Kubernetes увеличивает задержку между попытками.<br>
+Возможны ошибки приложения, прав, конфигурации или зависимостей; причины нужно проверять по фактам.
 
-One of the ways to check why it happened it to run `kubectl describe po <POD_NAME>` and having a look at the exit code
+Посмотрите события, состояние и код завершения через `kubectl describe po <POD_NAME>`.
 
 ```
  Last State:     Terminated
@@ -459,11 +473,11 @@ One of the ways to check why it happened it to run `kubectl describe po <POD_NAM
    Exit Code:    100
 ```
 
-Another way to check what's going on, is to run `kubectl logs <POD_NAME>`. This will provide us with the logs from the containers running in that Pod.
+Прочитайте `kubectl logs <POD_NAME>` и при необходимости журналы предыдущего запуска с `--previous`.
 </b></details>
 
 <details>
-<summary>Explain the purpose of the following lines
+<summary>Объясните назначение следующих строк:
 
 ```
 livenessProbe:
@@ -476,12 +490,12 @@ livenessProbe:
 ```
 </summary><br><b>
 
-These lines make use of `liveness probe`. It's used to restart a container when it reaches a non-desired state.<br>
-In this case, if the command `cat /appStatus` fails, Kubernetes will kill the container and will apply the restart policy. The `initialDelaySeconds: 10` means that Kubelet will wait 10 seconds before running the command/probe for the first time. From that point on, it will run it every 5 seconds, as defined with `periodSeconds`
+Это liveness probe — проверка, при повторных неудачах которой контейнер перезапускается согласно правилам.<br>
+Здесь выполняется `cat /appStatus`. Проверки начинаются через 10 секунд и повторяются каждые 5 секунд. После достижения порога неудач контейнер останавливается, и применяется политика перезапуска.
 </b></details>
 
 <details>
-<summary>Explain the purpose of the following lines
+<summary>Объясните назначение следующих строк:
 
 ```
 readinessProbe:
@@ -492,254 +506,259 @@ readinessProbe:
 ```
 </summary><br><b>
 
-They define a readiness probe where the Pod will not be marked as "Ready" before it will be possible to connect to port 2017 of the container. The first check/probe will start after 15 seconds from the moment the container started to run and will continue to run the check/probe every 20 seconds until it will manage to connect to the defined port.
+Это readiness probe: готовность зависит от соединения с портом 2017. Первая проверка через 15 секунд, последующие каждые 20 секунд. Уточнение: проверки продолжаются и после первого успеха, чтобы отслеживать потерю готовности.
 </b></details>
 
 <details>
-<summary>What does the "ErrImagePull" status of a Pod means?</summary><br><b>
+<summary>Что означает ErrImagePull?</summary><br><b>
 
-It wasn't able to pull the image specified for running the container(s). This can happen if the client didn't authenticated for example.<br>
-More details can be obtained with `kubectl describe po <POD_NAME>`.
+Не удалось скачать образ, например из-за неверного имени, недоступности реестра или отсутствия доступа.<br>
+Подробности: `kubectl describe po <POD_NAME>`.
 </b></details>
 
 <details>
-<summary>What happens when you delete a Pod?</summary><br><b>
+<summary>Что происходит при удалении пода?</summary><br><b>
 
-1. The `TERM` signal is sent to kill the main processes inside the containers of the given Pod
-2. Each container is given a period of 30 seconds to shut down the processes gracefully
-3. If the grace period expires, the `KILL` signal is used to kill the processes forcefully and the containers as well
+1. При обычном завершении контейнерам отправляется сигнал остановки, обычно TERM; при наличии учитываются lifecycle hooks.
+2. Даётся grace period, по умолчанию 30 секунд для завершения пода.
+3. По истечении срока оставшиеся процессы завершаются принудительно сигналом KILL.
 </b></details>
 
 <details>
-<summary>Explain liveness probes</summary><br><b>
+<summary>Объясните liveness probes.</summary><br><b>
 
-Liveness probes is a useful mechanism used for restarting the container when a certain check/probe, the user has defined, fails.<br>
-For example, the user can define that the command `cat /app/status` will run every X seconds and the moment this command fails, the container will be restarted.
+Они выявляют неработоспособный контейнер и позволяют перезапустить его после установленного порога ошибок.<br>
+Например, периодическая команда `cat /app/status` может служить проверкой; её неуспешный результат учитывается согласно настройкам probe.
 
-You can read more about it in [kubernetes.io](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes)
+Подробнее — в [документации Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes).
 </b></details>
 
 <details>
-<summary>Explain readiness probes</summary><br><b>
+<summary>Объясните readiness probes.</summary><br><b>
 
-readiness probes used by Kubelet to know when a container is ready to start running, accepting traffic.<br>
-For example, a readiness probe can be to connect port 8080 on a container. Once Kubelet manages to connect it, the Pod is marked as ready
+Они показывают kubelet, готов ли контейнер обслуживать трафик.<br>
+Например, проверка соединения с портом 8080. Готовность пода зависит от готовности контейнеров и других заданных условий.
 
-You can read more about it in [kubernetes.io](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes)
+Подробнее — в [документации Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes).
 </b></details>
 
 <details>
-<summary>How readiness probe status affect Services when they are combined?</summary><br><b>
+<summary>Как readiness влияет на Service?</summary><br><b>
 
-Only containers whose state set to Success will be able to receive requests sent to the Service.
+Обычно трафик Service направляется только к готовым конечным точкам. Уточнение: существуют специальные настройки, например `publishNotReadyAddresses`, меняющие это поведение.
 </b></details>
 
 <details>
-<summary>Why it's common to have only one container per Pod in most cases?</summary><br><b>
+<summary>Почему часто используют один основной контейнер на под?</summary><br><b>
 
-One reason is that it makes it harder to scale when you need to scale only one of the containers in a given Pod.
+Контейнеры одного пода масштабируются вместе. Если компонентам нужно независимое масштабирование, их удобнее разделить.
 </b></details>
 
 <details>
-<summary>True or False? Once a Pod is assisgned to a worker node, it will only run on that node, even if it fails at some point and spins up a new Pod</summary><br><b>
+<summary>Верно ли, что назначение узла сохраняется даже для нового пода, созданного вместо отказавшего?</summary><br><b>
 
-True.
+Верно.
 </b></details>
 
 <details>
-<summary>True or False? Each Pod, when created, gets its own public IP address</summary><br><b>
+<summary>Верно ли, что каждый новый под получает публичный IP?</summary><br><b>
 
-False. Each Pod gets an IP address but an internal one and not publicly accessible.
+Неверно. Адрес пода относится к сети кластера; его внешняя маршрутизируемость зависит от сетевой архитектуры и не гарантируется.
 
-To make a Pod externally accessible, we need to use an object called Service in Kubernetes.
+Для стабильного внешнего доступа обычно используют Service подходящего типа и при необходимости Ingress или иной шлюз.
 </b></details>
 
-#### Static Pods
+<a id="static-pods"></a>
+#### Статические поды
 
 <details>
-<summary>What are Static Pods?</summary><br><b>
+<summary>Что такое статические поды?</summary><br><b>
 
-[Kubernetes.io](https://kubernetes.io/docs/tasks/configure-pod-container/static-pod/): "Static Pods are managed directly by the kubelet daemon on a specific node, without the API server observing them. Unlike Pods that are managed by the control plane (for example, a Deployment); instead, the kubelet watches each static Pod (and restarts it if it fails)."
-</b></details>
-
-<details>
-<summary>True or False? The same as there are "Static Pods" there are other static resources like "deployments" and "replicasets"</summary><br><b>
-
-False.
+[Kubernetes.io](https://kubernetes.io/docs/tasks/configure-pod-container/static-pod/): поды, которыми kubelet управляет непосредственно на конкретном узле, без управляющего контроллера API. Kubelet следит за ними и перезапускает при отказах; в API может создаваться зеркальное представление.
 </b></details>
 
 <details>
-<summary>What are some use cases for using Static Pods?</summary><br><b>
+<summary>Верно ли, что аналогично статическим подам существуют статические Deployment и ReplicaSet?</summary><br><b>
 
-One clear use case is running Control Plane Pods -  running Pods such as kube-apiserver, scheduler, etc. These should run and operate regardless of whether some components of the cluster work or not and they should run on specific nodes of the cluster.
+Неверно.
 </b></details>
 
 <details>
-<summary>How to identify which Pods are Static Pods?</summary><br><b>
+<summary>Для чего используют статические поды?</summary><br><b>
 
-The suffix of the Pods is the same as the name of the nodes on which they are running
-TODO: check if it's always the case.
+Например, для компонентов control plane: kube-apiserver, scheduler и других, которые должны запускаться на определённых узлах независимо от готовности API кластера.
 </b></details>
 
 <details>
-<summary>Which of the following is not a static pod?:
+<summary>Как распознать статический под?</summary><br><b>
+
+У зеркального пода обычно есть суффикс с именем узла. Надёжнее также проверить аннотацию `kubernetes.io/config.mirror` и конфигурацию kubelet.
+Примечание исходника: один суффикс имени требует дополнительной проверки.
+</b></details>
+
+<details>
+<summary>Какой компонент из перечисленных обычно не запускается статическим подом?
 
 * kube-scheduler
 * kube-proxy
 * kube-apiserver
 </summary><br><b>
 
-kube-proxy - it's a DaemonSet (since it has to be presented on every node in the cluster). There is no one specific node on which it has to run.
+kube-proxy обычно запускается DaemonSet на подходящих узлах. Это типичная схема, а не безусловное требование для любого способа установки.
 </b></details>
 
 <details>
-<summary>Where static Pods manifests are located?</summary><br><b>
+<summary>Где находятся манифесты статических подов?</summary><br><b>
 
-Most of the time it's in /etc/kubernetes/manifests but you can verify with `grep -i static /var/lib/kubelet/config.yaml` to locate the value of `statisPodsPath`.
+Часто в `/etc/kubernetes/manifests`. Проверьте `staticPodPath` в конфигурации kubelet; в исходнике название параметра местами написано с ошибкой.
 
-It might be that your config is in different path. To verify run `ps -ef | grep kubelet` and see what is the value of --config argument of the process `/usr/bin/kubelet`
+Путь конфигурации можно выяснить через `ps -ef | grep kubelet`, проверив аргумент `--config`.
 
-The key itself for defining the path of static Pods is `staticPodPath`. So if your config is in `/var/lib/kubelet/config.yaml` you can run `grep staticPodPath /var/lib/kubelet/config.yaml`.
+Например: `grep staticPodPath /var/lib/kubelet/config.yaml`.
 </b></details>
 
 <details>
-<summary>Describe how would you delete a static Pod
+<summary>Как удалить статический под?
 </summary><br><b>
 
-Locate the static Pods directory (look at `staticPodPath` in kubelet configuration file).
+Определите каталог `staticPodPath` в настройках kubelet.
 
-Go to that directory and remove the manifest/definition of the staic Pod (`rm <STATIC_POD_PATH>/<POD_DEFINITION_FILE>`)
+Удалите соответствующий манифест: `rm <STATIC_POD_PATH>/<POD_DEFINITION_FILE>`.
 </b></details>
 
-#### Pods Commands
+<a id="pods-commands"></a>
+#### Команды для подов
 
 <details>
-<summary>How to check to which worker node the pods were scheduled to? In other words, how to check on which node a certain Pod is running?</summary><br><b>
+<summary>Как узнать, на каких узлах работают поды?</summary><br><b>
 
 `kubectl get pods -o wide`
 </b></details>
 
 <details>
-<summary>How to delete a pod?</summary><br><b>
+<summary>Как удалить под?</summary><br><b>
 
 `kubectl delete pod pod_name`
 </b></details>
 
 <details>
-<summary>List all the pods with the label "env=prod"</summary><br><b>
+<summary>Выведите поды с меткой env=prod.</summary><br><b>
 
 `k get po -l env=prod`
 
-To count them: `k get po -l env=prod --no-headers | wc -l`
+Подсчёт: `k get po -l env=prod --no-headers | wc -l`.
 </b></details>
 
 <details>
-<summary>How to list the pods in the current namespace?</summary><br><b>
+<summary>Как вывести поды текущего пространства имён?</summary><br><b>
 
 `kubectl get po`
 </b></details>
 
 <details>
-<summary>How view all the pods running in all the namespaces?</summary><br><b>
+<summary>Как вывести поды всех пространств имён?</summary><br><b>
 
 `kubectl get pods --all-namespaces`
 </b></details>
 
-#### Pods Troubleshooting and Debugging
+<a id="pods-troubleshooting-and-debugging"></a>
+#### Диагностика подов
 
 <details>
-<summary>You try to run a Pod but it's in "Pending" state. What might be the reason?</summary><br><b>
+<summary>Под остаётся Pending. Какова возможная причина?</summary><br><b>
 
-One possible reason is that the scheduler which supposed to schedule Pods on nodes, is not running. To verify it, you can run `kubectl get po -A | grep scheduler` or check directly in `kube-system` namespace.
+Например, не работает Scheduler. При доступном в API компоненте его можно искать через `kubectl get po -A | grep scheduler` или в `kube-system`. Также проверьте события пода: возможны нехватка ресурсов и ограничения размещения.
 </b></details>
 
 <details>
-<summary>What <code>kubectl logs [pod-name]</code> command does?</summary><br><b>
+<summary>Что делает kubectl logs [pod-name]?</summary><br><b>
 
-Prints the logs for a container in a pod.
+Выводит журналы контейнера пода.
 </b></details>
 
 <details>
-<summary>What <code>kubectl describe pod [pod name] does?</code> command does?</summary><br><b>
+<summary>Что делает kubectl describe pod [pod name]?</summary><br><b>
 
-Show details of a specific resource or group of resources.
+Показывает подробные сведения об объекте и связанные события.
 </b></details>
 
 <details>
-<summary>Create a static pod with the image <code>python</code> that runs the command <code>sleep 2017</code></summary><br><b>
+<summary>Создайте статический под с образом python и командой sleep 2017.</summary><br><b>
 
-First change to the directory tracked by kubelet for creating static pod: `cd /etc/kubernetes/manifests` (you can verify path by reading kubelet conf file)
+Перейдите в каталог статических манифестов, например `cd /etc/kubernetes/manifests`; проверьте путь в конфигурации kubelet.
 
-Now create the definition/manifest in that directory
-`k run some-pod --image=python --command sleep 2017 --restart=Never --dry-run=client -o yaml > statuc-pod.yaml`
+Создайте там манифест:
+`k run some-pod --image=python --restart=Never --dry-run=client -o yaml --command -- sleep 2017 > static-pod.yaml`
 </b></details>
 
-### Labels and Selectors
+<a id="labels-and-selectors-1"></a>
+### Метки и селекторы
 
 <details>
-<summary>Explain Labels</summary><br><b>
+<summary>Объясните метки (labels).</summary><br><b>
 
-[Kubernetes.io](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/): "Labels are key/value pairs that are attached to objects, such as pods. Labels are intended to be used to specify identifying attributes of objects that are meaningful and relevant to users, but do not directly imply semantics to the core system. Labels can be used to organize and to select subsets of objects. Labels can be attached to objects at creation time and subsequently added and modified at any time. Each object can have a set of key/value labels defined. Each Key must be unique for a given object."
-</b></details>
-
-<details>
-<summary>Explain selectors</summary><br><b>
-
-[Kubernetes.io](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors): "Unlike names and UIDs, labels do not provide uniqueness. In general, we expect many objects to carry the same label(s).
-
-Via a label selector, the client/user can identify a set of objects. The label selector is the core grouping primitive in Kubernetes.
-
-The API currently supports two types of selectors: equality-based and set-based. A label selector can be made of multiple requirements which are comma-separated. In the case of multiple requirements, all must be satisfied so the comma separator acts as a logical AND (&&) operator."
+[Kubernetes.io](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/): пары ключ–значение, прикрепляемые к объектам, например подам. Они задают значимые пользователю идентифицирующие признаки, позволяют группировать и выбирать объекты. Метки можно добавлять и менять; каждый ключ уникален в пределах объекта.
 </b></details>
 
 <details>
-<summary>Provide some actual examples of how labels are used</summary><br><b>
+<summary>Объясните селекторы.</summary><br><b>
 
-* Can be used by the scheduler to place certain Pods (with certain labels) on specific nodes
-* Used by replicasets to track pods which have to be scaled
+[Kubernetes.io](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors): в отличие от имён и UID, метки не обязаны быть уникальными; одинаковые метки могут иметь многие объекты.
+
+Селектор выбирает набор объектов по меткам и служит основным механизмом группировки.
+
+Поддерживаются требования равенства и принадлежности множеству. Несколько требований через запятую объединяются логическим И: должны выполняться все.
 </b></details>
 
 <details>
-<summary>What are Annotations?</summary><br><b>
+<summary>Приведите примеры использования меток.</summary><br><b>
 
-[Kubernetes.io](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/): "You can use Kubernetes annotations to attach arbitrary non-identifying metadata to objects. Clients such as tools and libraries can retrieve this metadata."
+* Планировщик использует метки узлов и правила размещения, чтобы выбирать подходящие узлы подам.
+* ReplicaSet выбирает управляемые поды по меткам.
 </b></details>
 
 <details>
-<summary>How annotations different from labels?</summary><br><b>
+<summary>Что такое аннотации?</summary><br><b>
 
-[Kuberenets.io](Labels can be used to select objects and to find collections of objects that satisfy certain conditions. In contrast, annotations are not used to identify and select objects. The metadata in an annotation can be small or large, structured or unstructured, and can include characters not permitted by labels.): "Labels can be used to select objects and to find collections of objects that satisfy certain conditions. In contrast, annotations are not used to identify and select objects. The metadata in an annotation can be small or large, structured or unstructured, and can include characters not permitted by labels."
+[Kubernetes.io](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/): произвольные неидентифицирующие метаданные объекта, доступные инструментам и библиотекам.
 </b></details>
 
 <details>
-<summary>How to view the logs of a container running in a Pod?</summary><br><b>
+<summary>Чем аннотации отличаются от меток?</summary><br><b>
+
+[Kubernetes.io](Labels can be used to select objects and to find collections of objects that satisfy certain conditions. In contrast, annotations are not used to identify and select objects. The metadata in an annotation can be small or large, structured or unstructured, and can include characters not permitted by labels.): «Метки позволяют выбирать объекты и находить их группы по заданным условиям. Аннотации не предназначены для идентификации и выбора объектов. Данные аннотаций могут быть небольшими или объёмными, структурированными или неструктурированными и содержать символы, недопустимые в метках». Примечание: адрес ссылки в исходнике повреждён.
+</b></details>
+
+<details>
+<summary>Как посмотреть журналы контейнера в поде?</summary><br><b>
 
 `k logs POD_NAME`
 </b></details>
 
 <details>
-<summary>There are two containers inside a Pod called "some-pod". What will happen if you run <code>kubectl logs some-pod</code></summary><br><b>
+<summary>В some-pod два контейнера. Что произойдёт при kubectl logs some-pod?</summary><br><b>
 
-It won't work because there are two containers inside the Pod and you need to specify one of them with `kubectl logs POD_NAME -c CONTAINER_NAME`
+Если контейнер не выбран автоматически, нужно указать его: `kubectl logs POD_NAME -c CONTAINER_NAME`. Уточнение: выбор по умолчанию зависит от версии kubectl и аннотаций пода, поэтому безусловное «не сработает» из исходника неверно.
 </b></details>
 
+<a id="deployments"></a>
 ### Deployments
 
 <details>
-<summary>What is a "Deployment" in Kubernetes?</summary><br><b>
+<summary>Что такое Deployment?</summary><br><b>
 
-A Kubernetes Deployment is used to tell Kubernetes how to create or modify instances of the pods that hold a containerized application.
-Deployments can scale the number of replica pods, enable rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary. 
+Объект декларативного управления экземплярами подов контейнерного приложения.
+Позволяет менять число реплик, постепенно обновлять приложение и откатывать шаблон подов к предыдущей ревизии.
 
-A Deployment is a declarative statement for the desired state for Pods and Replica Sets.
+Описывает желаемое состояние подов и ReplicaSet.
 </b></details>
 
 <details>
-<summary>How to create a deployment with the image "nginx:alpine"?</code></summary><br><b>
+<summary>Как создать Deployment с nginx:alpine?</summary><br><b>
 
 `kubectl create deployment my-first-deployment --image=nginx:alpine`
 
-OR
+ИЛИ
 
 ```
 cat << EOF | kubectl create -f -
@@ -764,64 +783,64 @@ spec:
 </b></details>
 
 <details>
-<summary>How to verify a deployment was created?</code></summary><br><b>
+<summary>Как проверить создание Deployment?</summary><br><b>
 
-`kubectl get deployments` or `kubectl get deploy`
+`kubectl get deployments` или `kubectl get deploy`.
 
-This command lists all the Deployment objects created and exist in the cluster. It doesn't mean the deployments are readt and running. This can be checked with the "READY" and "AVAILABLE" columns.
+Команда показывает объекты в выбранном пространстве имён. Само наличие объекта не означает готовность: проверьте READY и AVAILABLE.
 </b></details>
 
 <details>
-<summary>How to edit a deployment?</code></summary><br><b>
+<summary>Как отредактировать Deployment?</summary><br><b>
 
 `kubectl edit deployment <DEPLOYMENT_NAME>`
 </b></details>
 
 <details>
-<summary>What happens after you edit a deployment and change the image?</summary><br><b>
+<summary>Что произойдёт после изменения образа в Deployment?</summary><br><b>
 
-The pod will terminate and another, new pod, will be created.
+Начнётся обновление по заданной стратегии: новые поды заменят старые.
 
-Also, when looking at the replicaset, you'll see the old replica doesn't have any pods and a new replicaset is created.
+Создаётся новый ReplicaSet; после успешного завершения обновления старый обычно масштабируется до нуля.
 </b></details>
 
 <details>
-<summary>How to delete a deployment?</summary><br><b>
+<summary>Как удалить Deployment?</summary><br><b>
 
-One way is by specifying the deployment name: `kubectl delete deployment [deployment_name]`
+По имени: `kubectl delete deployment [deployment_name]`.
 
-Another way is using the deployment configuration file: `kubectl delete -f deployment.yaml`
+По манифесту: `kubectl delete -f deployment.yaml`.
 </b></details>
 
 <details>
-<summary>What happens when you delete a deployment?</summary><br><b>
+<summary>Что происходит при удалении Deployment?</summary><br><b>
 
-The pod related to the deployment will terminate and the replicaset will be removed.
+При обычном каскадном удалении удаляются принадлежащие ему ReplicaSet и поды.
 </b></details>
 
 <details>
-<summary>What happens behind the scenes when you create a Deployment object?</summary><br><b>
+<summary>Что происходит при создании Deployment?</summary><br><b>
 
-The following occurs when you run `kubectl create deployment some_deployment --image=nginx`
+При `kubectl create deployment some-deployment --image=nginx`:
 
-1. HTTP request sent to kubernetes API server on the cluster to create a new deployment
-2. A new Pod object is created and scheduled to one of the workers nodes
-3. Kublet on the worker node notices the new Pod and instructs the Container runtime engine to pull the image from the registry
-4. A new container is created using the image that was just pulled
+1. API-сервер получает запрос создания Deployment.
+2. Контроллер создаёт ReplicaSet, который создаёт поды; Scheduler назначает их узлам.
+3. Kubelet узла поручает среде выполнения получить образ.
+4. Из образа создаются и запускаются контейнеры.
 </b></details>
 
 <details>
-<summary>How make an app accessible on private or external network?</summary><br><b>
+<summary>Как сделать приложение доступным внутри сети или извне?</summary><br><b>
 
-Using a Service.
+Через Service подходящего типа.
 </b></details>
 
 <details>
-<summary>Can you use a Deployment for stateful applications?</summary><br><b>
+<summary>Можно ли использовать Deployment для приложения с состоянием?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Fix the following deployment manifest
+<summary>Исправьте манифест Deployment:
 
 ```yaml
 apiVersion: apps/v1
@@ -851,11 +870,11 @@ status: {}
 ```
 </summary><br><b>
 
-Change `kind: Deploy` to `kind: Deployment`
+Замените `kind: Deploy` на `kind: Deployment`.
 </b></details>
 
 <details>
-<summary>Fix the following deployment manifest
+<summary>Исправьте манифест Deployment:
 
 ```yaml
 apiVersion: apps/v1
@@ -885,27 +904,28 @@ status: {}
 ```
 </summary><br><b>
 
-The selector doesn't match the label (dep vs depdep). To solve it, fix depdep so it's dep instead.
+Селектор не совпадает с меткой: `dep` и `depdep`. Приведите их к одному значению, например `dep`.
 </b></details>
 
-#### Deployments Commands
+<a id="deployments-commands"></a>
+#### Команды для Deployment
 
 <details>
-<summary>Create a file definition/manifest of a deployment called "dep", with 3 replicas that uses the image 'redis'</summary><br><b>
+<summary>Создайте манифест Deployment dep: образ redis, три реплики.</summary><br><b>
 
 `k create deploy dep -o yaml --image=redis --dry-run=client --replicas 3 > deployment.yaml `
 
 </b></details>
 
 <details>
-<summary>Delete the deployment `depdep`</summary><br><b>
+<summary>Удалите Deployment depdep.</summary><br><b>
 
 `k delete deploy depdep`
 
 </b></details>
 
 <details>
-<summary>Create a deployment called "pluck" using the image "redis" and make sure it runs 5 replicas</summary><br><b>
+<summary>Создайте Deployment pluck с образом redis и пятью репликами.</summary><br><b>
 
 `kubectl create deployment pluck --image=redis`
 
@@ -913,17 +933,17 @@ The selector doesn't match the label (dep vs depdep). To solve it, fix depdep so
 </b></details>
 
 <details>
-<summary>Create a deployment with the following properties:
+<summary>Создайте Deployment со следующими свойствами:
 
-* called "blufer"
-* using the image "python"
-* runs 3 replicas
-* all pods will be placed on a node that has the label "blufer"
+* Имя blufer
+* Образ python
+* Три реплики
+* Поды размещаются на узле с меткой blufer
 </summary><br><b>
 
 `kubectl create deployment blufer --image=python --replicas=3 -o yaml --dry-run=client > deployment.yaml`
 
-Add the following section (`vi deployment.yaml`):
+Добавьте в `deployment.yaml` следующий раздел:
 
 ```
 spec:
@@ -939,18 +959,19 @@ spec:
 `kubectl apply -f deployment.yaml`
 </b></details>
 
+<a id="services"></a>
 ### Services
 
 <details>
-<summary>What is a Service in Kubernetes?</summary><br><b>
+<summary>Что такое Service Kubernetes?</summary><br><b>
 
-"An abstract way to expose an application running on a set of Pods as a network service." - read more [here](https://kubernetes.io/docs/concepts/services-networking/service)
+Абстракция, предоставляющая приложение на наборе подов как сетевой сервис. Подробнее — [здесь](https://kubernetes.io/docs/concepts/services-networking/service).
 
-In simpler words, it allows you to add an internal or external connectivity to a certain application running in a container.
+Она обеспечивает стабильный сетевой доступ к приложению внутри кластера или снаружи в зависимости от типа.
 </b></details>
 
 <details>
-<summary>Place the components in the right placeholders in regards to Kubernetes service<br>
+<summary>Разместите компоненты Service в соответствующих местах схемы.<br>
 <img src="images/service_exercise.png"/>
 </summary><br><b>
 
@@ -960,102 +981,102 @@ In simpler words, it allows you to add an internal or external connectivity to a
 
 
 <details>
-<summary>How to create a service for an existing deployment called "alle" on port 8080 so the Pod(s) accessible via a Load Balancer?</summary><br><b>
+<summary>Как предоставить Deployment alle через LoadBalancer на порту 8080?</summary><br><b>
 
-The imperative way:
+Императивный способ:
 
 `kubectl expose deployment alle --type=LoadBalancer --port 8080`
 </b></details>
 
 <details>
-<summary>True or False? The lifecycle of Pods and Services isn't connected so when a Pod dies, the Service still stays </summary><br><b>
+<summary>Верно ли, что Service сохраняется после удаления отдельного пода, поскольку их жизненные циклы независимы?</summary><br><b>
 
-True
+Верно.
 </b></details>
 
 <details>
-<summary>After creating a service, how to check it was created?</summary><br><b>
+<summary>Как проверить создание Service?</summary><br><b>
 
 `kubectl get svc`
 </b></details>
 
 <details>
-<summary>What's the default Service type?</summary><br><b>
+<summary>Какой тип Service используется по умолчанию?</summary><br><b>
 
-ClusterIP - used for internal communication.
+ClusterIP — обычно для доступа внутри кластера.
 </b></details>
 
 <details>
-<summary>What Service types are there?</summary><br><b>
+<summary>Какие типы Service существуют?</summary><br><b>
 
 * ClusterIP
 * NodePort
 * LoadBalancer
 * ExternalName
 
-More on this topic [here](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types)
+Подробнее — [здесь](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types).
 </b></details>
 
 <details>
-<summary>How Service and Deployment are connected?</summary><br><b>
+<summary>Как связаны Service и Deployment?</summary><br><b>
 
-The truth is they aren't connected. Service points to Pod(s) directly, without connecting to the Deployment in any way.
+Прямой связи владения нет: Service выбирает поды по меткам, а не обращается к Deployment.
 </b></details>
 
 <details>
-<summary>What are important steps in defining/adding a Service?</summary><br><b>
+<summary>Что проверить при создании Service?</summary><br><b>
 
-1. Making sure that targetPort of the Service is matching the containerPort of the Pod
-2. Making sure that selector matches at least one of the Pod's labels
-
-</b></details>
-
-<details>
-<summary>What is the default service type in Kubernetes and what is it used for?</summary><br><b>
-
-The default is ClusterIP and it's used for exposing a port internally. It's useful when you want to enable internal communication between Pods and prevent any external access.
+1. `targetPort` должен соответствовать порту, который действительно слушает приложение; его можно описать в `containerPort`.
+2. Под должен соответствовать всем требованиям селектора Service, а не только одной метке.
 
 </b></details>
 
 <details>
-<summary>How to get information on a certain service?</summary><br><b>
+<summary>Какой тип Service используется по умолчанию и зачем?</summary><br><b>
 
-`kubctl describe service <SERVICE_NAME>`
-
-It's more common to use `kubectl describe svc ...`
+ClusterIP предоставляет адрес для доступа внутри кластера. Сам по себе он не является политикой безопасности, запрещающей любые внешние маршруты.
 
 </b></details>
 
 <details>
-<summary>What the following command does?
+<summary>Как получить сведения о Service?</summary><br><b>
+
+`kubectl describe service <SERVICE_NAME>`
+
+Сокращённо: `kubectl describe svc ...`.
+
+</b></details>
+
+<details>
+<summary>Что делает следующая команда?
 
 ```
 kubectl expose rs some-replicaset --name=replicaset-svc --target-port=2017 --type=NodePort
 ```
 </summary><br><b>
 
-It exposes a ReplicaSet by creating a service called 'replicaset-svc'. The exposed port is 2017 (this is the port used by the application) and the service type is NodePort which means it will be reachable externally.
+Создаёт Service `replicaset-svc` для ReplicaSet. Порт приложения — 2017, тип Service — NodePort, предоставляющий доступ через порты узлов при подходящей сетевой доступности.
 </b></details>
 
 <details>
-<summary>True or False? the target port, in the case of running the following command, will be exposed only on one of the Kubernetes cluster nodes but it will routed to all the pods
+<summary>Верно ли, что следующая команда публикует порт только на одном узле, но направляет трафик ко всем подам?
 
 ```
 kubectl expose rs some-replicaset --name=replicaset-svc --target-port=2017 --type=NodePort
 ```
 </summary><br><b>
 
-False. It will be exposed on every node of the cluster and will be routed to one of the Pods (which belong to the ReplicaSet)
+Неверно. NodePort обычно доступен на узлах кластера и направляет отдельное соединение к подходящей конечной точке; детали зависят от сетевых настроек и политики трафика.
 </b></details>
 
 <details>
-<summary>How to verify that a certain service configured to forward the requests to a given pod</summary><br><b>
+<summary>Как проверить, что Service направляет запросы к нужному поду?</summary><br><b>
 
-Run `kubectl describe service` and see if the IPs from "Endpoints" match any IPs from the output of `kubectl get pod -o wide`
+Сравните адреса конечных точек Service из `kubectl describe service` или EndpointSlice с IP подов из `kubectl get pod -o wide`.
 </b></details>
 
 <details>
-<summary>Explain what will happen when running apply on the following block
+<summary>Что произойдёт при применении следующего манифеста?
 
 ```
 apiVersion: v1
@@ -1074,14 +1095,14 @@ spec:
 ```
 </summary><br><b>
 
-It creates a new Service of the type "NodePort" which means it can be used for internal and external communication with the app.<br>
-The port of the application is 8080 and the requests will forwarded to this port. The exposed port is 2017. As a note, this is not a common practice, to specify the nodePort.<br>
-The port used TCP (instead of UDP) and this is also the default so you don't have to specify it.<br>
-The selector used by the Service to know to which Pods to forward the requests. In this case, Pods with the label "type: backend" and "service: some-app".<br>
+Создаётся Service типа NodePort для доступа к приложению.<br>
+`targetPort` приложения — 8080, порт Service — 2017. Если `nodePort` указан явно, он должен входить в разрешённый диапазон; обычно его можно предоставить системе.<br>
+Используется TCP, который является протоколом по умолчанию.<br>
+Селектор выбирает поды одновременно с метками `type: backend` и `service: some-app`.<br>
 </b></details>
 
 <details>
-<summary>How to turn the following service into an external one?
+<summary>Как предоставить следующий Service извне?
 
 ```
 spec:
@@ -1094,7 +1115,7 @@ spec:
 ```
 </summary><br><b>
 
-Adding `type: LoadBalancer` and `nodePort`
+Например, добавить `type: LoadBalancer` при наличии реализации балансировщика. Уточнение: явно задавать `nodePort` для этого не обязательно.
 
 ```
 spec:
@@ -1110,99 +1131,100 @@ spec:
 </b></details>
 
 <details>
-<summary>What would you use to route traffic from outside the Kubernetes cluster to services within a cluster?</summary><br><b>
+<summary>Чем направлять внешний HTTP(S)-трафик к сервисам кластера?</summary><br><b>
 
 Ingress
 </b></details>
 
 <details>
-<summary>True or False? When "NodePort" is used, "ClusterIP" will be created automatically?</summary><br><b>
+<summary>Верно ли, что NodePort обычно также получает ClusterIP?</summary><br><b>
 
-True
+Верно.
 </b></details>
 
 <details>
-<summary>When would you use the "LoadBalancer" type</summary><br><b>
+<summary>Когда используется тип LoadBalancer?</summary><br><b>
 
-Mostly when you would like to combine it with cloud provider's load balancer
+Когда нужен балансировщик, создаваемый поддерживаемой интеграцией, например облачным провайдером.
 </b></details>
 
 <details>
-<summary>How would you map a service to an external address?</summary><br><b>
+<summary>Как сопоставить Service внешнему DNS-имени?</summary><br><b>
 
-Using the 'ExternalName' directive.
+Использовать тип `ExternalName`.
 </b></details>
 
 <details>
-<summary>Describe in detail what happens when you create a service</summary><br><b>
+<summary>Опишите создание Service.</summary><br><b>
 
-1. Kubectl sends a request to the API server to create a Service
-2. The controller detects there is a new Service
-3. Endpoint objects created with the same name as the service, by the controller
-4. The controller is using the Service selector to identify the endpoints
-5. kube-proxy detects there is a new endpoint object + new service and adds iptables rules to capture traffic to the Service port and redirect it to endpoints
-6. kube-dns detects there is a new Service and adds the container record to the dns server
+1. Kubectl отправляет API-серверу запрос создания.
+2. Контроллер замечает новый Service.
+3. Для Service с селектором формируются сведения о конечных точках; в исходнике используется Endpoints, в современных кластерах — EndpointSlice.
+4. По селектору определяются подходящие поды.
+5. Kube-proxy или альтернативная реализация обновляет правила направления трафика, например iptables.
+6. Кластерный DNS предоставляет запись Service.
 </b></details>
 
 <details>
-<summary>How to list the endpoints of a certain app?</summary><br><b>
+<summary>Как вывести конечные точки приложения?</summary><br><b>
 
 `kubectl get ep <name>`
 </b></details>
 
 <details>
-<summary>How can you find out information on a Service related to a certain Pod if all you can use is <code>kubectl exec <POD_NAME> -- </code></summary><br><b>
+<summary>Как узнать данные Service, если доступен только kubectl exec POD_NAME -- ...?</summary><br><b>
 
-You can run `kubectl exec <POD_NAME> -- env` which will give you a couple environment variables related to the Service.<br>
-Variables such as `[SERVICE_NAME]_SERVICE_HOST`, `[SERVICE_NAME]_SERVICE_PORT`, ...
+Можно проверить `kubectl exec <POD_NAME> -- env`: при включённых service links и наличии Service на момент создания пода там могут быть соответствующие переменные.<br>
+Например, `[SERVICE_NAME]_SERVICE_HOST`, `[SERVICE_NAME]_SERVICE_PORT`.
 </b></details>
 
 <details>
-<summary>Describe what happens when a container tries to connect with its corresponding Service for the first time. Explain who added each of the components you include in your description</summary><br><b>
+<summary>Как контейнер впервые подключается к Service по имени? Кто создаёт нужные настройки?</summary><br><b>
 
-  - The container looks at the nameserver defined in /etc/resolv.conf
-  - The container queries the nameserver so the address is resolved to the Service IP
-  - Requests sent to the Service IP are forwarded with iptables rules (or other chosen software) to the endpoint(s).
+  - Программа использует DNS-сервер из `/etc/resolv.conf`.
+  - DNS разрешает имя в адрес Service.
+  - Сетевые правила, например iptables, направляют трафик на конечную точку.
 
-Explanation as to who added them:
+Кто настраивает компоненты:
 
-  - The nameserver in the container is added by kubelet during the scheduling of the Pod, by using kube-dns
-  - The DNS record of the service is added by kube-dns during the Service creation
-  - iptables rules are added by kube-proxy during Endpoint and Service creation
+  - Kubelet подготавливает DNS-настройки пода при запуске.
+  - Кластерный DNS, например CoreDNS, обслуживает запись Service по данным API.
+  - Kube-proxy или другой сетевой компонент программирует правила Service.
 </b></details>
 
 <details>
-<summary>Describe in high level what happens when you run <code>kubctl expose deployment remo --type=LoadBalancer --port 8080</code></summary><br><b>
+<summary>Что происходит при <code>kubectl expose deployment remo --type=LoadBalancer --port 8080</code>?</summary><br><b>
 
-1. Kubectl sends a request to Kubernetes API to create a Service object
-2. Kubernetes asks the cloud provider (e.g. AWS, GCP, Azure) to provision a load balancer
-3. The newly created load balancer forwards incoming traffic to relevant worker node(s) which forwards the traffic to the relevant containers
+1. Kubectl запрашивает создание Service.
+2. При настроенной интеграции соответствующий контроллер создаёт балансировщик у провайдера.
+3. Он направляет трафик к приложению через узлы или непосредственно конечные точки — в зависимости от реализации.
 </b></details>
 
 <details>
-<summary>After creating a service that forwards incoming external traffic to the containerized application, how to make sure it works?</summary><br><b>
+<summary>Как проверить внешний доступ через созданный Service?</summary><br><b>
 
-You can run `curl <SERVICE IP>:<SERVICE PORT>` to examine the output.
+Например, выполнить `curl <SERVICE IP>:<SERVICE PORT>` с нужной стороны сети.
 </b></details>
 
 <details>
-<summary>An internal load balancer in Kubernetes is called <code>____</code> and an external load balancer is called <code>____</code></summary><br><b>
+<summary>Как в исходнике названы внутренний и внешний механизмы балансировки Kubernetes?</summary><br><b>
 
-An internal load balancer in Kubernetes is called Service and an external load balancer is Ingress
+Исходник отвечает «Service и Ingress». Уточнение: это упрощение. Service типа LoadBalancer тоже может быть внешним, а Ingress может быть внутренним; Ingress задаёт правила HTTP(S), реализуемые контроллером.
 </b></details>
 
+<a id="ingress"></a>
 ### Ingress
 
 <details>
-<summary>What is Ingress?</summary><br><b>
+<summary>Что такое Ingress?</summary><br><b>
 
-From Kubernetes docs: "Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource."
+По документации Kubernetes, объект правил внешней HTTP(S)-маршрутизации к Service внутри кластера.
 
-Read more [here](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+Подробнее — [здесь](https://kubernetes.io/docs/concepts/services-networking/ingress/).
 </b></details>
 
 <details>
-<summary>Complete the following configuration file to make it Ingress
+<summary>Дополните конфигурацию, чтобы получить Ingress:
 
 ```
 metadata:
@@ -1210,7 +1232,7 @@ metadata:
 spec:
 ```
 </summary><br><b>
-There are several ways to answer this question.
+Возможны разные корректные решения.
 
 ```
 apiVersion: networking.k8s.io/v1
@@ -1230,7 +1252,7 @@ spec:
 
 
 <details>
-<summary>Explain the meaning of "http", "host" and "backend" directives
+<summary>Объясните поля http, host и backend:
 
 ```
 apiVersion: networking.k8s.io/v1
@@ -1248,54 +1270,54 @@ spec:
 ```
 </summary><br><b>
 
-host is the entry point of the cluster so basically a valid domain address that maps to cluster's node IP address<br>
-the http line used for specifying that incoming requests will be forwarded to the internal service using http.<br>
-backend is referencing the internal service (serviceName is the name under metadata and servicePort is the port under the ports section).
+`host` — DNS-имя, с которым сопоставляется входящий HTTP-запрос; DNS обычно направляет это имя на адрес контроллера.<br>
+`http` содержит правила маршрутизации по путям HTTP-запросов.<br>
+`backend` указывает сервис и порт назначения. `serviceName` и `servicePort` относятся к старому формату API; в новых манифестах структура отличается.
 </b></details>
 
 <details>
-<summary>Why using a wildcard in ingress host may lead to issues?</summary><br><b>
+<summary>Какие проблемы могут возникнуть с wildcard в host Ingress?</summary><br><b>
 
-The reason you should not wildcard value in a host (like `- host: *`) is because you basically tell your Kubernetes cluster to forward all the traffic to the container where you used this ingress. This may cause the entire cluster to go down.
+Уточнение: `host: *` не является допустимым универсальным wildcard-хостом. Допустимы ограниченные шаблоны вида `*.example.com`. Правило без host может принимать запросы к разным именам, поэтому маршруты нужно задавать осознанно; оно само по себе не «роняет весь кластер», как утверждает исходник.
 </b></details>
 
 <details>
-<summary>What is Ingress Controller?</summary><br><b>
+<summary>Что такое Ingress Controller?</summary><br><b>
 
-An implementation for Ingress. It's basically another pod (or set of pods) that does evaluates and processes Ingress rules and this it manages all the redirections. 
+Компонент, который наблюдает Ingress и реализует описанные правила в прокси или балансировщике.
 
-There are multiple Ingress Controller implementations (the one from Kubernetes is Kubernetes Nginx Ingress Controller).
+Есть разные реализации контроллеров; их установка и поддержка выбираются отдельно от самого API Ingress.
 </b></details>
 
 <details>
-<summary>What are some use cases for using Ingress?</summary><br><b>
+<summary>Когда используют Ingress?</summary><br><b>
 
-* Multiple sub-domains (multiple host entries, each with its own service)
-* One domain with multiple services (multiple paths where each one is mapped to a different service/application)
+* Несколько поддоменов с разными Service.
+* Один домен с разными путями, ведущими к разным приложениям.
 </b></details>
 
 <details>
-<summary>How to list Ingress in your namespace?</summary><br><b>
+<summary>Как вывести Ingress текущего пространства имён?</summary><br><b>
 
 kubectl get ingress
 </b></details>
 
 <details>
-<summary>What is Ingress Default Backend?</summary><br><b>
+<summary>Что такое default backend Ingress?</summary><br><b>
 
-It specifies what do with an incoming request to the Kubernetes cluster that isn't mapped to any backend (= no rule to for mapping the request to a service). If the default backend service isn't defined, it's recommended to define so users still see some kind of message instead of nothing or unclear error.
+Назначение для запросов, которым не соответствует ни одно правило. Его поведение позволяет задать понятный ответ вместо неожиданной ошибки; настройки зависят от Ingress и контроллера.
 </b></details>
 
 <details>
-<summary>How to configure a default backend?</summary><br><b>
+<summary>Как настроить default backend?</summary><br><b>
 
-Create Service resource that specifies the name of the default backend as reflected in `kubectl describe ingress ...` and the port under the ports section.
+Создать нужный Service и сослаться на него в `spec.defaultBackend` либо настроить backend по умолчанию самого контроллера. Одного создания Service недостаточно.
 </b></details>
 
 <details>
-<summary>How to configure TLS with Ingress?</summary><br><b>
+<summary>Как настроить TLS для Ingress?</summary><br><b>
 
-Add tls and secretName entries.
+Добавить раздел `tls`, нужные имена хостов и `secretName` сертификата.
 
 ```
 spec:
@@ -1307,39 +1329,40 @@ spec:
 </b></details>
 
 <details>
-<summary>True or False? When configuring Ingress with TLS, the Secret component must be in the same namespace as the Ingress component</summary><br><b>
+<summary>Верно ли, что TLS Secret должен находиться в том же namespace, что и Ingress?</summary><br><b>
 
-True
+Верно.
 </b></details>
 
 <details>
-<summary>Which Kubernetes concept would you use to control traffic flow at the IP address or port level? </summary><br><b>
+<summary>Как ограничить сетевой обмен подов на уровне IP и портов?</summary><br><b>
 
-Network Policies
+С помощью NetworkPolicy.
 </b></details>
 
 <details>
-<summary>How to scale an application (deplyoment) so it runs more than one instance of the application?</summary><br><b>
+<summary>Как масштабировать Deployment до нескольких экземпляров приложения?</summary><br><b>
 
-To run two instances of the applicaation?
+Например, до двух:
 
 `kubectl scale deployment <DEPLOYMENT_NAME> --replicas=2`
 
-You can specify any other number, given that your application knows how to scale.
+Можно задать другое число, если приложение поддерживает такое масштабирование.
 </b></details>
 
+<a id="replicasets"></a>
 ### ReplicaSets
 
 <details>
-<summary>What is the purpose of ReplicaSet?</summary><br><b>
+<summary>Для чего нужен ReplicaSet?</summary><br><b>
 
-[kubernetes.io](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset): "A ReplicaSet's purpose is to maintain a stable set of replica Pods running at any given time. As such, it is often used to guarantee the availability of a specified number of identical Pods."
+[kubernetes.io](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset): ReplicaSet поддерживает заданное число реплик подов, обеспечивая наличие нужного количества экземпляров.
 
-In simpler words, a ReplicaSet will ensure the specified number of Pods replicas is running for a selected Pod. If there are more Pods than defined in the ReplicaSet, some will be removed. If there are less than what is defined in the ReplicaSet then, then more replicas will be added.
+Если управляемых подов слишком много, лишние удаляются; если мало — создаются новые.
 </b></details>
 
 <details>
-<summary>What the following block of lines does?
+<summary>Что делает следующий блок?
 
 ```
 spec:
@@ -1358,125 +1381,125 @@ spec:
 ```
 </summary><br><b>
 
-It defines a replicaset for Pods whose type is set to "backend" so at any given point of time there will be 2 concurrent Pods running.
+Задаёт ReplicaSet для подов с меткой `type: backend` и желаемым числом реплик 2.
 </b></details>
 
 <details>
-<summary>What will happen when a Pod, created by ReplicaSet, is deleted directly with <code>kubectl delete po ...</code>?</summary><br><b>
+<summary>Что произойдёт, если вручную удалить под ReplicaSet через kubectl delete po?</summary><br><b>
 
-The ReplicaSet will create a new Pod in order to reach the desired number of replicas.
+ReplicaSet создаст замену для восстановления желаемого числа реплик.
 </b></details>
 
 <details>
-<summary>True or False? If a ReplicaSet defines 2 replicas but there 3 Pods running matching the ReplicaSet selector, it will do nothing</summary><br><b>
+<summary>Верно ли, что ReplicaSet с replicas=2 ничего не сделает при наличии трёх управляемых подов?</summary><br><b>
 
-False. It will terminate one of the Pods to reach the desired state of 2 replicas.
+Неверно. Он удалит лишний под, чтобы осталось два.
 </b></details>
 
 <details>
-<summary>Describe the sequence of events in case of creating a ReplicaSet</summary><br><b>
+<summary>Опишите последовательность создания ReplicaSet.</summary><br><b>
 
-* The client (e.g. kubectl) sends a request to the API server to create a ReplicaSet
-* The Controller detects there is a new event requesting for a ReplicaSet
-* The controller creates new Pod definitions (the exact number depends on what is defined in the ReplicaSet definition)
-* The scheduler detects unassigned Pods and decides to which nodes to assign the Pods. This information sent to the API server
-* Kubelet detects that two Pods were assigned to the node it's running on (as it constantly watching the API server)
-* Kubelet sends requests to the container engine, to create the containers that are part of the Pod
-* Kubelet sends a request to the API server to notify it the Pods were created
+* Клиент отправляет запрос API-серверу.
+* Контроллер замечает новый ReplicaSet.
+* Создаёт необходимое число объектов Pod по шаблону.
+* Scheduler назначает поды узлам через API-сервер.
+* Kubelet замечает назначенные своему узлу поды.
+* Поручает среде выполнения создать контейнеры.
+* Отправляет состояние подов API-серверу.
 </b></details>
 
 <details>
-<summary>How to list ReplicaSets in the current namespace?</summary><br><b>
+<summary>Как вывести ReplicaSet текущего namespace?</summary><br><b>
 
 `kubectl get rs`
 </b></details>
 
 <details>
-<summary>Is it possible to delete ReplicaSet without deleting the Pods it created?</summary><br><b>
+<summary>Можно ли удалить ReplicaSet, сохранив его поды?</summary><br><b>
 
-Yes, with `--cascase=false`.
+Да, через orphan-удаление. В исходнике указан старый вариант `--cascade=false`.
 
-`kubectl delete -f rs.yaml --cascade=false`
+`kubectl delete -f rs.yaml --cascade=orphan`
 </b></details>
 
 <details>
-<summary>What is the default number of replicas if not explicitly specified?</summary><br><b>
+<summary>Сколько реплик создаётся, если replicas не задано?</summary><br><b>
 
 1
 </b></details>
 
 <details>
-<summary>What the following output of <code>kubectl get rs</code> means?
+<summary>Что означает следующий вывод kubectl get rs?
 
 NAME                    DESIRED   CURRENT   READY   AGE
 web                     2         2         0       2m23s
 </summary><br><b>
 
-The replicaset `web` has 2 replicas. It seems that the containers inside the Pod(s) are not yet running since the value of READY is 0. It might be normal since it takes time for some containers to start running and it might be due to an error. Running `kubectl describe po POD_NAME` or `kubectl logs POD_NAME` can give us more information.
+У `web` желаемых и существующих реплик две, но готовых — ноль. Это может быть временным состоянием запуска или ошибкой. Изучите `kubectl describe po POD_NAME` и `kubectl logs POD_NAME`; отсутствие готовности не обязательно означает отсутствие работающего процесса.
 </b></details>
 
 <details>
-<summary>True or False? Pods specified by the selector field of ReplicaSet must be created by the ReplicaSet itself</summary><br><b>
+<summary>Верно ли, что ReplicaSet управляет только подами, которые создал сам?</summary><br><b>
 
-False. The Pods can be already running and initially they can be created by any object. It doesn't matter for the ReplicaSet and not a requirement for it to acquire and monitor them.
+Неверно. Он может принять подходящие поды без другого управляющего владельца. Уточнение: нельзя произвольно забрать под, уже управляемый другим контроллером.
 </b></details>
 
 <details>
-<summary>True or False? In case of a ReplicaSet, if Pods specified in the selector field don't exists, the ReplicaSet will wait for them to run before doing anything</summary><br><b>
+<summary>Верно ли, что ReplicaSet ждёт самостоятельного появления подходящих подов?</summary><br><b>
 
-False. It will take care of running the missing Pods.
+Неверно. Он создаёт недостающие поды.
 </b></details>
 
 <details>
-<summary>In case of a ReplicaSet, Which field is mandatory in the spec section?</summary><br><b>
+<summary>Какое поле spec нужно ReplicaSet для создания подов?</summary><br><b>
 
-The field `template` in spec section is mandatory. It's used by the ReplicaSet to create new Pods when needed.
+`template` задаёт шаблон новых подов. Уточнение: обязательны и другие поля, в частности подходящий `selector`.
 </b></details>
 
 <details>
-<summary>You've created a ReplicaSet, how to check whether the ReplicaSet found matching Pods or it created new Pods?</summary><br><b>
+<summary>Как узнать, создал ли ReplicaSet новые поды или нашёл существующие?</summary><br><b>
 
 `kubectl describe rs <ReplicaSet Name>`
 
-It will be visible under `Events` (the very last lines)
+Посмотрите `Events` в конце вывода.
 </b></details>
 
 <details>
-<summary>True or False? Deleting a ReplicaSet will delete the Pods it created</summary><br><b>
+<summary>Верно ли, что удаление ReplicaSet удаляет его поды?</summary><br><b>
 
-True (and not only the Pods but anything else it created).
+При обычном каскадном удалении — да; режим orphan позволяет сохранить зависимые объекты.
 </b></details>
 
 <details>
-<summary>True or False? Removing the label from a Pod that is tracked by a ReplicaSet, will cause the ReplicaSet to create a new Pod</summary><br><b>
+<summary>Верно ли, что удаление выбранной селектором метки пода заставит ReplicaSet создать замену?</summary><br><b>
 
-True. When the label, used by a ReplicaSet in the selector field, removed from a Pod, that Pod no longer controlled by the ReplicaSet and the ReplicaSet will create a new Pod to compensate for the one it "lost".
+Да. Под перестаёт соответствовать селектору, и контроллер восполняет недостающую реплику.
 </b></details>
 
 <details>
-<summary>How to scale a deployment to 8 replicas?</code></summary><br><b>
+<summary>Как масштабировать Deployment до восьми реплик?</summary><br><b>
 
 kubectl scale deploy <DEPLOYMENT_NAME> --replicas=8
 </b></details>
 
 <details>
-<summary>ReplicaSets are running the moment the user executed the command to create them (like <code>kubectl create -f rs.yaml</code>)</summary><br><b>
+<summary>Верно ли, что все реплики готовы сразу после команды создания ReplicaSet?</summary><br><b>
 
-False. It can take some time, depends on what exactly you are running. To see if they are up and running, run `kubectl get rs` and watch the 'READY' column.
+Неверно. Запуск занимает время. Проверяйте READY в `kubectl get rs`.
 </b></details>
 
 <details>
-<summary>How to expose a ReplicaSet as a new service?</summary><br><b>
+<summary>Как предоставить ReplicaSet через новый Service?</summary><br><b>
 
 `kubectl expose rs <ReplicaSet Name> --name=<Service Name> --target-port=<Port to expose> --type=NodePort`
 
-Few notes:
-  - the target port depends on which port the app is using in the container
-  - type can be different and doesn't has to be specifically "NodePort"
+Примечания:
+  - `target-port` соответствует порту приложения в контейнере.
+  - Тип Service выбирается по задаче и не обязан быть NodePort.
 </b></details>
 
 <details>
-<summary>Fix the following ReplicaSet definition
+<summary>Исправьте определение ReplicaSet:
 
 ```yaml
 apiVersion: apps/v1
@@ -1501,11 +1524,11 @@ spec:
 ```
 </summary><br><b>
 
-kind should be ReplicaSet and not ReplicaCet :)
+Правильное значение kind — `ReplicaSet`, а не `ReplicaCet`.
 </b></details>
 
 <details>
-<summary>Fix the following ReplicaSet definition
+<summary>Исправьте определение ReplicaSet:
 
 ```yaml
 apiVersion: apps/v1
@@ -1530,261 +1553,271 @@ spec:
 ```
 </summary><br><b>
 
-The selector doesn't match the label (cache vs cachy). To solve it, fix cachy so it's cache instead.
+Селектор и метка не совпадают: замените `cachy` на `cache`.
 </b></details>
 
 <details>
-<summary>How to check which container image was used as part of replica set called "repli"?</summary><br><b>
+<summary>Как узнать образ контейнера в ReplicaSet repli?</summary><br><b>
 
 `k describe rs repli | grep -i image`
 </b></details>
 
 <details>
-<summary>How to check how many Pods are ready as part of a replica set called "repli"?</summary><br><b>
+<summary>Как проверить готовность подов ReplicaSet repli?</summary><br><b>
 
 `k describe rs repli | grep -i "Pods Status"`
 </b></details>
 
 <details>
-<summary>How to delete a replica set called "rori"?</summary><br><b>
+<summary>Как удалить ReplicaSet rori?</summary><br><b>
 
 `k delete rs rori`
 </b></details>
 
 <details>
-<summary>How to modify a replica set called "rori" to use a different image?</summary><br><b>
+<summary>Как изменить образ в ReplicaSet rori?</summary><br><b>
 
-`k edis rs rori`
+`k edit rs rori`. Уточнение: правка шаблона ReplicaSet сама по себе не обновляет уже работающие поды; для управляемого обновления обычно используют Deployment.
 </b></details>
 
 <details>
-<summary>Scale up a replica set called "rori" to run 5 Pods instead of 2</summary><br><b>
+<summary>Увеличьте число реплик rori с двух до пяти.</summary><br><b>
 
 `k scale rs rori --replicas=5`
 </b></details>
 
 <details>
-<summary>Scale down a replica set called "rori" to run 1 Pod instead of 5</summary><br><b>
+<summary>Уменьшите число реплик rori с пяти до одной.</summary><br><b>
 
 `k scale rs rori --replicas=1`
 </b></details>
 
+<a id="daemonset"></a>
 ### DaemonSet
 
 <details>
-<summary>What's a DaemonSet?</summary><br><b>
+<summary>Что такое DaemonSet?</summary><br><b>
 
-[Kubernetes.io](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset): "A DaemonSet ensures that all (or some) Nodes run a copy of a Pod. As nodes are added to the cluster, Pods are added to them. As nodes are removed from the cluster, those Pods are garbage collected. Deleting a DaemonSet will clean up the Pods it created."
+[Kubernetes.io](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset): обеспечивает экземпляр пода на всех подходящих узлах или их части. При добавлении узлов создаёт поды, при удалении очищает их. Обычное удаление DaemonSet удаляет его поды.
 </b></details>
 
 <details>
-<summary>What's the difference between a ReplicaSet and DaemonSet?</summary><br><b>
+<summary>Чем ReplicaSet отличается от DaemonSet?</summary><br><b>
 
-A ReplicaSet's purpose is to maintain a stable set of replica Pods running at any given time.
-A DaemonSet ensures that all Nodes run a copy of a Pod. 
+ReplicaSet поддерживает заданное число реплик.
+DaemonSet поддерживает под на каждом подходящем узле.
 </b></details>
 
 <details>
-<summary>What are some use cases for using a DaemonSet?</summary><br><b>
+<summary>Для чего используют DaemonSet?</summary><br><b>
 
-* Monitoring: You would like to perform monitoring on every node part of cluster. For example datadog pod runs on  every node using a daemonset
-* Logging: You would like to having logging set up on every node part of your cluster
-* Networking: there is networking component you need on every node for all nodes to communicate between them
+* Мониторинг: агент, например Datadog, на каждом узле.
+* Сбор журналов с каждого узла.
+* Сетевые компоненты, необходимые узлам кластера.
 </b></details>
 
 <details>
-<summary>How DaemonSet works?</summary><br><b>
+<summary>Как DaemonSet размещает поды?</summary><br><b>
 
-Historically, up 1.12, it was done with NodeName attribute.
+Исторически использовалось прямое назначение через `nodeName`.
 
-Starting 1.12, it's achieved with regular scheduler and node affinity.
+Начиная с перехода, описанного в исходнике для версии 1.12, размещение выполняется обычным Scheduler с node affinity.
 </b></details>
 
-#### DaemonSet - Commands
+<a id="daemonset---commands"></a>
+#### Команды для DaemonSet
 
 <details>
-<summary>How to list all daemonsets in the current namespace?</summary><br><b>
+<summary>Как вывести DaemonSet текущего namespace?</summary><br><b>
 
 `kubectl get ds`
 </b></details>
 
+<a id="statefulset"></a>
 ### StatefulSet
 
 <details>
-<summary>Explain StatefulSet</summary><br><b>
+<summary>Объясните StatefulSet.</summary><br><b>
 
-StatefulSet is the workload API object used to manage stateful applications. Manages the deployment and scaling of a set of Pods, and provides guarantees about the ordering and uniqueness of these Pods.[Learn more](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
+Объект управления приложениями с состоянием: развёртывание и масштабирование подов со стабильной идентичностью и правилами порядка операций. [Подробнее](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
 </b></details>
 
-### Storage
+<a id="storage"></a>
+### Хранение данных
 
-#### Volumes
-
-<details>
-<summary>What is a volume in regards to Kubernetes?</summary><br><b>
-
-A directory accessible by the containers inside a certain Pod and containers. The mechanism responsible for creating the directory, managing it, ... mainly depends on the volume type.
-
-</b></details>
+<a id="volumes"></a>
+#### Тома
 
 <details>
-<summary>What volume types are you familiar with?</summary><br><b>
+<summary>Что такое том Kubernetes?</summary><br><b>
 
-* emptyDir: created when a Pod assigned to a node and ceases to exist when the Pod is no longer running on that node
-* hostPath: mounts a path from the host itself. Usually not used due to security risks but has multiple use-cases where it's needed like access to some internal host paths (`/sys`, `/var/lib`, etc.)
+Хранилище, подключаемое к контейнерам пода. Способ подготовки и жизненный цикл зависят от типа тома.
 
 </b></details>
 
 <details>
-<summary>Which problems, volumes in Kubernetes solve?</summary><br><b>
+<summary>Какие типы томов вы знаете?</summary><br><b>
 
-1. Sharing files between containers running in the same Pod
-2. Storage in containers is ephemeral - it usually doesn't last for long. For example, when a container crashes, you lose all on-disk data. Certain volumes allows to manage such situation by persistent volumes
-
-</b></details>
-
-<details>
-<summary>Explain ephemeral volume types vs. persistent volumes in regards to Pods</summary><br><b>
-
-Ephemeral volume types have the lifetime of a pod as opposed to persistent volumes which exist beyond the lifetime of a Pod.
+* `emptyDir` — создаётся для пода на узле и удаляется вместе с этим подом; переживает перезапуск его контейнеров.
+* `hostPath` — подключает путь хоста. Требует осторожности из-за доступа к системе, но нужен, например, агентам, читающим `/sys` или `/var/lib`.
 
 </b></details>
 
 <details>
-<summary>Provide at least one use-case for each of the following volume types:
+<summary>Какие задачи решают тома?</summary><br><b>
+
+1. Общие файлы для нескольких контейнеров пода.
+2. Отделение данных от записываемого слоя контейнера. Для данных, которые должны переживать замену пода, используют постоянные хранилища.
+
+</b></details>
+
+<details>
+<summary>Чем эфемерные тома отличаются от постоянных?</summary><br><b>
+
+Жизненный цикл эфемерных томов связан с подом; постоянные тома могут существовать после его удаления.
+
+</b></details>
+
+<details>
+<summary>Приведите сценарий для каждого типа:
 
 * emptyDir
 * hostPath
 </summary><br><b>
 
-* EmptyDir: You need a temporary data that you can afford to lose if the Pod is deleted. For example short-lived data required for one-time operations.
-* hostPath: You need access to paths on the host itself (like data from `/sys` or data generated in `/var/lib`)
+* `emptyDir`: временные данные, которые можно потерять при удалении пода, например промежуточные файлы разовой задачи.
+* `hostPath`: доступ к данным самого узла, например `/sys` или `/var/lib`.
 </b></details>
 
-### Networking
+<a id="networking"></a>
+### Сеть
 
 <details>
-<summary>True or False? By default there is no communication between two Pods in two different namespaces</summary><br><b>
+<summary>Верно ли, что поды разных namespace по умолчанию не могут общаться?</summary><br><b>
 
-False. By default two Pods in two different namespaces are able to communicate with each other.
+Неверно. Само разделение по namespace сетевую связь не запрещает.
 
-Try it for yourself:
+Проверьте на примере:
 
 kubectl run test-prod -n prod --image ubuntu -- sleep 2000000000
 kubectl run test-dev -n dev --image ubuntu -- sleep 2000000000
 
-`k describe po test-prod -n prod` to get the IP of test-prod Pod.
+Получите IP test-prod: `k describe po test-prod -n prod`.
 
-Access dev Pod: `kubectl exec --stdin --tty test-dev -n dev -- /bin/bash`
+Откройте оболочку test-dev: `kubectl exec --stdin --tty test-dev -n dev -- /bin/bash`.
 
-And ping the IP of test-prod Pod you get earlier.You'll see that there is communication between the two pods, in two separate namespaces.
-
-</b></details>
-
-### Network Policies
-
-<details>
-<summary>Explain Network Policies</summary><br><b>
-
-[kubernetes.io](https://kubernetes.io/docs/concepts/services-networking/network-policies): "NetworkPolicies are an application-centric construct which allow you to specify how a pod is allowed to communicate with various network "entities"..."
-
-In simpler words, Network Policies specify how pods are allowed/disallowed to communicate with each other and/or other network endpoints.
+Отправьте ping на полученный IP, если утилита доступна и сеть разрешает ICMP. Разные namespace сами по себе трафик не блокируют.
 
 </b></details>
 
-<details>
-<summary>What are some use cases for using Network Policies?</summary><br><b>
+<a id="network-policies"></a>
+### Сетевые политики
 
-  - Security:  You want to prevent from everyone to communicate with a certain pod for security reasons
-  - Controlling network traffic: You would like to deny network flow between two specific nodes
+<details>
+<summary>Объясните NetworkPolicy.</summary><br><b>
+
+[kubernetes.io](https://kubernetes.io/docs/concepts/services-networking/network-policies): механизм описания разрешённого взаимодействия подов с сетевыми сущностями.
+
+Политики определяют допустимые входящие и исходящие соединения; для их применения нужен сетевой плагин с поддержкой NetworkPolicy.
 
 </b></details>
 
 <details>
-<summary>True or False? If no network policies are applied to a pod, then no connections to or from it are allowed</summary><br><b>
+<summary>Когда применяют NetworkPolicy?</summary><br><b>
 
-False. By default pods are non-isolated.
+  - Для ограничения доступа к определённым подам.
+  - Для управления потоками между группами подов и другими конечными точками. Уточнение: это не универсальный межсетевой экран между самими узлами.
+
 </b></details>
 
 <details>
-<summary>In case of two pods, if there is an egress policy on the source denining traffic and ingress policy on the destination that allows traffic then, traffic will be allowed or denied?</summary><br><b>
+<summary>Верно ли, что без NetworkPolicy поду запрещены все соединения?</summary><br><b>
 
-Denied. Both source and destination policies has to allow traffic for it to be allowed.
+Неверно. По умолчанию под не изолирован политиками.
 </b></details>
 
 <details>
-<summary>Where Kubernetes cluster stores the cluster state?</summary><br><b>
+<summary>Исходящая политика источника не разрешает соединение, а входящая политика назначения разрешает. Пройдёт ли трафик?</summary><br><b>
+
+Нет. Если соответствующие направления изолированы, разрешение нужно с обеих сторон.
+</b></details>
+
+<details>
+<summary>Где хранится состояние кластера?</summary><br><b>
 
 etcd
 </b></details>
 
+<a id="etcd"></a>
 ### etcd
 
 <details>
-<summary>What is etcd?</summary><br><b>
+<summary>Что такое etcd?</summary><br><b>
 
-etcd is an open source distributed key-value store used to hold and manage the critical information that distributed systems need to keep running.
+Открытое распределённое хранилище ключей и значений для критически важных данных распределённых систем.
 
-[Read more here](https://www.redhat.com/en/topics/containers/what-is-etcd)
+[Подробнее](https://www.redhat.com/en/topics/containers/what-is-etcd).
 
 </b></details>
 
 <details>
-<summary>True or False? Etcd holds the current status of any kubernetes component</summary><br><b>
+<summary>Верно ли, что etcd хранит текущее состояние любого компонента Kubernetes?</summary><br><b>
 
-True
+Верно.
 </b></details>
 
 <details>
-<summary>True or False? The API server is the only component which communicates directly with etcd</summary><br><b>
+<summary>Верно ли, что среди основных компонентов Kubernetes напрямую с etcd взаимодействует API-сервер?</summary><br><b>
 
-True
+Верно.
 </b></details>
 
 <details>
-<summary>True or False? application data is not stored in etcd</summary><br><b>
+<summary>Верно ли, что рабочие данные приложений обычно не хранятся в etcd Kubernetes?</summary><br><b>
 
-True
+Верно.
 </b></details>
 
 <details>
-<summary>Why etcd? Why not some SQL or NoSQL database?</summary><br><b>
+<summary>Почему выбрано etcd, а не другая SQL- или NoSQL-база?</summary><br><b>
 
-When chosen as the data store etcd was (and still is of course):
+Среди важных свойств:
 
-* Highly Available - you can deploy multiple nodes
-* Fully Replicated - any node in etcd cluster is "primary" node and has full access to the data
-* Consistent - reads return latest data
-* Secured - supports both TLS and SSL
-* Speed - high performance data store (10k writes per sec!)
+* Высокая доступность при развёртывании нескольких участников.
+* Репликация данных. Уточнение: в Raft есть лидер; утверждение исходника, что любой узел одновременно основной, неточно.
+* Согласованность; семантика чтения зависит от выбранного режима.
+* Защищённый обмен через TLS.
+* Производительность, подходящая для состояния кластера; конкретное число записей в секунду зависит от среды.
 </b></details>
 
-### Namespaces
+<a id="namespaces"></a>
+### Пространства имён
 
 <details>
-<summary>What are namespaces?</summary><br><b>
+<summary>Что такое namespace?</summary><br><b>
 
-Namespaces allow you split your cluster into virtual clusters where you can group your applications in a way that makes sense and is completely separated from the other groups (so you can for example create an app with the same name in two different namespaces)
-</b></details>
-
-<details>
-<summary>Why to use namespaces? What is the problem with using one default namespace?</summary><br><b>
-
-When using the default namespace alone, it becomes hard over time to get an overview of all the applications you manage in your cluster. Namespaces make it easier to organize the applications into groups that makes sense, like a namespace of all the monitoring applications and a namespace for all the security applications, etc.
-
-Namespaces can also be useful for managing Blue/Green environments where each namespace can include a different version of an app and also share resources that are in other namespaces (namespaces like logging, monitoring, etc.).
-
-Another use case for namespaces is one cluster, multiple teams. When multiple teams use the same cluster, they might end up stepping on each others toes. For example if they end up creating an app with the same name it means one of the teams overridden the app of the other team because there can't be too apps in Kubernetes with the same name (in the same namespace).
+Логическая область имён ресурсов внутри кластера. Позволяет группировать приложения и использовать одинаковые имена объектов одного типа в разных namespace. Это не полная изоляция виртуальных кластеров.
 </b></details>
 
 <details>
-<summary>True or False? When a namespace is deleted all resources in that namespace are not deleted but moved to another default namespace</summary><br><b>
+<a id="namespaces-use-cases"></a>
+<summary>Зачем нужны namespace? Чем неудобен один default?</summary><br><b>
 
-False. When a namespace is deleted, the resources in that namespace are deleted as well.
+С ростом числа приложений труднее ориентироваться. Namespace помогают группировать ресурсы, например мониторинг и средства безопасности.
+
+Можно разделять версии blue/green по namespace, сохраняя доступ к общим сервисам журналирования и мониторинга.
+
+Также удобно разделять команды, чтобы имена ресурсов не конфликтовали. Права доступа и сетевую изоляцию при этом настраивают отдельно.
 </b></details>
 
 <details>
-<summary>What special namespaces are there by default when creating a Kubernetes cluster?</summary><br><b>
+<summary>Верно ли, что при удалении namespace его ресурсы переносятся в default?</summary><br><b>
+
+Неверно. Ресурсы этого пространства имён также удаляются.
+</b></details>
+
+<details>
+<summary>Какие namespace создаются по умолчанию?</summary><br><b>
 
 * default
 * kube-system
@@ -1793,121 +1826,123 @@ False. When a namespace is deleted, the resources in that namespace are deleted 
 </b></details>
 
 <details>
-<summary>What can you find in kube-system namespace?</summary><br><b>
+<summary>Что находится в kube-system?</summary><br><b>
 
-* Master and Kubectl processes
-* System processes
+* API-объекты системных компонентов и, в зависимости от установки, зеркальные поды control plane. Kubectl как клиентский процесс там не «живёт».
+* Другие системные компоненты кластера.
 </b></details>
 
 <details>
-<summary>While namespaces do provide scope for resources, they are not isolating them</summary><br><b>
+<summary>Верно ли, что namespace задают область ресурсов, но сами по себе не обеспечивают полную изоляцию?</summary><br><b>
 
-True. Try create two pods in two separate namespaces for example, and you'll see there is a connection between the two.
+Верно. Например, поды разных namespace могут общаться без дополнительных сетевых ограничений.
 </b></details>
 
-#### Namespaces - commands
+<a id="namespaces---commands"></a>
+#### Команды для namespace
 
 <details>
-<summary>How to list all namespaces?</code></summary><br><b>
+<summary>Как вывести все namespace?</summary><br><b>
 
-`kubectl get namespaces` OR `kubectl get ns`
+`kubectl get namespaces` или `kubectl get ns`.
 
 </b></details>
 
 <details>
-<summary>Create a namespace called 'alle'</summary><br><b>
+<summary>Создайте namespace alle.</summary><br><b>
 
 `k create ns alle`
 
 </b></details>
 
 <details>
-<summary>Check how many namespaces are there</summary><br><b>
+<summary>Посчитайте namespace.</summary><br><b>
 
 `k get ns --no-headers | wc -l`
 
 </b></details>
 
 <details>
-<summary>Check how many pods exist in the "dev" namespace</summary><br><b>
+<summary>Проверьте число подов в namespace dev.</summary><br><b>
 
-`k get po -n dev`
-
-</b></details>
-
-<details>
-<summary>Create a pod called "kartos" in the namespace dev. The pod should be using the "redis" image.</summary><br><b>
-
-If the namespace doesn't exist already: `k create ns dev`
-
-`k run kratos --image=redis -n dev`
+`k get po -n dev`; для подсчёта: `k get po -n dev --no-headers | wc -l`.
 
 </b></details>
 
 <details>
-<summary>You are looking for a Pod called "atreus". How to check in which namespace it runs?</summary><br><b>
+<summary>Создайте под kartos с образом redis в namespace dev.</summary><br><b>
+
+Если namespace ещё нет: `k create ns dev`.
+
+`k run kartos --image=redis -n dev`. В исходнике имя не совпадало с заданием.
+
+</b></details>
+
+<details>
+<summary>Как узнать, в каком namespace находится под atreus?</summary><br><b>
 
 `k get po -A | grep atreus`
 
 </b></details>
 
 <details>
-<summary>What kube-public contains?</summary><br><b>
+<summary>Что находится в kube-public?</summary><br><b>
 
-* A configmap, which contains cluster information
-* Publicly accessible data
+* В зависимости от установки — ConfigMap с информацией о кластере.
+* Данные, предназначенные для публичного чтения; фактический доступ определяется настройками.
 </b></details>
 
 <details>
-<summary>How to get the name of the current namespace?</code></summary><br><b>
+<summary>Как узнать текущий namespace?</summary><br><b>
 
-`kubectl config view | grep namespace`
+`kubectl config view --minify -o jsonpath='{..namespace}'`; если поле не задано, обычно используется `default`.
 </b></details>
 
 <details>
-<summary>What kube-node-lease contains?</summary><br><b>
+<summary>Что находится в kube-node-lease?</summary><br><b>
 
-It holds information on heartbeats of nodes. Each node gets an object which holds information about its availability.
+Объекты Lease узлов, обновляемые как свидетельство их доступности.
 </b></details>
 
 <details>
-<summary>True or False? With namespaces you can limit the resources consumed by the users/teams</summary><br><b>
+<summary>Можно ли ограничивать ресурсы команд с помощью namespace?</summary><br><b>
 
-True. With namespaces you can limit CPU, RAM and storage usage.
+Да, назначая ResourceQuota и при необходимости LimitRange внутри namespace. Само создание namespace лимиты не устанавливает.
 </b></details>
 
 <details>
-<summary>How to switch to another namespace? In other words how to change active namespace?</code></summary><br><b>
+<summary>Как сменить текущий namespace?</summary><br><b>
 
-`kubectl config set-context --current --namespace=some-namespace` and validate with `kubectl config view --minify | grep namespace:`
+`kubectl config set-context --current --namespace=some-namespace`; проверка: `kubectl config view --minify | grep namespace:`.
 
-OR
+ИЛИ
 
 `kubens some-namespace`
 </b></details>
 
-#### Resources Quota
+<a id="resources-quota"></a>
+#### Квоты ресурсов
 
 <details>
-<summary>What is Resource Quota?</code></summary><br><b>
+<summary>Что такое ResourceQuota?</summary><br><b>
   
-Resource quota provides constraints that limit aggregate resource consumption per namespace. It can limit the quantity of objects that can be created in a namespace by type, as well as the total amount of compute resources that may be consumed by resources in that namespace.
+Ограничение суммарного потребления ресурсов namespace: количества объектов разных типов и запрашиваемых или ограничиваемых вычислительных ресурсов.
 </b></details>
 
 <details>
-<summary>How to create a Resource Quota?</code></summary><br><b>
+<summary>Как создать ResourceQuota?</summary><br><b>
 
-kubectl create quota some-quota --hard-cpu=2,pods=2
+`kubectl create quota some-quota --hard=cpu=2,pods=2`
 </b></details>
 
 <details>
-<summary>Which resources are accessible from different namespaces?</code></summary><br><b>
+<summary>К каким ресурсам можно обращаться из другого namespace?</summary><br><b>
 
-Services.
+Например, к сетевым Service при разрешённом доступе.
 </b></details>
 
 <details>
-<summary>Which service and in which namespace the following file is referencing?
+<summary>На какой Service и namespace ссылается следующий файл?
 
 ```
 apiVersion: v1
@@ -1919,26 +1954,26 @@ data:
 ```
 </summary><br><b>
 
-It's referencing the service "samurai" in the namespace called "jack".
+На Service `samurai` в namespace `jack`.
 </b></details>
 
 <details>
-<summary>Which components can't be created within a namespace?</code></summary><br><b>
+<summary>Какие объекты не принадлежат namespace?</summary><br><b>
 
-Volume and Node.
+Например, Node и PersistentVolume. Уточнение: PVC, в отличие от PV, имеет namespace.
 </b></details>
 
 <details>
-<summary>How to list all the components that bound to a namespace?</code></summary><br><b>
+<summary>Как вывести типы ресурсов, привязанные к namespace?</summary><br><b>
 
 `kubectl api-resources --namespaced=true`
 </b></details>
 
 <details>
-<summary>How to create components in a namespace?</code></summary><br><b>
+<summary>Как создать объект в определённом namespace?</summary><br><b>
 
-One way is by specifying --namespace like this: `kubectl apply -f my_component.yaml --namespace=some-namespace`
-Another way is by specifying it in the YAML itself:
+Передать параметр: `kubectl apply -f my_component.yaml --namespace=some-namespace`.
+Или указать namespace в YAML:
 
 ```
 apiVersion: v1
@@ -1948,188 +1983,189 @@ metadata:
   namespace: some-namespace
 ```
 
-and you can verify with: `kubectl get configmap -n some-namespace`
+Проверка: `kubectl get configmap -n some-namespace`.
 </b></details>
 
 <details>
-<summary>How to execute the command "ls" in an existing pod?</code></summary><br><b>
+<summary>Как выполнить ls в существующем поде?</summary><br><b>
 
 kubectl exec some-pod -it -- ls
 </b></details>
 
 <details>
-<summary>How to create a service that exposes a deployment?</code></summary><br><b>
+<summary>Как создать Service для Deployment?</summary><br><b>
 
 kubectl expose deploy some-deployment --port=80 --target-port=8080
 </b></details>
 
 <details>
-<summary>How to create a pod and a service with one command?</code></summary><br><b>
+<summary>Как одной командой создать под и Service?</summary><br><b>
 
 kubectl run nginx --image=nginx --restart=Never --port 80 --expose
 </b></details>
 
 <details>
-<summary>Describe in detail what the following command does <code>kubectl create deployment kubernetes-httpd --image=httpd</code></summary><br><b>
+<summary>Подробно объясните <code>kubectl create deployment kubernetes-httpd --image=httpd</code>.</summary><br><b>
 </b></details>
 
 <details>
-<summary>Why to create kind deployment, if pods can be launched with replicaset?</summary><br><b>
+<summary>Зачем Deployment, если поды может создавать ReplicaSet?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How to get list of resources which are not bound to a specific namespace?</code></summary><br><b>
+<summary>Как вывести типы ресурсов кластерного уровня?</summary><br><b>
 
 kubectl api-resources --namespaced=false
 </b></details>
 
 <details>
-<summary>How to delete all pods whose status is not "Running"?</code></summary><br><b>
+<summary>Как удалить все поды, фаза которых не Running?</summary><br><b>
 
 kubectl delete pods --field-selector=status.phase!='Running'
 </b></details>
 
 <details>
-<summary>How to display the resources usages of pods?</summary><br><b>
+<summary>Как посмотреть потребление ресурсов подами?</summary><br><b>
 
 kubectl top pod
 </b></details>
 
 <details>
-<summary>Perhaps a general question but, you suspect one of the pods is having issues, you don't know what exactly. What do you do?</summary><br><b>
+<summary>Вы подозреваете проблему с подом, но пока не знаете какую. С чего начать?</summary><br><b>
 
-Start by inspecting the pods status. we can use the command `kubectl get pods` (--all-namespaces for pods in system namespace)<br>
+Проверьте `kubectl get pods`; `--all-namespaces` покажет поды всех namespace.<br>
 
-If we see "Error" status, we can keep debugging by running the command `kubectl describe pod [name]`. In case we still don't see anything useful we can try stern for log tailing.<br>
+При ошибке изучите `kubectl describe pod [name]` и журналы; для потокового просмотра нескольких подов можно использовать Stern.<br>
 
-In case we find out there was a temporary issue with the pod or the system, we can try restarting the pod with the following `kubectl scale deployment [name] --replicas=0`<br>
+Если причина выяснена и допустим перезапуск, исходник предлагает масштабирование Deployment до нуля: `kubectl scale deployment [name] --replicas=0`. Это останавливает все его реплики и создаёт простой.<br>
 
-Setting the replicas to 0 will shut down the process. Now start it with `kubectl scale deployment [name] --replicas=1`
+Затем восстановите исходное число реплик; пример для одной: `kubectl scale deployment [name] --replicas=1`.
 </b></details>
 
 <details>
-<summary>What happens what pods are using too much memory? (more than its limit)</summary><br><b>
+<summary>Что происходит, если контейнер превышает лимит памяти?</summary><br><b>
 
-They become candidates to for termination.
+Ограничение памяти применяется ядром; процесс может быть завершён OOM killer, а контейнер получить состояние OOMKilled.
 </b></details>
 
 <details>
-<summary>Describe how roll-back works</summary><br><b>
+<summary>Опишите откат изменений.</summary><br><b>
 </b></details>
 
 <details>
-<summary>True or False? Memory is a compressible resource, meaning that when a container reach the memory limit, it will keep running</summary><br><b>
+<summary>Верно ли, что память — сжимаемый ресурс и контейнер всегда продолжит работу после достижения лимита?</summary><br><b>
 
-False. CPU is a compressible resource while memory is a non compressible resource - once a container reached the memory limit, it will be terminated.
+Неверно. CPU можно ограничить троттлингом, а нехватка памяти при лимите может привести к OOM-завершению. Достижение значения лимита не означает безусловного мгновенного завершения.
 </b></details>
 
-### Operators
+<a id="operators"></a>
+### Операторы
 
 <details>
-<summary>What is an Operator?</summary><br><b>
+<summary>Что такое оператор Kubernetes?</summary><br><b>
 
-Explained [here](https://kubernetes.io/docs/concepts/extend-kubernetes/operator)
+Описание — [здесь](https://kubernetes.io/docs/concepts/extend-kubernetes/operator).
 
-"Operators are software extensions to Kubernetes that make use of custom resources to manage applications and their components. Operators follow Kubernetes principles, notably the control loop."
+Операторы расширяют Kubernetes с помощью пользовательских ресурсов и контроллеров для управления приложениями и их компонентами.
 
-In simpler words, you can think about an operator as a custom control loop in Kubernetes.
-</b></details>
-
-<details>
-<summary>Why do we need Operators?</summary><br><b>
-
-The process of managing stateful applications in Kubernetes isn't as straightforward as managing stateless applications where reaching the desired status and upgrades are both handled the same way for every replica. In stateful applications, upgrading each replica might require different handling due to the stateful nature of the app, each replica might be in a different status. As a result, we often need a human operator to manage stateful applications. Kubernetes Operator is suppose to assist with this.
-
-This also help with automating a standard process on multiple Kubernetes clusters
+Их можно рассматривать как специализированные циклы согласования состояния.
 </b></details>
 
 <details>
-<summary>What components the Operator consists of?</summary><br><b>
+<summary>Зачем нужны операторы?</summary><br><b>
 
-1. CRD (Custom Resource Definition) - You are fanmiliar with Kubernetes resources like Deployment, Pod, Service, etc. CRD is also a resource, but one that you or the developer the operator defines.
-2. Controller - Custom control loop which runs against the CRD
+Управление приложением с состоянием сложнее одинаковой замены независимых реплик. Разные экземпляры могут требовать разного порядка обновления и действий. Оператор автоматизирует знания и процедуры, которые иначе выполнял бы администратор.
 
+Это также помогает одинаково выполнять процедуры в нескольких кластерах.
 </b></details>
 
 <details>
-<summary>Explain CRD</summary><br><b>
+<summary>Из чего состоит оператор?</summary><br><b>
 
-CRD is Custom Resource Definitions. It's custom Kubernetes component which extends K8s API.
-
-TODO(abregman): add more info.
+1. CRD — определение дополнительного типа API-ресурсов, помимо встроенных Pod, Deployment и Service.
+2. Контроллер — цикл согласования экземпляров этих ресурсов с реальным состоянием приложения.
 
 </b></details>
 
 <details>
-<summary>How Operator works?</summary><br><b>
+<summary>Объясните CRD.</summary><br><b>
 
-It uses the control loop used by Kubernetes in general. It watches for changes in the application state. The difference is that is uses a custom control loop.
+CustomResourceDefinition — объект, добавляющий пользовательский тип ресурса в API Kubernetes.
 
-In addition, it also makes use of CRD's (Custom Resources Definitions) so basically it extends Kubernetes API.
-
-</b></details>
-
-<details>
-<summary>True or False? Kubernetes Operator used for stateful applications</summary><br><b>
-
-True
-</b></details>
-
-<details>
-<summary>Explain what is the OLM (Operator Lifecycle Manager) and what is it used for</summary><br><b>
+Примечание исходника: раздел планируется дополнить.
 
 </b></details>
 
 <details>
-<summary>What is the Operator Framework?</summary><br><b>
+<summary>Как работает оператор?</summary><br><b>
 
-open source toolkit used to manage k8s native applications, called operators, in an automated and efficient way.
+Наблюдает за изменениями объектов и приложения и выполняет специализированный цикл согласования.
+
+Обычно использует CRD для расширения API.
 
 </b></details>
 
 <details>
-<summary>What components the Operator Framework consists of?</summary><br><b>
+<summary>Верно ли, что операторы применяют для приложений с состоянием?</summary><br><b>
 
-1. Operator SDK - allows developers to build operators
-2. Operator Lifecycle Manager - helps to install, update and generally manage the lifecycle of all operators
-3. Operator Metering - Enables usage reporting for operators that provide specialized services
+Верно.
+</b></details>
+
+<details>
+<summary>Что такое Operator Lifecycle Manager и зачем он нужен?</summary><br><b>
+
+</b></details>
+
+<details>
+<summary>Что такое Operator Framework?</summary><br><b>
+
+Открытый набор средств создания и автоматизированного управления операторами Kubernetes.
+
+</b></details>
+
+<details>
+<summary>Какие компоненты Operator Framework перечислены в исходнике?</summary><br><b>
+
+1. Operator SDK — создание операторов.
+2. Operator Lifecycle Manager — установка, обновление и управление жизненным циклом.
+3. Operator Metering — исторический компонент отчётности об использовании сервисов операторов.
 4. 
 </b></details>
 
 <details>
-<summary>Describe in detail what is the Operator Lifecycle Manager</summary><br><b>
+<summary>Подробнее опишите Operator Lifecycle Manager.</summary><br><b>
 
-It's part of the Operator Framework, used for managing the lifecycle of operators. It basically extends Kubernetes so a user can use a declarative way to manage operators (installation, upgrade, ...).
-
-</b></details>
-
-<details>
-<summary>What openshift-operator-lifecycle-manager namespace includes?</summary><br><b>
-
-It includes:
-
-  * catalog-operator - Resolving and installing ClusterServiceVersions the resource they specify.
-  * olm-operator - Deploys applications defined by ClusterServiceVersion resource
+Часть Operator Framework, расширяющая Kubernetes для декларативной установки, обновления и сопровождения операторов.
 
 </b></details>
 
 <details>
-<summary>What is kubconfig? What do you use it for?</summary><br><b>
+<summary>Что содержит namespace openshift-operator-lifecycle-manager?</summary><br><b>
+
+В описанной конфигурации:
+
+  * catalog-operator — разрешение зависимостей и установка ресурсов каталогов и подписок.
+  * olm-operator — развёртывание компонентов по ClusterServiceVersion.
+
+</b></details>
+
+<details>
+<summary>Что такое kubeconfig и для чего он нужен?</summary><br><b>
   
-A kubeconfig file is a file used to configure access to Kubernetes when used in conjunction with the kubectl commandline tool (or other clients).
-Use kubeconfig files to organize information about clusters, users, namespaces, and authentication mechanisms.
+Файл настройки доступа клиентов, например kubectl, к Kubernetes.
+Хранит сведения о кластерах, пользователях, контекстах, namespace и способах аутентификации.
 </b></details>
 
 <details>
-<summary>Would you use Helm, Go or something else for creating an Operator?</summary><br><b>
+<summary>Для создания оператора вы выберете Helm, Go или другое средство?</summary><br><b>
   
-Depends on the scope and maturity of the Operator. If it mainly covers installation and upgrades, Helm might be enough. If you want to go for Lifecycle management, insights and auto-pilot, this is where you'd probably use Go.
+Зависит от задач. Для установки и обновлений может хватить Helm-подхода; для сложного жизненного цикла, анализа состояния и автоматического управления часто нужен Go или другой язык контроллеров.
 </b></details>
 
 <details>
-<summary>Are there any tools, projects you are using for building Operators?</summary><br><b>
+<summary>Какими средствами создания операторов вы пользуетесь?</summary><br><b>
 
-This one is based more on a personal experience and taste...
+Ответ зависит от опыта. Примеры:
 
 * Operator Framework
 * Kubebuilder
@@ -2137,42 +2173,43 @@ This one is based more on a personal experience and taste...
 ...
 </b></details>
 
-### Secrets
+<a id="secrets"></a>
+### Секреты
 
 <details>
-<summary>Explain Kubernetes Secrets</summary><br><b>
+<summary>Объясните Secrets Kubernetes.</summary><br><b>
 
-Secrets let you store and manage sensitive information (passwords, ssh keys, etc.)
+Объекты для хранения и передачи чувствительных данных: паролей, SSH-ключей и т. п.
 
 </b></details>
 
 <details>
-<summary>How to create a Secret from a key and value?</summary><br><b>
+<summary>Как создать Secret из ключа и значения?</summary><br><b>
 
 `kubectl create secret generic some-secret --from-literal=password='donttellmypassword'`
 
 </b></details>
 
 <details>
-<summary>How to create a Secret from a file?</summary><br><b>
+<summary>Как создать Secret из файла?</summary><br><b>
 
 `kubectl create secret generic some-secret --from-file=/some/file.txt`
 </b></details>
 
 <details>
-<summary>What <code>type: Opaque</code> in a secret file means? What other types are there?</summary><br><b>
+<summary>Что означает type: Opaque? Какие ещё типы Secret существуют?</summary><br><b>
 
-Opaque is the default type used for key-value pairs.
+Opaque — тип по умолчанию для произвольных пар ключ–значение.
 </b></details>
 
 <details>
-<summary>True or False? storing data in a Secret component makes it automatically secured</summary><br><b>
+<summary>Верно ли, что помещение данных в Secret автоматически делает их защищёнными?</summary><br><b>
 
-False. Some known security mechanisms like "encryption" aren't enabled by default.
+Неверно. Контроль доступа и шифрование хранения нужно правильно настроить; Base64 защитой не является.
 </b></details>
 
 <details>
-<summary>What is the problem with the following Secret file:
+<summary>В чём проблема следующего Secret?
 
 ```
 apiVersion: v1   
@@ -2185,13 +2222,13 @@ data:
 ```
 </summary><br><b>
 
-Password isn't encrypted.
-You should run something like this: `echo -n 'mySecretPassword' | base64` and paste the result to the file instead of using plain-text.
+Значение в `data` должно иметь корректное кодирование Base64; это не шифрование.
+Например, `echo -n 'mySecretPassword' | base64`. Можно также использовать `stringData` для ввода обычной строки. Уточнение к исходнику: кодирование не скрывает пароль от обладателя манифеста.
 
 </b></details>
 
 <details>
-<summary>What the following in a Deployment configuration file means? 
+<summary>Что означает следующий фрагмент Deployment?
 
 ```
 spec:
@@ -2204,45 +2241,46 @@ spec:
 ```
 </summary><br><b>
 
-USER_PASSWORD environment variable will store the value from password key in the secret called "some-secret"
-In other words, you reference a value from a Kubernetes Secret.
+Переменная окружения USER_PASSWORD получает значение ключа `password` из Secret `some-secret`.
+То есть конфигурация ссылается на значение Kubernetes Secret.
 
 </b></details>
 
 <details>
-<summary>How to commit secrets to Git and in general how to use encrypted secrets?</summary><br><b>
+<summary>Как хранить секреты в Git в зашифрованном виде?</summary><br><b>
 
-One possible process would be as follows:
+Один из вариантов:
 
-1. You create a Kubernetes secret (but don't commit it)
-2. You encrypt it using some 3rd party project (.e.g kubeseal)
-3. You apply the seald/encrypted secret
-4. You commit the the sealed secret to Git
-5. You deploy an application that requires the secret and it can be automatically decrypted by using for example a Bitnami Sealed secrets controller
+1. Подготовить Secret, не добавляя открытый вариант в Git.
+2. Зашифровать подходящим инструментом, например kubeseal.
+3. Применить зашифрованный объект SealedSecret.
+4. Сохранить зашифрованный манифест в Git.
+5. Контроллер Sealed Secrets в целевом кластере создаст доступный приложению Secret.
 </b></details>
 
-### Volumes
+<a id="volumes-1"></a>
+### Тома
 
 <details>
-<summary>True or False? Kubernetes provides data persistence out of the box, so when you restart a pod, data is saved</summary><br><b>
+<summary>Верно ли, что Kubernetes автоматически сохраняет любые данные после замены пода?</summary><br><b>
 
-False
-</b></details>
-
-<details>
-<summary>Explain "Persistent Volumes". Why do we need it?</summary><br><b>
-
-Persistent Volumes allow us to save data so basically they provide storage that doesn't depend on the pod lifecycle.
+Неверно.
 </b></details>
 
 <details>
-<summary>True or False? Persistent Volume must be available to all nodes because the pod can restart on any of them</summary><br><b>
+<summary>Что такое PersistentVolume и зачем он нужен?</summary><br><b>
 
-True
+Представление постоянного хранилища, жизненный цикл которого не зависит от отдельного пода.
 </b></details>
 
 <details>
-<summary>What types of persistent volumes are there?</summary><br><b>
+<summary>Верно ли, что PersistentVolume обязан быть доступен всем узлам, поскольку под может попасть на любой?</summary><br><b>
+
+Верно.
+</b></details>
+
+<details>
+<summary>Какие технологии постоянного хранения вы знаете?</summary><br><b>
 
 * NFS
 * iSCSI
@@ -2251,125 +2289,128 @@ True
 </b></details>
 
 <details>
-<summary>What is PersistentVolumeClaim?</summary><br><b>
+<summary>Что такое PersistentVolumeClaim?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Explain Volume Snapshots</summary><br><b>
+<summary>Что такое снимок тома?</summary><br><b>
   
-Volume snapshots let you create a copy of your volume at a specific point in time.
+Копия состояния тома на определённый момент времени, поддерживаемая соответствующим хранилищем и драйвером.
 </b></details>
 
 <details>
-<summary>True or False? Kubernetes manages data persistence</summary><br><b>
+<summary>Верно ли, что Kubernetes сам управляет сохранностью любых данных?</summary><br><b>
 
-False
+Неверно.
 </b></details>
 
 <details>
-<summary>Explain Storage Classes</summary><br><b>
+<summary>Объясните StorageClass.</summary><br><b>
 </b></details>
 
 <details>
-<summary>Explain "Dynamic Provisioning" and "Static Provisioning"</summary><br><b>
+<summary>Чем отличаются динамическое и статическое выделение томов?</summary><br><b>
   
-The main difference relies on the moment when you want to configure storage. For instance, if you need to pre-populate data in a volume, you choose static provisioning. Whereas, if you need to create volumes on demand, you go for dynamic provisioning.
+При статическом подходе администратор заранее подготавливает PV, например с существующими данными. При динамическом том создаётся по запросу PVC через подходящий StorageClass и provisioner.
 </b></details>
 
 <details>
-<summary>Explain Access Modes</summary><br><b>
+<summary>Объясните режимы доступа к томам.</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is CSI Volume Cloning?</summary><br><b>
+<summary>Что такое клонирование томов CSI?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Explain "Ephemeral Volumes"</summary><br><b>
+<summary>Объясните эфемерные тома.</summary><br><b>
 </b></details>
 
 <details>
-<summary>What types of ephemeral volumes Kubernetes supports?</summary><br><b>
+<summary>Какие эфемерные тома поддерживает Kubernetes?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is Reclaim Policy?</summary><br><b>
+<summary>Что такое reclaim policy?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What reclaim policies are there?</summary><br><b>
+<summary>Какие политики освобождения томов существуют?</summary><br><b>
 
 * Retain
-* Recycle
+* Recycle — устаревший вариант, сохранённый в перечне исходника.
 * Delete
 </b></details>
 
-### Access Control
+<a id="access-control"></a>
+### Управление доступом
 
 <details>
-<summary>What is RBAC?</summary><br><b>
+<summary>Что такое RBAC?</summary><br><b>
  
-RBAC in Kubernetes is the mechanism that enables you to configure fine-grained and specific sets of permissions that define how a given user, or group of users, can interact with any Kubernetes object in cluster, or in a specific Namespace of cluster.
+Ролевое управление доступом: наборы разрешений определяют, что пользователи, группы и ServiceAccount могут делать с API-ресурсами в namespace или на уровне кластера.
 </b></details>
 
 <details>
-<summary>Explain the <code>Role</code> and <code>RoleBinding"</code> objects</summary><br><b>
+<summary>Объясните Role и RoleBinding.</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is the difference between <code>Role</code> and <code>ClusterRole</code> objects?</summary><br><b>
+<summary>Чем Role отличается от ClusterRole?</summary><br><b>
   
-The difference between them is that a Role is used at a namespace level whereas a ClusterRole is for the entire cluster.
+Role существует в namespace. ClusterRole — кластерный объект правил; область выданных прав зависит и от привязки RoleBinding или ClusterRoleBinding.
 </b></details>
 
 <details>
-<summary>Explain what are "Service Accounts" and in which scenario would use create/use one</summary><br><b>
+<summary>Что такое ServiceAccount и когда он нужен?</summary><br><b>
 
-[Kubernetes.io](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account): "A service account provides an identity for processes that run in a Pod."
+[Kubernetes.io](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account): идентичность для процессов, работающих в поде.
 
-An example of when to use one:
-You define a pipeline that needs to build and push an image. In order to have sufficient permissions to build an push an image, that pipeline would require a service account with sufficient permissions.
+Пример:
+Конвейеру сборки могут понадобиться API-права и доступ к реестру. Ему назначают отдельный ServiceAccount и необходимые разрешения; доступ к внешнему реестру настраивается отдельно.
 </b></details>
 
 <details>
-<summary>What happens you create a pod and you DON'T specify a service account?</summary><br><b>
+<summary>Что будет, если при создании пода ServiceAccount не указан?</summary><br><b>
 
-The pod is automatically assigned with the default service account (in the namespace where the pod is running).
+Обычно назначается ServiceAccount `default` его namespace.
 </b></details>
 
 <details>
-<summary>Explain how Service Accounts are different from User Accounts</summary><br><b>
+<summary>Чем ServiceAccount отличается от обычного пользователя?</summary><br><b>
 
-  - User accounts are global while Service accounts unique per namespace
-  - User accounts are meant for humans or client processes while Service accounts are for processes which run in pods
+  - ServiceAccount — объект конкретного namespace; обычные пользовательские идентичности не являются такими объектами.
+  - ServiceAccount обычно используется рабочими нагрузками; пользователи представляют людей и внешние клиенты.
 </b></details>
 
 <details>
-<summary>How to list Service Accounts?</summary><br><b>
+<summary>Как вывести ServiceAccount?</summary><br><b>
 
 `kubectl get serviceaccounts`
 </b></details>
 
 <details>
-<summary>Explain "Security Context"</summary><br><b>
+<summary>Что такое security context?</summary><br><b>
 
-[kubernetes.io](https://kubernetes.io/docs/tasks/configure-pod-container/security-context): "A security context defines privilege and access control settings for a Pod or Container."
+[kubernetes.io](https://kubernetes.io/docs/tasks/configure-pod-container/security-context): настройки привилегий и контроля доступа пода или контейнера.
 </b></details>
 
-### Patterns
+<a id="patterns"></a>
+### Паттерны
 
 
 
+<a id="cronjob"></a>
 ### CronJob
 
 <details>
-<summary>Explain what is CronJob and what is it used for</summary><br><b>
+<summary>Что такое CronJob и для чего он нужен?</summary><br><b>
   
-A CronJob creates Jobs on a repeating schedule. One CronJob object is like one line of a crontab (cron table) file. It runs a job periodically on a given schedule, written in Cron format.
+Создаёт Job по повторяющемуся расписанию в формате cron, подобно строке crontab.
 </b></details>
 
 <details>
-<summary>What possible issue can arise from using the following spec and how to fix it?
+<summary>Какая проблема возможна со следующей конфигурацией и как её исправить?
 
 ```
 apiVersion: batch/v1beta1
@@ -2383,12 +2424,12 @@ spec:
 ```
 </summary><br><b>
 
-If the cron job fails, the next job will not replace the previous one due to the "concurrencyPolicy" value which is "Allow". It will keep spawning new jobs and so eventually the system will be filled with failed cron jobs.
-To avoid such problem, the "concurrencyPolicy" value should be either "Replace" or "Forbid".
+При `concurrencyPolicy: Allow` очередная задача может стартовать, пока предыдущая ещё работает. Если задачи зависают, активные выполнения могут накапливаться. Уточнение: очистка уже завершённых ошибочных Job регулируется отдельными настройками истории.
+Для ограничения пересечений используйте `Forbid` или `Replace`, исходя из требований приложения.
 </b></details>
 
 <details>
-<summary>What issue might arise from using the following CronJob and how to fix it?
+<summary>В чём проблема следующего CronJob и как её исправить?
 
 ```
 apiVersion: batch/v1beta1
@@ -2408,7 +2449,7 @@ jobTemplate:
 ```
 </summary><br><b>
 
-The following lines placed under the template:
+Следующие поля ошибочно размещены внутри шаблона:
 
 ```
 concurrencyPolicy: Forbid
@@ -2416,108 +2457,109 @@ successfulJobsHistoryLimit: 1
 failedJobsHistoryLimit: 1
 ```
 
-As a result this configuration isn't part of the cron job spec hence the cron job has no limits which can cause issues like OOM and potentially lead to API server being down.<br>
-To fix it, these lines should placed in the spec of the cron job, above or under the "schedule" directive in the above example.
+Они не окажутся корректными полями CronJob; API может отклонить или обработать неизвестные поля согласно режиму проверки. Уточнение: лимиты истории Job не являются лимитами памяти контейнера.<br>
+Перенесите эти поля в `spec` CronJob рядом с `schedule`.
 </b></details>
 
-###  Misc
+<a id="misc"></a>
+###  Разное
 
 <details>
-<summary>Explain Imperative Management vs. Declarative Management</summary><br><b>
+<summary>Чем императивное управление отличается от декларативного?</summary><br><b>
 
-</b></details>
-
-<details>
-<summary>Explain what Kubernetes Service Discovery means</summary><br><b>
 </b></details>
 
 <details>
-<summary>You have one Kubernetes cluster and multiple teams that would like to use it. You would like to limit the resources each team consumes in the cluster. Which Kubernetes concept would you use for that?</summary><br><b>
-
-Namespaces will allow to limit resources and also make sure there are no collisions between teams when working in the cluster (like creating an app with the same name).
+<summary>Что означает обнаружение сервисов в Kubernetes?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What Kube Proxy does?</summary><br><b>
-  Kube Proxy is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept
+<summary>Несколько команд используют один кластер. Как ограничить потребление ресурсов каждой?</summary><br><b>
+
+Разделить их по namespace и настроить ResourceQuota и LimitRange. Namespace также помогают избегать конфликтов имён.
 </b></details>
 
 <details>
-<summary>What "Resources Quotas" are used for and how?</summary><br><b>
+<summary>Что делает kube-proxy?</summary><br><b>
+Реализует часть сетевой модели Service, поддерживая правила направления трафика на узлах.
 </b></details>
 
 <details>
-<summary>Explain ConfigMap</summary><br><b>
-
-Separate configuration from pods.
-It's good for cases where you might need to change configuration at some point but you don't want to restart the application or rebuild the image so you create a ConfigMap and connect it to a pod but externally to the pod.
-
-Overall it's good for:
-* Sharing the same configuration between different pods
-* Storing external to the pod configuration
+<summary>Для чего нужны ResourceQuota и как их применять?</summary><br><b>
 </b></details>
 
 <details>
-<summary>How to use ConfigMaps?</summary><br><b>
+<summary>Объясните ConfigMap.</summary><br><b>
 
-1. Create it (from key&value, a file or an env file)
-2. Attach it. Mount a configmap as a volume
+Отделяет несекретную конфигурацию от образа и описания приложения.
+Позволяет менять данные без пересборки образа. Уточнение: автоматическое применение изменений без перезапуска зависит от способа подключения и способности приложения перечитывать настройки.
+
+Полезен для:
+* Общих настроек нескольких подов.
+* Хранения конфигурации отдельным объектом.
 </b></details>
 
 <details>
-<summary>True or False? Sensitive data, like credentials, should be stored in a ConfigMap</summary><br><b>
+<summary>Как использовать ConfigMap?</summary><br><b>
 
-False. Use secret.
+1. Создать из пар ключ–значение, файла или env-файла.
+2. Подключить, например как том пода.
 </b></details>
 
 <details>
-<summary>Explain "Horizontal Pod Autoscaler"</summary><br><b>
+<summary>Верно ли, что учётные данные стоит хранить в ConfigMap?</summary><br><b>
 
-In Kubernetes, a HorizontalPodAutoscaler automatically updates a workload resource with the aim of automatically scaling the workload to match demand.
+Неверно. Используйте Secret с надлежащей защитой.
 </b></details>
 
 <details>
-<summary>When you delete a pod, is it deleted instantly? (a moment after running the command)</summary><br><b>
+<summary>Что такое HorizontalPodAutoscaler?</summary><br><b>
+
+Контроллер, изменяющий число реплик поддерживаемой рабочей нагрузки по метрикам, чтобы адаптировать её к спросу.
 </b></details>
 
 <details>
-<summary>What does being cloud-native mean?</summary><br><b>
-  The term cloud native refers to the concept of building and running applications to take advantage of the distributed computing offered by the cloud delivery model.
+<summary>Удаляется ли под мгновенно после команды удаления?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Explain the pet and cattle approach of infrastructure with respect to kubernetes</summary><br><b>
+<summary>Что означает cloud-native?</summary><br><b>
+Подход к созданию и эксплуатации приложений, использующий возможности распределённых облачных систем.
 </b></details>
 
 <details>
-<summary>Describe how you one proceeds to run a containerized web app in K8s, which should be reachable from a public URL.</summary><br><b>
+<summary>Объясните подходы pets и cattle к инфраструктуре применительно к Kubernetes.</summary><br><b>
 </b></details>
 
 <details>
-<summary>How would you troubleshoot your cluster if some applications are not reachable any more?</summary><br><b>
+<summary>Как развернуть контейнерное веб-приложение, доступное по публичному URL?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Describe what CustomResourceDefinitions there are in the Kubernetes world? What they can be used for?</summary><br><b>
+<summary>Как диагностировать кластер, если приложения перестали быть доступны?</summary><br><b>
 </b></details>
 
 <details>
-<summary> How does scheduling work in kubernetes?</summary><br><b>
-
-The control plane component kube-scheduler asks the following questions,
-1. What to schedule? It tries to understand the pod-definition specifications
-2. Which node to schedule? It tries to determine the best node with available resources to spin a pod
-3. Binds the Pod to a given node
-
-View more [here](https://www.youtube.com/watch?v=rDCWxkvPlAw)
+<summary>Что такое CRD и для чего они используются?</summary><br><b>
 </b></details>
 
 <details>
-<summary> How are labels and selectors used?</summary><br><b>
+<summary>Как работает планирование подов?</summary><br><b>
+
+Kube-scheduler:
+1. Анализирует требования неназначенного пода.
+2. Выбирает подходящий узел с учётом ресурсов и ограничений.
+3. Назначает под выбранному узлу.
+
+Подробнее — [здесь](https://www.youtube.com/watch?v=rDCWxkvPlAw).
 </b></details>
 
 <details>
-<summary>What QoS classes are there?</summary><br><b>
+<summary>Как используются метки и селекторы?</summary><br><b>
+</b></details>
+
+<details>
+<summary>Какие классы QoS существуют?</summary><br><b>
 
 * Guaranteed
 * Burstable
@@ -2525,78 +2567,81 @@ View more [here](https://www.youtube.com/watch?v=rDCWxkvPlAw)
 </b></details>
 
 <details>
-<summary>Explain Labels. What are they and why would one use them?</summary><br><b>
+<summary>Что такое метки и зачем они нужны?</summary><br><b>
   
-Kubernetes labels are key-value pairs that can connect identifying metadata with Kubernetes objects.
+Пары ключ–значение с идентифицирующими метаданными объектов Kubernetes.
 </b></details>
 
 <details>
-<summary>Explain Selectors</summary><br><b>
+<summary>Объясните селекторы.</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is Kubeconfig?</summary><br><b>
+<summary>Что такое kubeconfig?</summary><br><b>
 </b></details>
 
+<a id="gatekeeper"></a>
 ### Gatekeeper
 
 <details>
-<summary>What is Gatekeeper?</summary><br><b>
+<summary>Что такое Gatekeeper?</summary><br><b>
 
-[Gatekeeper docs](https://open-policy-agent.github.io/gatekeeper/website/docs): "Gatekeeper is a validating (mutating TBA) webhook that enforces CRD-based policies executed by Open Policy Agent"
+[Документация Gatekeeper](https://open-policy-agent.github.io/gatekeeper/website/docs): контроллер применения политик на основе CRD и Open Policy Agent. В исходнике описан validating webhook; доступные возможности зависят от версии.
 </b></details>
 
 <details>
-<summary>Explain how Gatekeeper works</summary><br><b>
+<summary>Как работает Gatekeeper?</summary><br><b>
 
-On every request sent to the Kubernetes cluster, Gatekeeper sends the policies and the resources to OPA (Open Policy Agent) to check if it violates any policy. If it does, Gatekeeper will return the policy error message back. If it isn't violates any policy, the request will reach the cluster.
+В процессе admission настроенный webhook проверяет подходящие запросы по политикам OPA. При нарушении возвращает отказ с объяснением; разрешённый запрос продолжает обработку. Уточнение: это не обязательная проверка любого запроса чтения API.
 </b></details>
 
-### Policy Testing
+<a id="policy-testing"></a>
+### Проверка политик
 
 <details>
-<summary>What is Conftest?</summary><br><b>
+<summary>Что такое Conftest?</summary><br><b>
 
-Conftest allows you to write tests against structured files. You can think of it as tests library for Kubernetes resources.<br>
-It is mostly used in testing environments such as CI pipelines or local hooks.
+Средство проверки структурированных файлов по политикам, в том числе манифестов Kubernetes.<br>
+Обычно применяется в CI или локальных проверках перед фиксацией изменений.
 </b></details>
 
 <details>
-<summary>What is Datree? How is it different from Conftest?</summary><br><b>
+<summary>Что такое Datree и чем он отличается от Conftest?</summary><br><b>
 
-Same as Conftest, it is used for policy testing and enforcement. The difference is that it comes with built-in policies.
+В исходнике он описан как средство проверки политик с готовым набором правил; это описание инструмента на момент написания материала.
 </b></details>
 
+<a id="helm"></a>
 ### Helm
 
 <details>
-<summary>What is Helm?</summary><br><b>
+<summary>Что такое Helm?</summary><br><b>
 
-Package manager for Kubernetes. Basically the ability to package YAML files and distribute them to other users and apply them in the cluster(s).
+Пакетный менеджер Kubernetes: упаковывает шаблоны манифестов, распространяет их и управляет установками в кластере.
 
-As a concept it's quite common and can be found in many platforms and services. Think for example on package managers in operating systems. If you use Fedora/RHEL that would be dnf. If you use Ubuntu then, apt. If you don't use Linux, then a different question should be asked and it's why? but that's another topic :)
+Аналогия — пакетные менеджеры ОС: dnf в Fedora/RHEL и apt в Ubuntu. Автор исходника шутливо предлагает отдельно обсудить, почему читатель может не использовать Linux.
 </b></details>
 
 <details>
-<summary>Why do we need Helm? What would be the use case for using it?</summary><br><b>
+<summary>Зачем нужен Helm? Приведите сценарии.</summary><br><b>
 
-Sometimes when you would like to deploy a certain application to your cluster, you need to create multiple YAML files/components like: Secret, Service, ConfigMap, etc. This can be tedious task. So it would make sense to ease the process by introducing something that will allow us to share these bundle of YAMLs every time we would like to add an application to our cluster. This something is called Helm.
+Приложению могут понадобиться Secret, Service, ConfigMap и другие манифесты. Helm объединяет их в параметризованный пакет, упрощая повторную установку и распространение.
 
-A common scenario is having multiple Kubernetes clusters (prod, dev, staging). Instead of individually applying different YAMLs in each cluster, it makes more sense to create one Chart and install it in every cluster.
+Например, один chart можно устанавливать в dev, staging и production с разными значениями вместо ручного применения множества YAML.
 
-Another scenario is, you would like to share what you've created with the community. For people and companies to easily deploy your application in their cluster.
+Или опубликовать chart, чтобы сообщество легко разворачивало ваше приложение.
 </b></details>
 
 <details>
-<summary>Explain "Helm Charts"</summary><br><b>
+<summary>Что такое Helm chart?</summary><br><b>
 
-Helm Charts is a bundle of YAML files. A bundle that you can consume from repositories or create your own and publish it to the repositories.
+Пакет шаблонов, метаданных и настроек Kubernetes. Его можно получить из репозитория или создать и опубликовать самостоятельно.
 </b></details>
 
 <details>
-<summary>It is said that Helm is also Templating Engine. What does it mean?</summary><br><b>
+<summary>Почему Helm называют шаблонизатором?</summary><br><b>
 
-It is useful for scenarios where you have multiple applications and all are similar, so there are minor differences in their configuration files and most values are the same. With Helm you can define a common blueprint for all of them and the values that are not fixed and change can be placeholders. This is called a template file and it looks similar to the following
+Для похожих конфигураций задаётся общий шаблон, а меняющиеся значения передаются параметрами. Например:
 
 ```
 apiVersion: v1
@@ -2610,7 +2655,7 @@ spec:
   port: {{ .Values.container.port }}
 ```
 
-The values themselves will in separate file:
+Значения находятся в отдельном файле:
 
 ```
 name: some-app
@@ -2622,161 +2667,167 @@ container:
 </b></details>
 
 <details>
-<summary>What are some use cases for using Helm template file?</summary><br><b>
+<summary>Когда полезны шаблоны Helm?</summary><br><b>
 
-* Deploy the same application across multiple different environments
+* Развёртывание одного приложения в разных средах.
 * CI/CD
 </b></details>
 
 <details>
-<summary>Explain the Helm Chart Directory Structure</summary><br><b>
+<summary>Объясните структуру каталога chart.</summary><br><b>
 
-someChart/     -> the name of the chart
-  Chart.yaml   -> meta information on the chart
-  values.yaml  -> values for template files
-  charts/      -> chart dependencies
-  templates/   -> templates files :)
+someChart/ — каталог chart.
+  Chart.yaml — метаданные.
+  values.yaml — значения для шаблонов.
+  charts/ — зависимости.
+  templates/ — шаблоны.
 </b></details>
 
 <details>
-<summary>How Helm supports release management?</summary><br><b>
+<summary>Как Helm управляет релизами?</summary><br><b>
 
-Helm allows you to upgrade, remove and rollback to previous versions of charts. In version 2 of Helm it was with what is known as "Tiller". In version 3, it was removed due to security concerns.
+Позволяет устанавливать, обновлять, удалять релизы и откатывать их ревизии. В Helm 2 использовался серверный Tiller; в Helm 3 его убрали, изменив модель взаимодействия и безопасности.
 </b></details>
 
-#### Commands
+<a id="commands"></a>
+#### Команды
 
 <details>
-<summary>How do you search for charts?</summary><br><b>
+<summary>Как искать charts?</summary><br><b>
 
 `helm search hub [some_keyword]`
 </b></details>
 
 <details>
-<summary>Is it possible to override values in values.yaml file when installing a chart?</summary><br><b>
-Yes. You can pass another values file:
-`helm install --values=override-values.yaml [CHART_NAME]`
+<summary>Можно ли переопределить values.yaml при установке?</summary><br><b>
+Да, например другим файлом значений:
+`helm install RELEASE_NAME CHART_NAME --values=override-values.yaml`
 
-Or directly on the command line: `helm install --set some_key=some_value`
+Или аргументом: `helm install RELEASE_NAME CHART_NAME --set some_key=some_value`.
 </b></details>
 
 <details>
-<summary>How do you list deployed releases?</summary><br><b>
+<summary>Как вывести установленные релизы?</summary><br><b>
 
-`helm ls` or `helm list`
+`helm ls` или `helm list`.
 </b></details>
 
 <details>
-<summary>How to execute a rollback?</summary><br><b>
+<summary>Как выполнить откат?</summary><br><b>
 
 `helm rollback RELEASE_NAME REVISION_ID`
 </b></details>
 
 <details>
-<summary>How to view revision history for a certain release?</summary><br><b>
+<summary>Как посмотреть историю ревизий релиза?</summary><br><b>
 
 `helm history RELEASE_NAME`
 </b></details>
 
 <details>
-<summary>How to upgrade a release?</summary><br><b>
+<summary>Как обновить релиз?</summary><br><b>
 
 `helm upgrade RELEASE_NAME CHART_NAME`
 </b></details>
 
-### Security
+<a id="security"></a>
+### Безопасность
 
 <details>
-<summary>What security best practices do you follow in regards to the Kubernetes cluster?</summary><br><b>
+<summary>Каких рекомендаций по безопасности кластера вы придерживаетесь?</summary><br><b>
 
-  * Secure inter-service communication (one way is to use Istio to provide mutual TLS)
-  * Isolate different resources into separate namespaces based on some logical groups
-  * Use supported container runtime (if you use Docker then drop it because it's deprecated. You might want to CRI-O as an engine and podman for CLI)
-  * Test properly changes to the cluster (e.g. consider using Datree to prevent kubernetes misconfigurations)
-  * Limit who can do what (by using for example OPA gatekeeper) in the cluster
-  * Use NetworkPolicy to apply network security
-  * Consider using tools (e.g. Falco) for monitoring threats
+  * Защищайте межсервисный обмен, например mutual TLS через Istio.
+  * Группируйте ресурсы по namespace и отдельно настраивайте изоляцию.
+  * Используйте поддерживаемую CRI-среду выполнения. Уточнение: удаление dockershim не означает запрета Docker-образов или Docker как инструмента сборки.
+  * Проверяйте изменения и манифесты автоматически; исходник приводит Datree как один из примеров.
+  * Ограничивайте права через RBAC и допустимые конфигурации через admission-политики, например Gatekeeper.
+  * Применяйте NetworkPolicy с поддерживающей их сетевой реализацией.
+  * Отслеживайте угрозы, например средствами вроде Falco.
 </b></details>
 
-### Troubleshooting Scenarios
+<a id="troubleshooting-scenarios"></a>
+### Сценарии диагностики
 
 <details>
-<summary>Running <code>kubectl get pods</code> you see Pods in "Pending" status. What would you do?</summary><br><b>
+<summary>Поды находятся в Pending. Что проверить?</summary><br><b>
 
-One possible path is to run `kubectl describe pod <pod name>` to get more details.<br>
-You might see one of the following:
-  * Cluster is full. In this case, extend the cluster.
-  * ResourcesQuota limits are met. In this case you might want to modify them
-  * Check if PersistentVolumeClaim mount is pending
+Начните с `kubectl describe pod <pod name>`.<br>
+Возможные причины:
+  * Недостаточно ресурсов: расширьте кластер или скорректируйте запросы.
+  * Ограничения квоты: проверьте события и допустимые ресурсы. Квота часто мешает самому созданию объектов, а не только размещению уже существующего пода.
+  * Ожидание PVC или подготовки хранилища.
 
-If none of the above helped, run the command (`get pods`) with `-o wide` to see if the node is assigned to a node. If not, there might be an issue with scheduler.
+Через `get pods -o wide` проверьте назначение узла. Если его нет, исследуйте Scheduler и ограничения размещения.
 </b></details>
 
 <details>
-<summary>Users unable to reach an application running on a Pod on Kubernetes. What might be the issue and how to check?</summary><br><b>
+<summary>Пользователи не могут обратиться к приложению в поде. Что проверить?</summary><br><b>
 
-One possible path is to start with checking the Pod status.
-1. Is the Pod pending? if yes, check for the reason with `kubectl describe pod <pod name>`
-TODO: finish this...
+Один из вариантов — начать со состояния пода.
+1. Если он Pending, выясните причину через `kubectl describe pod <pod name>`.
+Примечание исходника: ответ не завершён.
 </b></details>
 
+<a id="istio"></a>
 ### Istio
 
 <details>
-<summary>What is Istio? What is it used for?</summary><br><b>
+<summary>Что такое Istio и зачем он нужен?</summary><br><b>
   
-Istio is an open source service mesh that helps organizations run distributed, microservices-based apps anywhere. Istio enables organizations to secure, connect, and monitor microservices, so they can modernize their enterprise apps more swiftly and securely.
+Открытая service mesh для распределённых микросервисных приложений. Помогает защищать, соединять и наблюдать сервисы.
 </b></details>
 
-### Controllers
+<a id="controllers"></a>
+### Контроллеры
 
 <details>
-<summary>What are controllers?</summary><br><b>
+<summary>Что такое контроллеры?</summary><br><b>
 
-[Kubernetes.io](https://kubernetes.io/docs/concepts/architecture/controller): "In Kubernetes, controllers are control loops that watch the state of your cluster, then make or request changes where needed. Each controller tries to move the current cluster state closer to the desired state."
-</b></details>
-
-<details>
-<summary>Name two controllers you are familiar with</summary><br><b>
-
-1. Node Controller: manages the nodes of a cluster. Among other things, the controller is responsible for monitoring nodes' health - if the node is suddenly unreachable it will evacuate all the pods running on it and will mark the node status accordingly.
-2. Replication Controller - monitors the status of pod replicas based on what should be running. It makes sure the number of pods that should be running is actually running
+[Kubernetes.io](https://kubernetes.io/docs/concepts/architecture/controller): циклы, наблюдающие состояние кластера и выполняющие или запрашивающие изменения, чтобы приблизить фактическое состояние к желаемому.
 </b></details>
 
 <details>
-<summary>What process is responsible for running and installing the different controllers?</summary><br><b>
+<summary>Назовите два контроллера.</summary><br><b>
+
+1. Контроллер узлов отслеживает их доступность и обновляет состояние. При отказах связанные механизмы могут инициировать выселение подов с учётом тайм-аутов.
+2. Контроллер репликации поддерживает заданное количество реплик подов.
+</b></details>
+
+<details>
+<summary>Какой процесс запускает встроенные контроллеры?</summary><br><b>
 
 Kube-Controller-Manager
 </b></details>
 
 <details>
-<summary>What is the control loop? How it works?</summary><br><b>
+<summary>Что такое цикл управления и как он работает?</summary><br><b>
 
-Explained [here](https://www.youtube.com/watch?v=i9V4oCa5f9I)
+Объяснение — [здесь](https://www.youtube.com/watch?v=i9V4oCa5f9I).
 </b></details>
 
 <details>
-<summary>What are all the phases/steps of a control loop?</summary><br><b>
+<summary>Назовите этапы цикла управления.</summary><br><b>
 
-- Observe - identify the cluster current state
-- Diff - Identify whether a diff exists between current state and desired state
-- Act - Bring current cluster state to the desired state (basically reach a state where there is no diff)
+- Observe — наблюдение текущего состояния.
+- Diff — определение отличий от желаемого.
+- Act — действия для устранения отличий.
 </b></details>
 
-### Scheduler
+<a id="scheduler-1"></a>
+### Планировщик
 
 <details>
-<summary>True of False? The scheduler is responsible for both deciding where a Pod will run and actually running it</summary><br><b>
+<summary>Верно ли, что Scheduler и выбирает узел, и запускает контейнеры пода?</summary><br><b>
 
-False. While the scheduler is responsible for choosing the node on which the Pod will run, Kubelet is the one that actually runs the Pod.
+Неверно. Scheduler выбирает узел; kubelet через среду выполнения организует запуск контейнеров.
 </b></details>
 
 <details>
-<summary>How to schedule a pod on a node called "node1"?</summary><br><b>
+<summary>Как назначить под узлу node1?</summary><br><b>
 
-`k run some-pod --image=redix -o yaml --dry-run=client > pod.yaml`
+`k run some-pod --image=redis -o yaml --dry-run=client > pod.yaml`
 
-`vi pod.yaml` and add:
+Откройте `vi pod.yaml` и добавьте:
 
 ```
 spec:
@@ -2785,13 +2836,14 @@ spec:
 
 `k apply -f pod.yaml`
 
-Note: if you don't have a node1 in your cluster the Pod will be stuck on "Pending" state.
+Если node1 отсутствует, под не сможет запуститься на нём и останется Pending.
 </b></details>
 
-#### Node Affinity
+<a id="node-affinity"></a>
+#### Привязка к узлам
 
 <details>
-<summary>Using node affinity, set a Pod to schedule on a node where the key is "region" and value is either "asia" or "emea"</summary><br><b>
+<summary>Через node affinity разместите под на узле, у которого region равно asia или emea.</summary><br><b>
 
 `vi pod.yaml`
 
@@ -2810,7 +2862,7 @@ affinity:
 </b></details>
 
 <details>
-<summary>Using node affinity, set a Pod to never schedule on a node where the key is "region" and value is "neverland"</summary><br><b>
+<summary>Через node affinity запретите размещение пода на узле с region=neverland.</summary><br><b>
 
 `vi pod.yaml`
 
@@ -2828,21 +2880,21 @@ affinity:
 </b></details>
 
 <details>
-<summary>True of False? Using the node affinity type "requiredDuringSchedlingIgnoredDuringExecution" means the scheduler can't schedule unless the rule is met</summary><br><b>
+<summary>Верно ли, что requiredDuringSchedulingIgnoredDuringExecution запрещает размещение при невыполнении условия?</summary><br><b>
 
-True
+Верно.
 </b></details>
 
 <details>
-<summary>True of False? Using the node affinity type "preferredDuringSchedlingIgnoredDuringExecution" means the scheduler can't schedule unless the rule is met</summary><br><b>
+<summary>Верно ли, что preferredDuringSchedulingIgnoredDuringExecution запрещает размещение при невыполнении предпочтения?</summary><br><b>
 
-False. The scheduler tries to find a node that meets the requirements/rules and if it doesn't it will schedule the Pod anyway.
+Неверно. Scheduler предпочитает подходящий узел, но может выбрать другой, если обязательные требования соблюдены.
 </b></details>
 
 <details>
-<summary>Can you deploy multiple schedulers?</summary><br><b>
+<summary>Можно ли запускать несколько планировщиков?</summary><br><b>
 
-Yes, it is possible. You can run another pod with a command similar to:
+Да. Например, дополнительный экземпляр с командой следующего вида:
 
 ```
 spec:
@@ -2857,15 +2909,15 @@ spec:
 </b></details>
 
 <details>
-<summary>Assuming you have multiple schedulers, how to know which scheduler was used for a given Pod?</summary><br><b>
+<summary>Как определить, какой планировщик назначил конкретный под?</summary><br><b>
 
-Running `kubectl get events` you can see which scheduler was used.
+Проверьте события через `kubectl get events` и поле `spec.schedulerName` пода.
 </b></details>
 
 <details>
-<summary>You want to run a new Pod and you would like it to be scheduled by a custom scheduler. How to achieve it?</summary><br><b>
+<summary>Как назначить новый под пользовательскому планировщику?</summary><br><b>
 
-Add the following to the spec of the Pod:
+Добавьте в spec пода:
 
 ```
 spec:
@@ -2873,16 +2925,17 @@ spec:
 ```
 </b></details>
 
-### Taints
+<a id="taints"></a>
+### Ограничения taint
 
 <details>
-<summary>Check if there are taints on node "master"</summary><br><b>
+<summary>Проверьте taints узла master.</summary><br><b>
 
 `k describe no master | grep -i taints`
 </b></details>
 
 <details>
-<summary>Create a taint on one of the nodes in your cluster with key of "app" and value of "web" and effect of "NoSchedule". Verify it was applied</summary><br><b>
+<summary>Добавьте узлу taint app=web с эффектом NoSchedule и проверьте результат.</summary><br><b>
 
 `k taint node minikube app=web:NoSchedule`
 
@@ -2890,15 +2943,15 @@ spec:
 </b></details>
 
 <details>
-<summary>You applied a taint with <code>k taint node minikube app=web:NoSchedule</code> on the only node in your cluster and then executed <code>kubectl run some-pod --image=redis</code>. What will happen?</summary><br><b>
+<summary>На единственном узле задан app=web:NoSchedule. Что будет после kubectl run some-pod --image=redis?</summary><br><b>
 
-The Pod will remain in "Pending" status due to the only node in the cluster having a taint of "app=web".
+Без подходящего toleration под останется Pending: доступный узел имеет непереносимый им taint.
 </b></details>
 
 <details>
-<summary>You applied a taint with <code>k taint node minikube app=web:NoSchedule</code> on the only node in your cluster and then executed <code>kubectl run some-pod --image=redis</code> but the Pod is in pending state. How to fix it?</summary><br><b>
+<summary>Как запустить этот под при taint app=web:NoSchedule на единственном узле?</summary><br><b>
 
-`kubectl edit po some-pod` and add the following
+Выполните `kubectl edit po some-pod` и добавьте toleration:
 
 ```
   - effect: NoSchedule
@@ -2907,48 +2960,50 @@ The Pod will remain in "Pending" status due to the only node in the cluster havi
     value: web
 ```
 
-Exit and save. The pod should be in Running state now.
+Сохраните изменения. Если других препятствий нет, под будет назначен и запущен.
 </b></details>
 
 <details>
-<summary>Remove an existing taint from one of the nodes in your cluster</summary><br><b>
+<summary>Удалите существующий taint узла.</summary><br><b>
 
 `k taint node minikube app=web:NoSchedule-`
 </b></details>
 
 <details>
-<summary>What taint effects are there? Explain each one of them</summary><br><b>
+<summary>Какие эффекты taint существуют?</summary><br><b>
 
-`NoSchedule`: prevents from resources to be scheduled on a certain node
-`PreferNoSchedule`: will prefer to shcedule resources on other nodes before resorting to scheduling the resource on the chosen node (on which the taint was applied)
-`NoExecute`: Applying "NoSchedule" will not evict already running Pods (or other resources) from the node as opposed to "NoExecute" which will evict any already running resource from the Node
+`NoSchedule` — не назначать новые поды без подходящего toleration.
+`PreferNoSchedule` — по возможности избегать размещения таких подов.
+`NoExecute` — также выселять уже работающие поды без подходящего toleration, с учётом `tolerationSeconds`. `NoSchedule` существующие поды не выселяет.
 </b></details>
 
-### Resource Limits
+<a id="resource-limits"></a>
+### Лимиты ресурсов
 
 <details>
-<summary>Explain why one would specify resource limits in regards to Pods</summary><br><b>
+<summary>Зачем задавать лимиты ресурсов?</summary><br><b>
 
-* You know how much RAM and/or CPU your app should be consuming and anything above that is not valid
-* You would like to make sure that everyone can run their apps in the cluster and resources are not being solely used by one type of application
+* Чтобы ограничить потребление выше допустимого для приложения уровня.
+* Чтобы одна нагрузка не вытеснила остальные приложения кластера.
 </b></details>
 
 <details>
-<summary>True or False? Resource limits applied on a Pod level meaning, if limits is 2gb RAM and there are two container in a Pod that it's 1gb RAM each</summary><br><b>
+<summary>Верно ли, что лимит 2 ГБ автоматически делится пополам между двумя контейнерами пода?</summary><br><b>
 
-False. It's per container and not per Pod.
+Нет. В обычной конфигурации `containers[].resources` лимиты задаются каждому контейнеру отдельно. Даже при поддержке ресурсов уровня пода автоматическое равное деление не подразумевается.
 </b></details>
 
-#### Resources Limits - Commands
+<a id="resources-limits---commands"></a>
+#### Команды для лимитов ресурсов
 
 <details>
-<summary>Check if there are any limits on one of the pods in your cluster</summary><br><b>
+<summary>Проверьте лимиты одного из подов.</summary><br><b>
 
 `kubectl describe po <POD_NAME> | grep -i limits`
 </b></details>
 
 <details>
-<summary>Run a pod called "yay" with the image "python" and resources request of 64Mi memory and 250m CPU</summary><br><b>
+<summary>Создайте под yay с образом python и requests: память 64Mi, CPU 250m.</summary><br><b>
 
 `kubectl run yay --image=python --dry-run=client -o yaml > pod.yaml`
 
@@ -2970,7 +3025,7 @@ spec:
 </b></details>
 
 <details>
-<summary>Run a pod called "yay2" with the image "python". Make sure it has resources request of 64Mi memory and 250m CPU and the limits are 128Mi memory and 500m CPU</summary><br><b>
+<summary>Создайте под yay2 с образом python, requests 64Mi и 250m, limits 128Mi и 500m.</summary><br><b>
 
 `kubectl run yay2 --image=python --dry-run=client -o yaml > pod.yaml`
 
@@ -2994,165 +3049,171 @@ spec:
 `kubectl apply -f pod.yaml`
 </b></details>
 
-### Monitoring
+<a id="monitoring"></a>
+### Мониторинг
 
 <details>
-<summary>What monitoring solutions are you familiar with in regards to Kubernetes?</summary><br><b>
+<summary>Какие средства мониторинга Kubernetes вы знаете?</summary><br><b>
 
-There are many types of monitoring solutions for Kubernetes. Some open-source, some are in-memory, some of them cost money, ... here is a short list:
+Есть открытые и коммерческие решения с разными задачами. Например:
 
-* metrics-server: in-memory open source monitoring
-* datadog: $$$
-* promethues: open source monitoring solution
+* metrics-server — сбор текущих метрик ресурсов для API метрик; данные не являются долгосрочной историей мониторинга.
+* Datadog — коммерческая платформа.
+* Prometheus — открытая система мониторинга.
 
 </b></details>
 
 <details>
-<summary>Describe how the monitoring solution you are working with monitors Kubernetes and </summary><br><b>
+<summary>Как используемое вами решение наблюдает Kubernetes?</summary><br><b>
 
-This very much depends on what you chose to use. Let's address some of the solutions:
+Зависит от решения. Например:
 
-* metrics-server: an open source and free monitoring solution that uses the cAdvisor component of kubelet to retrieve information on the cluster and its resources and stores them in-memory.
-Once installed, after some time you can run commands like `kubectl top node` and `kubectl top pod` to view performance metrics on nodes, pods and other resources.
+* metrics-server получает показатели ресурсов от kubelet и предоставляет их через Metrics API; это компонент для текущих метрик, а не полноценный долговременный мониторинг.
+После установки можно использовать `kubectl top node` и `kubectl top pod`.
 
-TODO: add more monitoring solutions
+Примечание исходника: добавить описание других решений.
 
 </b></details>
 
+<a id="kustomize-1"></a>
 ### Kustomize
 
 <details>
-<summary>What is Kustomize?</summary><br><b>
+<summary>Что такое Kustomize?</summary><br><b>
 </b></details>
 
 <details>
-<summary>Explain the need for Kustomize by describing actual use cases</summary><br><b>
+<summary>Зачем нужен Kustomize? Приведите примеры.</summary><br><b>
 
-* You have an helm chart of an application used by multiple teams in your organization and there is a requirement to add annotation to the app specifying the name of the of team owning the app
-  * Without Kustomize you would need to copy the files (chart template in this case) and modify it to include the specific annotations we need
-  * With Kustomize you don't need to copy the entire repo or files
-* You are asked to apply a change/patch to some app without modifying the original files of the app
-  * With Kustomize you can define kustomization.yml file that defines these customizations so you don't need to touch the original app files
+* Несколько команд используют общую конфигурацию приложения, но каждой нужна своя аннотация владельца.
+  * Без механизма настройки пришлось бы копировать и менять исходные файлы, если нужного параметра нет в chart.
+  * Kustomize позволяет применять изменения поверх базовых манифестов без полного копирования.
+* Нужно добавить патч, не меняя исходные файлы приложения.
+  * Опишите изменения в `kustomization.yaml`, сохранив базовые файлы.
 </b></details>
 
 <details>
-<summary>Describe in high-level how Kustomize works</summary><br><b>
+<summary>Как в общих чертах работает Kustomize?</summary><br><b>
 
-1. You add kustomization.yml file in the folder of the app you would like to customize.
-   1. You define the customizations you would like to perform
-2. You run `kustomize build APP_PATH` where your kustomization.yml also resides
+1. Создайте `kustomization.yaml` в нужном каталоге.
+   1. Укажите ресурсы и преобразования.
+2. Выполните `kustomize build APP_PATH`. Уточнение: в исходнике используется имя `kustomization.yml`; стандартное поддерживаемое имя — `kustomization.yaml` или иной документированный вариант.
 </b></details>
 
-### Deployment Strategies
+<a id="deployment-strategies"></a>
+### Стратегии развёртывания
 
 <details>
-<summary>What rollout/deployment strategies are you familiar with?</summary><br><b>
+<summary>Какие стратегии развёртывания вы знаете?</summary><br><b>
 
-* Blue/Green Deployments: You deploy a new version of your app, while old version still running, and you start redirecting traffic to the new version of the app
-* Canary Deployments: You deploy a new version of your app and start redirecting **portion** of your users/traffic to the new version. So you the migration to the new version is much more gradual
-</b></details>
-
-<details>
-<summary>Explain Blue/Green deployments/rollouts in detail</summary><br><b>
-
-Blue/Green deployment steps:
-
-1. Traffic coming from users through a load balancer to the application which is currently version 1
-
-Users -> Load Balancer -> App Version 1
-
-2. A new application version 2 is deployed (while version 1 still running)
-
-Users -> Load Balancer -> App Version 1
-                          App Version 2
-
-3. If version 2 runs properly, traffic switched to it instead of version 1
-
-User -> Load Balancer     App version 1
-                       -> App Version 2
-
-4. Whether old version is removed or keep running but without users being redirected to it, is based on team or company decision
-
-Pros:
-  * We can rollback/switch quickly to previous version at any point
-Cons:
-  * In case of an issue with new version, ALL users are affected (instead of small portion/percentage)
-
+* Blue/Green: новая версия запускается рядом со старой, затем трафик переключается на неё.
+* Canary: на новую версию сначала направляется только часть трафика, затем доля постепенно увеличивается.
 </b></details>
 
 <details>
-<summary>Explain Canary deployments/rollouts in detail</summary><br><b>
+<summary>Подробно объясните Blue/Green.</summary><br><b>
 
-Canary deployment steps:
+Шаги:
 
-1. Traffic coming from users through a load balancer to the application which is currently version 1
+1. Балансировщик направляет пользовательский трафик на версию 1.
 
-Users -> Load Balancer -> App Version 1
+Пользователи → балансировщик → версия 1.
 
-2. A new application version 2 is deployed (while version 1 still running) and part of the traffic is redirected to the new version
+2. Рядом развёртывается версия 2; версия 1 продолжает работать.
 
-Users -> Load Balancer ->(95% of the traffic) App Version 1
-                       ->(5% of the traffic) App Version 2
+Пользователи → балансировщик → версия 1.
+Версия 2 пока готовится к обслуживанию трафика.
 
-3. If the new version (2) runs well, more traffic is redirected to it
+3. После проверки трафик переключается на версию 2.
 
-Users -> Load Balancer ->(70% of the traffic) App Version 1
-                       ->(30% of the traffic) App Version 2
+Версия 1 остаётся отдельно от основного пользовательского потока.
+Пользователи → балансировщик → версия 2.
 
-3. If everything runs well, at some point all traffic is redirected to the new version
+4. Команда решает, удалить старую версию или оставить для быстрого отката.
 
-Users -> Load Balancer -> App Version 2
-
-
-Pros:
-  * If there is any issue with the new deployed app version, only some portion of the users affected, instead of all of them
-Cons:
-  * Testing of new version is neccesrialy in the production environment (as the user traffic is exists only there)
+Преимущества:
+  * Можно быстро переключить трафик обратно, если старая версия сохранена и совместима с данными.
+Недостатки:
+  * Ошибка новой версии после полного переключения затрагивает всех пользователей.
 
 </b></details>
 
 <details>
-<summary>What ways are you familiar with to implement deployment strategies (like canary, blue/green) in Kubernetes?</summary><br><b>
+<summary>Подробно объясните Canary.</summary><br><b>
 
-There are multiple ways. One of them is Argo Rollouts.
+Шаги:
+
+1. Балансировщик направляет пользовательский трафик на версию 1.
+
+Пользователи → балансировщик → версия 1.
+
+2. Рядом с версией 1 развёртывается версия 2, получающая небольшую часть трафика.
+
+Балансировщик направляет 95% трафика на версию 1,
+а 5% — на версию 2.
+
+3. Если новая версия работает хорошо, её доля увеличивается.
+
+Например, 70% трафика остаётся у версии 1,
+а 30% получает версия 2.
+
+4. После успешной проверки весь трафик переключается.
+
+Пользователи → балансировщик → версия 2.
+
+
+Преимущества:
+  * На раннем этапе ошибка новой версии затрагивает только часть пользователей.
+Недостатки:
+  * Проверка на реальном пользовательском трафике происходит в рабочей среде.
+
 </b></details>
 
-### Scenarios
+<details>
+<summary>Как реализовать canary или blue/green в Kubernetes?</summary><br><b>
+
+Один из вариантов — Argo Rollouts.
+</b></details>
+
+<a id="scenarios"></a>
+### Практические ситуации
 
 <details>
-<summary>An engineer form your organization told you he is interested only in seeing his team resources in Kubernetes. Instead, in reality, he sees resources of the whole organization, from multiple different teams. What Kubernetes concept can you use in order to deal with it?</summary><br><b>
+<summary>Инженер хочет видеть ресурсы только своей команды, а не всей организации. Что использовать?</summary><br><b>
 
-Namespaces. See the following [namespaces question and answer](#namespaces-use-cases) for more information.
+Namespace для группировки и RBAC для ограничения доступа. Подробнее — [в вопросе о namespace](#namespaces-use-cases).
 </b></details>
 
 <details>
-<summary>An engineer in your team runs a Pod but the status he sees is "CrashLoopBackOff". What does it means? How to identify the issue?</summary><br><b>
+<summary>Под показывает CrashLoopBackOff. Что это значит и как искать причину?</summary><br><b>
 
-The container failed to run (due to different reasons) and Kubernetes tries to run the Pod again after some delay (= BackOff time).
+Контейнер повторно завершается; между попытками перезапуска применяется увеличивающаяся задержка.
 
-Some reasons for it to fail:
-  - Misconfiguration - misspelling, non supported value, etc.
-  - Resource not available - nodes are down, PV not mounted, etc.
+Возможные причины:
+  - Неверная конфигурация, опечатка или неподдерживаемое значение.
+  - Недоступная приложению зависимость или ресурс. Ошибки узла и монтирования могут давать другие состояния и требуют отдельной проверки.
 
-Some ways to debug:
+Диагностика:
 
 1. `kubectl describe pod POD_NAME`
-   1. Focus on `State` (which should be Waiting, CrashLoopBackOff) and `Last State` which should tell what happened before (as in why it failed)
-2. Run `kubectl logs mypod`
-   1. This should provide an accurate output of 
-   2. For specific container, you can add `-c CONTAINER_NAME`
+   1. Изучите `State`, `Last State`, причину и код последнего завершения.
+2. Выполните `kubectl logs mypod`, при необходимости добавив `--previous`.
+   1. Журналы помогут определить ошибку приложения.
+   2. Для нужного контейнера добавьте `-c CONTAINER_NAME`.
 </b></details>
 
 <details>
-<summary>An engineer form your organization asked whether there is a way to prevent from Pods (with cretain label) to be scheduled on one of the nodes in the cluster. Your reply is:</summary><br><b>
+<summary>Как запретить подам с определённой меткой размещаться на одном из узлов?</summary><br><b>
 
-Yes, using taints, we could run the following command and it will prevent from all resources with label "app=web" to be scheduled on node1: `kubectl taint node node1 app=web:NoSchedule`
+Для такого ограничения задайте подходящие правила node affinity выбранным подам. Уточнение к исходнику: `kubectl taint node node1 app=web:NoSchedule` не выбирает поды по метке `app=web`; он запрещает размещение всех подов без соответствующего toleration.
 </b></details>
 
 <details>
-<summary>You would like to limit the number of resources being used in your cluster. For example no more than 4 replicasets, 2 services, etc. How would you achieve that?</summary><br><b>
+<summary>Как ограничить число объектов, например четырьмя ReplicaSet и двумя Service?</summary><br><b>
 
-Using ResourceQuats
+Настроить ResourceQuota в соответствующем namespace.
 </b></details>
 
 <!-- {% endraw %} -->
+
+Примечание к переводу: примеры в блоках кода сохранены из исходной версии. Отдельные технические неточности уточнены в пояснениях. Справка по уточнениям: https://kubernetes.io/docs/concepts/security/secrets-good-practices/
