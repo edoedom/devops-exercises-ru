@@ -200,6 +200,8 @@ console.log(`You have ${messages} new messages`); // You have 5 new messages
 
 <details>
 <summary>Каких хороших практик ревью кода вы придерживаетесь?</summary><br><b>
+
+Небольшое изменение с ясной целью; проверка корректности, обработки ошибок, безопасности и читаемости. Сначала разберитесь в задаче и рисках, затем смотрите реализацию и тесты. Замечания должны объяснять последствия и предлагать путь исправления; вкусовые предпочтения отделяют от обязательных требований. Проверки форматирования лучше автоматизировать.
 </b></details>
 
 <details>
@@ -208,6 +210,8 @@ console.log(`You have ${messages} new messages`); // You have 5 new messages
 * Сообщение коммита неважно: при ревью нужно смотреть только на само изменение.
 * Не нужно тестировать код перед отправкой: для этого существует CI/CD.
 </summary><br><b>
+
+Не согласен с обоими. Сообщение коммита сохраняет контекст «почему», которого может не быть в diff. Разработчик должен выполнить подходящие быстрые локальные проверки; CI проверяет интеграцию и воспроизводимость в общем окружении, но не отменяет ответственность автора.
 </b></details>
 
 <a id="strings"></a>
@@ -215,10 +219,14 @@ console.log(`You have ${messages} new messages`); // You have 5 new messages
 
 <details>
 <summary>Напишите на любом языке функцию, определяющую, является ли строка палиндромом.</summary><br><b>
+
+Для точного сравнения строки в Python: `def is_palindrome(text): return text == text[::-1]`. Время и дополнительная память O(n). Сначала уточните требования к регистру, пробелам и Unicode: нормализация меняет смысл задачи. Пустая строка в этой реализации считается палиндромом.
 </b></details>
 
 <details>
 <summary>Напишите на любом языке функцию, определяющую, являются ли две строки анаграммами.</summary><br><b>
+
+Python: `from collections import Counter`, затем `def are_anagrams(a, b): return Counter(a) == Counter(b)`. Ожидаемое время O(n + m), память пропорциональна числу разных символов. Регистр, пробелы и Unicode-нормализацию обрабатывайте только согласно условию.
 </b></details>
 
 <a id="integers"></a>
@@ -226,6 +234,8 @@ console.log(`You have ${messages} new messages`); // You have 5 new messages
 
 <details>
 <summary>На любом языке выведите числа от 1 до заданного целого числа. Например, для входа 5 результат — 12345.</summary><br><b>
+
+Python: `def sequence(n): return ''.join(str(i) for i in range(1, n + 1))`, затем `print(sequence(5))`. Для n < 1 результат пустой; если это ошибка входа, явно отклоните значение. После 9 результат уже не состоит из однозначных чисел, поэтому формат вывода нужно уточнить.
 </b></details>
 
 <a id="time-complexity"></a>
@@ -248,6 +258,8 @@ console.log(`You have ${messages} new messages`); // You have 5 new messages
 * Блочная сортировка.
 * Поразрядная сортировка.
 </summary><br><b>
+
+Quicksort: лучший/средний O(n log n), худший O(n²) без защитных мер. Обычная mergesort — O(n log n) во всех случаях и O(n) дополнительной памяти для массивов. Bucket sort — ожидаемо O(n + k) при подходящем распределении и реализации, в худшем возможна O(n²) при сортировке корзин вставками. Radix sort — O(d(n + k)) при d разрядах и основании k; линейность требует ограниченных d и k. Это оценки операций, не гарантии времени конкретной библиотеки.
 </b></details>
 
 <a id="data-structures--types"></a>
@@ -255,6 +267,8 @@ console.log(`You have ${messages} new messages`); // You have 5 new messages
 
 <details>
 <summary>Реализуйте стек на любом языке.</summary><br><b>
+
+Минимальный стек Python можно реализовать поверх списка: `stack = []`, `stack.append(value)` — push, `stack.pop()` — pop, `stack[-1]` — peek. push амортизированно O(1), pop с конца O(1). Для пустого стека pop/peek дают IndexError; определите требуемое поведение API. При межпоточном обмене используйте подходящий синхронизированный контейнер.
 </b></details>
 
 <details>
@@ -282,14 +296,20 @@ console.log(`You have ${messages} new messages`); // You have 5 new messages
 
 <details>
 <summary>Реализуйте хеш-таблицу на любом языке.</summary><br><b>
+
+В Python `dict` реализует хеш-таблицу, но это не собственная реализация. Учебная реализация с цепочками приведена в дополнительном блоке ниже: обязательны обработка коллизий и обновление существующего ключа. Для production используют библиотечный контейнер, а не эту учебную версию.
 </b></details>
 
 <details>
 <summary>Что такое переполнение целого числа и как его обрабатывают?</summary><br><b>
+
+Математический результат не помещается в представление типа. В языках с фиксированной шириной результат зависит от языка и типа: например, unsigned C считает по модулю, signed overflow в C имеет undefined behavior. Используют проверяемую арифметику, больший тип или arbitrary precision. Python int имеет произвольную точность в пределах памяти; при передаче в C/БД ограничения возвращаются.
 </b></details>
 
 <details>
 <summary>Назовите три шаблона проектирования и приведите примеры их реализации на любом языке.</summary><br><b>
+
+Factory: отдельная функция создаёт реализацию по параметрам; Strategy: алгоритм передаётся как функция/объект; Adapter: обёртка переводит интерфейс внешнего клиента в интерфейс приложения. Например, `def calculate(data, strategy): return strategy(data)` — Strategy. Примеры трёх реализаций приведены ниже; паттерн выбирают по задаче, а не ради дополнительной абстракции.
 </b></details>
 
 <details>
@@ -312,3 +332,68 @@ def find_triplets_sum_to_zero(li):
                 up -= 1
 ```
 </b></details>
+
+## Учебные реализации
+
+Хеш-таблица с цепочками, обновлением существующего ключа и фиксированным числом корзин. Она рассчитана на хешируемые ключи и учебную нагрузку: без resize худшая сложность поиска O(n). Python hash не является стойким криптографическим хешем.
+
+```python
+class HashTable:
+    def __init__(self, capacity=16):
+        if capacity < 1:
+            raise ValueError("capacity must be positive")
+        self.buckets = [[] for _ in range(capacity)]
+
+    def _bucket(self, key):
+        return self.buckets[hash(key) % len(self.buckets)]
+
+    def put(self, key, value):
+        bucket = self._bucket(key)
+        for i, (old_key, _) in enumerate(bucket):
+            if old_key == key:
+                bucket[i] = (key, value)
+                return
+        bucket.append((key, value))
+
+    def get(self, key):
+        for old_key, value in self._bucket(key):
+            if old_key == key:
+                return value
+        raise KeyError(key)
+
+    def delete(self, key):
+        bucket = self._bucket(key)
+        for i, (old_key, _) in enumerate(bucket):
+            if old_key == key:
+                del bucket[i]
+                return
+        raise KeyError(key)
+```
+
+Примеры Factory, Strategy и Adapter на Python:
+
+```python
+# Factory: выбор реализации в одном месте.
+def make_formatter(kind):
+    if kind == "upper":
+        return str.upper
+    if kind == "lower":
+        return str.lower
+    raise ValueError("unknown formatter")
+
+# Strategy: вызывающий код передаёт алгоритм.
+def format_text(text, formatter):
+    return formatter(text)
+
+# Adapter: преобразование интерфейса внешней зависимости.
+class LegacyClient:
+    def fetch_record(self, key):
+        return {"key": key}
+
+class RepositoryAdapter:
+    def __init__(self, client):
+        self.client = client
+
+    def get(self, key):
+        return self.client.fetch_record(key)
+```
