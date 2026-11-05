@@ -281,8 +281,8 @@ CLI Kubernetes для работы с кластером: развёртыван
 <summary>Разместите компоненты справа в соответствующих местах схемы.<br>
 <img src="images/cluster_architecture_exercise.png"/>
 </summary><br><b>
-<img src="images/cluster_architecture_solution.png"/>
 
+Control plane включает API server, etcd, scheduler и controller manager; на worker работают kubelet, container runtime и сетевой dataplane. На исходной схеме ниже runtime не показан. Несколько scheduler/controller-manager обычно используют leader election; это не означает, что каждый независимо назначает все поды. kube-proxy может заменяться иной реализацией dataplane. <img src="images/cluster_architecture_solution.png"/>
 </b></details>
 
 <details>
@@ -427,6 +427,8 @@ Pod — минимальная единица развёртывания выч�
 
 <details>
 <summary>Под показывает ContainerCreating. Как вы это объясните?</summary><br><b>
+
+Это отображаемое kubectl состояние подготовки контейнера, а не отдельная фаза Pod API. Проверьте `kubectl describe pod <имя>` и events: загрузку образа, CNI, подключение томов, Secret/ConfigMap и runtime узла. Только по этой строке причину установить нельзя.
 </b></details>
 
 <details>
@@ -703,11 +705,7 @@ kube-proxy обычно запускается DaemonSet на подходящи
 <details>
 <summary>Объясните селекторы.</summary><br><b>
 
-[Kubernetes.io](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors): в отличие от имён и UID, метки не обязаны быть уникальными; одинаковые метки могут иметь многие объекты.
-
-Селектор выбирает набор объектов по меткам и служит основным механизмом группировки.
-
-Поддерживаются требования равенства и принадлежности множеству. Несколько требований через запятую объединяются логическим И: должны выполняться все.
+Equality-based условия `key=value`, `key!=value` и set-based `in`, `notin`, наличие/отсутствие ключа там, где API их поддерживает. Несколько условий обычно соединяются AND; синтаксис и поддержка зависят от поля, Service selector — карта равенств, а не произвольное выражение.
 </b></details>
 
 <details>
@@ -837,6 +835,8 @@ spec:
 
 <details>
 <summary>Можно ли использовать Deployment для приложения с состоянием?</summary><br><b>
+
+Можно, если приложение корректно работает с внешним состоянием и идентичность конкретной реплики несущественна. Для устойчивых имён, порядка и привязанных томов часто нужен StatefulSet. Ни Deployment, ни StatefulSet сами не обеспечивают резервное копирование или согласованность БД.
 </b></details>
 
 <details>
@@ -975,8 +975,7 @@ spec:
 <img src="images/service_exercise.png"/>
 </summary><br><b>
 
-<img src="images/service_solution.png"/>
-
+`port` — порт Service для клиентов; `targetPort` — порт backend контейнера; `nodePort` — порт узлов для Service типа NodePort при разрешающей сети. На схеме ниже показана логическая связь, а не отдельный обязательный процесс Service на каждом узле. <img src="images/service_solution.png"/>
 </b></details>
 
 
@@ -2014,10 +2013,14 @@ kubectl run nginx --image=nginx --restart=Never --port 80 --expose
 
 <details>
 <summary>Подробно объясните <code>kubectl create deployment kubernetes-httpd --image=httpd</code>.</summary><br><b>
+
+kubectl отправляет API запрос создания Deployment с образом httpd и именем kubernetes-httpd; контроллер создаёт ReplicaSet и Pod по шаблону. Это не создаёт Service, Ingress, сохранение данных или публичный URL. Перед production настройте версию образа, ресурсы, security context, probes и стратегию обновления.
 </b></details>
 
 <details>
 <summary>Зачем Deployment, если поды может создавать ReplicaSet?</summary><br><b>
+
+ReplicaSet поддерживает число подов по шаблону. Deployment управляет версиями ReplicaSet и раскаткой/откатом обновлений. Обычно пользователю удобнее менять Deployment, а не редактировать принадлежащий ему ReplicaSet напрямую.
 </b></details>
 
 <details>
@@ -2058,6 +2061,8 @@ kubectl top pod
 
 <details>
 <summary>Опишите откат изменений.</summary><br><b>
+
+Для Deployment: `kubectl rollout history deployment/<имя>`, затем `kubectl rollout undo deployment/<имя>` или конкретная revision. Проверьте статус и readiness. Откат Pod template не отменяет миграцию БД, внешние изменения и содержимое независимо изменённых ConfigMap/Secret. При GitOps согласуйте Git, иначе контроллер вернёт декларативную версию.
 </b></details>
 
 <details>
@@ -2122,6 +2127,7 @@ CustomResourceDefinition — объект, добавляющий пользов
 <details>
 <summary>Что такое Operator Lifecycle Manager и зачем он нужен?</summary><br><b>
 
+OLM управляет установкой, обновлением и зависимостями операторов в поддерживаемой экосистеме. Это отдельный компонент, не обязательная встроенная служба каждого Kubernetes-кластера; архитектура и APIs различаются между поколениями OLM. [Operator Framework](https://olm.operatorframework.io/).
 </b></details>
 
 <details>
@@ -2298,6 +2304,8 @@ spec:
 
 <details>
 <summary>Что такое PersistentVolumeClaim?</summary><br><b>
+
+Заявка на хранилище: размер, access mode и при необходимости StorageClass. PVC связывается с подходящим PV или запускает динамическое предоставление. PVC namespaced, PV — кластерный; статус Bound ещё не гарантирует успешное монтирование в конкретный Pod.
 </b></details>
 
 <details>
@@ -2314,6 +2322,8 @@ spec:
 
 <details>
 <summary>Объясните StorageClass.</summary><br><b>
+
+Кластерный объект, описывающий provisioner и параметры динамического хранилища, binding mode, reclaim policy и поддержку расширения. Для topology-aware устройств WaitForFirstConsumer помогает учесть размещение Pod. Класс не создаёт диск без работающего provisioner/драйвера.
 </b></details>
 
 <details>
@@ -2324,22 +2334,32 @@ spec:
 
 <details>
 <summary>Объясните режимы доступа к томам.</summary><br><b>
+
+RWO — чтение/запись с одного узла, а не обязательно одного Pod; ROX — чтение с нескольких узлов; RWX — чтение/запись с нескольких; RWOP — один Pod с поддерживаемым CSI. Режимы сопоставляют возможности PV/PVC и не заменяют права ФС и корректность конкурентной записи. [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 </b></details>
 
 <details>
 <summary>Что такое клонирование томов CSI?</summary><br><b>
+
+Создание нового тома по содержимому существующего PVC через dataSource. Требует поддержки CSI-драйвера, корректных ограничений класса/режима/размера и namespace. Клон не является продолжающейся репликацией и сам не заменяет политику backup. [Volume cloning](https://kubernetes.io/docs/concepts/storage/volume-pvc-datasource/).
 </b></details>
 
 <details>
 <summary>Объясните эфемерные тома.</summary><br><b>
+
+Тома с жизненным циклом, связанным с Pod, для временных данных или доставки конфигурации. Перезапуск контейнера и удаление Pod — разные события: emptyDir сохраняется при первом и удаляется при втором. Generic ephemeral volume может использовать динамически созданный PVC.
 </b></details>
 
 <details>
 <summary>Какие эфемерные тома поддерживает Kubernetes?</summary><br><b>
+
+emptyDir, configMap, secret, downwardAPI; CSI ephemeral и generic ephemeral при поддержке драйвера; новые типы вроде image volume зависят от версии и feature support. Не все они одинаково учитываются в локальном ephemeral-storage лимите. [Ephemeral volumes](https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/).
 </b></details>
 
 <details>
 <summary>Что такое reclaim policy?</summary><br><b>
+
+Определяет судьбу PV/хранилища после освобождения PVC: Retain сохраняет для ручной обработки, Delete удаляет связанные ресурсы при поддержке provisioner. Устаревший Recycle не рекомендуют. Удаление PVC с Delete может уничтожить данные; проверяйте политику и backup заранее.
 </b></details>
 
 <details>
@@ -2361,6 +2381,8 @@ spec:
 
 <details>
 <summary>Объясните Role и RoleBinding.</summary><br><b>
+
+Role задаёт разрешения на namespaced-ресурсы в namespace; RoleBinding назначает Role или применимую ClusterRole субъектам в namespace. ClusterRole/ClusterRoleBinding имеют другую область. Проверяйте доступ через `kubectl auth can-i`; избегайте wildcard и выдачи bind/escalate без необходимости.
 </b></details>
 
 <details>
@@ -2500,10 +2522,13 @@ spec:
 <details>
 <summary>Чем императивное управление отличается от декларативного?</summary><br><b>
 
+Императивно задают действие, например create/scale; декларативно — желаемое состояние, которое контроллеры и apply согласуют с текущим. Один объект не стоит бесконтрольно управлять несколькими способами: возможны конфликты field ownership и GitOps.
 </b></details>
 
 <details>
 <summary>Что означает обнаружение сервисов в Kubernetes?</summary><br><b>
+
+Клиенты находят Service через DNS и/или предусмотренные переменные окружения; DNS обычно обслуживает CoreDNS. EndpointSlice связывает Service с backend-адресами при наличии селектора/контроллера. Headless Service может возвращать адреса endpoint вместо виртуального IP; доступность зависит также от readiness и сетевых политик.
 </b></details>
 
 <details>
@@ -2519,6 +2544,8 @@ spec:
 
 <details>
 <summary>Для чего нужны ResourceQuota и как их применять?</summary><br><b>
+
+Объект ResourceQuota ограничивает суммарное использование/число выбранных ресурсов в namespace. Создайте квоту, согласуйте requests/limits и LimitRange, затем проверьте отказ избыточной заявки и `kubectl describe quota`. Квота не гарантирует физической ёмкости узлов и не заменяет распределение по командам/RBAC.
 </b></details>
 
 <details>
@@ -2553,6 +2580,8 @@ spec:
 
 <details>
 <summary>Удаляется ли под мгновенно после команды удаления?</summary><br><b>
+
+Обычно нет. API помечает удаление, kubelet выполняет остановку с grace period и hooks; finalizers могут задержать завершение. Force deletion удаляет API-объект без гарантии, что процесс на недоступном узле уже остановился, что особенно опасно для stateful workloads.
 </b></details>
 
 <details>
@@ -2562,18 +2591,26 @@ spec:
 
 <details>
 <summary>Объясните подходы pets и cattle к инфраструктуре применительно к Kubernetes.</summary><br><b>
+
+Pets — индивидуальные узлы с ручным уходом; cattle — заменяемые экземпляры, восстанавливаемые из описания. Kubernetes поддерживает декларативную заменяемость, но состояние и уникальная идентичность не исчезают автоматически: StatefulSet и диски требуют отдельного проектирования.
 </b></details>
 
 <details>
 <summary>Как развернуть контейнерное веб-приложение, доступное по публичному URL?</summary><br><b>
+
+Соберите и опубликуйте образ, создайте Deployment с ресурсами/probes и Service, затем поддерживаемый Gateway/Ingress или LoadBalancer. Настройте DNS, TLS, права, сетевые политики и наблюдаемость. Публичный адрес не появляется просто от `containerPort`; необходима соответствующая внешняя инфраструктура.
 </b></details>
 
 <details>
 <summary>Как диагностировать кластер, если приложения перестали быть доступны?</summary><br><b>
+
+Определите масштаб и последние изменения, проверьте клиентский DNS/TLS → внешний LB/Gateway → Service/EndpointSlice → readiness и контейнеры → узлы/CNI/хранилище. Используйте events, логи, describe и проверки внутри namespace. Изменяйте один подтверждённый фактор за раз; restart всего кластера может скрыть причину и расширить отказ.
 </b></details>
 
 <details>
 <summary>Что такое CRD и для чего они используются?</summary><br><b>
+
+CustomResourceDefinition добавляет тип Kubernetes API со схемой и правилами валидации. Объекты custom resource хранят желаемое состояние; контроллер реализует действие. Создание CRD без контроллера не создаёт внешнюю инфраструктуру. Учитывайте versions, conversion, RBAC и жизненный цикл данных.
 </b></details>
 
 <details>
@@ -2589,6 +2626,8 @@ Kube-scheduler:
 
 <details>
 <summary>Как используются метки и селекторы?</summary><br><b>
+
+Метки — пары ключ–значение для организации объектов; селекторы выбирают наборы по условиям. Они используются Service, ReplicaSet и другими механизмами. Не помещайте секреты в labels; изменение меток может неожиданно изменить принадлежность трафика и контроллера.
 </b></details>
 
 <details>
@@ -2607,10 +2646,14 @@ Kube-scheduler:
 
 <details>
 <summary>Объясните селекторы.</summary><br><b>
+
+Equality-based условия `key=value`, `key!=value` и set-based `in`, `notin`, наличие/отсутствие ключа там, где API их поддерживает. Несколько условий обычно соединяются AND; синтаксис и поддержка зависят от поля, Service selector — карта равенств, а не произвольное выражение.
 </b></details>
 
 <details>
 <summary>Что такое kubeconfig?</summary><br><b>
+
+Файл конфигурации клиентов: clusters, users, contexts и текущий context. Он может содержать credentials или исполняемый auth plugin, поэтому не считайте недоверенный kubeconfig безопасным. Перед командой проверьте context/namespace и храните файл с ограниченными правами.
 </b></details>
 
 <a id="gatekeeper"></a>
@@ -3113,6 +3156,8 @@ spec:
 
 <details>
 <summary>Что такое Kustomize?</summary><br><b>
+
+Средство декларативного составления и изменения Kubernetes-манифестов через base/overlays, patches, generators и transformations. `kubectl kustomize` показывает результат, `kubectl apply -k` применяет. Это не шаблонизатор Helm; внимательно проверяйте итоговый YAML и версии встроенного Kustomize.
 </b></details>
 
 <details>
