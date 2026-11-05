@@ -98,7 +98,7 @@
 Один из вариантов — монитор файловой системы fsmonitor. В зависимости от реализации это встроенный демон или интеграция с внешним монитором, например Watchman. Монитор отслеживает изменения в рабочем каталоге и позволяет Git использовать сведения о них вместо полного повторного сканирования.
 
 <p align="center">
-<img src="images/design/development/git_fsmonitor.png"/>
+<img src="../../images/design/development/git_fsmonitor.png"/>
 </p>
 
 Также можно включить `feature.manyFiles`: `git config feature.manyFiles true`. В описанной конфигурации это:
