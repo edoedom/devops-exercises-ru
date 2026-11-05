@@ -1244,9 +1244,13 @@ spec:
   - host: my.host
     http:
       paths:
-      - backend:
-          serviceName: someapp-internal-service
-          servicePort: 8080
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: someapp-internal-service
+            port:
+              number: 8080
 ```
 </b></details>
 
@@ -1264,15 +1268,19 @@ spec:
   - host: my.host
     http:
       paths:
-      - backend:
-          serviceName: someapp-internal-service
-          servicePort: 8080
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: someapp-internal-service
+            port:
+              number: 8080
 ```
 </summary><br><b>
 
 `host` — DNS-имя, с которым сопоставляется входящий HTTP-запрос; DNS обычно направляет это имя на адрес контроллера.<br>
 `http` содержит правила маршрутизации по путям HTTP-запросов.<br>
-`backend` указывает сервис и порт назначения. `serviceName` и `servicePort` относятся к старому формату API; в новых манифестах структура отличается.
+`backend.service.name` задаёт Service, `backend.service.port.number` — его порт. В networking.k8s.io/v1 требуется `pathType`; здесь `Prefix` сопоставляет префикс пути. Для обработки нужен установленный Ingress Controller и подходящий IngressClass.
 </b></details>
 
 <details>
@@ -2413,7 +2421,7 @@ Role существует в namespace. ClusterRole — кластерный о�
 <summary>Какая проблема возможна со следующей конфигурацией и как её исправить?
 
 ```
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: some-cron-job
@@ -2432,7 +2440,7 @@ spec:
 <summary>В чём проблема следующего CronJob и как её исправить?
 
 ```
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: "some-cron-job"
@@ -2459,6 +2467,31 @@ failedJobsHistoryLimit: 1
 
 Они не окажутся корректными полями CronJob; API может отклонить или обработать неизвестные поля согласно режиму проверки. Уточнение: лимиты истории Job не являются лимитами памяти контейнера.<br>
 Перенесите эти поля в `spec` CronJob рядом с `schedule`.
+Также `jobTemplate` должен находиться внутри `spec`, `restartPolicy` — внутри спецификации пода, а шаблон должен содержать контейнер. Исправленный минимальный вариант:
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: some-cron-job
+spec:
+  schedule: "*/1 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: task
+              image: busybox:1.37
+              command: ["sh", "-c", "date"]
+```
+
+Задания должны быть идемпотентными: расписание не даёт гарантии exactly-once. [Миграция API](https://kubernetes.io/docs/reference/using-api/deprecation-guide/).
+
 </b></details>
 
 <a id="misc"></a>
@@ -3216,4 +3249,46 @@ Namespace для группировки и RBAC для ограничения д
 
 <!-- {% endraw %} -->
 
-Примечание к переводу: примеры в блоках кода сохранены из исходной версии. Отдельные технические неточности уточнены в пояснениях. Справка по уточнениям: https://kubernetes.io/docs/concepts/security/secrets-good-practices/
+Примечание: при техническом аудите обновлены примеры Ingress и CronJob; дополнительные изменения отражены в журнале проверки. Справка по уточнениям: https://kubernetes.io/docs/concepts/security/secrets-good-practices/
+
+## Дополнение: Ingress и Gateway API
+
+<details>
+<summary>Какой API рассматривать для новой HTTP-маршрутизации?</summary>
+
+Ingress остаётся стабильным API, но его развитие заморожено. Для новых возможностей Kubernetes рекомендует Gateway API. Это набор CRD и контроллеров, а не автоматически работающий компонент любого кластера. GatewayClass выбирает реализацию, Gateway описывает listeners, HTTPRoute задаёт HTTP-маршруты.
+
+Пример маршрута при уже установленном Gateway API и существующем Gateway `web-gateway` с HTTP-listener в том же namespace:
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: someapp
+spec:
+  parentRefs:
+    - name: web-gateway
+  hostnames:
+    - "app.example.com"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: someapp-internal-service
+          port: 8080
+```
+
+Создайте Service на указанном порту, настройте DNS и проверьте условия Accepted/ResolvedRefs в status маршрута. Для HTTPS нужны TLS-listener и сертификат. Межпространственные ссылки дополнительно ограничиваются политиками и ReferenceGrant в применимых случаях.
+
+[Gateway API](https://gateway-api.sigs.k8s.io/) · [Статус Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/).
+</details>
+
+<details>
+<summary>Можно ли выбирать ingress-nginx для новой установки?</summary>
+
+Общественный проект ingress-nginx завершил сопровождение в марте 2026 года: дальнейшие релизы, исправления ошибок и уязвимостей не предусмотрены. Существующие установки могут продолжать работать, но нужен план миграции на поддерживаемый контроллер. Это относится к конкретному проекту ingress-nginx, а не ко всему NGINX, всем Ingress-контроллерам или самому API Ingress.
+
+[Официальное объявление](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/).
+</details>
