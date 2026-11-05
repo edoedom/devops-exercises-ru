@@ -50,3 +50,13 @@
 - [Docker Compose: готовность сервисов](https://docs.docker.com/compose/how-tos/startup-order/)
 - [Статус Python](https://devguide.python.org/versions/)
 - [Статус Node.js](https://nodejs.org/en/about/previous-releases)
+
+## Вторая партия: Linux, основы и безопасность
+
+Заполнены 172 ранее пустых ответа в Linux (83), Git (1), базах данных (5), разработке (10), Bash (8), CI/CD (1), DevOps (13), безопасности (32) и Ansible (19). Личные вопросы дополнены ориентирами для правдивого ответа, а не выдуманными историями.
+
+Дополнены DNSSEC/DoH/DoT, отрицательное кэширование и диагностика; исправлены стратегии Git, restore, MAC-адреса, load/OOM и диагностика портов. Добавлены вопросы по изоляции транзакций, индексам, резервным копиям и параметрам SQL. Примеры хеш-таблицы проверены на коллизии, обновление, удаление и отсутствующий ключ; проверены Factory/Strategy/Adapter. Новый YAML Ansible разобран, лаборатория namespace прошла bash -n. Привилегированные сетевые операции не исполнялись. Полное тестирование Ansible на целевых ОС ещё требуется.
+
+После этой партии в исходных вопросах осталось 206 пустых ответов. Удаление всех пустот само по себе не будет означать завершения проверки остальных утверждений и исполнимости всех проектов.
+
+Источники дополнений: [Git](https://git-scm.com/docs/merge-strategies), [Linux cgroups](https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html), [Bash](https://www.gnu.org/software/bash/manual/bash.html), [PostgreSQL](https://www.postgresql.org/docs/current/transaction-iso.html), [Ansible](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html), [OAuth Security BCP](https://www.rfc-editor.org/rfc/rfc9700.html), [NIST CMVP](https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules).
