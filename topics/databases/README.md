@@ -12,7 +12,7 @@
 
 |Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
-| Таблицы системы обмена сообщениями | Таблицы реляционной БД | [Задание](topics/databases/table_for_message_board_system.md) | [Решение](topics/databases/solutions/table_for_message_board_system.md)
+| Таблицы системы обмена сообщениями | Таблицы реляционной БД | [Задание](table_for_message_board_system.md) | [Решение](solutions/table_for_message_board_system.md)
 
 <a id="questions"></a>
 ## Вопросы
