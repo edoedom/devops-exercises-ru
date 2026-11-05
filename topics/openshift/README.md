@@ -7,7 +7,7 @@
 |Название|Тема|Цель и инструкции|Решение|Комментарии|
 |--------|--------|------|----|----|
 | Основы проектов | Проекты | [Задание](projects_101.md) | [Решение](solutions/projects_101.md)
-| Моё первое приложение | Приложения | [Задание](my_first_app.md) | [Решение](solutions/my_first_app.md)
+| Моё первое приложение | Приложения | [Задание](solutions/my_first_app.md#objectives) | [Решение](solutions/my_first_app.md)
 
 <a id="openshift-self-assessment"></a>
 ### Самопроверка по OpenShift
