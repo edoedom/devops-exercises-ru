@@ -1,3 +1,5 @@
+> Актуализация названий: Azure Active Directory теперь Microsoft Entra ID, Azure ATP — Microsoft Defender for Identity. Windows Server Active Directory не переименован. Старые названия сохранены там, где нужны для понимания исходных команд и исторического контекста.
+
 <a id="azure"></a>
 # Azure
 
@@ -42,6 +44,8 @@
 
 <details>
 <summary>Объясните, что такое управляемые диски Azure.</summary><br><b>
+
+Azure Managed Disks — управляемые блочные тома для ВМ; Azure обслуживает инфраструктуру хранения. Выбирают тип, размер, производительность и резервирование с учётом нагрузки и зоны. Диск не становится общей файловой системой сам по себе. [Managed disks](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview).
 </b></details>
 
 <a id="azure-resource-manager"></a>
@@ -122,10 +126,14 @@ Azure Functions — сервис бессерверных вычислений A
 
 <details>
 <summary>Для чего используется Azure Service Fabric?</summary><br><b>
+
+Платформа управления распределёнными приложениями, включая stateful и stateless сервисы и контейнеры. Это отдельная платформа, не другое название AKS; учитывайте поддерживаемые модели приложения и эксплуатационные требования. [Service Fabric](https://learn.microsoft.com/en-us/azure/service-fabric/service-fabric-overview).
 </b></details>
 
 <details>
 <summary>Для чего используется Azure Kubernetes Service?</summary><br><b>
+
+Управляемый Kubernetes в Azure: сервис обслуживает control plane, но клиент отвечает за нагрузки, права, сеть, настройки node pools и свою часть обновлений. Не является «полностью безадминистраторским» запуском любого приложения. [AKS](https://learn.microsoft.com/en-us/azure/aks/what-is-aks).
 </b></details>
 
 <a id="network"></a>
@@ -133,6 +141,8 @@ Azure Functions — сервис бессерверных вычислений A
 
 <details>
 <summary>Какие сетевые сервисы Azure вы знаете?</summary><br><b>
+
+VNet, subnet, NSG, Load Balancer, Application Gateway, Front Door, VPN Gateway, ExpressRoute, DNS и Private Link. Они решают разные задачи L3/L4/L7, приватного доступа и связности; выбирайте по требованиям. [Azure networking](https://learn.microsoft.com/en-us/azure/networking/fundamentals/networking-overview).
 </b></details>
 
 <details>
@@ -158,10 +168,14 @@ Azure Functions — сервис бессерверных вычислений A
 
 <details>
 <summary>Какие сервисы хранения Azure вы знаете?</summary><br><b>
+
+Blob Storage, Azure Files, Managed Disks и Queue/Table Storage для соответствующих моделей. Azure SQL/Cosmos DB — сервисы БД, а не разновидности диска. Сравнивайте API, доступность, задержку и стоимость операций, а не только цену гигабайта.
 </b></details>
 
 <details>
 <summary>Какие варианты хранения данных поддерживает Azure?</summary><br><b>
+
+Объектное, файловое, блочное, очереди и NoSQL-таблицы в составе Azure Storage; также специализированные БД. Резервирование LRS/ZRS/GRS и другие варианты описывают размещение копий, а не тип пользовательского API.
 </b></details>
 
 <a id="security"></a>
@@ -185,37 +199,55 @@ Azure AD — облачный сервис управления удостове
 </b></details>
 
 <details>
-<summary>Что такое Azure Advanced Threat Protection?</summary><br><b>
+<summary>Что такое Microsoft Defender for Identity (ранее Azure ATP)?</summary><br><b>
+
+Историческое название Azure ATP теперь соответствует Microsoft Defender for Identity — обнаружению и расследованию угроз идентичностям. Не путайте с Defender for Cloud и Microsoft Entra ID Protection. [Microsoft](https://learn.microsoft.com/en-us/defender-for-identity/overview).
 </b></details>
 
 <details>
 <summary>Какие компоненты входят в Azure ATP?</summary><br><b>
+
+Для исторической архитектуры Azure ATP — облачный сервис и sensors на поддерживаемых источниках, в частности контроллерах домена; существовал standalone sensor. Современную архитектуру, версии сенсоров и требования проверяйте по Defender for Identity: старую схему нельзя выдавать за универсальную актуальную. [Overview](https://learn.microsoft.com/en-us/defender-for-identity/overview).
 </b></details>
 
 <details>
 <summary>Где хранятся журналы Azure Monitor?</summary><br><b>
+
+Azure Monitor Logs организованы в Log Analytics workspaces; маршрутизация platform/resource logs зависит от diagnostic settings и сервиса, возможны также Storage/Event Hubs. Метрики и журналы — разные подсистемы. Retention, регион и права задаются конфигурацией, данные не «всегда хранятся автоматически навсегда».
 </b></details>
 
 <details>
 <summary>Объясните назначение Azure Site Recovery.</summary><br><b>
+
+Репликация и оркестрация аварийного переключения поддерживаемых нагрузок между площадками/регионами. Нужны recovery plan, проверка зависимостей, тестовый failover и возврат. Site Recovery не заменяет независимые резервные копии. [ASR](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-overview).
 </b></details>
 
 <details>
 <summary>Что делает Azure Advisor?</summary><br><b>
+
+Рекомендации по надёжности, безопасности, производительности, затратам и эксплуатации ресурсов Azure. Их применимость оценивает владелец нагрузки; Advisor не гарантирует автоматически оптимальную архитектуру. [Advisor](https://learn.microsoft.com/en-us/azure/advisor/advisor-overview).
 </b></details>
 
 <details>
 <summary>Какие протоколы доступны для настройки проверки работоспособности?</summary><br><b>
+
+Вопрос требует назвать сервис. У Azure Load Balancer используются TCP, HTTP и HTTPS probes; у Application Gateway HTTP(S), у Traffic Manager HTTP/HTTPS/TCP. Параметры порта, пути, ожидания и реакции на отказ различаются — нельзя переносить один health-check между всеми сервисами без уточнения.
 </b></details>
 
 <details>
-<summary>Объясните, что такое Azure Active.</summary><br><b>
+<summary>Что такое Microsoft Entra ID (ранее Azure Active Directory)?</summary><br><b>
+
+Вероятно, имеется в виду Azure Active Directory — теперь Microsoft Entra ID, облачная служба идентификации и управления доступом. Это не Windows Server Active Directory и не прямая замена контроллеру домена с теми же протоколами. [Новое название](https://learn.microsoft.com/en-us/entra/fundamentals/new-name).
 </b></details>
 
 <details>
 <summary>Что такое подписка? Какие бывают типы подписок?</summary><br><b>
+
+Подписка — граница учёта ресурсов, квот, доступа и биллинга, связанная с tenant Microsoft Entra. Предложения могут включать pay-as-you-go, корпоративные и тестовые/учебные; доступность и условия меняются. Management group, subscription и resource group — разные уровни организации, tenant не равен подписке.
 </b></details>
 
 <details>
 <summary>Объясните назначение сервиса Blob Storage.</summary><br><b>
+
+Объектное хранение неструктурированных данных: файлы, медиа, backup, данные аналитики. Доступ через соответствующие API и уровни доступа; настройте RBAC/SAS, публичность, жизненный цикл и защиту от удаления. Blob не предоставляет автоматически обычную POSIX-семантику диска. [Blob](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction).
 </b></details>
