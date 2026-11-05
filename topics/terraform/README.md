@@ -146,7 +146,7 @@ Ansible, Puppet и Chef прежде всего управляют конфиг�
 ```
 resource "aws_instance" "some-instance" {
   ami           = "ami-201720221991yay"
-  instance_type = "t2.micro
+  instance_type = "t2.micro"
 }
 ```
 
@@ -163,7 +163,7 @@ resource "aws_instance" "some-instance" {
 ```
 resource "aws_instance" "some-instance" {
   ami           = "ami-201720221991yay"
-  instance_type = "t2.micro
+  instance_type = "t2.micro"
 }
 ```
 
@@ -569,7 +569,7 @@ vars.tf:
 ```
 variable "memory" {
   type = string
-  default "8192"
+  default = "8192"
 }
 
 variable "cpu" {
@@ -664,7 +664,7 @@ locals {
 <summary>Покажите использование источника данных.</summary><br><b>
 
 ```
-data "aws_vpc" "default {
+data "aws_vpc" "default" {
   default = true
 }
 ```
@@ -679,7 +679,7 @@ data "aws_vpc" "default {
 Например, если объявлен такой источник:
 
 ```
-data "aws_vpc" "default {
+data "aws_vpc" "default" {
   default = true
 }
 ```
@@ -1363,7 +1363,7 @@ output "users" {
 
 ```
 output "name_and_age" {
-  value = [for name, age in var.users : "my name is ${name} and my age is ${age}"]
+  value = [for key, user in var.users : "my name is ${user.name} and my age is ${user.age}"]
 }
 ```
 
@@ -1374,7 +1374,7 @@ output "name_and_age" {
 
 ```
 output "name_and_age" {
-  value = {for name, age in var.users : upper(name) => floor(age)
+  value = {for key, user in var.users : upper(user.name) => floor(user.age)}
 }
 ```
 

@@ -261,7 +261,9 @@ argocd app create some-app \
 <details>
 <summary>Как добавить внешний кластер под управление Argo CD?</summary><br><b>
 
-`argocd cluster add CLUSTER_ADDRESS/NAME`
+Сначала выберите контекст из `kubectl config get-contexts`, затем выполните `argocd cluster add CONTEXT_NAME`. Аргумент — имя контекста kubeconfig, а не произвольный URL API server. Проверьте целевой кластер и требуемые права: команда может создать ServiceAccount и RBAC для управления кластером.
+
+[Команда cluster add](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_cluster_add/).
 </b></details>
 
 <details>
