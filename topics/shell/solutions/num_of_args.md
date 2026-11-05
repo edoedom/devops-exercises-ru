@@ -4,27 +4,19 @@
 <a id="objectives"></a>
 ### Задание
 
-* Если передан один аргумент, скрипт должен вывести `Got it: <argument value>`, подставив значение аргумента.
-* Если аргументов нет, выведите `Usage: ./<program name> <argument>`.
-* Если передано больше одного аргумента, выведите `hey hey...too many!`.
+[Условие](../num_of_args.md).
 
 <a id="solution"></a>
 ### Решение
 
-> Примечание к переводу: В исходном решении при нескольких аргументах возвращается код 1, но требуемое сообщение `hey hey...too many!` не выводится. Код оригинала сохранён.
+[Исполняемый пример](scripts/num_of_args.sh) — единственный источник кода; именно его запускают автоматические тесты.
 
+Использует `case`: без аргументов печатает подсказку в stderr и завершает работу с кодом 2; с одним — `Got it: ` и аргумент; с несколькими — `hey hey...too many!` в stderr и код 2.
+
+Запуск из корня репозитория:
+
+```bash
+bash topics/shell/solutions/scripts/num_of_args.sh "one argument"
 ```
-#!/usr/bin/env bash
 
-set -eu
-
-main() {
-  case $# in
-    0) printf "%s" "Usage: ./<program name> <argument>"; return 1 ;;
-    1) printf "%s" "Got it: $1"; return 0 ;;
-    *) return 1 ;;
-  esac
-}
-
-main "$@"
-```
+Ошибки входных данных выводятся в stderr с кодом 2. Нужны Bash 4.4+ и GNU/Linux; общие требования описаны в [разделе Bash](../README.md).

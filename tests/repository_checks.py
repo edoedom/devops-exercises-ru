@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 import re
 import sys
+import subprocess
 
 import hcl2
 import yaml
@@ -54,7 +55,7 @@ def project_files(root):
 
 
 def main():
-    counts = {'python': 0, 'yaml': 0, 'hcl': 0, 'markdown': 0}
+    counts = {'python': 0, 'yaml': 0, 'hcl': 0, 'markdown': 0, 'bash': 0}
     for path in project_files(ROOT):
         relative = path.relative_to(ROOT)
         if path.suffix == '.py':
@@ -67,6 +68,9 @@ def main():
             with path.open(encoding='utf-8') as stream:
                 hcl2.load(stream)
             counts['hcl'] += 1
+        elif path.suffix == '.sh':
+            subprocess.run(['bash', '-n', str(path)], check=True)
+            counts['bash'] += 1
         elif path.suffix == '.md' and relative.parts[0] != 'tests':
             syntax_lint.check_md_file(path)
             if syntax_lint.errors:

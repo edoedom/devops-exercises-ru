@@ -4,38 +4,19 @@
 <a id="objectives"></a>
 ### Задание
 
-1. Скрипт получает два каталога в качестве аргументов и должен вывести различия между ними.
+[Условие](../directories_comparison.md).
 
-<a id="solution-1"></a>
-### Решение 1
+<a id="solution"></a>
+### Решение
 
-Предположим, скрипт Bash называется ```dirdiff.sh```.
+[Исполняемый пример](scripts/directories_comparison.sh) — единственный источник кода; именно его запускают автоматические тесты.
 
-```
-#!/bin/bash
+Принимает два каталога. `diff --recursive --no-dereference` сравнивает имена и содержимое вложенных файлов, включая скрытые. Символические ссылки сравниваются по записанным путям, без обхода их целей. Код 0 означает отсутствие различий, 1 — различия, 2 — ошибку. Права, владельцы, ACL и другие метаданные не сравниваются.
 
-if test $# -ne 2
-then
-	echo -e "USAGE: ./dirdiff.sh directory1 directory2"
-	exit 1
-fi
+Запуск из корня репозитория:
 
-# check for the checksums. 
-# If both the checksums same, then both directories are same
-if test `ls -1 $1 | sort | md5sum | awk -F "  " '{print $1}'` == `ls -1 $2 | sort | md5sum | awk -F "  " '{print $1}'`
-then
-	echo -e "No difference between the 2 directories"
-	exit 0
-fi
-
-diff -q $1 $2
+```bash
+bash topics/shell/solutions/scripts/directories_comparison.sh ./first ./second
 ```
 
-<a id="solution-2"></a>
-### Решение 2
-
-С помощью GNU find и diff можно рекурсивно сравнить каталоги.
-
-```shell
-diff --recursive directory1 directory2
-```
+Ошибки входных данных выводятся в stderr с кодом 2. Нужны Bash 4.4+ и GNU/Linux; общие требования описаны в [разделе Bash](../README.md).

@@ -9,4 +9,3 @@ python3 scripts/update_question_number.py --check
 for exercise in flask_container_ci flask_container_ci2; do
   (cd "topics/$exercise" && python3 -m unittest tests app.tests -v)
 done
-while IFS= read -r -d '' file; do bash -n "$file"; done < <(find scripts -name '*.sh' -print0)
