@@ -32,4 +32,6 @@ Zuul использует Nodepool как отдельный компонент,
 
 <details>
 <summary>Что такое проект в Zuul?</summary><br><b>
+
+Конфигурация репозитория, подключённого к tenant Zuul: какие jobs запускаются для проекта в pipelines, например check/gate, с используемыми templates и вариантами. Это не просто каталог исходников; права и trusted/untrusted config зависят от архитектуры. [Zuul project](https://zuul-ci.org/docs/zuul/latest/config/project.html).
 </b></details>
