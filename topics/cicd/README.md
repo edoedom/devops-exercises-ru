@@ -525,6 +525,8 @@ pipeline?START_STAGE=Test
 
 <details>
 <summary>Писали ли вы скрипты Jenkins? Для чего и как они работают?</summary><br><b>
+
+Ответьте по своему опыту: например, Jenkinsfile со стадиями checkout → тесты → сборка → публикация → deploy. Объясните agents, credentials, хранение артефактов, обработку ошибок и ограничения прав. Скрипт pipeline и администраторский Groovy в Script Console имеют разный уровень доступа; не смешивайте их.
 </b></details>
 
 <a id="cicd---github-actions"></a>
