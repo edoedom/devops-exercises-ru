@@ -190,14 +190,20 @@ Ansible по умолчанию не ведёт общий файл состоя
 
 <details>
 <summary>Как выполнить плейбук только на определённой минорной версии ОС?</summary><br><b>
+
+Соберите facts и проверьте `ansible_facts['distribution']` и `ansible_facts['distribution_version']` через `assert` или `when`, явно указав поддерживаемую версию. Сравнение строк годится для точного равенства; для диапазона используйте version test. Не предполагайте, что один `distribution_major_version` различает минорные выпуски.
 </b></details>
 
 <details>
 <summary>Для чего нужна директива become?</summary><br><b>
+
+Включает повышение/смену привилегий через выбранный become-плагин, например sudo. `become_user` задаёт целевого пользователя, но сам по себе не включает become. Предоставляйте только нужные права и используйте become на минимальной области задач.
 </b></details>
 
 <details>
 <summary>Что такое факты и как посмотреть все факты узла?</summary><br><b>
+
+Сведения об узле, собранные модулем setup или другими коллекторами: ОС, интерфейсы, память и т. д. Пример: `ansible host -m ansible.builtin.setup`. Они доступны через ansible_facts; сбор можно отключить или ограничить, facts могут устареть при кэшировании.
 </b></details>
 
 <details>
@@ -212,26 +218,38 @@ Ansible по умолчанию не ведёт общий файл состоя
           state: present
 ```
 </summary><br><b>
+
+Модуль package выбирает менеджер узла, но имя `zlib` зависит от ОС. На localhost результат зависит также от пользователя, доступности менеджера и Python. Для установки нужны соответствующие привилегии (`become: true`), правильное имя пакета и настроенные репозитории. Однозначно обещать ошибку только из-за отступов или отсутствия become нельзя: root уже может иметь нужные права.
 </b></details>
 
 <details>
 <summary>Назовите не менее трёх хороших практик Ansible.</summary><br><b>
+
+Используйте FQCN и специализированные идемпотентные модули, роли и проверяемые переменные, минимальный become, Vault/внешний secret store, ansible-lint и тесты в одноразовой среде. Фиксируйте версии ansible-core и коллекций, поддерживаемые ОС и Python. Проверяйте diff на утечки секретов.
 </b></details>
 
 <details>
 <summary>Объясните структуру каталогов роли Ansible.</summary><br><b>
+
+Обычно tasks/main.yml, handlers/main.yml, defaults/main.yml, vars/main.yml, files/, templates/, meta/main.yml; необязательные каталоги добавляют по необходимости. defaults легко переопределяются, vars имеют более высокий приоритет. Разделяйте независимые роли и объявляйте зависимости.
 </b></details>
 
 <details>
 <summary>Для чего в Ansible нужны блоки?</summary><br><b>
+
+Группируют задачи с общими директивами, например when/become, и обработкой ошибок через rescue/always. Блок не является транзакцией и не откатывает сделанные изменения автоматически; ошибки синтаксиса и недоступность хоста имеют отдельное поведение.
 </b></details>
 
 <details>
 <summary>Как вы обрабатываете ошибки в Ansible?</summary><br><b>
+
+Проверяйте результат через register и корректные failed_when/changed_when. Для восстанавливаемых сбоев используйте block/rescue/always, retries/until с конечным лимитом. ignore_errors не исправляет проблему и не должен скрывать обязательные проверки; handlers и force_handlers применяйте осознанно.
 </b></details>
 
 <details>
 <summary>Как выполнить определённую команду, если задача завершилась ошибкой?</summary><br><b>
+
+Поместить основную задачу в block, а команду восстановления — в rescue. rescue срабатывает для отказавших задач, а не для любой ошибки чтения playbook или unreachable. Для завершения независимо от результата есть always.
 </b></details>
 
 <details>
@@ -359,6 +377,8 @@ I'm {{ ansible_hostname }} and my operating system is {{ ansible_distribution }
 * notify запускает обработчики.
 * hosts: all:!controllers означает запуск только на узлах группы controllers.
 </summary><br><b>
+
+Модуль — исполняемая единица действия, не набор задач; специализированный модуль обычно предпочтительнее shell/command. Обычные собранные facts не переопределяют play vars, но set_fact и extra vars имеют другой приоритет. Роль может иметь vars/meta/handlers; динамический inventory получает внешние данные. Два пробела — соглашение стиля, важна корректность YAML и единообразие. notify планирует handler при changed. `all:!controllers` исключает controllers. [Приоритет переменных](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html).
 </b></details>
 
 <details>
@@ -391,10 +411,14 @@ tasks:
 
 <details>
 <summary>Что такое ansible-pull и чем он отличается от ansible-playbook?</summary><br><b>
+
+ansible-playbook обычно запускается управляющим узлом и управляет целями; ansible-pull получает playbook из репозитория и запускает локально. Для pull нужен защищённый источник, проверка версии/подписи и предотвращение пересекающихся запусков. Это выбор модели управления, а не автоматическая гарантия безопасности.
 </b></details>
 
 <details>
 <summary>Что такое Ansible Vault?</summary><br><b>
+
+Шифрование файлов или переменных в покое. Для выполнения нужен vault password/identity; расшифрованные данные могут попасть в вывод или на узел. Vault не является динамической ротацией секретов и не заменяет контроль доступа к ключу расшифрования.
 </b></details>
 
 <details>
@@ -403,10 +427,14 @@ tasks:
 * Условий.
 * Циклов.
 </summary><br><b>
+
+`when: ansible_facts['os_family'] == 'Debian'` ограничивает задачу, а `loop: [one, two]` повторяет её с item. Полный пример ниже. Для списка пакетов модуль часто принимает список сразу — цикл не всегда нужен. [Условия и циклы](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_loops.html).
 </b></details>
 
 <details>
 <summary>Что такое фильтры? Писали ли вы собственные фильтры?</summary><br><b>
+
+Преобразования Jinja: default, map, selectattr, to_json и другие. Например, `{{ ports | unique | sort }}`. Собственные фильтры размещают в filter_plugins или коллекции и тестируют как код. Они не должны неожиданно получать секреты или выполнять недоверенные строки.
 </b></details>
 
 <details>
@@ -420,14 +448,20 @@ def cap(self, string):
 
 <details>
 <summary>Как выполнить задачу только в случае, если предыдущая задача что-то изменила?</summary><br><b>
+
+Обычно notify → handler: handler выполняется при changed, один раз на хост за этап обработки. Если задача должна выполняться сразу, сохраните результат `register: result` и используйте `when: result is changed`; по необходимости применяют flush_handlers. Корректность зависит от changed_when исходной задачи.
 </b></details>
 
 <details>
 <summary>Что такое callback-плагины и для чего их используют?</summary><br><b>
+
+Плагины обработки событий выполнения: форматирование stdout, уведомления, метрики и запись результатов. Настройка и доступность зависят от коллекции и ansible-core. Вывод может содержать секреты, поэтому учитывайте no_log и права к журналам.
 </b></details>
 
 <details>
 <summary>Чем отличаются include_task и import_task?</summary><br><b>
+
+Корректные имена — include_tasks и import_tasks. include_tasks загружает динамически при выполнении и может использовать loop; import_tasks статически раскрывается при разборе. Условия, теги и обнаружение задач ведут себя по-разному. Выбирайте по необходимой динамике, а не только по похожему названию.
 </b></details>
 
 <details>
@@ -508,6 +542,8 @@ Gotenks = 32
 
 <details>
 <summary>Как вы тестируете проекты на Ansible?</summary><br><b>
+
+Syntax-check, ansible-lint, проверки переменных и сценарии в одноразовых ВМ/контейнерах, например с Molecule. Повторный запуск проверяет идемпотентность; check/diff полезны, но поддерживаются модулями не одинаково и не заменяют реальное применение. Не тестируйте разрушительные роли на production.
 </b></details>
 
 <details>
@@ -518,6 +554,8 @@ Molecule используется для разработки и тестиро�
 
 <details>
 <summary>Тесты Ansible сообщают idempotence test failed. Что это означает и почему идемпотентность важна?</summary><br><b>
+
+При повторном запуске без изменения входов задачи снова сообщили changed. Это может указывать на безусловный command, нестабильный шаблон или неверный changed_when. Идемпотентность помогает безопасно повторять применение; не маскируйте реальные изменения changed_when:false ради зелёного теста. Некоторые намеренно повторяемые задачи требуют отдельного контракта и теста.
 </b></details>
 
 <a id="ansible---debugging"></a>
@@ -548,3 +586,30 @@ Molecule используется для разработки и тестиро�
 </b></details>
 
 <!-- {% endraw %} -->
+
+## Дополнение: минимальный пример when, loop и handler
+
+```yaml
+- name: Show loop and handler behavior
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Write an example file in Debian-family laboratory hosts
+      ansible.builtin.copy:
+        dest: "/tmp/devops-example-{{ item }}.txt"
+        content: "example\n"
+        mode: "0600"
+      loop:
+        - one
+        - two
+      when: ansible_facts['os_family'] == 'Debian'
+      notify: Report changed examples
+  handlers:
+    - name: Report changed examples
+      ansible.builtin.debug:
+        msg: "At least one example file changed"
+```
+
+Проверьте свободные имена файлов и пользователя в учебной среде. Первый запуск создаёт файлы и вызывает handler, повторный без изменений — нет. После работы удалите только созданные вами файлы.
+
+[Blocks/rescue](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_blocks.html) · [Повторное использование](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse.html).
