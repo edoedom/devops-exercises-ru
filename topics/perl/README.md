@@ -201,10 +201,14 @@ sub power {
 
 <details>
 <summary>Что такое лексическая и динамическая области видимости?</summary><br><b>
+
+В Perl `my` создаёт лексическую переменную с областью по структуре кода; `local` временно меняет значение package variable на время динамической цепочки вызовов и восстанавливает его при выходе. `our` даёт лексический доступ к package variable, но не делает её отдельной lexical-копией. [Perl scope](https://perldoc.perl.org/perlsub#Private-Variables-via-my()).
 </b></details>
 
 <details>
 <summary>Как создавать и разыменовывать ссылки?</summary><br><b>
+
+Ссылки на массив/хеш: `my $a = [1, 2]; my $h = { name => 'x' };`. Доступ: `$a->[0]`, `$h->{name}`; разыменование коллекций: `@$a`, `%$h`. Учитывайте strict/warnings и различайте ссылку и сам список. [perlref](https://perldoc.perl.org/perlref).
 </b></details>
 
 <details>
