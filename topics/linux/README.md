@@ -538,7 +538,7 @@ systemd управляет сервисами и процессами, зави�
 
 <details>
 <summary>Как оформить процесс или приложение как сервис?</summary><br><b>
-Создать unit-файл `/etc/systemd/system/service-name.service` с параметрами запуска и управления сервисом. Подробности — <a href="https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6">здесь</a>.
+Создать unit-файл `/etc/systemd/system/service-name.service` с параметрами запуска и управления сервисом. После создания выполните `sudo systemctl daemon-reload`, проверьте `systemctl start service-name` и `journalctl -u service-name`; автозапуск при загрузке включается отдельно через `systemctl enable`. Параметры Type, ExecStart, User и Restart выбирают по поведению процесса. [Документация systemd.service](https://freedesktop.org/software/systemd/man/latest/systemd.service.html).
 </b></details>
 
 <a id="troubleshooting-and-debugging"></a>

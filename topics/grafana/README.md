@@ -21,26 +21,30 @@
 <details>
 <summary>Какой HTTP-порт Grafana использует по умолчанию?</summary><br><b>
 
-[Начало работы с Grafana](https://grafana.com/docs/grafana/latest/getting-started/getting-started/): по умолчанию Grafana работает на порту 3000.
+[Начало работы с Grafana](https://grafana.com/docs/grafana/latest/fundamentals/getting-started/): по умолчанию Grafana работает на порту 3000.
 </b></details>
 
 <details>
 <summary>Как сделать использование HTTPS обязательным?</summary><br><b>
 
-[Документация Grafana](https://grafana.com/docs/grafana/latest/getting-started/getting-started/): задайте в настройках протокол _https_. После этого Grafana будет ожидать запросы по HTTPS. Клиенты, обращающиеся по HTTP, получат ошибку SSL/TLS.
+Для прямого TLS настройте `[server]`: `protocol = https`, `cert_file` и `cert_key` с путями к сертификату и приватному ключу, доступным процессу Grafana. Перезапустите сервер. Смена протокола сама по себе не создаёт HTTP→HTTPS redirect на отдельном порту.
+
+В варианте с reverse proxy TLS завершается на нём: настройте сертификат, перенаправление HTTP на HTTPS и корректный внешний `root_url` Grafana. Ограничьте прямой доступ к внутреннему HTTP-порту, иначе HTTPS можно обойти. Проверьте цепочку доверия, имя хоста, проксирование WebSocket и итоговый доступ из браузера.
+
+[Настройки Grafana](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/).
 </b></details>
 
 <details>
 <summary>Как устанавливать плагины Grafana?</summary><br><b>
 
-[Установка плагинов](https://grafana.com/docs/grafana/latest/plugins/installation/): откройте [каталог плагинов Grafana](https://grafana.com/grafana/plugins/), выберите нужный плагин и перейдите на вкладку установки. Способ установки зависит от размещения сервера:
+[Установка плагинов и CLI](https://grafana.com/docs/grafana/latest/administration/cli/): откройте [каталог плагинов Grafana](https://grafana.com/grafana/plugins/), выберите нужный плагин и перейдите на вкладку установки. Способ установки зависит от размещения сервера:
 
 - Grafana Cloud: в поле **For** на вкладке установки выберите организацию, для которой устанавливается плагин, если вы состоите в нескольких организациях. Нажмите **Install plugin**. Сервис автоматически установит плагин в ваш экземпляр Grafana. Чтобы увидеть его, может потребоваться выйти из учётной записи и войти снова.
 - Локальная Grafana: используйте CLI для просмотра доступных плагинов и их установки.
 
 ```
-grafana-cli plugins list-remote
-grafana-cli plugins install <plugin-id>
+grafana cli plugins list-remote
+grafana cli plugins install <plugin-id>
 ```
 
 Также можно скачать архив плагина со вкладки установки и распаковать его в каталог плагинов. Путь к этому каталогу указан в файле конфигурации.
@@ -136,7 +140,13 @@ grafana-cli plugins install <plugin-id>
 <details>
 <summary>Как создать оповещение (Alert)?</summary><br><b>
 
-[Документация старой системы оповещений Grafana](https://grafana.com/docs/grafana/latest/alerting/old-alerting/create-alerts/):
+Используйте [Grafana-managed alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/). Старый workflow через вкладку Alert панели не является действующим общим способом создания правил.
 
-Откройте панель, для которой нужно создать или изменить правило оповещения. Нажмите её заголовок и выберите **Edit**. На вкладке **Alert** нажмите **Create Alert**. Если оповещение уже существует, измените поля на этой вкладке. Заполните параметры правила; их описания приведены в разделе документации **Alert rule fields**. Нажмите **Save** в правом верхнем углу, чтобы сохранить правило и панель мониторинга. Рекомендуется нажать **Test rule** и убедиться, что правило возвращает ожидаемый результат.
+1. Откройте **Alerts & IRM → Alert rules → New alert rule** (названия меню зависят от версии).
+2. Выберите источник данных, поддерживающий alerting, задайте запрос, преобразование результата и порог условия; проверьте результат через Preview.
+3. Укажите папку, группу и интервал оценки, период ожидания до срабатывания. Настройте поведение при No Data и ошибках запроса.
+4. Добавьте labels/annotations и маршрутизацию в contact point напрямую либо через notification policy.
+5. Сохраните правило и проверьте тестовую доставку и переходы состояния. Правило может работать независимо от dashboard; связь с панелью необязательна.
+
+Для источников Prometheus/Mimir/Loki различайте правила, вычисляемые Grafana, и data source-managed rules: место выполнения и способ управления ими отличаются.
 </b></details>

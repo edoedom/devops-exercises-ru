@@ -201,13 +201,13 @@ Azure AD — облачный сервис управления удостове
 <details>
 <summary>Что такое Microsoft Defender for Identity (ранее Azure ATP)?</summary><br><b>
 
-Историческое название Azure ATP теперь соответствует Microsoft Defender for Identity — обнаружению и расследованию угроз идентичностям. Не путайте с Defender for Cloud и Microsoft Entra ID Protection. [Microsoft](https://learn.microsoft.com/en-us/defender-for-identity/overview).
+Историческое название Azure ATP теперь соответствует Microsoft Defender for Identity — обнаружению и расследованию угроз идентичностям. Не путайте с Defender for Cloud и Microsoft Entra ID Protection. [Microsoft](https://learn.microsoft.com/en-us/defender-for-identity/what-is).
 </b></details>
 
 <details>
 <summary>Какие компоненты входят в Azure ATP?</summary><br><b>
 
-Для исторической архитектуры Azure ATP — облачный сервис и sensors на поддерживаемых источниках, в частности контроллерах домена; существовал standalone sensor. Современную архитектуру, версии сенсоров и требования проверяйте по Defender for Identity: старую схему нельзя выдавать за универсальную актуальную. [Overview](https://learn.microsoft.com/en-us/defender-for-identity/overview).
+Для исторической архитектуры Azure ATP — облачный сервис и sensors на поддерживаемых источниках, в частности контроллерах домена; существовал standalone sensor. Современную архитектуру, версии сенсоров и требования проверяйте по Defender for Identity: старую схему нельзя выдавать за универсальную актуальную. [Overview](https://learn.microsoft.com/en-us/defender-for-identity/what-is).
 </b></details>
 
 <details>

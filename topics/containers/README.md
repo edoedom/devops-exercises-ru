@@ -542,12 +542,11 @@ podman load -i some_image.tar
 <details>
 <summary>Как узнать, какой реестр по умолчанию используется в вашей среде?</summary><br><b>
 
-Это зависит от контейнерной технологии. Для Docker в исходнике предлагается посмотреть `docker info`; также следует учитывать имя образа и настройки зеркал реестра.
+У Docker имя без hostname реестра обычно относится к Docker Hub: `nginx:alpine` разворачивается в `docker.io/library/nginx:alpine`. Явное имя вроде `ghcr.io/OWNER/IMAGE:TAG` выбирает другой реестр. Это правила разрешения имени образа, а не существование обязательной строки Registry в выводе `docker info`.
 
-```
-> docker info
-Registry: https://index.docker.io/v1
-```
+Зеркала Docker проверьте через `docker info --format '{{json .RegistryConfig.Mirrors}}'` и конфигурацию daemon. Зеркало меняет путь получения образа, а не логическое имя репозитория. Для Podman правила коротких имён и search registries настраиваются отдельно; общего для всех инструментов «реестра по умолчанию» нет.
+
+[Правила имён образов Docker](https://docs.docker.com/reference/cli/docker/image/tag/).
 </b></details>
 
 <details>

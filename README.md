@@ -2736,7 +2736,7 @@ TODO: дополнить подробностями.
 <details>
 <summary>Что такое API?</summary><br><b>
 
-Пример определения сетевого API из [blog.christianposta.com](https://blog.christianposta.com/microservices/api-gateways-are-going-through-an-identity-crisis):
+Пример определения сетевого API из [статьи Christian Posta на Solo.io](https://www.solo.io/blog/api-gateways-are-going-through-an-identity-crisis):
 
 Явно определённый интерфейс, предоставляющий программам контролируемый доступ к данным и функциям. API не обязательно сетевой: существуют также интерфейсы библиотек и ОС.
 </b></details>
@@ -2977,7 +2977,7 @@ document_number: 2
 <details>
 <summary>Что такое HTTP?</summary><br><b>
 
-[Avinetworks](https://avinetworks.com/glossary/layer-7/): Hypertext Transfer Protocol — прикладной протокол передачи ресурсов. Обычный HTTP использует порт 80; HTTP/1.1 и HTTP/2 работают поверх TCP, HTTP/3 — поверх QUIC.
+[RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html): Hypertext Transfer Protocol — прикладной протокол передачи ресурсов. Обычный HTTP использует порт 80; HTTP/1.1 и HTTP/2 работают поверх TCP, HTTP/3 — поверх QUIC.
 </b></details>
 
 <details>
