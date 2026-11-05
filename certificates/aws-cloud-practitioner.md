@@ -541,6 +541,8 @@ Amazon Route 53 — высокодоступный и масштабируемы
   * Источник контента (origin)
   * Пограничная точка присутствия (edge location)
   * Конфигурация доставки (distribution)</summary><br><b>
+
+Origin — сервер/хранилище, откуда CloudFront получает исходный контент; edge location — точка обслуживания и кэширования ближе к клиенту; distribution — конфигурация доменов, origins, behaviors, TLS, кэша и доступа. Не каждый запрос обслуживается из кэша, а изменение distribution не мгновенно распространяется по всей сети.
 </b></details>
 
 <a id="aws-monitoring--logging"></a>
@@ -609,6 +611,8 @@ Amazon Route 53 — высокодоступный и масштабируемы
 
 <details>
 <summary>Что такое программа AWS по обеспечению соответствия требованиям?</summary><br><b>
+
+Набор программ и подтверждений соответствия AWS стандартам и требованиям; отчёты доступны, например, через AWS Artifact. Область охвата зависит от сервиса и региона. Соответствие облачного провайдера не делает автоматически соответствующим требованиям приложение клиента: действует разделение ответственности. [AWS Compliance](https://aws.amazon.com/compliance/).
 </b></details>
 
 <details>
@@ -647,10 +651,14 @@ AWS Web Application Firewall (WAF) фильтрует нежелательный
 
 <details>
 <summary>Для чего используется AWS VPN?</summary><br><b>
+
+Для защищённых сетевых соединений с VPC или пользовательского удалённого доступа. Конкретный тип выбирают по направлению связи, протоколу, пропускной способности и модели аутентификации; VPN не выдаёт IAM-разрешения автоматически.
 </b></details>
 
 <details>
 <summary>Чем отличаются Site-to-Site VPN и Client VPN?</summary><br><b>
+
+Site-to-Site VPN соединяет сети клиента и AWS через VPN endpoints, обычно IPsec; Client VPN подключает отдельных пользователей через управляемый endpoint. В обоих случаях нужны маршруты, доступ к целям и правила безопасности. Клиентский VPN и межсетевой туннель не взаимозаменяемы.
 </b></details>
 
 <details>
@@ -729,6 +737,8 @@ Amazon Relational Database Service (RDS) — сервис создания и а
 
 <details>
 <summary>Что такое AWS DynamoDB?</summary><br><b>
+
+Управляемая NoSQL-БД ключ–значение и документов. Доступ проектируют вокруг partition/sort keys и индексов; Scan не заменяет подходящую модель запросов. Поддерживаются разные режимы ёмкости и согласованности, транзакции и резервное копирование; стоимость зависит от использования. [DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html).
 </b></details>
 
 <details>
@@ -785,6 +795,8 @@ Amazon ElastiCache в исходнике описан как полностью 
 
 <details>
 <summary>Для чего используется AWS Database Migration Service?</summary><br><b>
+
+DMS переносит данные между поддерживаемыми источниками и целями, включая начальную загрузку и CDC в подходящих сценариях. Не гарантирует автоматическую миграцию всей схемы, процедур и приложения. Проверьте поддержку типов, права, репликационный лаг, валидацию и план переключения. [DMS](https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html).
 </b></details>
 
 <details>
@@ -1036,10 +1048,14 @@ Amazon S3 Transfer Acceleration
 
 <details>
 <summary>Как начисляется плата за экземпляры EC2?</summary><br><b>
+
+Зависит от типа, региона, ОС/лицензии, режима покупки и времени работы. On-Demand, Spot и обязательства RI/Savings Plans имеют разные условия. EBS, публичные IPv4, сеть и другие ресурсы могут оплачиваться отдельно и после остановки EC2. Reserved Instance — обычно скидочный механизм, не гарантия владения сервером; проверяйте применимость резервирования ёмкости. [EC2 pricing](https://aws.amazon.com/ec2/pricing/).
 </b></details>
 
 <details>
 <summary>Для чего используется AWS Pricing Calculator?</summary><br><b>
+
+Оценка планируемых расходов по параметрам архитектуры. Это модель с допущениями, не гарантия окончательного счёта. Учтите трафик, хранение, запросы, резервирование и варианты регионов, затем сравнивайте оценку с фактическими Cost Explorer/Budgets. [Calculator](https://calculator.aws/).
 </b></details>
 
 <details>
@@ -1094,6 +1110,8 @@ Amazon S3 Transfer Acceleration
 
 <details>
 <summary>Объясните, что такое CloudFormation.</summary><br><b>
+
+Сервис развёртывания инфраструктуры AWS по декларативному шаблону. Ресурсы объединены в stack, изменения можно просматривать через change sets. Важны IAM, rollback, drift, зависимости и защита данных при удалении; шаблон не гарантирует отсутствие ручного расхождения. [CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html).
 </b></details>
 
 <a id="aws-misc"></a>
@@ -1184,6 +1202,8 @@ Amazon S3 Transfer Acceleration
 
 <details>
 <summary>Что такое Trusted Advisor?</summary><br><b>
+
+Сервис рекомендаций по конфигурации, затратам, производительности, надёжности, безопасности и квотам. Набор проверок и способы доступа зависят от плана поддержки и возможностей сервиса. Рекомендация требует оценки контекста, а не автоматического применения. [Trusted Advisor](https://aws.amazon.com/premiumsupport/technology/trusted-advisor/).
 </b></details>
 
 <details>
