@@ -58,5 +58,95 @@ class GitExamplesTest(unittest.TestCase):
         self.assertEqual(trees[0], trees[1])
 
 
+class GitStateTest(unittest.TestCase):
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        self.repo = Path(temporary.name)
+        self.env = {k: v for k, v in os.environ.items() if not k.startswith('GIT_')}
+        self.env.update(GIT_CONFIG_NOSYSTEM='1', GIT_CONFIG_GLOBAL=os.devnull,
+                        GIT_EDITOR='true', GIT_TERMINAL_PROMPT='0')
+        self.git('init', '-b', 'main')
+        self.git('config', 'user.name', 'Test')
+        self.git('config', 'user.email', 'test@example.invalid')
+        self.write('base')
+        self.git('add', 'file')
+        self.git('commit', '-m', 'base')
+
+    def git(self, *args):
+        return subprocess.check_output(['git', *args], cwd=self.repo,
+                                       env=self.env, text=True, stderr=subprocess.PIPE).strip()
+
+    def write(self, text):
+        (self.repo / 'file').write_text(text + '\n')
+
+    def test_diff_distinguishes_index_worktree_and_untracked(self):
+        self.write('staged')
+        self.git('add', 'file')
+        self.write('working')
+        (self.repo / 'untracked').write_text('new')
+        self.assertIn('+staged', self.git('diff', '--cached'))
+        self.assertIn('-staged', self.git('diff'))
+        self.assertIn('+working', self.git('diff', 'HEAD'))
+        self.assertEqual(self.git('diff', '--name-only', 'HEAD'), 'file')
+        self.assertIn('?? untracked', self.git('status', '--short'))
+
+    def test_restore_uses_index_by_default(self):
+        self.write('staged')
+        self.git('add', 'file')
+        self.write('working')
+        self.git('restore', '--worktree', '--', 'file')
+        self.assertEqual((self.repo / 'file').read_text(), 'staged\n')
+        self.git('restore', '--staged', '--', 'file')
+        self.assertEqual(self.git('show', ':file'), 'base')
+        self.assertEqual((self.repo / 'file').read_text(), 'staged\n')
+
+    def check_reset(self, mode, index, working):
+        base = self.git('rev-parse', 'HEAD')
+        self.write('committed')
+        self.git('add', 'file')
+        self.git('commit', '-m', 'second')
+        self.write('staged')
+        self.git('add', 'file')
+        self.write('working')
+        self.git('reset', mode, 'HEAD~1')
+        self.assertEqual(self.git('rev-parse', 'HEAD'), base)
+        self.assertEqual(self.git('show', ':file'), index)
+        self.assertEqual((self.repo / 'file').read_text(), working + '\n')
+
+    def test_reset_soft(self):
+        self.check_reset('--soft', 'staged', 'working')
+
+    def test_reset_mixed(self):
+        self.check_reset('--mixed', 'base', 'working')
+
+    def test_reset_hard(self):
+        self.check_reset('--hard', 'base', 'base')
+
+    def test_fetch_does_not_integrate_and_ff_only_rejects_divergence(self):
+        source = self.repo / 'source'
+        self.git('clone', '--no-hardlinks', str(self.repo), str(source))
+        def remote(*args):
+            return subprocess.check_output(['git', '-C', str(source), *args],
+                                           env=self.env, text=True, stderr=subprocess.PIPE).strip()
+        remote('config', 'user.name', 'Test')
+        remote('config', 'user.email', 'test@example.invalid')
+        (source / 'remote-file').write_text('remote')
+        remote('add', 'remote-file')
+        remote('commit', '-m', 'remote change')
+        self.git('remote', 'add', 'origin', str(source))
+        self.write('local')
+        self.git('add', 'file')
+        self.git('commit', '-m', 'local change')
+        before = self.git('rev-parse', 'HEAD')
+        self.git('fetch', 'origin')
+        self.assertEqual(self.git('rev-parse', 'HEAD'), before)
+        self.assertEqual(self.git('rev-parse', 'origin/main'), remote('rev-parse', 'HEAD'))
+        with self.assertRaises(subprocess.CalledProcessError):
+            self.git('pull', '--ff-only', 'origin', 'main')
+        self.assertEqual(self.git('rev-parse', 'HEAD'), before)
+        self.assertFalse((self.repo / 'remote-file').exists())
+
+
 if __name__ == '__main__':
     unittest.main()
