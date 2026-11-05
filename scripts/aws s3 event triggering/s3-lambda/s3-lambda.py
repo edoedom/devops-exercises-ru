@@ -1,38 +1,25 @@
-import boto3
-import json
+"""Уведомления S3 → Lambda → SNS; переменная TOPIC_ARN обязательна."""
+import os
+from urllib.parse import unquote_plus
+
+_sns = None
 
 
 def lambda_handler(event, context):
-    # i want to know that event thing
-    print(event)
-
-    # extract relevant information from the s3 event trigger
-    bucket_name = event['Records'][0]['s3']['bucket']['name']
-    object_key = event['Records'][0]['s3']['object']['key']
-
-    # perform desired operations with the uploaded file
-    print(f"File '{object_key}' was uploaded to bucket '{bucket_name}'")
-
-    # example: send a notification via SNS
-    sns_client = boto3.client('sns')
-    topic_arn = 'arn:aws:sns:us-east-1:<account-id>:s3-lambda-sns'
-    sns_client.publish(
-        TopicArn=topic_arn,
-        Subject='s3 object created !!',
-        Message=f"File '{object_key}' was uploaded to bucket '{bucket_name}'"
-    )
-
-    # Example: Trigger another Lambda function
-    # lambda_client = boto3.client('lambda')
-    # target_function_name = 'my-another-lambda-function'
-    # lambda_client.invoke(
-    #     FunctionName=target_function_name,
-    #     InvocationType='Event',
-    #     Payload=json.dumps({'bucket_name': bucket_name, 'object_key': object_key})
-    # )
-    # in case of queuing and other objectives similar to the Netflix flow of triggering
-
-    return {
-        'statusCode': 200,
-        'body': json.dumps("Lambda function executed successfully !!")
-    }
+    global _sns
+    if event.get("Event") == "s3:TestEvent":
+        return {"processed": 0}
+    if _sns is None:
+        import boto3
+        _sns = boto3.client("sns")
+    count = 0
+    for record in event.get("Records", []):
+        if record.get("eventSource") != "aws:s3":
+            continue
+        bucket = record["s3"]["bucket"]["name"]
+        key = unquote_plus(record["s3"]["object"]["key"])
+        _sns.publish(TopicArn=os.environ["TOPIC_ARN"],
+                     Subject="S3 object created",
+                     Message=f"Object {key!r} was created in bucket {bucket!r}")
+        count += 1
+    return {"processed": count}

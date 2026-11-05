@@ -1,34 +1,30 @@
-"""
-Meant to be used like this:
-
-python scripts/update_question_number.py
-
-"""
-import pathlib
-from scripts.question_utils import get_question_list, get_challenges_count
-
-LINE_FLAG = b":bar_chart:"
-
-p = pathlib.Path(__file__).parent.parent.joinpath('README.md')
+"""Обновление строки :bar_chart:; --check проверяет число без записи."""
+import argparse
+import re
+from question_utils import README_PATH, get_total_counts
 
 
-with open(p, 'rb') as f:
-    file = f.readlines()
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check", action="store_true")
+    args = parser.parse_args()
+    questions, exercises = get_total_counts()
+    total = questions + exercises
+    text = README_PATH.read_text(encoding="utf-8")
+    pattern = r"(?m)^:bar_chart:[^\n]*$"
+    replacement = (f":bar_chart: &nbsp;**{total}** вопросов и упражнений "
+                   f"({questions} вопросов, {exercises} ссылок на уникальные задания "
+                   "в основном README и README разделов; без повторов сертификаций).")
+    new, count = re.subn(pattern, lambda _: replacement, text)
+    if count != 1:
+        raise SystemExit("Ожидалась одна строка :bar_chart:")
+    print(replacement)
+    if args.check:
+        if new != text:
+            raise SystemExit("Счётчик устарел; запустите scripts/update_question_number.py")
+    else:
+        README_PATH.write_text(new, encoding="utf-8")
 
 
-file_list = [line.rstrip() for line in file]
-
-question_list = get_question_list(file_list)
-question_count = len(question_list)
-total_count = question_count + get_challenges_count()
-print(question_count)
-print(get_challenges_count())
-print(total_count)
-for line in file:
-    if LINE_FLAG in line:
-        file[file.index(line)] = b':bar_chart: &nbsp;There are currently **%s** questions\r\n' %\
-                                 str(total_count).encode()
-        break
-
-with open(p, 'wb') as f:
-    f.writelines(file)
+if __name__ == "__main__":
+    main()

@@ -1,26 +1,20 @@
+import pulumi
 import pulumi_aws as aws
 
-availableZones = aws.get_availability_zones(state="available")
+config = pulumi.Config()
+vpc_id = config.require("vpcId")
+zones = aws.get_availability_zones(state="available").names
+if len(zones) < 3:
+    raise ValueError("Exercise requires three available availability zones")
 
-aws.ec2.Subnet("NewSubnet1",
-               vpc_id=aws.vpc["main"]["id"],
-               cidr_block="10.0.0.0/24",
-               availability_zone=availableZones.names[0],
-               tags={"Name": "NewSubnet1"}
-               )
+for index in range(3):
+    subnet = aws.ec2.Subnet(
+        f"NewSubnet{index + 1}",
+        vpc_id=vpc_id,
+        cidr_block=f"10.0.{index}.0/24",
+        availability_zone=zones[index],
+        tags={"Name": f"NewSubnet{index + 1}"},
+    )
+    pulumi.export(f"subnet{index + 1}Id", subnet.id)
 
-aws.ec2.Subnet("NewSubnet2",
-               vpc_id=aws.vpc["main"]["id"],
-               cidr_block="10.0.1.0/24",
-               availability_zone=availableZones.names[1],
-               tags={"Name": "NewSubnet2"}
-               )
-
-aws.ec2.Subnet("NewSubnet3",
-               vpc_id=aws.vpc["main"]["id"],
-               cidr_block="10.0.2.0/24",
-               availability_zone=availableZones.names[2],
-               tags={"Name": "NewSubnet3"}
-               )
-
-# Run "pulumi up"
+# Set aws:region and vpcId; the chosen VPC must contain the CIDRs and have no overlaps.

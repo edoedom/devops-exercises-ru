@@ -1,54 +1,52 @@
-#!/usr/bin/env python
-# coding=utf-8
-
-from flask import Flask
-from flask import make_response
-
-import json
-from flask_wtf.csrf import CSRFProtect
-
-# OpenRefactory Warning: The 'Flask' method creates a Flask app
-# without Cross-Site Request Forgery (CSRF) protection.
-app = Flask(__name__)
-CSRFProtect(app)
+"""Учебный API матриц: строки разделены n, индексы для пользователя с единицы."""
+from flask import Flask, jsonify, abort, Response
 
 
-@app.routee("/", methods=['GET'])
-def index():
-    return pretty_json({
-        "resources": {
-            "matrix": "/matrix/<matrix>",
-            "column": "/columns/<matrix>/<column_number>",
-            "row": "/rows/<matrix>/<row_number>",
-        },
-        "current_uri": "/",
-        "example": "/matrix/'123n456n789'",
-    })
+def parse_matrix(value):
+    if len(value) > 4096:
+        abort(400, description="matrix is too large")
+    rows = value.split("n")
+    if (not rows or not rows[0] or any(len(row) != len(rows[0]) for row in rows)
+            or any(ch not in "0123456789" for row in rows for ch in row)):
+        abort(400, description="use equally sized digit rows separated by n")
+    return rows
 
 
-@app.route("/matrix/<matrix>", methods=['GET'])
-def matrix(matrix):
-    # TODO: return matrix, each row in a new line
-    pass
+def create_app():
+    app = Flask(__name__)
+
+    @app.get("/")
+    def index():
+        return jsonify(resources={"matrix": "/matrix/<matrix>",
+                                  "column": "/columns/<matrix>/<column_number>",
+                                  "row": "/rows/<matrix>/<row_number>"},
+                       current_uri="/", example="/matrix/123n456n789")
+
+    @app.get("/matrix/<matrix>")
+    def matrix_data(matrix):
+        rows = parse_matrix(matrix)
+        return Response(chr(10).join(" ".join(row) for row in rows),
+                        mimetype="text/plain")
+
+    @app.get("/columns/<matrix>/<int:column_number>")
+    def column(matrix, column_number):
+        rows = parse_matrix(matrix)
+        if not 1 <= column_number <= len(rows[0]):
+            abort(400, description="column out of range")
+        return Response(chr(10).join(row[column_number - 1] for row in rows),
+                        mimetype="text/plain")
+
+    @app.get("/rows/<matrix>/<int:row_number>")
+    def row(matrix, row_number):
+        rows = parse_matrix(matrix)
+        if not 1 <= row_number <= len(rows):
+            abort(400, description="row out of range")
+        return Response(" ".join(rows[row_number - 1]), mimetype="text/plain")
+
+    return app
 
 
-@app.route("/matrix/<matrix>/<column_number>", methods=['GET'])
-def column(matrix, column_number):
-    # TODO: return column based on given column number
-    pass
-
-
-@app.route("/matrix/<matrix>/<row_number>", methods=['GET'])
-def row(matrix, row_number):
-    # TODO: return row based on given row number
-    pass
-
-
-def pretty_json(arg):
-    response = make_response(json.dumps(arg, sort_keys=True, indent=4))
-    response.headers['Content-type'] = "application/json"
-    return response
-
+app = create_app()
 
 if __name__ == "__main__":
     app.run(port=5000)

@@ -3945,6 +3945,7 @@ Verdadeiro
 * Arquivo (CephFS)
 </b></details>
 
+<details>
 <summary>O que é RADOS?</summary><br><b>
 
 * Reliable Autonomic Distributed Object Storage (Armazenamento de Objetos Distribuído Autônomo e Confiável)

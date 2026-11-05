@@ -1,3 +1,9 @@
+terraform {
+  required_version = ">= 1.10"
+  required_providers {
+    aws = { source = "hashicorp/aws", version = ">= 6.0, < 7.0" }
+  }
+}
 # Variables
 
 variable "vpc_id" {
@@ -6,33 +12,38 @@ variable "vpc_id" {
 
 # AWS Subnets
 
+data "aws_availability_zones" "all" {
+  state = "available"
+}
+
+
 resource "aws_subnet" "NewSubnet1" {
-  cidr_block = "10.0.0.0/24"
-  vpc_id = var.vpc_id
+  cidr_block        = "10.0.0.0/24"
+  vpc_id            = var.vpc_id
   availability_zone = data.aws_availability_zones.all.names[0]
   tags = {
-    Purpose: exercise
-    Name: "NewSubnet1"
+    Purpose = "exercise"
+    Name    = "NewSubnet1"
   }
 }
 
 resource "aws_subnet" "NewSubnet2" {
-  cidr_block = "10.0.1.0/24"
-  vpc_id = var.vpc_id
+  cidr_block        = "10.0.1.0/24"
+  vpc_id            = var.vpc_id
   availability_zone = data.aws_availability_zones.all.names[1]
   tags = {
-    Purpose: exercise
-    Name: "NewSubnet2"
+    Purpose = "exercise"
+    Name    = "NewSubnet2"
   }
 }
 
 resource "aws_subnet" "NewSubnet3" {
-  cidr_block = "10.0.2.0/24"
-  vpc_id = var.vpc_id
+  cidr_block        = "10.0.2.0/24"
+  vpc_id            = var.vpc_id
   availability_zone = data.aws_availability_zones.all.names[2]
   tags = {
-    Purpose: exercise
-    Name: "NewSubnet3"
+    Purpose = "exercise"
+    Name    = "NewSubnet3"
   }
 }
 

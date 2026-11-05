@@ -47,3 +47,7 @@ gcloud compute instances update instance-1 --remove-labels env
 ### Terraform
 
 [Посмотреть main.tf](main.tf).
+
+Terraform создаёт начальные метки `app=web, env=dev`, загрузочный диск и сетевой интерфейс. Перед запуском настройте Application Default Credentials и проект (`GOOGLE_CLOUD_PROJECT`). В примере нет публичного IP и разрешающих SSH правил: для доступа нужен отдельно настроенный частный маршрут либо IAP с соответствующими IAM и firewall rules. Для изменения меток используйте зону `us-west1-a`.
+
+Изменения меток через gcloud создают расхождение с Terraform. После упражнения либо перенесите итоговые метки в конфигурацию, либо учитывайте, что следующий `terraform apply` вернёт объявленные значения. Удалите учебные ресурсы командой `terraform destroy`.

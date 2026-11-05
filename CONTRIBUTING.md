@@ -24,3 +24,14 @@
 ## Перед отправкой pull request
 
 Проверьте изменения локально с помощью скрипта `run_ci.sh` из каталога `scripts`.
+
+Для локальной проверки из корня репозитория нужны Python 3.10+ и зависимости:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements-dev.txt
+bash scripts/run_ci.sh
+```
+
+После добавления вопросов выполните `python scripts/update_question_number.py`. Счётчик включает блоки вопросов и уникальные ссылки на задания в главном README и README разделов, без повторов в материалах сертификаций. CI проверяет его через `--check`, запускает регрессионные тесты, оба Flask-приложения, синтаксис Python/Bash/YAML/HCL и структуру Markdown. Синтаксический разбор IaC не заменяет `terraform validate`, `plan` и проверку в целевой среде. В GitHub Actions проверки выполняются на Python 3.12 и 3.13.

@@ -16,6 +16,17 @@ resource "google_compute_instance" "default" {
   machine_type = "e2-micro"
   zone         = "us-west1-a"
   labels = {
-        app = "db"
-        }
+    app = "web"
+    env = "dev"
+  }
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-12"
+    }
+  }
+
+  network_interface {
+    subnetwork = google_compute_subnetwork.default.id
+    # No public IP: use an explicitly configured private/IAP access path.
+  }
 }

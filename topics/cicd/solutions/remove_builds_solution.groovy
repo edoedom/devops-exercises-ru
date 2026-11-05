@@ -1,16 +1,16 @@
-def removeOldBuilds(buildDirectory, days = 14) {
+import jenkins.model.Jenkins
+import hudson.model.Job
 
-  def wp = new File("${buildDirectory}")
-  def currentTime = new Date()
-  def backTime = currentTime - days
-
-  wp.list().each { fileName ->
-      folder = new File("${buildDirectory}/${fileName}")
-      if (folder.isDirectory()) {
-          def timeStamp = new Date(folder.lastModified())
-          if (timeStamp.before(backTime)) {
-            folder.delete()
-          }
-      }
-  }
+// Для регулярной очистки предпочтительнее buildDiscarder(logRotator(daysToKeepStr: '14')).
+// Одноразовая очистка через Script Console: сначала DRY_RUN, без прямого удаления файлов.
+def DRY_RUN = true
+def cutoff = System.currentTimeMillis() - 14L * 24 * 60 * 60 * 1000
+Jenkins.get().getAllItems(Job.class).each { job ->
+    job.builds.toList().each { build ->
+        if (build.timeInMillis < cutoff && !build.isBuilding() &&
+                !build.isLogUpdated() && !build.isKeepLog()) {
+            println "${DRY_RUN ? 'WOULD DELETE' : 'DELETE'}: ${build.fullDisplayName}"
+            if (!DRY_RUN) { build.delete() }
+        }
+    }
 }

@@ -1,6 +1,6 @@
 # Решение: API Gateway, Lambda и DynamoDB
 
-Это порядок реализации задания, а не готовый автоматически развёртываемый проект.
+Порядок реализации ниже дополняет [Terraform-конфигурацию](terraform/main.tf) и [Python-обработчик](terraform/handler.py). Они прошли локальные проверки, но облачное развёртывание ещё требуется проверить в своей среде.
 
 1. Создайте DynamoDB-таблицу `users` с ключом `id` (String) и billing mode `PAY_PER_REQUEST`. Для запросов по `id` GSI по login не требуется.
 2. Создайте execution role Lambda с доверенным сервисом `lambda.amazonaws.com`. Для таблицы разрешите `dynamodb:GetItem` и `dynamodb:PutItem` только на ARN этой таблицы; отдельно разрешите запись в нужную CloudWatch Logs log group. Provisioning-права и execution role — разные вещи.

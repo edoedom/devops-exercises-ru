@@ -13,7 +13,7 @@ $ python tests/syntax_lint.py
 
 import sys
 
-p = sys.argv[1]
+p = sys.argv[1] if len(sys.argv) > 1 else "README.md"
 
 
 errors = []
@@ -91,6 +91,9 @@ def check_details_tag(file_list):
 
         error = False
 
+    if after_detail:
+        errors.append("Unclosed details tag at end of file")
+
 
 def check_summary_tag(file_list):
     """
@@ -132,9 +135,13 @@ def check_summary_tag(file_list):
 
         error = False
 
+    if after_summary:
+        errors.append("Unclosed summary tag at end of file")
+
 
 def check_md_file(file_name):
-    with open(p, "rb") as f:
+    errors.clear()
+    with open(file_name, "rb") as f:
         file_list = [line.rstrip() for line in f.readlines()]
     check_details_tag(file_list)
     check_summary_tag(file_list)

@@ -1,8 +1,7 @@
-language: "python"
+language: python
 python:
-    - "3.8"
+  - '3.12'
 install:
-    - pip install flake8
+  - python -m pip install -r requirements-dev.txt
 script:
-    - flake8 --max-line-length=100 .
-    - python tests/syntax_lint.py
+  - bash scripts/run_ci.sh

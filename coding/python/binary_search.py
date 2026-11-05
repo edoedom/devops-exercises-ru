@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
 import random
-from typing import List, Optional
+from typing import List
 
 
-def binary_search(arr: List[int], lb: int, ub: int, target: int) -> Optional[int]:
+def binary_search(arr: List[int], lb: int, ub: int, target: int) -> int:
     """
     A Binary Search Example which has O(log n) time complexity.
     """

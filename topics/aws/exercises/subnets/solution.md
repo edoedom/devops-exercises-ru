@@ -53,3 +53,5 @@
 ### Pulumi: Python
 
 [Посмотреть решение](pulumi/__main__.py).
+
+Для IaC нужен существующий VPC с диапазоном, включающим все три CIDR (например, `10.0.0.0/16`), без пересекающихся подсетей, и регион с тремя доступными аккаунту AZ. Terraform: настройте `AWS_REGION`, выполните `terraform init` и `terraform plan -var=vpc_id=vpc-...`; после проверки — `terraform apply` с тем же параметром. Pulumi: в Python-проекте задайте `pulumi config set aws:region REGION` и `pulumi config set vpcId vpc-...`, затем `pulumi up`. Удаляйте только созданные учебные подсети; VPC эти примеры не создают и не удаляют.

@@ -1,19 +1,11 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
-
-PROJECT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.."
-
-# Use the `-print0` option to handle spaces safely, and while-read loop:
-find "${PROJECT_DIR}" \
-  -name "*.md" \
-  -not -path "${PROJECT_DIR}/tests/*" \
-  -print0 |
-while IFS= read -r -d '' file
-do
-  python "${PROJECT_DIR}/tests/syntax_lint.py" "${file}" > /dev/null
+project_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$project_dir"
+python3 -m unittest discover -s tests -p '*_unittest.py' -v
+python3 tests/repository_checks.py
+python3 scripts/update_question_number.py --check
+for exercise in flask_container_ci flask_container_ci2; do
+  (cd "topics/$exercise" && python3 -m unittest tests app.tests -v)
 done
-
-echo "- Syntax lint tests on MD files passed successfully"
-
-flake8 --max-line-length=100 . && echo "- PEP8 Passed"
+while IFS= read -r -d '' file; do bash -n "$file"; done < <(find scripts -name '*.sh' -print0)

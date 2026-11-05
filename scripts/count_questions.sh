@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-
-set -eu
-
-count=$(echo $(( $(grep -E "\[Exercise\]|</summary>" -c README.md topics/*/README.md | awk -F: '{ s+=$2 } END { print s }' ))))
-
-echo "There are $count questions and exercises"
-
-sed -i "s/currently \*\*[0-9]*\*\*/currently \*\*$count\\**/" README.md
+set -euo pipefail
+script_dir=$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+exec python3 "$script_dir/update_question_number.py" "$@"

@@ -1,42 +1,45 @@
-- name: Apply Kubernetes YAMLs
-  hosts: kubernetes
+- name: Deploy the web application from the Ansible controller
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    app_namespace: default
+    app_host: hello-world.app
   tasks:
-    - name: Ensure SSL related directories exist
-      file:
-        path: "{{ item }}"
-        state: directory
-      loop:
-        - "/etc/ssl/crt"
-        - "/etc/ssl/csr"
-        - "/etc/ssl/private"
-
-    - name: Generate an OpenSSL private key.
-      openssl_privatekey:
-        path: /etc/ssl/private/privkey.pem
-
-    - name: generate openssl certificate signing requests
-      openssl_csr:
-        path: /etc/ssl/csr/hello-world.app.csr
-        privatekey_path: /etc/ssl/private/privkey.pem
-        common_name: hello-world.app
-
-    - name: Generate a Self Signed OpenSSL certificate
-      openssl_certificate:
-        path: /etc/ssl/crt/hello-world.app.crt
-        privatekey_path: /etc/ssl/private/privkey.pem
-        csr_path: /etc/ssl/csr/hello-world.app.csr
-        provider: selfsigned
-
-    - name: Create k8s secret
-      command: "kubectl create secret tls tls-secret --cert=/etc/ssl/crt/hello-world.app.crt --key=/etc/ssl/private/privkey.pem"
-      register: result
-      failed_when:
-        - result.rc == 2
-          
-    - name: Deploy web app
-      k8s:
+    - name: Check deployment inputs
+      ansible.builtin.assert:
+        that:
+          - app_image is defined and app_image | length > 0
+          - ingress_class is defined and ingress_class | length > 0
+          - tls_cert_file is defined and tls_cert_file | length > 0
+          - tls_key_file is defined and tls_key_file | length > 0
+        fail_msg: Supply app_image, ingress_class, tls_cert_file and tls_key_file.
+    - name: Ensure namespace exists
+      kubernetes.core.k8s:
         state: present
-        definition: "{{ lookup('file', './helloworld.yml') }}"
-        kubeconfig: '/home/abregman/.kube/config'
-        namespace: 'default'
+        definition:
+          apiVersion: v1
+          kind: Namespace
+          metadata:
+            name: "{{ app_namespace }}"
+    - name: Apply TLS secret in the application namespace
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Secret
+          metadata:
+            name: tls-secret
+            namespace: "{{ app_namespace }}"
+          type: kubernetes.io/tls
+          data:
+            tls.crt: "{{ lookup('ansible.builtin.file', tls_cert_file) | b64encode }}"
+            tls.key: "{{ lookup('ansible.builtin.file', tls_key_file) | b64encode }}"
+      no_log: true
+    - name: Apply the workload, service and ingress
+      kubernetes.core.k8s:
+        state: present
+        template: "{{ playbook_dir }}/helloworld.yml"
+        namespace: "{{ app_namespace }}"
         wait: true
+        wait_timeout: 180
